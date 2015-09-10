@@ -2,3 +2,4 @@ atfeed-cppsdk
 container/node-activetick-addon/import
 container/node-activetick-addon/build/
 container/config.iced
+container/libActiveTickServerAPI.dylib
