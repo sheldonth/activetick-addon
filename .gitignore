@@ -3,3 +3,4 @@ container/node-activetick-addon/import
 container/node-activetick-addon/build/
 container/config.js
 container/libActiveTickServerAPI.dylib
+container/node_modules
