@@ -2,13 +2,13 @@
   "targets": [
     {
       "target_name": "NodeActivetickAddon",
-      "sources": [ "NodeActivetickAddonTen.cpp"
-                  ,"NodeActivetickTen.cpp"
+      "sources": [ "NodeActivetickAddon.cpp"
+                  ,"NodeActivetick.cpp"
                   ,"StdAfx.cpp"
                   ,"Session.cpp"
                   ,"Requestor.cpp"
                   ,"Streamer.cpp"
-                  ,"AtJsonParserTen.cpp"
+                  ,"AtJsonParser.cpp"
                   ,"Jsonifier.cpp"
                   ,"AtEnumConverter.cpp"
                   ,"import/atfeed-cppsdk/example/Helper.cpp"
