@@ -5,14 +5,20 @@ config = require './config'
 class ActiveTick
   constructor: () ->
     @api = new NodeActivetick()
-    @beginProcessing()
+    if @connect()
+      @beginProcessing()
     
-  beginProcessing:() ->
+  beginProcessing:() =>
+    async.forever (next) =>
+      @readNextMessage(next)
     
+  readNextMessage:(done) ->
+    msg = @api.getMsg()
+    console.log msg if msg
+    done()
     
   connect: () ->
-    result = @api.sessionInit config.api_key, config.ip, config.port, config.username, config.password
-    console.log result
+    return @api.sessionInit config.api_key, config.ip, config.port, config.username, config.password
 
 main = () ->
   a = new ActiveTick()
