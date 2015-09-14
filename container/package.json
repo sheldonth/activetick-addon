@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sheldonth/activetick-addon/issues"
   },
-  "homepage": "https://github.com/sheldonth/activetick-addon#readme"
+  "homepage": "https://github.com/sheldonth/activetick-addon#readme",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
 }

@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <cstring>
 
+#include <iostream>
+
 #include <node.h>
 #include "import/atfeed-cppsdk/example/Helper.h"
 #include "import/libjson/libjson.h"
@@ -61,22 +63,34 @@ bool APISession::Destroy()
     std::string strStatusType;
     switch(statusType)
     {
-    case SessionStatusConnected: strStatusType = "SessionStatusConnected"; break;
-    case SessionStatusDisconnected: strStatusType = "SessionStatusDisconnected"; break;
-    case SessionStatusDisconnectedDuplicateLogin: strStatusType = "SessionStatusDisconnectedDuplicateLogin"; break;
-    default: break;
+      case SessionStatusConnected:
+        strStatusType = "SessionStatusConnected";
+        break;
+      case SessionStatusDisconnected:
+        strStatusType = "SessionStatusDisconnected";
+        break;
+      case SessionStatusDisconnectedDuplicateLogin:
+        strStatusType = "SessionStatusDisconnectedDuplicateLogin"; 
+        break;
+      default:
+        strStatusType = "None";
+        break;
     }
-
 
     if(statusType == SessionStatusConnected)
     {
-        APISession::s_pInstance->m_hLastRequest = ATCreateLoginRequest(hSession, APISession::s_pInstance->m_userid, APISession::s_pInstance->m_password, APISession::ATLoginResponseCallback);
-        bool rc = ATSendRequest(hSession, APISession::s_pInstance->m_hLastRequest, DEFAULT_REQUEST_TIMEOUT, APISession::ATRequestTimeoutCallback);
+      JSONNode n(JSON_NODE);
+      n.push_back( JSONNode( "foo", "bar" ) );
+      s_pInboundMsgs->push( n );
+      
+      APISession::s_pInstance->m_hLastRequest = ATCreateLoginRequest(hSession, APISession::s_pInstance->m_userid, APISession::s_pInstance->m_password, APISession::ATLoginResponseCallback);
+      bool rc = ATSendRequest(hSession, APISession::s_pInstance->m_hLastRequest, DEFAULT_REQUEST_TIMEOUT, APISession::ATRequestTimeoutCallback);
     }
+    
     JSONNode n( JSON_NODE );
     n.push_back( JSONNode( "messageId", "ATSessionStatus" ) );
     n.push_back( JSONNode( "hSession" , hSession ) );
-    n.push_back( JSONNode( "statusType", statusType ) );
+    n.push_back( JSONNode( "statusType", strStatusType ) );
     s_pInboundMsgs->push( n );
 }
 
@@ -109,16 +123,36 @@ bool APISession::Destroy()
 
 /*static*/ JSONNode APISession::jsonifyAtloginResponse(
                             LPATLOGIN_RESPONSE pResponse ) {
+    std::string strLoginResponseType;
+    switch(pResponse->loginResponse)
+    {
+      case LoginResponseSuccess:
+        strLoginResponseType = "LoginResponseSuccess"; break;
+      case LoginResponseInvalidUserid:
+        strLoginResponseType = "LoginResponseInvalidUserid"; break;
+      case LoginResponseInvalidPassword:
+        strLoginResponseType = "LoginResponseInvalidPassword"; break;
+      case LoginResponseInvalidRequest:
+        strLoginResponseType = "LoginResponseInvalidRequest"; break;
+      case LoginResponseLoginDenied:
+        strLoginResponseType = "LoginResponseLoginDenied"; break;
+      case LoginResponseServerError:
+        strLoginResponseType = "LoginResponseServerError"; break;
+      default: strLoginResponseType = "unknown"; break;
+    }
+    
+    
     JSONNode n( JSON_NODE );
     n.set_name( "ATLoginResponse" );
     n.push_back( JSONNode( "loginResponse", pResponse->loginResponse ) );
+    n.push_back( JSONNode( "loginResponseString", strLoginResponseType ) );
 
-    JSONNode permissions( JSON_ARRAY );
-    permissions.set_name( "permissions" );
-    for ( size_t i = 0; i < 255; i++ ) {
-        permissions.push_back( JSONNode( "permissionEntry", pResponse->permissions[i] ) );
-    }
-    n.push_back( permissions );  
+    // JSONNode permissions( JSON_ARRAY );
+    // permissions.set_name( "permissions" );
+    // for ( size_t i = 0; i < 255; i++ ) {
+    //     permissions.push_back( JSONNode( "permissionEntry", pResponse->permissions[i] ) );
+    // }
+    // n.push_back( permissions );  
 
     n.push_back( m_jsonifier.jsonifyAtTime( 
                     "serverTime", &pResponse->serverTime ) );
