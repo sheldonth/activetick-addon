@@ -111,7 +111,9 @@ bool AtJsonParser::filterAsString( const std::string& node_name ) {
          node_name == "bidExchange" ||
          node_name == "askExchange" ||
          node_name == "dataItemQuoteFieldType" ||
-         node_name == "dataItemFieldStatus"
+         node_name == "dataItemFieldStatus" ||
+         node_name == "loginResponseString" ||
+         node_name == "statusType"
        )
         return true;
     return false;

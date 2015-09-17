@@ -18,6 +18,8 @@ _ = require 'underscore'
 # .sendATConstituentListRequest( request )
 # .connect( apiKey, serverAddr, port, userid, passwd )
 
+noisy = yes
+
 class ActiveTick
   constructor:() ->
     @api = new NodeActivetick()
@@ -25,16 +27,24 @@ class ActiveTick
       @beginProcessing()
     
   beginProcessing:() =>
+    @processing = yes
     async.forever (next) =>
       @readNextMessage(next)
     
   readNextMessage:(done) ->
     msg = @api.getMsg()
-    console.log msg if _.size(msg) isnt 0
-    setTimeout done(), 500 # grab data twice a second
+    console.log msg if _.size(msg) isnt 0 and noisy
+    if not @processing
+      done(1)
+    else
+      @handleMsg msg
+      setTimeout done, 1
     
-  connect: () ->
-    return @api.sessionInit config.api_key, config.ip, config.port, config.username, config.password
+  stopProcessing:() =>
+    @processing = no
+    
+  connect: (@connection_cb) ->
+    return @api.sessionInit config.api_key, config.url, config.port, config.username, config.password
 
 main = () ->
   a = new ActiveTick()
