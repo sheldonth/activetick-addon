@@ -139,7 +139,7 @@ LIBTOOLFLAGS_Release := \
 	-Wl,-search_paths_first
 
 LIBS := \
-	./import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib \
+	../import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib \
 	-lpthread
 
 $(builddir)/NodeActivetickAddon.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))

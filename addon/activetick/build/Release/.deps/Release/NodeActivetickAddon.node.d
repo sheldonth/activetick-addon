@@ -1,0 +1,1 @@
+cmd_Release/NodeActivetickAddon.node := c++ -bundle -undefined dynamic_lookup -Wl,-search_paths_first -mmacosx-version-min=10.5 -arch x86_64 -L./Release  -o Release/NodeActivetickAddon.node Release/obj.target/NodeActivetickAddon/NodeActiveTickAddon.o Release/obj.target/NodeActivetickAddon/NodeActiveTick.o ../import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib -lpthread
