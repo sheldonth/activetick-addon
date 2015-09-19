@@ -16,13 +16,13 @@
 
 using namespace v8;
 
-class NodeActivetick : public node::ObjectWrap {
+class NodeActiveTick : public node::ObjectWrap {
 public:
     static void Init( Handle<Object> exports );
 
 private:
-    explicit NodeActivetick();
-    ~NodeActivetick();
+    explicit NodeActiveTick();
+    ~NodeActiveTick();
     
     static void New( const FunctionCallbackInfo<Value> &args );
     static Persistent<Function> constructor;

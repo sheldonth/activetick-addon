@@ -1,10 +1,10 @@
 #include <node.h>
-#include "NodeActivetick.h"
+#include "NodeActiveTick.h"
 
 using namespace v8;
 
 void InitAll(Handle<Object> exports) {
-    NodeActivetick::Init(exports);
+    NodeActiveTick::Init(exports);
 }
 
-NODE_MODULE(NodeActivetickAddon, InitAll);
+NODE_MODULE(NodeActiveTickAddon, InitAll);

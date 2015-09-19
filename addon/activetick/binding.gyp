@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "NodeActivetickAddon",
+      "target_name": "NodeActiveTickAddon",
       "sources": [ "NodeActiveTickAddon.cpp",
                     "NodeActiveTick.cpp"
                  ],

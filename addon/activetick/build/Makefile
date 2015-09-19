@@ -321,12 +321,12 @@ $(obj).$(TOOLSET)/%.o: $(obj)/%.s FORCE_DO_CMD
 
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
-                 $(join ^,NodeActivetickAddon.target.mk)))),)
-  include NodeActivetickAddon.target.mk
+                 $(join ^,NodeActiveTickAddon.target.mk)))),)
+  include NodeActiveTickAddon.target.mk
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/Users/sheldonthomas/Documents/Resplendent/activetick-addon/container/activetick/build/config.gypi -I/Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp/addon.gypi -I/Users/sheldonthomas/.node-gyp/0.12.7/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/sheldonthomas/.node-gyp/0.12.7" "-Dnode_gyp_dir=/Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp" "-Dnode_lib_file=node.lib" "-Dmodule_root_dir=/Users/sheldonthomas/Documents/Resplendent/activetick-addon/container/activetick" binding.gyp
+cmd_regen_makefile = cd $(srcdir); /Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/build/config.gypi -I/Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp/addon.gypi -I/Users/sheldonthomas/.node-gyp/0.12.7/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/sheldonthomas/.node-gyp/0.12.7" "-Dnode_gyp_dir=/Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp" "-Dnode_lib_file=node.lib" "-Dmodule_root_dir=/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick" binding.gyp
 Makefile: $(srcdir)/../../../../../.nvm/v0.12.7/lib/node_modules/node-gyp/addon.gypi $(srcdir)/../../../../../.node-gyp/0.12.7/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp
 	$(call do_cmd,regen_makefile)
 

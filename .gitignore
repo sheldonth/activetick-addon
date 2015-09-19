@@ -5,3 +5,5 @@ container/config.js
 container/libActiveTickServerAPI.dylib
 container/node_modules
 addon/activetick/import
+addon/activetick/node_modules
+addon/activetick/libActiveTickServerAPI.dylib

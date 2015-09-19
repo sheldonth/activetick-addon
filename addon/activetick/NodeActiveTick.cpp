@@ -2,39 +2,40 @@
 #include <locale>
 #include <sstream>
 #include <node.h>
-#include "NodeActivetick.h"
+#include "NodeActiveTick.h"
 // #include "import/atfeed-cppsdk/example/Helper.h"
 
 using namespace v8;
 
-Persistent<Function> NodeActivetick::constructor;
+Persistent<Function> NodeActiveTick::constructor;
 
-NodeActivetick::NodeActivetick() {
+NodeActiveTick::NodeActiveTick() {
         
   }
   
-NodeActivetick::~NodeActivetick() {
+NodeActiveTick::~NodeActiveTick() {
     
   }
 
-void NodeActivetick::Init( Handle<Object> exports ) {
+void NodeActiveTick::Init( Handle<Object> exports ) {
     Isolate* isolate = Isolate::GetCurrent();
 
     ATInitAPI();
     Local<FunctionTemplate> tpl = FunctionTemplate::New( isolate, New );
-    tpl->SetClassName( String::NewFromUtf8( isolate, "NodeActivetick" ) );
+    tpl->SetClassName( String::NewFromUtf8( isolate, "NodeActiveTick" ) );
+    tpl->InstanceTemplate()->SetInternalFieldCount(1);
     constructor.Reset( isolate, tpl->GetFunction() );
-    exports->Set( String::NewFromUtf8( isolate, "NodeActivetick" ),
+    exports->Set( String::NewFromUtf8( isolate, "NodeActiveTick" ),
                   tpl->GetFunction() );
   }
   
-  void NodeActivetick::New( const FunctionCallbackInfo<Value> &args ) {
+  void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
       Isolate* isolate = Isolate::GetCurrent();
       HandleScope scope( isolate );
 
       if (args.IsConstructCall()) {
           // double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
-          NodeActivetick* obj = new NodeActivetick();
+          NodeActiveTick* obj = new NodeActiveTick();
           obj->Wrap( args.This() );
           args.GetReturnValue().Set( args.This() );
     }
