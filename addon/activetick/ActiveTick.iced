@@ -21,10 +21,15 @@ noisy = yes
 
 class ActiveTick
   constructor:() ->
-    @api = new NodeActiveTick()
+    @api = new NodeActiveTick(@handleData)
+    
+  handleData:(data) =>
+    console.log 'got data'
+    console.log data
 
 main = () ->
   a = new ActiveTick()
-  
+  console.log a.api
+  # a.fireCallback()
 
 main() if not module.parent

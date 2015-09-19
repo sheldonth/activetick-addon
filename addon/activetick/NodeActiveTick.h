@@ -26,4 +26,9 @@ private:
     
     static void New( const FunctionCallbackInfo<Value> &args );
     static Persistent<Function> constructor;
+    
+    static void FireCallback(
+            const FunctionCallbackInfo<Value> &args );
+    
+    Local<Function> dataCallback;
   };
