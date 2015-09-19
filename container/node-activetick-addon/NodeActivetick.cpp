@@ -14,6 +14,7 @@ NodeActivetick::NodeActivetick()
     : m_session( &this->m_inboundMsgs ),
       m_requestor( this->m_session, &this->m_inboundMsgs ),
       m_streamer( this->m_session, &this->m_inboundMsgs ) {
+        
 }
 NodeActivetick::~NodeActivetick() {
     ATShutdownAPI();
@@ -69,6 +70,7 @@ void NodeActivetick::New( const FunctionCallbackInfo<Value> &args ) {
     if (args.IsConstructCall()) {
         double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
         NodeActivetick* obj = new NodeActivetick();
+        obj->testDouble = value;
         obj->Wrap( args.This() );
         args.GetReturnValue().Set( args.This() );
     } else {

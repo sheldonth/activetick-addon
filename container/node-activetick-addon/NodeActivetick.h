@@ -60,6 +60,7 @@ private:
 
 private:
     JSONNode getInboundMsg();
+    double testDouble;
 
 private:
     APISession m_session;

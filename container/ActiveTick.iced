@@ -22,23 +22,40 @@ noisy = yes
 
 class ActiveTick
   constructor:() ->
-    @api = new NodeActivetick()
+    @api = new NodeActivetick(@dataCb)
     if @connect()
       @beginProcessing()
+    
+  dataCb:() =>
+    console.log 'YAYAYO'
     
   beginProcessing:() =>
     @processing = yes
     async.forever (next) =>
       @readNextMessage(next)
     
-  readNextMessage:(done) ->
+  readNextMessage:(done) =>
     msg = @api.getMsg()
     console.log msg if _.size(msg) isnt 0 and noisy
     if not @processing
       done(1)
     else
-      @handleMsg msg
+      @handleMsg msg if _.size(msg) isnt 0
       setTimeout done, 1
+    
+  handleMsg:(msg) =>
+    switch msg.messageId
+      when 'ATSessionStatus' then @handleStatus msg
+      when 'ATLoginResponse' then @handleLoginResponse msg
+    
+  handleStatus: (obj) =>
+    
+  handleLoginResponse: (obj) =>
+    if obj.ATLoginResponse.loginResponseString is 'LoginResponseSuccess'
+      if @connection_cb
+        @connection_cb()
+        @connection_cb = null # only do the callback the first time.
+        # c++ api layer remembers subscriptions between reconnects
     
   stopProcessing:() =>
     @processing = no
@@ -48,6 +65,7 @@ class ActiveTick
 
 main = () ->
   a = new ActiveTick()
-  a.connect()
+  await a.connect defer()
+  
 
 main() if not module.parent
