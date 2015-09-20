@@ -51,13 +51,13 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
         }
         
         Local<Function> cb = Local<Function>::Cast(args[0]);
-        // obj->l_dataCallback = cb;
+        obj->l_dataCallback = cb;
         
-        obj->p_dataCallback = Persistent<Function>::New(isolate, cb);
+        obj->p_dataCallback = Persistent<Function>::Persistent(isolate, cb);
         // obj->p_dataCallback = Persistent<Function>::New(cb);
         // obj->p_dataCallback = Persistent<Function>::New(Isolate::GetCurrent(), obj)
         // obj->p_dataCallback = Persistent<Function, CopyablePersistentTraits<Function> >::New(isolate, args[0]);
-        // obj->p_dataCallback = Persistent<Function CopyablePersistentTraits<Function> >::New(isolate, Handle<Function>::Cast(args[0]));
+        // obj->p_dataCallback = Persistent<Function, CopyablePersistentTraits<Function> >::New(isolate, Handle<Function>::Cast(args[0]));
 
         // obj->dataCallback = Persistent<Function>::New(Handle<Function>::Cast(args[0]));
         // obj->dataCallback = Persistent<Function>::New(cb);
@@ -82,7 +82,6 @@ void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   // isolate->ThrowException(Exception::TypeError(
   //           String::NewFromUtf8(isolate, "Wrong number of arguments")));
   
-  *(obj->p_dataCallback)->Call(Null(isolate), argc, argv);
-  
+  obj->p_dataCallback->Call(Null(isolate), argc, argv);
 }
 
