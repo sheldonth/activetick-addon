@@ -19,7 +19,8 @@ using namespace v8;
 class NodeActiveTick : public node::ObjectWrap {
 public:
     static void Init( Handle<Object> exports );
-    Persistent<Function> *dataCallback;
+    Local<Function> l_dataCallback;
+    Persistent<Function> p_dataCallback;
 
 private:
     explicit NodeActiveTick();
