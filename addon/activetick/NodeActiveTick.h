@@ -19,6 +19,7 @@ using namespace v8;
 class NodeActiveTick : public node::ObjectWrap {
 public:
     static void Init( Handle<Object> exports );
+    Persistent<Function> *dataCallback;
 
 private:
     explicit NodeActiveTick();
@@ -30,5 +31,4 @@ private:
     static void FireCallback(
             const FunctionCallbackInfo<Value> &args );
     
-    Local<Function> dataCallback;
   };

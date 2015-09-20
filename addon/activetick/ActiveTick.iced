@@ -22,6 +22,7 @@ noisy = yes
 class ActiveTick
   constructor:() ->
     @api = new NodeActiveTick(@handleData)
+    @api.fireCallback()
     
   handleData:(data) =>
     console.log 'got data'
@@ -29,7 +30,7 @@ class ActiveTick
 
 main = () ->
   a = new ActiveTick()
-  console.log a.api
+  # a.api.fireCallback()
   # a.fireCallback()
 
 main() if not module.parent
