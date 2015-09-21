@@ -20,7 +20,7 @@ class NodeActiveTick : public node::ObjectWrap {
 public:
     static void Init( Handle<Object> exports );
     Local<Function> l_dataCallback;
-    Persistent<Function> p_dataCallback;
+    // Persistent<Function> p_dataCallback;
     // Persistent<Function, NonCopyablePersistentTraits<Function> > p_dataCallback;
 
 private:
@@ -29,6 +29,7 @@ private:
     
     static void New( const FunctionCallbackInfo<Value> &args );
     static Persistent<Function> constructor;
+    static Persistent<Function> p_callback;
     
     static void FireCallback(
             const FunctionCallbackInfo<Value> &args );
