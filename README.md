@@ -1,4 +1,4 @@
-### USAGE (OSX Node 0.12.7 ONLY):
+### USAGE (OS-X Node 0.12.7 ONLY):
 - Place 'atfeed-cppsdk' folder from ActiveTick in the repository root
 - Place 'libActiveTickServerAPI.dylib' from 'atfeed-cppsdk' inside /container
 - run '/container/node-active-addon/preinstall.sh'

@@ -7,3 +7,4 @@ container/node_modules
 addon/activetick/import
 addon/activetick/node_modules
 addon/activetick/libActiveTickServerAPI.dylib
+addon/activetick/config.js

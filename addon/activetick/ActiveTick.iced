@@ -1,6 +1,7 @@
 {NodeActiveTick} = require './build/Release/NodeActiveTickAddon'
 async = require 'async'
 _ = require 'underscore'
+config = require './config'
 
 # .getSessionHandle()
 # .closeAllATRequests()
@@ -22,7 +23,8 @@ noisy = yes
 class ActiveTick
   constructor:() ->
     @api = new NodeActiveTick(@handleData)
-    @api.fireCallback()
+    # @api.fireCallback()
+    result = @api.connect config.url, config.port, config.api_key, config.username, config.password
     
   handleData:(data) =>
     if typeof data is 'object'

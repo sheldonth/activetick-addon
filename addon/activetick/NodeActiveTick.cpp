@@ -7,7 +7,7 @@
 #include <node_buffer.h>
 #include <nan.h>
 #include "NodeActiveTick.h"
-// #include "import/atfeed-cppsdk/example/Helper.h"
+#include "import/atfeed-cppsdk/example/Helper.h"
 
 using namespace v8;
 
@@ -30,38 +30,38 @@ Persistent<Function> NodeActiveTick::constructor;
 
 
 NodeActiveTick::NodeActiveTick() {
-  
+  ATInitAPI();
+  session_handle = ATCreateSession();
 }
   
 NodeActiveTick::~NodeActiveTick() {
-  
+  ATDestroySession(session_handle);
 }
 
 void NodeActiveTick::Init( Handle<Object> exports ) {
     Isolate* isolate = Isolate::GetCurrent();
 
-    ATInitAPI();
-    Local<FunctionTemplate> tpl = FunctionTemplate::New( isolate, New );
-    tpl->SetClassName( String::NewFromUtf8( isolate, "NodeActiveTick" ) );
+    Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
+    tpl->SetClassName( String::NewFromUtf8(isolate, "NodeActiveTick"));
     tpl->InstanceTemplate()->SetInternalFieldCount(1);
     
-    NODE_SET_PROTOTYPE_METHOD( tpl, "fireCallback" , FireCallback );
+    NODE_SET_PROTOTYPE_METHOD(tpl, "fireCallback", FireCallback);
+    NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
     
-    constructor.Reset( isolate, tpl->GetFunction() );
-    exports->Set( String::NewFromUtf8( isolate, "NodeActiveTick" ),
-                  tpl->GetFunction() );
+    constructor.Reset(isolate, tpl->GetFunction());
+    exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
 }
   
 void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
     Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope( isolate );
+    HandleScope scope(isolate);
 
     if (args.IsConstructCall()) {
         NodeActiveTick* obj = new NodeActiveTick();
         // double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
         if (!args[0]->IsFunction()) {
           isolate->ThrowException(Exception::TypeError(
-                  String::NewFromUtf8(isolate, "NodeActiveTick requires a callback parameter in first position")));
+                  String::NewFromUtf8(isolate, "NodeActiveTick requires a callback parameter in first argument position")));
         }
         Local<Function> cb = Local<Function>::Cast(args[0]);
         obj->p_dataCallback.Reset(isolate, cb);
@@ -72,8 +72,8 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
   
 void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope( isolate );
-  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>( args.Holder() );
+  HandleScope scope(isolate);
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
   
   // !!!!!!!!!!!!!!!!!!!!!!!!!  CALLING FUNCTION PASSING BUFFER IN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const char *data = "Hello World FOOBAR!";
@@ -106,6 +106,34 @@ void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   func->Call(Null(isolate), argcc, argvv);
 }
 
+void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args ) {
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
+
+  Local<String> str_url_address = args[0]->ToString();
+  char cstr_url_address[str_url_address->Utf8Length()];
+  str_url_address->WriteUtf8(cstr_url_address);
+  
+  uint32_t api_port = args[1]->Uint32Value();
+  
+  Local<String> str_api_key = args[2]->ToString();
+  char cstr_api_key[str_api_key->Utf8Length()];
+  str_api_key->WriteUtf8(cstr_api_key);
+  
+  ATGUID at_guid = Helper::StringToATGuid(cstr_api_key);
+  
+  Local<String> str_user_id = args[3]->ToString();
+  char cstr_api_user_id[str_user_id->Utf8Length()];
+  str_user_id->WriteUtf8(cstr_api_user_id);
+  
+  Local<String> str_api_password = args[4]->ToString();
+  char cstr_api_password[str_api_password->Utf8Length()];
+  str_api_password->WriteUtf8(cstr_api_password);
+  
+  // bool r = ATSetAPIUserId(obj->session_handle, &at_guid);
+  // args.GetReturnValue().Set(Boolean::New(isolate, r));
+}
 
 
 
