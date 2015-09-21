@@ -326,8 +326,8 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/build/config.gypi -I/Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp/addon.gypi -I/Users/sheldonthomas/.node-gyp/0.12.7/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/sheldonthomas/.node-gyp/0.12.7" "-Dnode_gyp_dir=/Users/sheldonthomas/.nvm/v0.12.7/lib/node_modules/node-gyp" "-Dnode_lib_file=node.lib" "-Dmodule_root_dir=/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick" binding.gyp
-Makefile: $(srcdir)/../../../../../.nvm/v0.12.7/lib/node_modules/node-gyp/addon.gypi $(srcdir)/../../../../../.node-gyp/0.12.7/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp
+cmd_regen_makefile = cd $(srcdir); /Users/sthomas/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/Users/sthomas/Documents/workspace/addon/activetick/build/config.gypi -I/Users/sthomas/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/node-gyp/addon.gypi -I/Users/sthomas/.node-gyp/0.12.7/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/sthomas/.node-gyp/0.12.7" "-Dmodule_root_dir=/Users/sthomas/Documents/workspace/addon/activetick" binding.gyp
+Makefile: $(srcdir)/../../../../.node-gyp/0.12.7/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp $(srcdir)/../../../../.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/node-gyp/addon.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included
