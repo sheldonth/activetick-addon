@@ -6,7 +6,8 @@
                     "NodeActiveTick.cpp"
                  ],
       'include_dirs': [
-        './import/atfeed-cppsdk/include/'
+        './import/atfeed-cppsdk/include/',
+        "<!(node -e \"require('nan')\")"
       ],
       "cflags":  ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions'],
       "cflags_cc": ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions'],

@@ -25,8 +25,10 @@ class ActiveTick
     @api.fireCallback()
     
   handleData:(data) =>
-    console.log 'got data'
-    console.log data
+    if typeof data is 'object'
+      console.log data.toString 'utf8'
+    else if typeof data is 'string'
+      console.log data
 
 main = () ->
   a = new ActiveTick()

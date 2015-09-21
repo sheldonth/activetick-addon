@@ -1,7 +1,11 @@
 #include <cstring>
 #include <locale>
 #include <sstream>
+#include <stdio.h>
+#include <string.h>
 #include <node.h>
+#include <node_buffer.h>
+#include <nan.h>
 #include "NodeActiveTick.h"
 // #include "import/atfeed-cppsdk/example/Helper.h"
 
@@ -70,9 +74,49 @@ void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope( isolate );
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>( args.Holder() );
-  const unsigned argc = 1;
-  Local<Value> argv[1] = { String::NewFromUtf8(isolate, "hello world") };  
+  
+  // !!!!!!!!!!!!!!!!!!!!!!!!!  CALLING FUNCTION PASSING BUFFER IN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const char *data = "Hello World FOOBAR!";
+  int data_length = strlen(data);
+  Local<Object> buffer = node::Buffer::New(data_length);
+  std::memcpy(node::Buffer::Data(buffer), data, data_length);
+  // get handle to the global object
+  Local<Context> globalContext = isolate->GetCurrentContext();
+  Local<Object> globalObject = globalContext->Global();
+  // Retrieve the buffer constructor function
+  Local<Function> bufferConstructor = Local<Function>::Cast(globalObject->Get(String::NewFromUtf8(isolate, "Buffer")));
+  // use buffer constructors with 3 arguments: 
+  //   (1) handle of buffer 
+  //   (2) length of buffer 
+  //   (3) offset in buffer (where to start)
+  Handle<Value> constructorArgs[3] = { buffer,
+                           Integer::New(isolate, data_length),
+                           Integer::New(isolate, 0) };
+  // call the buffer-constructor
+  Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
   Local<Function> func = Local<Function>::New(isolate, obj->p_dataCallback);
+  const unsigned argc = 1;
+  Local<Value> argv[1] = { actualBuffer };
   func->Call(Null(isolate), argc, argv);
+  
+  // !!!!!!!!!!!!!!!!!!!!!!!!!  CALLING FUNCTION PASSING STRING IN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const unsigned argcc = 1;
+  Local<Value> argvv[argcc] = { String::NewFromUtf8(isolate, "hello world") };  
+  // Local<Function> func = Local<Function>::New(isolate, obj->p_dataCallback);
+  func->Call(Null(isolate), argcc, argvv);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

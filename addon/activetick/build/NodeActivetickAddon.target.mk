@@ -39,10 +39,12 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
+	-I/Users/sthomas/.node-gyp/0.12.7/include/node \
 	-I/Users/sthomas/.node-gyp/0.12.7/src \
 	-I/Users/sthomas/.node-gyp/0.12.7/deps/uv/include \
 	-I/Users/sthomas/.node-gyp/0.12.7/deps/v8/include \
-	-I$(srcdir)/import/atfeed-cppsdk/include
+	-I$(srcdir)/import/atfeed-cppsdk/include \
+	-I$(srcdir)/node_modules/nan
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=NodeActiveTickAddon' \
@@ -79,10 +81,12 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
+	-I/Users/sthomas/.node-gyp/0.12.7/include/node \
 	-I/Users/sthomas/.node-gyp/0.12.7/src \
 	-I/Users/sthomas/.node-gyp/0.12.7/deps/uv/include \
 	-I/Users/sthomas/.node-gyp/0.12.7/deps/v8/include \
-	-I$(srcdir)/import/atfeed-cppsdk/include
+	-I$(srcdir)/import/atfeed-cppsdk/include \
+	-I$(srcdir)/node_modules/nan
 
 OBJS := \
 	$(obj).target/$(TARGET)/NodeActiveTickAddon.o \
