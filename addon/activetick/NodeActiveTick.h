@@ -21,6 +21,7 @@ public:
     static void Init( Handle<Object> exports );
     Local<Function> l_dataCallback;
     Persistent<Function> p_dataCallback;
+    // Persistent<Function, NonCopyablePersistentTraits<Function> > p_dataCallback;
 
 private:
     explicit NodeActiveTick();
