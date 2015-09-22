@@ -13,7 +13,11 @@ public:
     static void Init(Handle<Object> exports);
     Persistent<Function> p_dataCallback;
     Persistent<Function> connectionCallback;
-
+    
+    uint64_t    m_hLastRequest;
+    char        m_userid[50];
+    char        m_password[50];
+    
 private:
     explicit NodeActiveTick();
     ~NodeActiveTick();

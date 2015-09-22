@@ -157,7 +157,10 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   printf("C: %s \n", cstr_api_key);
   printf("D: %s \n", cstr_api_user_id);
   printf("E: %s \n", cstr_api_password);
-  
+
+  std::strcpy(obj->m_userid, cstr_api_user_id);
+  std::strcpy(obj->m_password, cstr_api_password);
+
   // todo: activetick2.activetick.com
   bool r2 = ATInitSession(obj->session_handle,
                           "activetick1.activetick.com",
@@ -179,13 +182,11 @@ void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionS
     case SessionStatusDisconnectedDuplicateLogin: strStatusType = "SessionStatusDisconnectedDuplicateLogin"; break;
     default: strStatusType = "None"; break;
   }
-  std::printf("%s", strStatusType.c_str());
-  Isolate* iso = Isolate::GetCurrent();
-  if (!iso) {
-    
-  }
-  // isolate->ThrowException(Exception::TypeError(
-  //         String::NewFromUtf8(isolate, "Foo to the bar")));
+  std::printf("ATSessionStatusChangeCallback: %s \n", strStatusType.c_str());
+  
+  std::printf("%s \n", s_pInstance->m_userid);
+  std::printf("%s \n", s_pInstance->m_password);
+  
 }
 
 void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hRequest, LPATLOGIN_RESPONSE pResponse) {
