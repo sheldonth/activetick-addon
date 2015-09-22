@@ -20,6 +20,7 @@ private:
     
     uint64_t session_handle;
     
+private:
     static void ATSessionStatusChangeCallback(
                   uint64_t hSession,
                   ATSessionStatusType statusType);

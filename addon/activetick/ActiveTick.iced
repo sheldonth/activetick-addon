@@ -26,7 +26,7 @@ class ActiveTick
     @api.connect config.url, config.port, config.api_key, config.username, config.password
     setTimeout () ->
           console.log 'End'
-        , 10000
+        , 2000
     
   handleData:(data) =>
     if typeof data is 'object'

@@ -118,8 +118,13 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
 
   Local<String> str_url_address = args[0]->ToString();
+  printf("L: %i \n", str_url_address->Utf8Length());
+  printf("%s", str_url_address);
   char cstr_url_address[str_url_address->Utf8Length()];
   str_url_address->WriteUtf8(cstr_url_address);
+  
+  // isolate->ThrowException(Exception::TypeError(
+  //         String::NewFromUtf8(isolate, "cstr_url_address")));
   
   uint32_t api_port = args[1]->Uint32Value();
   
@@ -148,6 +153,14 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
     Local<Function> c_callback = Local<Function>::Cast(args[5]);
     obj->connectionCallback.Reset(isolate, c_callback);
   }
+
+  // std::cout << obj->session_handle;
+  // std::cout << static_cast<const void*>(cstr_url_address) << std::endl;
+  printf("A: %s \n", cstr_url_address);
+  printf("B: %i \n", api_port);
+  printf("C: %s \n", cstr_api_key);
+  printf("D: %s \n", cstr_api_user_id);
+  printf("E: %s \n", cstr_api_password);
   
   // todo: activetick2.activetick.com
   bool r2 = ATInitSession(obj->session_handle,
@@ -157,6 +170,13 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
                           ATSessionStatusChangeCallback,
                           true);
                           
+  // bool r2 = ATInitSession(obj->session_handle,
+  //                         cstr_url_address,
+  //                         cstr_url_address,
+  //                         api_port,
+  //                         &NodeActiveTick::ATSessionStatusChangeCallback,
+  //                         true);  
+                
   args.GetReturnValue().Set(Boolean::New(isolate, r2));
 }
 
