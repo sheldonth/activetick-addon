@@ -13,16 +13,16 @@ public:
     static void Init(Handle<Object> exports);
     Persistent<Function> p_dataCallback;
     Persistent<Function> connectionCallback;
-    
+    uint64_t    session_handle;    
     uint64_t    m_hLastRequest;
     char        m_userid[50];
     char        m_password[50];
+    char        api_token[100];
     
 private:
     explicit NodeActiveTick();
     ~NodeActiveTick();
-    
-    uint64_t session_handle;
+
     static NodeActiveTick* s_pInstance;
     
 private:  
@@ -41,4 +41,5 @@ private:
             const FunctionCallbackInfo<Value> &args);
     static void Connect(
             const FunctionCallbackInfo<Value> &args);
+    static void ATRequestTimeoutCallback( uint64_t hOrigRequest );
   };

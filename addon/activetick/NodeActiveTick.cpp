@@ -10,6 +10,8 @@
 #include "NodeActiveTick.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 
+#define debug 0
+
 using namespace v8;
 
 // Persistent<Function> NodeActiveTick::p_callback;
@@ -150,16 +152,17 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
     obj->connectionCallback.Reset(isolate, c_callback);
   }
 
-  // std::strcpy(cstr_url_address, "activetick1.activetick.com"); // Weird hack
-
-  printf("A: %s \n", cstr_url_address);
-  printf("B: %i \n", api_port);
-  printf("C: %s \n", cstr_api_key);
-  printf("D: %s \n", cstr_api_user_id);
-  printf("E: %s \n", cstr_api_password);
+  if (debug) {
+    printf("A: %s \n", cstr_url_address);
+    printf("B: %i \n", api_port);
+    printf("C: %s \n", cstr_api_key);
+    printf("D: %s \n", cstr_api_user_id);
+    printf("E: %s \n", cstr_api_password);
+  }
 
   std::strcpy(obj->m_userid, cstr_api_user_id);
   std::strcpy(obj->m_password, cstr_api_password);
+  std::strcpy(obj->api_token, cstr_api_key);
 
   // todo: activetick2.activetick.com
   bool r2 = ATInitSession(obj->session_handle,
@@ -177,26 +180,32 @@ void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionS
   std::string strStatusType;
   switch(statusType)
   {
-    case SessionStatusConnected: strStatusType = "SessionStatusConnected"; break;
-    case SessionStatusDisconnected: strStatusType = "SessionStatusDisconnected"; break;
-    case SessionStatusDisconnectedDuplicateLogin: strStatusType = "SessionStatusDisconnectedDuplicateLogin"; break;
+    case SessionStatusConnected: strStatusType = "Connected"; break;
+    case SessionStatusDisconnected: strStatusType = "Disconnected"; break;
+    case SessionStatusDisconnectedDuplicateLogin: strStatusType = "DuplicateLogin"; break;
     default: strStatusType = "None"; break;
   }
   std::printf("ATSessionStatusChangeCallback: %s \n", strStatusType.c_str());
   
-  std::printf("%s \n", s_pInstance->m_userid);
-  std::printf("%s \n", s_pInstance->m_password);
-  
+  if (statusType == SessionStatusConnected) {
+    s_pInstance->m_hLastRequest = ATCreateLoginRequest( hSession,
+                                                        s_pInstance->m_userid,
+                                                        s_pInstance->m_password,
+                                                        ATLoginResponseCallback );
+    bool r = ATSendRequest( s_pInstance->session_handle,
+                            s_pInstance->m_hLastRequest,
+                            DEFAULT_REQUEST_TIMEOUT,
+                            ATRequestTimeoutCallback );
+  }
 }
 
 void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hRequest, LPATLOGIN_RESPONSE pResponse) {
   std::cout << "ATLoginResponseCallback";
-    printf("ATLoginResponseCallback");
-  // Isolate* isolate = Isolate::GetCurrent();
-  // HandleScope scope(isolate);
-  // isolate->ThrowException(Exception::TypeError(
-  //         String::NewFromUtf8(isolate, "Foo to the bar")));
-  
+  printf("ATLoginResponseCallback");
+}
+
+void NodeActiveTick::ATRequestTimeoutCallback( uint64_t hOrigRequest ) {
+  std::cout << "ATRequestTimeoutCallback";
 }
 
 
