@@ -12,12 +12,16 @@ class NodeActiveTick : public node::ObjectWrap {
 public:
     static void Init(Handle<Object> exports);
     Persistent<Function> p_dataCallback;
-    Persistent<Function> connectionCallback;
     uint64_t    session_handle;    
     uint64_t    m_hLastRequest;
     char        m_userid[50];
     char        m_password[50];
     char        api_token[100];
+    wchar16_t   wchar_userid[50];
+    wchar16_t   wchar_password[50];
+    wchar16_t   wchar_api_token[100];
+    
+    Isolate* iso;
     
 private:
     explicit NodeActiveTick();

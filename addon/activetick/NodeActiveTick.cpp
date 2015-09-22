@@ -14,21 +14,6 @@
 
 using namespace v8;
 
-// Persistent<Function> NodeActiveTick::p_callback;
-// Handle<Function> cb = Handle<Function>::Cast(args[0]);
-// p_callback.Reset(isolate, cb);
-// obj->p_dataCallback = Persistent<Function>::Persistent(isolate, args[0].As<Function>());
-// obj->p_dataCallback = Persistent<Function>::New(isolate, cb);
-// obj->p_dataCallback = Persistent<Function>::Persistent(isolate, cb);
-// obj->p_dataCallback = Persistent<Function>::Persistent(cb);
-// obj->p_dataCallback = Persistent<Function>::New(cb);
-// obj->p_dataCallback = Persistent<Function>::New(Isolate::GetCurrent(), obj)
-// obj->p_dataCallback = Persistent<Function, CopyablePersistentTraits<Function> >::New(isolate, args[0]);
-// obj->p_dataCallback = Persistent<Function, CopyablePersistentTraits<Function> >::New(isolate, Handle<Function>::Cast(args[0]));
-// obj->dataCallback = Persistent<Function>::New(Handle<Function>::Cast(args[0]));
-// obj->dataCallback = Persistent<Function>::New(cb);
-// obj->dataCallback = Persistent<Function>::Cast(args[0]);
-
 Persistent<Function> NodeActiveTick::constructor;
 NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 
@@ -62,6 +47,7 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
     if (args.IsConstructCall()) {
         NodeActiveTick* obj = new NodeActiveTick();
         NodeActiveTick::s_pInstance = obj;
+        obj->iso = isolate;
         // double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
         if (!args[0]->IsFunction()) {
           isolate->ThrowException(Exception::TypeError(
@@ -146,11 +132,6 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
             String::NewFromUtf8(isolate, "Unable to call ATSetAPIUserId in SDK. Aborting. Check credentials.")));
     return;
   }
-  
-  if (args[5]->IsFunction()) {
-    Local<Function> c_callback = Local<Function>::Cast(args[5]);
-    obj->connectionCallback.Reset(isolate, c_callback);
-  }
 
   if (debug) {
     printf("A: %s \n", cstr_url_address);
@@ -163,6 +144,11 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   std::strcpy(obj->m_userid, cstr_api_user_id);
   std::strcpy(obj->m_password, cstr_api_password);
   std::strcpy(obj->api_token, cstr_api_key);
+  
+  Helper::ConvertString(obj->m_userid, obj->wchar_userid, sizeof(obj->wchar_userid));
+  Helper::ConvertString(obj->m_password, obj->wchar_password, sizeof(obj->wchar_password));
+  Helper::ConvertString(obj->api_token, obj->wchar_api_token, sizeof(obj->wchar_api_token));
+  
 
   // todo: activetick2.activetick.com
   bool r2 = ATInitSession(obj->session_handle,
@@ -189,23 +175,64 @@ void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionS
   
   if (statusType == SessionStatusConnected) {
     s_pInstance->m_hLastRequest = ATCreateLoginRequest( hSession,
-                                                        s_pInstance->m_userid,
-                                                        s_pInstance->m_password,
+                                                        s_pInstance->wchar_userid,
+                                                        s_pInstance->wchar_password,
                                                         ATLoginResponseCallback );
     bool r = ATSendRequest( s_pInstance->session_handle,
                             s_pInstance->m_hLastRequest,
                             DEFAULT_REQUEST_TIMEOUT,
                             ATRequestTimeoutCallback );
+    if (!r) {
+      std::cerr << "ATSendRequest Failed";
+    }
   }
 }
 
 void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hRequest, LPATLOGIN_RESPONSE pResponse) {
-  std::cout << "ATLoginResponseCallback";
-  printf("ATLoginResponseCallback");
+  ATLoginResponseType p = pResponse->loginResponse;
+  uint8_t perm = pResponse->permissions[0];
+  ATTIME time = pResponse->serverTime;
+  
+  std::string strLoginResponseType;
+  switch(p)
+  {
+    case LoginResponseSuccess: strLoginResponseType = "Success"; break;
+    case LoginResponseInvalidUserid: strLoginResponseType = "InvalidUserid"; break;
+    case LoginResponseInvalidPassword: strLoginResponseType = "InvalidPassword"; break;
+    case LoginResponseInvalidRequest: strLoginResponseType = "InvalidRequest"; break;
+    case LoginResponseLoginDenied: strLoginResponseType = "LoginDenied"; break;
+    case LoginResponseServerError: strLoginResponseType = "ServerError"; break;
+    default: strLoginResponseType = "Default Case"; break;
+  }
+  std::printf("Login: %s\n", strLoginResponseType.c_str());
+  Isolate* isolate = Isolate::GetCurrent();
+  if (!isolate) {
+    isolate = s_pInstance->iso;
+    if (isolate) {
+      Locker locker(isolate);
+      Isolate::Scope isolate_scope(isolate);
+      HandleScope handle_scope(isolate);
+      Local<Context> context = Context::New(isolate);
+      context->Enter();
+      Local<Object> globalObject = context->Global();
+      // if (!globalObject) {
+      //   printf("No globalObject");
+      // }
+      const unsigned argcc = 1;
+      Local<Value> argvv[argcc] = { String::NewFromUtf8(isolate, "hello world") };  
+      Local<Function> func = Local<Function>::New(isolate, s_pInstance->p_dataCallback);
+      
+      func->Call(globalObject, argcc, argvv);
+      
+      // isolate->Enter();
+      
+    }
+  }
+  // HandleScope scope(isolate);
 }
 
 void NodeActiveTick::ATRequestTimeoutCallback( uint64_t hOrigRequest ) {
-  std::cout << "ATRequestTimeoutCallback";
+  std::printf("ATRequestTimeoutCallback");
 }
 
 
