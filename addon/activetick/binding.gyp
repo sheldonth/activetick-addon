@@ -2,8 +2,9 @@
   "targets": [
     {
       "target_name": "NodeActiveTickAddon",
-      "sources": [ "NodeActiveTickAddon.cpp",
-                    "NodeActiveTick.cpp"
+      "sources": [  "NodeActiveTickAddon.cpp",
+                    "NodeActiveTick.cpp",
+                    "import/atfeed-cppsdk/example/Helper.cpp"
                  ],
       'include_dirs': [
         './import/atfeed-cppsdk/include/',

@@ -23,8 +23,10 @@ noisy = yes
 class ActiveTick
   constructor:() ->
     @api = new NodeActiveTick(@handleData)
-    # @api.fireCallback()
-    result = @api.connect config.url, config.port, config.api_key, config.username, config.password
+    @api.connect config.url, config.port, config.api_key, config.username, config.password
+    setTimeout () ->
+          console.log 'End'
+        , 10000
     
   handleData:(data) =>
     if typeof data is 'object'
@@ -34,7 +36,5 @@ class ActiveTick
 
 main = () ->
   a = new ActiveTick()
-  # a.api.fireCallback()
-  # a.fireCallback()
 
 main() if not module.parent

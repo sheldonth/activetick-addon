@@ -1,4 +1,5 @@
 #include <cstring>
+#include <iostream>
 #include <locale>
 #include <sstream>
 #include <stdio.h>
@@ -28,7 +29,7 @@ Persistent<Function> NodeActiveTick::constructor;
 // obj->dataCallback = Persistent<Function>::New(cb);
 // obj->dataCallback = Persistent<Function>::Cast(args[0]);
 
-
+// NodeActiveTick
 NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
@@ -68,6 +69,10 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
         obj->Wrap( args.This() );
         args.GetReturnValue().Set( args.This() );
   }
+  else {
+    isolate->ThrowException(Exception::TypeError(
+            String::NewFromUtf8(isolate, "NodeActiveTick cannot be allocated without javascript new")));
+  }
 }
   
 void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
@@ -89,11 +94,12 @@ void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   //   (1) handle of buffer 
   //   (2) length of buffer 
   //   (3) offset in buffer (where to start)
-  Handle<Value> constructorArgs[3] = { buffer,
+  Handle<Value> constructorArgs[3] = {buffer,
                            Integer::New(isolate, data_length),
-                           Integer::New(isolate, 0) };
+                           Integer::New(isolate, 0)};
   // call the buffer-constructor
   Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
+  // Create Local Function with obj->Persistent<Function>
   Local<Function> func = Local<Function>::New(isolate, obj->p_dataCallback);
   const unsigned argc = 1;
   Local<Value> argv[1] = { actualBuffer };
@@ -106,7 +112,7 @@ void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   func->Call(Null(isolate), argcc, argvv);
 }
 
-void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args ) {
+void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
@@ -131,10 +137,45 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args ) {
   char cstr_api_password[str_api_password->Utf8Length()];
   str_api_password->WriteUtf8(cstr_api_password);
   
-  // bool r = ATSetAPIUserId(obj->session_handle, &at_guid);
-  // args.GetReturnValue().Set(Boolean::New(isolate, r));
+  bool r = ATSetAPIUserId(obj->session_handle, &at_guid);
+  if (!r) {
+    isolate->ThrowException(Exception::TypeError(
+            String::NewFromUtf8(isolate, "Unable to call ATSetAPIUserId in SDK. Aborting. Check credentials.")));
+    return;
+  }
+  
+  if (args[5]->IsFunction()) {
+    Local<Function> c_callback = Local<Function>::Cast(args[5]);
+    obj->connectionCallback.Reset(isolate, c_callback);
+  }
+  
+  // todo: activetick2.activetick.com
+  bool r2 = ATInitSession(obj->session_handle,
+                          cstr_url_address,
+                          cstr_url_address,
+                          api_port,
+                          ATSessionStatusChangeCallback,
+                          true);
+                          
+  args.GetReturnValue().Set(Boolean::New(isolate, r2));
 }
 
+// Callbacks
+void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {
+  std::cout << "Got it!";
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+  isolate->ThrowException(Exception::TypeError(
+          String::NewFromUtf8(isolate, "Foo to the bar")));
+}
+
+void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hRequest, LPATLOGIN_RESPONSE pResponse) {
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+  isolate->ThrowException(Exception::TypeError(
+          String::NewFromUtf8(isolate, "Foo to the bar")));
+  
+}
 
 
 

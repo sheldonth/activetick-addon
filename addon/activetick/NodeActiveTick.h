@@ -3,14 +3,16 @@
 #include <node.h>
 #include <node_object_wrap.h>
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
+
 #include "import/atfeed-cppsdk/example/Helper.h"
 
 using namespace v8;
 
 class NodeActiveTick : public node::ObjectWrap {
 public:
-    static void Init( Handle<Object> exports );
+    static void Init(Handle<Object> exports);
     Persistent<Function> p_dataCallback;
+    Persistent<Function> connectionCallback;
 
 private:
     explicit NodeActiveTick();
@@ -18,12 +20,19 @@ private:
     
     uint64_t session_handle;
     
-    static void New( const FunctionCallbackInfo<Value> &args );
+    static void ATSessionStatusChangeCallback(
+                  uint64_t hSession,
+                  ATSessionStatusType statusType);
+    static void ATLoginResponseCallback(
+                  uint64_t hSession,
+                  uint64_t hRequest,
+                  LPATLOGIN_RESPONSE pResponse);
+    
+    static void New (const FunctionCallbackInfo<Value> &args);
     static Persistent<Function> constructor;
     
     static void FireCallback(
-            const FunctionCallbackInfo<Value> &args );
+            const FunctionCallbackInfo<Value> &args);
     static void Connect(
-            const FunctionCallbackInfo<Value> &args );
-    
+            const FunctionCallbackInfo<Value> &args);
   };

@@ -45,7 +45,7 @@
     "v8_random_seed": 0,
     "v8_use_snapshot": "false",
     "want_separate_host_toolset": 0,
-    "nodedir": "/Users/sthomas/.node-gyp/0.12.7",
+    "nodedir": "/Users/sheldonthomas/.node-gyp/0.12.7",
     "copy_dev_lib": "true",
     "standalone_static_library": 1
   }
