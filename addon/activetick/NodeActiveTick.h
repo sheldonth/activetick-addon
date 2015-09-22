@@ -19,8 +19,9 @@ private:
     ~NodeActiveTick();
     
     uint64_t session_handle;
+    static NodeActiveTick* s_pInstance;
     
-private:
+private:  
     static void ATSessionStatusChangeCallback(
                   uint64_t hSession,
                   ATSessionStatusType statusType);

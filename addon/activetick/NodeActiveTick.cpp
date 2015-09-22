@@ -12,8 +12,6 @@
 
 using namespace v8;
 
-Persistent<Function> NodeActiveTick::constructor;
-
 // Persistent<Function> NodeActiveTick::p_callback;
 // Handle<Function> cb = Handle<Function>::Cast(args[0]);
 // p_callback.Reset(isolate, cb);
@@ -29,7 +27,9 @@ Persistent<Function> NodeActiveTick::constructor;
 // obj->dataCallback = Persistent<Function>::New(cb);
 // obj->dataCallback = Persistent<Function>::Cast(args[0]);
 
-// NodeActiveTick
+Persistent<Function> NodeActiveTick::constructor;
+NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
+
 NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
@@ -59,6 +59,7 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
 
     if (args.IsConstructCall()) {
         NodeActiveTick* obj = new NodeActiveTick();
+        NodeActiveTick::s_pInstance = obj;
         // double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
         if (!args[0]->IsFunction()) {
           isolate->ThrowException(Exception::TypeError(
@@ -118,13 +119,8 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
 
   Local<String> str_url_address = args[0]->ToString();
-  printf("L: %i \n", str_url_address->Utf8Length());
-  printf("%s", str_url_address);
   char cstr_url_address[str_url_address->Utf8Length()];
   str_url_address->WriteUtf8(cstr_url_address);
-  
-  // isolate->ThrowException(Exception::TypeError(
-  //         String::NewFromUtf8(isolate, "cstr_url_address")));
   
   uint32_t api_port = args[1]->Uint32Value();
   
@@ -154,8 +150,8 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
     obj->connectionCallback.Reset(isolate, c_callback);
   }
 
-  // std::cout << obj->session_handle;
-  // std::cout << static_cast<const void*>(cstr_url_address) << std::endl;
+  // std::strcpy(cstr_url_address, "activetick1.activetick.com"); // Weird hack
+
   printf("A: %s \n", cstr_url_address);
   printf("B: %i \n", api_port);
   printf("C: %s \n", cstr_api_key);
@@ -164,36 +160,41 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   
   // todo: activetick2.activetick.com
   bool r2 = ATInitSession(obj->session_handle,
-                          cstr_url_address,
-                          cstr_url_address,
+                          "activetick1.activetick.com",
+                          "activetick2.activetick.com",
                           api_port,
                           ATSessionStatusChangeCallback,
                           true);
                           
-  // bool r2 = ATInitSession(obj->session_handle,
-  //                         cstr_url_address,
-  //                         cstr_url_address,
-  //                         api_port,
-  //                         &NodeActiveTick::ATSessionStatusChangeCallback,
-  //                         true);  
-                
   args.GetReturnValue().Set(Boolean::New(isolate, r2));
 }
 
 // Callbacks
 void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {
-  std::cout << "Got it!";
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
-  isolate->ThrowException(Exception::TypeError(
-          String::NewFromUtf8(isolate, "Foo to the bar")));
+  std::string strStatusType;
+  switch(statusType)
+  {
+    case SessionStatusConnected: strStatusType = "SessionStatusConnected"; break;
+    case SessionStatusDisconnected: strStatusType = "SessionStatusDisconnected"; break;
+    case SessionStatusDisconnectedDuplicateLogin: strStatusType = "SessionStatusDisconnectedDuplicateLogin"; break;
+    default: strStatusType = "None"; break;
+  }
+  std::printf("%s", strStatusType.c_str());
+  Isolate* iso = Isolate::GetCurrent();
+  if (!iso) {
+    
+  }
+  // isolate->ThrowException(Exception::TypeError(
+  //         String::NewFromUtf8(isolate, "Foo to the bar")));
 }
 
 void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hRequest, LPATLOGIN_RESPONSE pResponse) {
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
-  isolate->ThrowException(Exception::TypeError(
-          String::NewFromUtf8(isolate, "Foo to the bar")));
+  std::cout << "ATLoginResponseCallback";
+    printf("ATLoginResponseCallback");
+  // Isolate* isolate = Isolate::GetCurrent();
+  // HandleScope scope(isolate);
+  // isolate->ThrowException(Exception::TypeError(
+  //         String::NewFromUtf8(isolate, "Foo to the bar")));
   
 }
 
