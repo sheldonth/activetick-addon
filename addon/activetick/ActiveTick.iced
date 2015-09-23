@@ -23,12 +23,14 @@ noisy = yes
 class ActiveTick
   constructor:() ->
     @api = new NodeActiveTick(@handleData)
+    # @api.fireCallback()
     @api.connect config.url, config.port, config.api_key, config.username, config.password
     setTimeout () ->
           console.log 'End'
         , 5000
     
   handleData:(data) =>
+    console.log 'FOOBAR'
     if typeof data is 'object'
       console.log data.toString 'utf8'
     else if typeof data is 'string'

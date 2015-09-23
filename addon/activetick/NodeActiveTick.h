@@ -2,6 +2,8 @@
 #include <queue>
 #include <node.h>
 #include <node_object_wrap.h>
+#include <nan.h>
+#include <uv.h>
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
 
 #include "import/atfeed-cppsdk/example/Helper.h"
@@ -21,7 +23,11 @@ public:
     wchar16_t   wchar_password[50];
     wchar16_t   wchar_api_token[100];
     
+    Nan::Callback *nan_cb;
+    
     Isolate* iso;
+    static void DoHandle(uv_async_t *handle);
+    uv_async_t handle;
     
 private:
     explicit NodeActiveTick();
