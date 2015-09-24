@@ -9,6 +9,12 @@
                     "type": "int32",
                     "name": "loginResponseType",
                     "id": 1
+                },
+                {
+                    "rule": "required",
+                    "type": "string",
+                    "name": "loginResponseString",
+                    "id": 2
                 }
             ]
         },

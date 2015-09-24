@@ -37,8 +37,9 @@ void protobuf_AssignDesc_messages_2eproto() {
       "messages.proto");
   GOOGLE_CHECK(file != NULL);
   ATLoginResponse_descriptor_ = file->message_type(0);
-  static const int ATLoginResponse_offsets_[1] = {
+  static const int ATLoginResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATLoginResponse, loginresponsetype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATLoginResponse, loginresponsestring_),
   };
   ATLoginResponse_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -103,10 +104,11 @@ void protobuf_AddDesc_messages_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016messages.proto\022\023NodeActiveTickProto\",\n"
+    "\n\016messages.proto\022\023NodeActiveTickProto\"I\n"
     "\017ATLoginResponse\022\031\n\021loginResponseType\030\001 "
-    "\002(\005\"K\n\014ATServerTime\022\014\n\004year\030\001 \002(\005\022\r\n\005mon"
-    "th\030\002 \002(\005\022\021\n\tdayOfWeek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005", 160);
+    "\002(\005\022\033\n\023loginResponseString\030\002 \002(\t\"K\n\014ATSe"
+    "rverTime\022\014\n\004year\030\001 \002(\005\022\r\n\005month\030\002 \002(\005\022\021\n"
+    "\tdayOfWeek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005", 189);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -127,6 +129,7 @@ struct StaticDescriptorInitializer_messages_2eproto {
 
 #ifndef _MSC_VER
 const int ATLoginResponse::kLoginResponseTypeFieldNumber;
+const int ATLoginResponse::kLoginResponseStringFieldNumber;
 #endif  // !_MSC_VER
 
 ATLoginResponse::ATLoginResponse()
@@ -146,8 +149,10 @@ ATLoginResponse::ATLoginResponse(const ATLoginResponse& from)
 }
 
 void ATLoginResponse::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   loginresponsetype_ = 0;
+  loginresponsestring_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -157,6 +162,9 @@ ATLoginResponse::~ATLoginResponse() {
 }
 
 void ATLoginResponse::SharedDtor() {
+  if (loginresponsestring_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete loginresponsestring_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -183,7 +191,14 @@ ATLoginResponse* ATLoginResponse::New() const {
 }
 
 void ATLoginResponse::Clear() {
-  loginresponsetype_ = 0;
+  if (_has_bits_[0 / 32] & 3) {
+    loginresponsetype_ = 0;
+    if (has_loginresponsestring()) {
+      if (loginresponsestring_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        loginresponsestring_->clear();
+      }
+    }
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -205,6 +220,23 @@ bool ATLoginResponse::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &loginresponsetype_)));
           set_has_loginresponsetype();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_loginResponseString;
+        break;
+      }
+
+      // required string loginResponseString = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_loginResponseString:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_loginresponsestring()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->loginresponsestring().data(), this->loginresponsestring().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "loginresponsestring");
         } else {
           goto handle_unusual;
         }
@@ -242,6 +274,16 @@ void ATLoginResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->loginresponsetype(), output);
   }
 
+  // required string loginResponseString = 2;
+  if (has_loginresponsestring()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->loginresponsestring().data(), this->loginresponsestring().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "loginresponsestring");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->loginresponsestring(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -255,6 +297,17 @@ void ATLoginResponse::SerializeWithCachedSizes(
   // required int32 loginResponseType = 1;
   if (has_loginresponsetype()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->loginresponsetype(), target);
+  }
+
+  // required string loginResponseString = 2;
+  if (has_loginresponsestring()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->loginresponsestring().data(), this->loginresponsestring().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "loginresponsestring");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->loginresponsestring(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -274,6 +327,13 @@ int ATLoginResponse::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->loginresponsetype());
+    }
+
+    // required string loginResponseString = 2;
+    if (has_loginresponsestring()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->loginresponsestring());
     }
 
   }
@@ -306,6 +366,9 @@ void ATLoginResponse::MergeFrom(const ATLoginResponse& from) {
     if (from.has_loginresponsetype()) {
       set_loginresponsetype(from.loginresponsetype());
     }
+    if (from.has_loginresponsestring()) {
+      set_loginresponsestring(from.loginresponsestring());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -323,7 +386,7 @@ void ATLoginResponse::CopyFrom(const ATLoginResponse& from) {
 }
 
 bool ATLoginResponse::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   return true;
 }
@@ -331,6 +394,7 @@ bool ATLoginResponse::IsInitialized() const {
 void ATLoginResponse::Swap(ATLoginResponse* other) {
   if (other != this) {
     std::swap(loginresponsetype_, other->loginresponsetype_);
+    std::swap(loginresponsestring_, other->loginresponsestring_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

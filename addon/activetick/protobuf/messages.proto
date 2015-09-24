@@ -2,6 +2,7 @@ package NodeActiveTickProto;
 
 message ATLoginResponse {
   required int32 loginResponseType = 1;
+  required string loginResponseString = 2;
 }
 
 message ATServerTime {

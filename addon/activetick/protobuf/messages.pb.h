@@ -98,15 +98,30 @@ class ATLoginResponse : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 loginresponsetype() const;
   inline void set_loginresponsetype(::google::protobuf::int32 value);
 
+  // required string loginResponseString = 2;
+  inline bool has_loginresponsestring() const;
+  inline void clear_loginresponsestring();
+  static const int kLoginResponseStringFieldNumber = 2;
+  inline const ::std::string& loginresponsestring() const;
+  inline void set_loginresponsestring(const ::std::string& value);
+  inline void set_loginresponsestring(const char* value);
+  inline void set_loginresponsestring(const char* value, size_t size);
+  inline ::std::string* mutable_loginresponsestring();
+  inline ::std::string* release_loginresponsestring();
+  inline void set_allocated_loginresponsestring(::std::string* loginresponsestring);
+
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATLoginResponse)
  private:
   inline void set_has_loginresponsetype();
   inline void clear_has_loginresponsetype();
+  inline void set_has_loginresponsestring();
+  inline void clear_has_loginresponsestring();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::std::string* loginresponsestring_;
   ::google::protobuf::int32 loginresponsetype_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
@@ -253,6 +268,82 @@ inline void ATLoginResponse::set_loginresponsetype(::google::protobuf::int32 val
   set_has_loginresponsetype();
   loginresponsetype_ = value;
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATLoginResponse.loginResponseType)
+}
+
+// required string loginResponseString = 2;
+inline bool ATLoginResponse::has_loginresponsestring() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATLoginResponse::set_has_loginresponsestring() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATLoginResponse::clear_has_loginresponsestring() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATLoginResponse::clear_loginresponsestring() {
+  if (loginresponsestring_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    loginresponsestring_->clear();
+  }
+  clear_has_loginresponsestring();
+}
+inline const ::std::string& ATLoginResponse::loginresponsestring() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATLoginResponse.loginResponseString)
+  return *loginresponsestring_;
+}
+inline void ATLoginResponse::set_loginresponsestring(const ::std::string& value) {
+  set_has_loginresponsestring();
+  if (loginresponsestring_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    loginresponsestring_ = new ::std::string;
+  }
+  loginresponsestring_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATLoginResponse.loginResponseString)
+}
+inline void ATLoginResponse::set_loginresponsestring(const char* value) {
+  set_has_loginresponsestring();
+  if (loginresponsestring_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    loginresponsestring_ = new ::std::string;
+  }
+  loginresponsestring_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATLoginResponse.loginResponseString)
+}
+inline void ATLoginResponse::set_loginresponsestring(const char* value, size_t size) {
+  set_has_loginresponsestring();
+  if (loginresponsestring_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    loginresponsestring_ = new ::std::string;
+  }
+  loginresponsestring_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATLoginResponse.loginResponseString)
+}
+inline ::std::string* ATLoginResponse::mutable_loginresponsestring() {
+  set_has_loginresponsestring();
+  if (loginresponsestring_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    loginresponsestring_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATLoginResponse.loginResponseString)
+  return loginresponsestring_;
+}
+inline ::std::string* ATLoginResponse::release_loginresponsestring() {
+  clear_has_loginresponsestring();
+  if (loginresponsestring_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = loginresponsestring_;
+    loginresponsestring_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATLoginResponse::set_allocated_loginresponsestring(::std::string* loginresponsestring) {
+  if (loginresponsestring_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete loginresponsestring_;
+  }
+  if (loginresponsestring) {
+    set_has_loginresponsestring();
+    loginresponsestring_ = loginresponsestring;
+  } else {
+    clear_has_loginresponsestring();
+    loginresponsestring_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATLoginResponse.loginResponseString)
 }
 
 // -------------------------------------------------------------------

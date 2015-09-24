@@ -2,6 +2,7 @@
 async = require 'async'
 _ = require 'underscore'
 config = require './config'
+messages = require 'protobuf/messages'
 
 noisy = yes
 

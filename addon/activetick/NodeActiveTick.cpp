@@ -241,6 +241,7 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   std::printf("Login: %s\n", strLoginResponseType.c_str());
   NodeActiveTickProto::ATLoginResponse *msg = new NodeActiveTickProto::ATLoginResponse;
   msg->set_loginresponsetype((int32_t)p);
+  msg->set_loginresponsestring(strLoginResponseType);
   int size = msg->ByteSize(); 
   void *buffer = malloc(size);
   msg->SerializeToArray(buffer, size);

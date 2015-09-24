@@ -19,6 +19,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "nan": "^2.0.9",
+    "protobufjs": "^4.0.0",
     "underscore": "^1.8.3"
   }
 }
