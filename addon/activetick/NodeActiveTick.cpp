@@ -21,10 +21,8 @@ NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
-  // Experimental libuv threading
-  // uv_loop_t *loop = uv_default_loop();
   uv_async_init(uv_default_loop(), &handle, DoHandle);
-  // uv_run(loop, UV_RUN_DEFAULT);
+  handle.data = this;
 }
   
 NodeActiveTick::~NodeActiveTick() {
@@ -32,7 +30,16 @@ NodeActiveTick::~NodeActiveTick() {
 }
 
 void NodeActiveTick::DoHandle(uv_async_t *handle) {
-  std::printf("My nigga");
+  NodeActiveTick *at = static_cast<NodeActiveTick*>(handle->data);
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    const unsigned argcc = 1;
+    Local<Value> argvv[argcc] = { String::NewFromUtf8(isolate, "hello world") };
+    Local<Function> func = Local<Function>::New(isolate, at->p_dataCallback);
+    func->Call(Null(isolate), argcc, argvv);
+  }
+  uv_close((uv_handle_t*) &at->handle, NULL);
 }
 
 void NodeActiveTick::Init( Handle<Object> exports ) {
@@ -67,6 +74,12 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
         
         // Experimental Nan::Callback structure
         obj->nan_cb = new Nan::Callback(cb);
+        
+        // uv_async_init(uv_default_loop(), &obj->handle, obj->DoHandle);
+        
+        // uv_loop_t *loop = malloc(sizeof(uv_loop_t));
+        // uv_loop_init(loop);
+        // uv_async_init(loop, &handle, obj->DoHandle);
         
         obj->Wrap( args.This() );
         args.GetReturnValue().Set( args.This() );
@@ -218,35 +231,7 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
     default: strLoginResponseType = "Default Case"; break;
   }
   std::printf("Login: %s\n", strLoginResponseType.c_str());
-  
-  // Pretend we have data to send to coffee
   uv_async_send(&s_pInstance->handle);
-
-  // Isolate* isolate = Isolate::GetCurrent();
-  // if (!isolate) {
-  //   isolate = s_pInstance->iso;
-  //   if (isolate) {
-  //     Locker locker(isolate);
-  //     Isolate::Scope isolate_scope(isolate);
-  //     HandleScope handle_scope(isolate);
-  //     Local<Context> context = Context::New(isolate);
-  //     context->Enter();
-  //     Local<Object> globalObject = context->Global();
-      // if (!globalObject) {
-      //   printf("No globalObject");
-      // }
-      // const unsigned argcc = 1;
-      // Local<Value> argvv[argcc] = { String::NewFromUtf8(isolate, "hello world") };  
-      // Local<Function> func = Local<Function>::New(isolate, s_pInstance->p_dataCallback);
-      
-      // func->Call(Null(isolate), argcc, argvv);   std::cout << s_pInstance->nan_cb->IsEmpty();
-      
-      // s_pInstance->nan_cb->Call(globalObject, 0, NULL);
-      // isolate->Enter();
-      
-  //   }
-  // }
-  // HandleScope scope(isolate);
 }
 
 void NodeActiveTick::ATRequestTimeoutCallback( uint64_t hOrigRequest ) {
