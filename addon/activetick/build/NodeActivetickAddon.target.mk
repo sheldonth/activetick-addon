@@ -28,7 +28,6 @@ CFLAGS_C_Debug := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-fno-rtti \
 	-fno-threadsafe-statics \
 	-fno-strict-aliasing
 
@@ -70,7 +69,6 @@ CFLAGS_C_Release := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-fno-rtti \
 	-fno-threadsafe-statics \
 	-fno-strict-aliasing
 
@@ -91,7 +89,8 @@ INCS_Release := \
 OBJS := \
 	$(obj).target/$(TARGET)/NodeActiveTickAddon.o \
 	$(obj).target/$(TARGET)/NodeActiveTick.o \
-	$(obj).target/$(TARGET)/import/atfeed-cppsdk/example/Helper.o
+	$(obj).target/$(TARGET)/import/atfeed-cppsdk/example/Helper.o \
+	$(obj).target/$(TARGET)/protobuf/messages.pb.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
@@ -106,12 +105,21 @@ $(OBJS): GYP_OBJCXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_
 
 # Suffix rules, putting all outputs into $(obj).
 
+$(obj).$(TOOLSET)/$(TARGET)/%.o: $(srcdir)/%.cc FORCE_DO_CMD
+	@$(call do_cmd,cxx,1)
+
 $(obj).$(TOOLSET)/$(TARGET)/%.o: $(srcdir)/%.cpp FORCE_DO_CMD
 	@$(call do_cmd,cxx,1)
 
 # Try building from generated source, too.
 
+$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj).$(TOOLSET)/%.cc FORCE_DO_CMD
+	@$(call do_cmd,cxx,1)
+
 $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj).$(TOOLSET)/%.cpp FORCE_DO_CMD
+	@$(call do_cmd,cxx,1)
+
+$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 	@$(call do_cmd,cxx,1)
 
 $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD

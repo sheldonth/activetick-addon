@@ -4,7 +4,8 @@
       "target_name": "NodeActiveTickAddon",
       "sources": [  "NodeActiveTickAddon.cpp",
                     "NodeActiveTick.cpp",
-                    "import/atfeed-cppsdk/example/Helper.cpp"
+                    "import/atfeed-cppsdk/example/Helper.cpp",
+                    "protobuf/messages.pb.cc"
                  ],
       'include_dirs': [
         './import/atfeed-cppsdk/include/',
@@ -17,7 +18,8 @@
       'conditions': [
         ['OS=="mac"', {
           'xcode_settings': {
-            'GCC_ENABLE_CPP_EXCEPTIONS': 'YES'
+            'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
+            'GCC_ENABLE_CPP_RTTI': 'YES'
           },
           'link_settings': {
             'libraries': [

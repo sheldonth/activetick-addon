@@ -77,10 +77,6 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
         
         // uv_async_init(uv_default_loop(), &obj->handle, obj->DoHandle);
         
-        // uv_loop_t *loop = malloc(sizeof(uv_loop_t));
-        // uv_loop_init(loop);
-        // uv_async_init(loop, &handle, obj->DoHandle);
-        
         obj->Wrap( args.This() );
         args.GetReturnValue().Set( args.This() );
   }
@@ -218,7 +214,6 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   ATLoginResponseType p = pResponse->loginResponse;
   uint8_t perm = pResponse->permissions[0];
   ATTIME time = pResponse->serverTime;
-  
   std::string strLoginResponseType;
   switch(p)
   {

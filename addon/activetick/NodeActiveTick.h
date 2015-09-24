@@ -5,7 +5,7 @@
 #include <nan.h>
 #include <uv.h>
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
-
+#include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 
 using namespace v8;

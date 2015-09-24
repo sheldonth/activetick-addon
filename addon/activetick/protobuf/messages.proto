@@ -1,0 +1,12 @@
+package nodeactivetick;
+
+message ATLoginResponse {
+  required int32 loginResponseType = 1;
+}
+
+message ATServerTime {
+  required int32 year = 1;
+  required int32 month = 2;
+  required int32 dayOfWeek = 3;
+  required int32 day = 4;
+}
