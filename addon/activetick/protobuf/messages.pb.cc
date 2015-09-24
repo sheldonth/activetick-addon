@@ -16,7 +16,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
-namespace nodeactivetick {
+namespace NodeActiveTickProto {
 
 namespace {
 
@@ -103,10 +103,10 @@ void protobuf_AddDesc_messages_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016messages.proto\022\016nodeactivetick\",\n\017ATLo"
-    "ginResponse\022\031\n\021loginResponseType\030\001 \002(\005\"K"
-    "\n\014ATServerTime\022\014\n\004year\030\001 \002(\005\022\r\n\005month\030\002 "
-    "\002(\005\022\021\n\tdayOfWeek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005", 155);
+    "\n\016messages.proto\022\023NodeActiveTickProto\",\n"
+    "\017ATLoginResponse\022\031\n\021loginResponseType\030\001 "
+    "\002(\005\"K\n\014ATServerTime\022\014\n\004year\030\001 \002(\005\022\r\n\005mon"
+    "th\030\002 \002(\005\022\021\n\tdayOfWeek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005", 160);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -132,7 +132,7 @@ const int ATLoginResponse::kLoginResponseTypeFieldNumber;
 ATLoginResponse::ATLoginResponse()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATLoginResponse)
 }
 
 void ATLoginResponse::InitAsDefaultInstance() {
@@ -142,7 +142,7 @@ ATLoginResponse::ATLoginResponse(const ATLoginResponse& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATLoginResponse)
 }
 
 void ATLoginResponse::SharedCtor() {
@@ -152,7 +152,7 @@ void ATLoginResponse::SharedCtor() {
 }
 
 ATLoginResponse::~ATLoginResponse() {
-  // @@protoc_insertion_point(destructor:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATLoginResponse)
   SharedDtor();
 }
 
@@ -192,7 +192,7 @@ bool ATLoginResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATLoginResponse)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -226,17 +226,17 @@ bool ATLoginResponse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATLoginResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATLoginResponse)
   return false;
 #undef DO_
 }
 
 void ATLoginResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATLoginResponse)
   // required int32 loginResponseType = 1;
   if (has_loginresponsetype()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->loginresponsetype(), output);
@@ -246,12 +246,12 @@ void ATLoginResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATLoginResponse)
 }
 
 ::google::protobuf::uint8* ATLoginResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATLoginResponse)
   // required int32 loginResponseType = 1;
   if (has_loginresponsetype()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->loginresponsetype(), target);
@@ -261,7 +261,7 @@ void ATLoginResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATLoginResponse)
   return target;
 }
 
@@ -358,7 +358,7 @@ const int ATServerTime::kDayFieldNumber;
 ATServerTime::ATServerTime()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATServerTime)
 }
 
 void ATServerTime::InitAsDefaultInstance() {
@@ -368,7 +368,7 @@ ATServerTime::ATServerTime(const ATServerTime& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATServerTime)
 }
 
 void ATServerTime::SharedCtor() {
@@ -381,7 +381,7 @@ void ATServerTime::SharedCtor() {
 }
 
 ATServerTime::~ATServerTime() {
-  // @@protoc_insertion_point(destructor:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATServerTime)
   SharedDtor();
 }
 
@@ -435,7 +435,7 @@ bool ATServerTime::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATServerTime)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -514,17 +514,17 @@ bool ATServerTime::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATServerTime)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATServerTime)
   return false;
 #undef DO_
 }
 
 void ATServerTime::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATServerTime)
   // required int32 year = 1;
   if (has_year()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->year(), output);
@@ -549,12 +549,12 @@ void ATServerTime::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATServerTime)
 }
 
 ::google::protobuf::uint8* ATServerTime::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATServerTime)
   // required int32 year = 1;
   if (has_year()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->year(), target);
@@ -579,7 +579,7 @@ void ATServerTime::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATServerTime)
   return target;
 }
 
@@ -699,6 +699,6 @@ void ATServerTime::Swap(ATServerTime* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace nodeactivetick
+}  // namespace NodeActiveTickProto
 
 // @@protoc_insertion_point(global_scope)

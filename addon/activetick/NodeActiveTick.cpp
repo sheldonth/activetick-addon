@@ -15,6 +15,12 @@
 
 using namespace v8;
 
+struct OperatorData {
+  int32_t data_sz;
+  void *data;
+  NodeActiveTick *nat;
+};
+
 Persistent<Function> NodeActiveTick::constructor;
 NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 
@@ -22,7 +28,9 @@ NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
   uv_async_init(uv_default_loop(), &handle, DoHandle);
-  handle.data = this;
+  OperatorData* od = new OperatorData();
+  od->nat = this;
+  handle.data = od;
 }
   
 NodeActiveTick::~NodeActiveTick() {
@@ -74,8 +82,6 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
         
         // Experimental Nan::Callback structure
         obj->nan_cb = new Nan::Callback(cb);
-        
-        // uv_async_init(uv_default_loop(), &obj->handle, obj->DoHandle);
         
         obj->Wrap( args.This() );
         args.GetReturnValue().Set( args.This() );
@@ -226,6 +232,13 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
     default: strLoginResponseType = "Default Case"; break;
   }
   std::printf("Login: %s\n", strLoginResponseType.c_str());
+  NodeActiveTickProto::ATLoginResponse *msg = new NodeActiveTickProto::ATLoginResponse;
+  msg->set_loginresponsetype((int32_t)p);
+  int size = msg->ByteSize(); 
+  void *buffer = malloc(size);
+  // msg.SerializeToArray
+  // OperatorData* od = (OperatorData*)s_pInstance->&handle->data;
+  // od->data = 
   uv_async_send(&s_pInstance->handle);
 }
 

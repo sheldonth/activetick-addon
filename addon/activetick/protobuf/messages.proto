@@ -1,4 +1,4 @@
-package nodeactivetick;
+package NodeActiveTickProto;
 
 message ATLoginResponse {
   required int32 loginResponseType = 1;

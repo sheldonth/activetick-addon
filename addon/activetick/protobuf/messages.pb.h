@@ -26,7 +26,7 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
-namespace nodeactivetick {
+namespace NodeActiveTickProto {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_messages_2eproto();
@@ -98,7 +98,7 @@ class ATLoginResponse : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 loginresponsetype() const;
   inline void set_loginresponsetype(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:nodeactivetick.ATLoginResponse)
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATLoginResponse)
  private:
   inline void set_has_loginresponsetype();
   inline void clear_has_loginresponsetype();
@@ -198,7 +198,7 @@ class ATServerTime : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 day() const;
   inline void set_day(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:nodeactivetick.ATServerTime)
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATServerTime)
  private:
   inline void set_has_year();
   inline void clear_has_year();
@@ -246,13 +246,13 @@ inline void ATLoginResponse::clear_loginresponsetype() {
   clear_has_loginresponsetype();
 }
 inline ::google::protobuf::int32 ATLoginResponse::loginresponsetype() const {
-  // @@protoc_insertion_point(field_get:nodeactivetick.ATLoginResponse.loginResponseType)
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATLoginResponse.loginResponseType)
   return loginresponsetype_;
 }
 inline void ATLoginResponse::set_loginresponsetype(::google::protobuf::int32 value) {
   set_has_loginresponsetype();
   loginresponsetype_ = value;
-  // @@protoc_insertion_point(field_set:nodeactivetick.ATLoginResponse.loginResponseType)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATLoginResponse.loginResponseType)
 }
 
 // -------------------------------------------------------------------
@@ -274,13 +274,13 @@ inline void ATServerTime::clear_year() {
   clear_has_year();
 }
 inline ::google::protobuf::int32 ATServerTime::year() const {
-  // @@protoc_insertion_point(field_get:nodeactivetick.ATServerTime.year)
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.year)
   return year_;
 }
 inline void ATServerTime::set_year(::google::protobuf::int32 value) {
   set_has_year();
   year_ = value;
-  // @@protoc_insertion_point(field_set:nodeactivetick.ATServerTime.year)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.year)
 }
 
 // required int32 month = 2;
@@ -298,13 +298,13 @@ inline void ATServerTime::clear_month() {
   clear_has_month();
 }
 inline ::google::protobuf::int32 ATServerTime::month() const {
-  // @@protoc_insertion_point(field_get:nodeactivetick.ATServerTime.month)
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.month)
   return month_;
 }
 inline void ATServerTime::set_month(::google::protobuf::int32 value) {
   set_has_month();
   month_ = value;
-  // @@protoc_insertion_point(field_set:nodeactivetick.ATServerTime.month)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.month)
 }
 
 // required int32 dayOfWeek = 3;
@@ -322,13 +322,13 @@ inline void ATServerTime::clear_dayofweek() {
   clear_has_dayofweek();
 }
 inline ::google::protobuf::int32 ATServerTime::dayofweek() const {
-  // @@protoc_insertion_point(field_get:nodeactivetick.ATServerTime.dayOfWeek)
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.dayOfWeek)
   return dayofweek_;
 }
 inline void ATServerTime::set_dayofweek(::google::protobuf::int32 value) {
   set_has_dayofweek();
   dayofweek_ = value;
-  // @@protoc_insertion_point(field_set:nodeactivetick.ATServerTime.dayOfWeek)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.dayOfWeek)
 }
 
 // required int32 day = 4;
@@ -346,19 +346,19 @@ inline void ATServerTime::clear_day() {
   clear_has_day();
 }
 inline ::google::protobuf::int32 ATServerTime::day() const {
-  // @@protoc_insertion_point(field_get:nodeactivetick.ATServerTime.day)
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.day)
   return day_;
 }
 inline void ATServerTime::set_day(::google::protobuf::int32 value) {
   set_has_day();
   day_ = value;
-  // @@protoc_insertion_point(field_set:nodeactivetick.ATServerTime.day)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.day)
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace nodeactivetick
+}  // namespace NodeActiveTickProto
 
 #ifndef SWIG
 namespace google {
