@@ -26,7 +26,6 @@ public:
     Nan::Callback *nan_cb;
     
     Isolate* iso;
-    static void DoHandle(uv_async_t *handle);
     uv_async_t handle;
     
 private:
@@ -46,7 +45,7 @@ private:
     
     static void New (const FunctionCallbackInfo<Value> &args);
     static Persistent<Function> constructor;
-    
+    static void DumpData(uv_async_t *handle);
     static void FireCallback(
             const FunctionCallbackInfo<Value> &args);
     static void Connect(

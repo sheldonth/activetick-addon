@@ -18,21 +18,30 @@
       'conditions': [
         ['OS=="mac"', {
           'xcode_settings': {
+            'MACOSX_DEPLOYMENT_TARGET': '10.10',
             'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
-            'GCC_ENABLE_CPP_RTTI': 'YES'
+            'GCC_ENABLE_CPP_RTTI': 'YES',
+            'OTHER_CPLUSPLUSFLAGS': [
+                    ],
+            'OTHER_CFLAGS': [
+                      '<!@(pkg-config --cflags protobuf)'
+                    ]
           },
           'link_settings': {
             'libraries': [
-              "../import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib",
-              "-lpthread"
+              '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib',
+              '-lpthread',
+              '-D_THREAD_SAFE',
+              '<!@(pkg-config --libs protobuf)'
             ]
           }
         }],
         ['OS=="linux"', {
           'link_settings': {
             'libraries': [
-              "../import/atfeed-cppsdk/bin/libActiveTickServerAPI.so",
-              "-lpthread"
+              '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.so',
+              '-lpthread',
+              '<!@(pkg-config --libs protobuf)'
             ]
           }
         }],

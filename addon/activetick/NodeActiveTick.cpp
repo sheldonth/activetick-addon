@@ -15,10 +15,10 @@
 
 using namespace v8;
 
-struct OperatorData {
+struct MessageStruct {
   int32_t data_sz;
-  void *data;
-  NodeActiveTick *nat;
+  void *c_str_data;
+  char messageType[60];
 };
 
 Persistent<Function> NodeActiveTick::constructor;
@@ -27,27 +27,12 @@ NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
-  uv_async_init(uv_default_loop(), &handle, DoHandle);
-  OperatorData* od = new OperatorData();
-  od->nat = this;
-  handle.data = od;
+  uv_async_init(uv_default_loop(), &handle, DumpData);
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
 }
   
 NodeActiveTick::~NodeActiveTick() {
   ATDestroySession(session_handle);
-}
-
-void NodeActiveTick::DoHandle(uv_async_t *handle) {
-  NodeActiveTick *at = static_cast<NodeActiveTick*>(handle->data);
-  Isolate* isolate = Isolate::GetCurrent();
-  if (isolate) {
-    HandleScope scope(isolate);
-    const unsigned argcc = 1;
-    Local<Value> argvv[argcc] = { String::NewFromUtf8(isolate, "hello world") };
-    Local<Function> func = Local<Function>::New(isolate, at->p_dataCallback);
-    func->Call(Null(isolate), argcc, argvv);
-  }
-  uv_close((uv_handle_t*) &at->handle, NULL);
 }
 
 void NodeActiveTick::Init( Handle<Object> exports ) {
@@ -190,6 +175,37 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
 }
 
 // Callbacks
+void NodeActiveTick::DumpData(uv_async_t *handle) {
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    MessageStruct* m = static_cast<MessageStruct*>(handle->data);
+    
+    Local<Object> buffer = node::Buffer::New(m->data_sz);
+    std::memcpy(node::Buffer::Data(buffer), m->c_str_data, m->data_sz);
+    // get handle to the global object
+    Local<Context> globalContext = isolate->GetCurrentContext();
+    Local<Object> globalObject = globalContext->Global();
+    // Retrieve the buffer constructor function
+    Local<Function> bufferConstructor = Local<Function>::Cast(globalObject->Get(String::NewFromUtf8(isolate, "Buffer")));
+    // use buffer constructors with 3 arguments: 
+    //   (1) handle of buffer 
+    //   (2) length of buffer 
+    //   (3) offset in buffer (where to start)
+    Handle<Value> constructorArgs[3] = {buffer,
+                             Integer::New(isolate, m->data_sz),
+                             Integer::New(isolate, 0)};
+    // call the buffer-constructor
+    Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
+    // Create Local Function with obj->Persistent<Function>
+    Local<Function> func = Local<Function>::New(isolate, s_pInstance->p_dataCallback);
+    const unsigned argc = 1;
+    Local<Value> argv[1] = { actualBuffer };
+    func->Call(Null(isolate), argc, argv);
+  }
+  uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
+}
+
 void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {
   std::string strStatusType;
   switch(statusType)
@@ -236,9 +252,12 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   msg->set_loginresponsetype((int32_t)p);
   int size = msg->ByteSize(); 
   void *buffer = malloc(size);
-  // msg.SerializeToArray
-  // OperatorData* od = (OperatorData*)s_pInstance->&handle->data;
-  // od->data = 
+  msg->SerializeToArray(buffer, size);
+  MessageStruct* m = new MessageStruct();
+  m->data_sz = size;
+  m->c_str_data = buffer;
+  std::strcpy(m->messageType, "ATLoginResponse");
+  (&s_pInstance->handle)->data = m;
   uv_async_send(&s_pInstance->handle);
 }
 

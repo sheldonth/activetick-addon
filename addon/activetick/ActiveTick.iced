@@ -32,8 +32,10 @@ class ActiveTick
   handleData:(data) =>
     console.log 'FOOBAR'
     if typeof data is 'object'
-      console.log data.toString 'utf8'
+      console.log 'a'
+      console.log data
     else if typeof data is 'string'
+      console.log 'b'
       console.log data
 
 main = () ->

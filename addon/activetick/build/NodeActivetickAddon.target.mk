@@ -15,7 +15,7 @@ DEFS_Debug := \
 CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.10 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -24,12 +24,13 @@ CFLAGS_Debug := \
 
 # Flags passed to only C files.
 CFLAGS_C_Debug := \
-	-fno-strict-aliasing
+	-fno-strict-aliasing \
+	-D_THREAD_SAFE \
+	-I/usr/local/Cellar/protobuf/2.6.1/include
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-fno-threadsafe-statics \
-	-fno-strict-aliasing
+	-fno-threadsafe-statics
 
 # Flags passed to only ObjC files.
 CFLAGS_OBJC_Debug :=
@@ -56,7 +57,7 @@ DEFS_Release := \
 CFLAGS_Release := \
 	-Os \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.10 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -65,12 +66,13 @@ CFLAGS_Release := \
 
 # Flags passed to only C files.
 CFLAGS_C_Release := \
-	-fno-strict-aliasing
+	-fno-strict-aliasing \
+	-D_THREAD_SAFE \
+	-I/usr/local/Cellar/protobuf/2.6.1/include
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-fno-threadsafe-statics \
-	-fno-strict-aliasing
+	-fno-threadsafe-statics
 
 # Flags passed to only ObjC files.
 CFLAGS_OBJC_Release :=
@@ -130,7 +132,7 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.10 \
 	-arch x86_64 \
 	-L$(builddir)
 
@@ -141,7 +143,7 @@ LIBTOOLFLAGS_Debug := \
 LDFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.10 \
 	-arch x86_64 \
 	-L$(builddir)
 
@@ -151,7 +153,10 @@ LIBTOOLFLAGS_Release := \
 
 LIBS := \
 	../import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib \
-	-lpthread
+	-lpthread \
+	-D_THREAD_SAFE \
+	-L/usr/local/Cellar/protobuf/2.6.1/lib \
+	-lprotobuf
 
 $(builddir)/NodeActiveTickAddon.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/NodeActiveTickAddon.node: LIBS := $(LIBS)

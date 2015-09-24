@@ -11,4 +11,12 @@
   - Google protobufs
   - 0MQ
   
-  
+                "$(pkg-config --libs protobuf)",
+                
+// "$(pkg-config --cflags --libs protobuf)"
+'<!@(pkg-config --cflags protobuf-lite)',
+'<!@(pkg-config --libs protobuf-lite)'
+'<!@(pkg-config --libs protobuf)'
+<!@(pkg-config --cflags protobuf)
+<!@(pkg-config --cflags protobuf)
+'<!@(pkg-config --cflags protobuf-lite)'
