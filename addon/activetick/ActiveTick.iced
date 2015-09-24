@@ -3,40 +3,26 @@ async = require 'async'
 _ = require 'underscore'
 config = require './config'
 
-# .getSessionHandle()
-# .closeAllATRequests()
-# .closeATRequest()
-# .sendATBarHistoryDbRequest( request )
-# .sendATLoginRequest( request )
-# .sendATMarketHolidaysRequest( request )
-# .sendATMarketMoversDbRequest( request )
-# .sendATMarketMoversStreamRequest( request )
-# .sendATQuoteDbRequest( request )
-# .sendATQuoteStreamRequest( request )
-# .sendATTickHistoryDbRequest( request )
-# .sendATSectorListRequest( request )
-# .sendATConstituentListRequest( request )
-# .connect( apiKey, serverAddr, port, userid, passwd )
-
 noisy = yes
 
 class ActiveTick
   constructor:() ->
-    @api = new NodeActiveTick(@handleData)
+    @api = new NodeActiveTick(@handleProtoMsg)
     # @api.fireCallback()
     @api.connect config.url, config.port, config.api_key, config.username, config.password
     setTimeout () ->
           console.log 'End'
         , 5000
     
-  handleData:(data) =>
-    console.log 'FOOBAR'
-    if typeof data is 'object'
-      console.log 'a'
-      console.log data
-    else if typeof data is 'string'
-      console.log 'b'
-      console.log data
+  handleProtoMsg:(msgType, msgData) =>
+    console.log "handleProtoMsg"
+    console.log msgType
+    if typeof msgData is 'object'
+      console.log 'data'
+      console.log msgData
+    else if typeof msgData is 'string'
+      console.log 'string'
+      console.log msgData
 
 main = () ->
   a = new ActiveTick()

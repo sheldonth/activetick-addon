@@ -13,6 +13,7 @@ using namespace v8;
 class NodeActiveTick : public node::ObjectWrap {
 public:
     static void Init(Handle<Object> exports);
+    static void New (const FunctionCallbackInfo<Value> &args);
     Persistent<Function> p_dataCallback;
     uint64_t    session_handle;    
     uint64_t    m_hLastRequest;
@@ -24,17 +25,15 @@ public:
     wchar16_t   wchar_api_token[100];
     
     Nan::Callback *nan_cb;
-    
-    Isolate* iso;
     uv_async_t handle;
     
 private:
     explicit NodeActiveTick();
     ~NodeActiveTick();
-
     static NodeActiveTick* s_pInstance;
     
-private:  
+private:
+    static Persistent<Function> constructor;
     static void ATSessionStatusChangeCallback(
                   uint64_t hSession,
                   ATSessionStatusType statusType);
@@ -42,13 +41,12 @@ private:
                   uint64_t hSession,
                   uint64_t hRequest,
                   LPATLOGIN_RESPONSE pResponse);
-    
-    static void New (const FunctionCallbackInfo<Value> &args);
-    static Persistent<Function> constructor;
-    static void DumpData(uv_async_t *handle);
+    static void DumpData(
+                  uv_async_t *handle);
     static void FireCallback(
-            const FunctionCallbackInfo<Value> &args);
+                  const FunctionCallbackInfo<Value> &args);
     static void Connect(
-            const FunctionCallbackInfo<Value> &args);
-    static void ATRequestTimeoutCallback( uint64_t hOrigRequest );
+                  const FunctionCallbackInfo<Value> &args);
+    static void ATRequestTimeoutCallback(
+                  uint64_t hOrigRequest);
   };

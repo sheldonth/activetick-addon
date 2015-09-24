@@ -56,8 +56,6 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
     if (args.IsConstructCall()) {
         NodeActiveTick* obj = new NodeActiveTick();
         NodeActiveTick::s_pInstance = obj;
-        obj->iso = isolate;
-        // double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
         if (!args[0]->IsFunction()) {
           isolate->ThrowException(Exception::TypeError(
                   String::NewFromUtf8(isolate, "NodeActiveTick requires a callback parameter in first argument position")));
@@ -183,24 +181,17 @@ void NodeActiveTick::DumpData(uv_async_t *handle) {
     
     Local<Object> buffer = node::Buffer::New(m->data_sz);
     std::memcpy(node::Buffer::Data(buffer), m->c_str_data, m->data_sz);
-    // get handle to the global object
     Local<Context> globalContext = isolate->GetCurrentContext();
     Local<Object> globalObject = globalContext->Global();
-    // Retrieve the buffer constructor function
     Local<Function> bufferConstructor = Local<Function>::Cast(globalObject->Get(String::NewFromUtf8(isolate, "Buffer")));
-    // use buffer constructors with 3 arguments: 
-    //   (1) handle of buffer 
-    //   (2) length of buffer 
-    //   (3) offset in buffer (where to start)
     Handle<Value> constructorArgs[3] = {buffer,
                              Integer::New(isolate, m->data_sz),
                              Integer::New(isolate, 0)};
-    // call the buffer-constructor
     Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
-    // Create Local Function with obj->Persistent<Function>
     Local<Function> func = Local<Function>::New(isolate, s_pInstance->p_dataCallback);
-    const unsigned argc = 1;
-    Local<Value> argv[1] = { actualBuffer };
+    Local<Value> str = String::NewFromUtf8(isolate, m->messageType);  
+    const unsigned argc = 2;
+    Local<Value> argv[argc] = {str, actualBuffer};
     func->Call(Null(isolate), argc, argv);
   }
   uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
