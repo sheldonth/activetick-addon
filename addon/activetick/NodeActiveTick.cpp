@@ -15,18 +15,13 @@
 
 using namespace v8;
 
-struct MessageStruct {
-  int32_t data_sz;
-  void *c_str_data;
-  char messageType[60];
-};
-
 Persistent<Function> NodeActiveTick::constructor;
 NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 
 NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
+  requestor = new Requestor(session_handle);
   uv_async_init(uv_default_loop(), &handle, DumpData);
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 }
@@ -44,6 +39,7 @@ void NodeActiveTick::Init( Handle<Object> exports ) {
     
     NODE_SET_PROTOTYPE_METHOD(tpl, "fireCallback", FireCallback);
     NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
+    NODE_SET_PROTOTYPE_METHOD(tpl, "listRequest", ListRequest);
     
     constructor.Reset(isolate, tpl->GetFunction());
     exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
@@ -168,35 +164,42 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
                           api_port,
                           ATSessionStatusChangeCallback,
                           true);
-                          
-  args.GetReturnValue().Set(Boolean::New(isolate, r2));
+  // hack: connect messages are always ID 1
+  args.GetReturnValue().Set(Number::New(isolate, 1));
 }
 
-// Callbacks
-void NodeActiveTick::DumpData(uv_async_t *handle) {
+void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
+{
   Isolate* isolate = Isolate::GetCurrent();
-  if (isolate) {
-    HandleScope scope(isolate);
-    MessageStruct* m = static_cast<MessageStruct*>(handle->data);
-    
-    Local<Object> buffer = node::Buffer::New(m->data_sz);
-    std::memcpy(node::Buffer::Data(buffer), m->c_str_data, m->data_sz);
-    Local<Context> globalContext = isolate->GetCurrentContext();
-    Local<Object> globalObject = globalContext->Global();
-    Local<Function> bufferConstructor = Local<Function>::Cast(globalObject->Get(String::NewFromUtf8(isolate, "Buffer")));
-    Handle<Value> constructorArgs[3] = {buffer,
-                             Integer::New(isolate, m->data_sz),
-                             Integer::New(isolate, 0)};
-    Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
-    Local<Function> func = Local<Function>::New(isolate, s_pInstance->p_dataCallback);
-    Local<Value> str = String::NewFromUtf8(isolate, m->messageType);  
-    const unsigned argc = 2;
-    Local<Value> argv[argc] = {str, actualBuffer};
-    func->Call(Null(isolate), argc, argv);
+  HandleScope scope(isolate);
+  
+  Local<String> list_type = args[0]->ToString();
+  Local<String> symbol = args[1]->ToString();
+  char cstr_list_type[list_type->Utf8Length()];
+  char cstr_symbol[symbol->Utf8Length()];
+  list_type->WriteUtf8(cstr_list_type);
+  symbol->WriteUtf8(cstr_symbol);
+  wchar16_t wchar_symbol[50];
+  Helper::ConvertString(cstr_symbol, wchar_symbol, sizeof(wchar_symbol));
+  ATConstituentListType type;
+  if (strcmp(cstr_list_type, "ATConstituentListIndex") == 0) {
+    type = ATConstituentListIndex;
   }
-  uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
+  else if (strcmp(cstr_list_type, "ATConstituentListSector") == 0) {
+    type = ATConstituentListSector;
+  }
+  else if (strcmp(cstr_list_type, "ATConstituentListOptionChain") == 0) {
+    type = ATConstituentListOptionChain;
+  }
+  else {
+    type = ATConstituentListIndex;
+  }
+  s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
+  args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));  
 }
 
+
+// AT Callbacks
 void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {
   std::string strStatusType;
   switch(statusType)
@@ -206,7 +209,9 @@ void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionS
     case SessionStatusDisconnectedDuplicateLogin: strStatusType = "DuplicateLogin"; break;
     default: strStatusType = "None"; break;
   }
-  std::printf("ATSessionStatusChangeCallback: %s \n", strStatusType.c_str());
+  if (debug) {
+    std::printf("ATSessionStatusChangeCallback: %s \n", strStatusType.c_str());
+  }
   
   if (statusType == SessionStatusConnected) {
     s_pInstance->m_hLastRequest = ATCreateLoginRequest( hSession,
@@ -226,6 +231,7 @@ void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionS
 void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hRequest, LPATLOGIN_RESPONSE pResponse) {
   ATLoginResponseType p = pResponse->loginResponse;
   uint8_t perm = pResponse->permissions[0];
+  // TODO serialize ATTIME
   ATTIME time = pResponse->serverTime;
   std::string strLoginResponseType;
   switch(p)
@@ -238,7 +244,9 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
     case LoginResponseServerError: strLoginResponseType = "ServerError"; break;
     default: strLoginResponseType = "Default Case"; break;
   }
-  std::printf("Login: %s\n", strLoginResponseType.c_str());
+  if (debug) {
+    std::printf("Login: %s\n", strLoginResponseType.c_str());
+  }
   NodeActiveTickProto::ATLoginResponse *msg = new NodeActiveTickProto::ATLoginResponse;
   msg->set_loginresponsetype((int32_t)p);
   msg->set_loginresponsestring(strLoginResponseType);
@@ -248,6 +256,7 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   MessageStruct* m = new MessageStruct();
   m->data_sz = size;
   m->c_str_data = buffer;
+  m->message_id = hRequest;
   std::strcpy(m->messageType, "ATLoginResponse");
   (&s_pInstance->handle)->data = m;
   uv_async_send(&s_pInstance->handle);
@@ -255,6 +264,31 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
 
 void NodeActiveTick::ATRequestTimeoutCallback( uint64_t hOrigRequest ) {
   std::printf("ATRequestTimeoutCallback");
+}
+
+// Threading Helper
+void NodeActiveTick::DumpData(uv_async_t *handle) {
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    MessageStruct* m = static_cast<MessageStruct*>(handle->data);
+    Local<Object> buffer = node::Buffer::New(m->data_sz);
+    std::memcpy(node::Buffer::Data(buffer), m->c_str_data, m->data_sz);
+    Local<Context> globalContext = isolate->GetCurrentContext();
+    Local<Object> globalObject = globalContext->Global();
+    Local<Function> bufferConstructor = Local<Function>::Cast(globalObject->Get(String::NewFromUtf8(isolate, "Buffer")));
+    Handle<Value> constructorArgs[3] = {buffer,
+                             Integer::New(isolate, m->data_sz),
+                             Integer::New(isolate, 0)};
+    Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
+    Local<Function> func = Local<Function>::New(isolate, s_pInstance->p_dataCallback);
+    Local<Value> str = String::NewFromUtf8(isolate, m->messageType);  
+    Local<Number> request_id = Number::New(isolate, m->message_id);
+    const unsigned argc = 3;
+    Local<Value> argv[argc] = {str, request_id, actualBuffer};
+    func->Call(Null(isolate), argc, argv);
+  }
+  // uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
 }
 
 

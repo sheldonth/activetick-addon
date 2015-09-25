@@ -5,9 +5,20 @@ message ATLoginResponse {
   required string loginResponseString = 2;
 }
 
+message ATConstituentResponse {
+  repeated ATSymbol symbols = 1;
+}
+
 message ATServerTime {
   required int32 year = 1;
   required int32 month = 2;
   required int32 dayOfWeek = 3;
   required int32 day = 4;
+}
+
+message ATSymbol {
+  required string symbol = 1;
+  optional int32 symbolType = 2;
+  optional int32 exchangeType = 3;
+  optional int32 countryType = 4;
 }

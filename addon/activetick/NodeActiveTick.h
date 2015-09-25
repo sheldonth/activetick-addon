@@ -7,8 +7,16 @@
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
 #include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
+#include "Requestor.h"
 
 using namespace v8;
+
+struct MessageStruct {
+  uint64_t message_id;
+  int32_t data_sz;
+  void *c_str_data;
+  char messageType[60];
+};
 
 class NodeActiveTick : public node::ObjectWrap {
 public:
@@ -26,14 +34,24 @@ public:
     
     Nan::Callback *nan_cb;
     uv_async_t handle;
-    
+    Requestor* requestor;
+    static NodeActiveTick* s_pInstance;
+        
 private:
     explicit NodeActiveTick();
     ~NodeActiveTick();
-    static NodeActiveTick* s_pInstance;
     
 private:
     static Persistent<Function> constructor;
+    // Javascript Methods
+    static void FireCallback(
+                  const FunctionCallbackInfo<Value> &args);
+    static void Connect(
+                  const FunctionCallbackInfo<Value> &args);
+    static void ListRequest(
+                  const FunctionCallbackInfo<Value> &args);
+
+    // AT Callbacks
     static void ATSessionStatusChangeCallback(
                   uint64_t hSession,
                   ATSessionStatusType statusType);
@@ -41,12 +59,11 @@ private:
                   uint64_t hSession,
                   uint64_t hRequest,
                   LPATLOGIN_RESPONSE pResponse);
+    // Threading Helper
     static void DumpData(
                   uv_async_t *handle);
-    static void FireCallback(
-                  const FunctionCallbackInfo<Value> &args);
-    static void Connect(
-                  const FunctionCallbackInfo<Value> &args);
+
+                  
     static void ATRequestTimeoutCallback(
                   uint64_t hOrigRequest);
   };

@@ -34,7 +34,9 @@ void protobuf_AssignDesc_messages_2eproto();
 void protobuf_ShutdownFile_messages_2eproto();
 
 class ATLoginResponse;
+class ATConstituentResponse;
 class ATServerTime;
+class ATSymbol;
 
 // ===================================================================
 
@@ -129,6 +131,88 @@ class ATLoginResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ATLoginResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATConstituentResponse : public ::google::protobuf::Message {
+ public:
+  ATConstituentResponse();
+  virtual ~ATConstituentResponse();
+
+  ATConstituentResponse(const ATConstituentResponse& from);
+
+  inline ATConstituentResponse& operator=(const ATConstituentResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATConstituentResponse& default_instance();
+
+  void Swap(ATConstituentResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  ATConstituentResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATConstituentResponse& from);
+  void MergeFrom(const ATConstituentResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .NodeActiveTickProto.ATSymbol symbols = 1;
+  inline int symbols_size() const;
+  inline void clear_symbols();
+  static const int kSymbolsFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& symbols(int index) const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbols(int index);
+  inline ::NodeActiveTickProto::ATSymbol* add_symbols();
+  inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATSymbol >&
+      symbols() const;
+  inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATSymbol >*
+      mutable_symbols();
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATConstituentResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATSymbol > symbols_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATConstituentResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -239,6 +323,120 @@ class ATServerTime : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static ATServerTime* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class ATSymbol : public ::google::protobuf::Message {
+ public:
+  ATSymbol();
+  virtual ~ATSymbol();
+
+  ATSymbol(const ATSymbol& from);
+
+  inline ATSymbol& operator=(const ATSymbol& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATSymbol& default_instance();
+
+  void Swap(ATSymbol* other);
+
+  // implements Message ----------------------------------------------
+
+  ATSymbol* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATSymbol& from);
+  void MergeFrom(const ATSymbol& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string symbol = 1;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 1;
+  inline const ::std::string& symbol() const;
+  inline void set_symbol(const ::std::string& value);
+  inline void set_symbol(const char* value);
+  inline void set_symbol(const char* value, size_t size);
+  inline ::std::string* mutable_symbol();
+  inline ::std::string* release_symbol();
+  inline void set_allocated_symbol(::std::string* symbol);
+
+  // optional int32 symbolType = 2;
+  inline bool has_symboltype() const;
+  inline void clear_symboltype();
+  static const int kSymbolTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 symboltype() const;
+  inline void set_symboltype(::google::protobuf::int32 value);
+
+  // optional int32 exchangeType = 3;
+  inline bool has_exchangetype() const;
+  inline void clear_exchangetype();
+  static const int kExchangeTypeFieldNumber = 3;
+  inline ::google::protobuf::int32 exchangetype() const;
+  inline void set_exchangetype(::google::protobuf::int32 value);
+
+  // optional int32 countryType = 4;
+  inline bool has_countrytype() const;
+  inline void clear_countrytype();
+  static const int kCountryTypeFieldNumber = 4;
+  inline ::google::protobuf::int32 countrytype() const;
+  inline void set_countrytype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATSymbol)
+ private:
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_symboltype();
+  inline void clear_has_symboltype();
+  inline void set_has_exchangetype();
+  inline void clear_has_exchangetype();
+  inline void set_has_countrytype();
+  inline void clear_has_countrytype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* symbol_;
+  ::google::protobuf::int32 symboltype_;
+  ::google::protobuf::int32 exchangetype_;
+  ::google::protobuf::int32 countrytype_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATSymbol* default_instance_;
+};
 // ===================================================================
 
 
@@ -348,6 +546,40 @@ inline void ATLoginResponse::set_allocated_loginresponsestring(::std::string* lo
 
 // -------------------------------------------------------------------
 
+// ATConstituentResponse
+
+// repeated .NodeActiveTickProto.ATSymbol symbols = 1;
+inline int ATConstituentResponse::symbols_size() const {
+  return symbols_.size();
+}
+inline void ATConstituentResponse::clear_symbols() {
+  symbols_.Clear();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATConstituentResponse::symbols(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATConstituentResponse.symbols)
+  return symbols_.Get(index);
+}
+inline ::NodeActiveTickProto::ATSymbol* ATConstituentResponse::mutable_symbols(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATConstituentResponse.symbols)
+  return symbols_.Mutable(index);
+}
+inline ::NodeActiveTickProto::ATSymbol* ATConstituentResponse::add_symbols() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATConstituentResponse.symbols)
+  return symbols_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATSymbol >&
+ATConstituentResponse::symbols() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATConstituentResponse.symbols)
+  return symbols_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATSymbol >*
+ATConstituentResponse::mutable_symbols() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATConstituentResponse.symbols)
+  return &symbols_;
+}
+
+// -------------------------------------------------------------------
+
 // ATServerTime
 
 // required int32 year = 1;
@@ -444,6 +676,158 @@ inline void ATServerTime::set_day(::google::protobuf::int32 value) {
   set_has_day();
   day_ = value;
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.day)
+}
+
+// -------------------------------------------------------------------
+
+// ATSymbol
+
+// required string symbol = 1;
+inline bool ATSymbol::has_symbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATSymbol::set_has_symbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATSymbol::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATSymbol::clear_symbol() {
+  if (symbol_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbol_->clear();
+  }
+  clear_has_symbol();
+}
+inline const ::std::string& ATSymbol::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATSymbol.symbol)
+  return *symbol_;
+}
+inline void ATSymbol::set_symbol(const ::std::string& value) {
+  set_has_symbol();
+  if (symbol_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbol_ = new ::std::string;
+  }
+  symbol_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.symbol)
+}
+inline void ATSymbol::set_symbol(const char* value) {
+  set_has_symbol();
+  if (symbol_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbol_ = new ::std::string;
+  }
+  symbol_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATSymbol.symbol)
+}
+inline void ATSymbol::set_symbol(const char* value, size_t size) {
+  set_has_symbol();
+  if (symbol_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbol_ = new ::std::string;
+  }
+  symbol_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATSymbol.symbol)
+}
+inline ::std::string* ATSymbol::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbol_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATSymbol.symbol)
+  return symbol_;
+}
+inline ::std::string* ATSymbol::release_symbol() {
+  clear_has_symbol();
+  if (symbol_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = symbol_;
+    symbol_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATSymbol::set_allocated_symbol(::std::string* symbol) {
+  if (symbol_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete symbol_;
+  }
+  if (symbol) {
+    set_has_symbol();
+    symbol_ = symbol;
+  } else {
+    clear_has_symbol();
+    symbol_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATSymbol.symbol)
+}
+
+// optional int32 symbolType = 2;
+inline bool ATSymbol::has_symboltype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATSymbol::set_has_symboltype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATSymbol::clear_has_symboltype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATSymbol::clear_symboltype() {
+  symboltype_ = 0;
+  clear_has_symboltype();
+}
+inline ::google::protobuf::int32 ATSymbol::symboltype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATSymbol.symbolType)
+  return symboltype_;
+}
+inline void ATSymbol::set_symboltype(::google::protobuf::int32 value) {
+  set_has_symboltype();
+  symboltype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.symbolType)
+}
+
+// optional int32 exchangeType = 3;
+inline bool ATSymbol::has_exchangetype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATSymbol::set_has_exchangetype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATSymbol::clear_has_exchangetype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATSymbol::clear_exchangetype() {
+  exchangetype_ = 0;
+  clear_has_exchangetype();
+}
+inline ::google::protobuf::int32 ATSymbol::exchangetype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATSymbol.exchangeType)
+  return exchangetype_;
+}
+inline void ATSymbol::set_exchangetype(::google::protobuf::int32 value) {
+  set_has_exchangetype();
+  exchangetype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.exchangeType)
+}
+
+// optional int32 countryType = 4;
+inline bool ATSymbol::has_countrytype() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATSymbol::set_has_countrytype() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATSymbol::clear_has_countrytype() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATSymbol::clear_countrytype() {
+  countrytype_ = 0;
+  clear_has_countrytype();
+}
+inline ::google::protobuf::int32 ATSymbol::countrytype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATSymbol.countryType)
+  return countrytype_;
+}
+inline void ATSymbol::set_countrytype(::google::protobuf::int32 value) {
+  set_has_countrytype();
+  countrytype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.countryType)
 }
 
 

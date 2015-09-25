@@ -28,7 +28,9 @@ Release/obj.target/NodeActiveTickAddon/NodeActiveTickAddon.o: \
   ../node_modules/nan/nan_weak.h ../node_modules/nan/nan_object_wrap.h \
   ../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerAPI.h \
   ../import/atfeed-cppsdk/include/Shared/ATServerAPIDefines.h \
-  ../protobuf/messages.pb.h ../import/atfeed-cppsdk/example/Helper.h
+  ../protobuf/messages.pb.h ../import/atfeed-cppsdk/example/Helper.h \
+  ../Requestor.h \
+  ../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerRequestor.h
 ../NodeActiveTickAddon.cpp:
 /Users/sheldonthomas/.node-gyp/0.12.7/src/node.h:
 /Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8.h:
@@ -60,3 +62,5 @@ Release/obj.target/NodeActiveTickAddon/NodeActiveTickAddon.o: \
 ../import/atfeed-cppsdk/include/Shared/ATServerAPIDefines.h:
 ../protobuf/messages.pb.h:
 ../import/atfeed-cppsdk/example/Helper.h:
+../Requestor.h:
+../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerRequestor.h:

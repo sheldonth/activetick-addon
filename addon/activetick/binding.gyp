@@ -4,6 +4,7 @@
       "target_name": "NodeActiveTickAddon",
       "sources": [  "NodeActiveTickAddon.cpp",
                     "NodeActiveTick.cpp",
+                    "Requestor.cpp",
                     "import/atfeed-cppsdk/example/Helper.cpp",
                     "protobuf/messages.pb.cc"
                  ],

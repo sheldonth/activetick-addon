@@ -23,9 +23,15 @@ namespace {
 const ::google::protobuf::Descriptor* ATLoginResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATLoginResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATConstituentResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATConstituentResponse_reflection_ = NULL;
 const ::google::protobuf::Descriptor* ATServerTime_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATServerTime_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATSymbol_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATSymbol_reflection_ = NULL;
 
 }  // namespace
 
@@ -52,7 +58,22 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATLoginResponse));
-  ATServerTime_descriptor_ = file->message_type(1);
+  ATConstituentResponse_descriptor_ = file->message_type(1);
+  static const int ATConstituentResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATConstituentResponse, symbols_),
+  };
+  ATConstituentResponse_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATConstituentResponse_descriptor_,
+      ATConstituentResponse::default_instance_,
+      ATConstituentResponse_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATConstituentResponse, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATConstituentResponse, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATConstituentResponse));
+  ATServerTime_descriptor_ = file->message_type(2);
   static const int ATServerTime_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATServerTime, year_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATServerTime, month_),
@@ -70,6 +91,24 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATServerTime));
+  ATSymbol_descriptor_ = file->message_type(3);
+  static const int ATSymbol_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symbol_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symboltype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, exchangetype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, countrytype_),
+  };
+  ATSymbol_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATSymbol_descriptor_,
+      ATSymbol::default_instance_,
+      ATSymbol_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATSymbol));
 }
 
 namespace {
@@ -85,7 +124,11 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATLoginResponse_descriptor_, &ATLoginResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATConstituentResponse_descriptor_, &ATConstituentResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATServerTime_descriptor_, &ATServerTime::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATSymbol_descriptor_, &ATSymbol::default_instance());
 }
 
 }  // namespace
@@ -93,8 +136,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_messages_2eproto() {
   delete ATLoginResponse::default_instance_;
   delete ATLoginResponse_reflection_;
+  delete ATConstituentResponse::default_instance_;
+  delete ATConstituentResponse_reflection_;
   delete ATServerTime::default_instance_;
   delete ATServerTime_reflection_;
+  delete ATSymbol::default_instance_;
+  delete ATSymbol_reflection_;
 }
 
 void protobuf_AddDesc_messages_2eproto() {
@@ -106,15 +153,23 @@ void protobuf_AddDesc_messages_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\016messages.proto\022\023NodeActiveTickProto\"I\n"
     "\017ATLoginResponse\022\031\n\021loginResponseType\030\001 "
-    "\002(\005\022\033\n\023loginResponseString\030\002 \002(\t\"K\n\014ATSe"
-    "rverTime\022\014\n\004year\030\001 \002(\005\022\r\n\005month\030\002 \002(\005\022\021\n"
-    "\tdayOfWeek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005", 189);
+    "\002(\005\022\033\n\023loginResponseString\030\002 \002(\t\"G\n\025ATCo"
+    "nstituentResponse\022.\n\007symbols\030\001 \003(\0132\035.Nod"
+    "eActiveTickProto.ATSymbol\"K\n\014ATServerTim"
+    "e\022\014\n\004year\030\001 \002(\005\022\r\n\005month\030\002 \002(\005\022\021\n\tdayOfW"
+    "eek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005\"Y\n\010ATSymbol\022\016\n\006sy"
+    "mbol\030\001 \002(\t\022\022\n\nsymbolType\030\002 \001(\005\022\024\n\014exchan"
+    "geType\030\003 \001(\005\022\023\n\013countryType\030\004 \001(\005", 353);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
+  ATConstituentResponse::default_instance_ = new ATConstituentResponse();
   ATServerTime::default_instance_ = new ATServerTime();
+  ATSymbol::default_instance_ = new ATSymbol();
   ATLoginResponse::default_instance_->InitAsDefaultInstance();
+  ATConstituentResponse::default_instance_->InitAsDefaultInstance();
   ATServerTime::default_instance_->InitAsDefaultInstance();
+  ATSymbol::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_messages_2eproto);
 }
 
@@ -406,6 +461,226 @@ void ATLoginResponse::Swap(ATLoginResponse* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ATLoginResponse_descriptor_;
   metadata.reflection = ATLoginResponse_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATConstituentResponse::kSymbolsFieldNumber;
+#endif  // !_MSC_VER
+
+ATConstituentResponse::ATConstituentResponse()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATConstituentResponse)
+}
+
+void ATConstituentResponse::InitAsDefaultInstance() {
+}
+
+ATConstituentResponse::ATConstituentResponse(const ATConstituentResponse& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATConstituentResponse)
+}
+
+void ATConstituentResponse::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATConstituentResponse::~ATConstituentResponse() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATConstituentResponse)
+  SharedDtor();
+}
+
+void ATConstituentResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void ATConstituentResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATConstituentResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATConstituentResponse_descriptor_;
+}
+
+const ATConstituentResponse& ATConstituentResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATConstituentResponse* ATConstituentResponse::default_instance_ = NULL;
+
+ATConstituentResponse* ATConstituentResponse::New() const {
+  return new ATConstituentResponse;
+}
+
+void ATConstituentResponse::Clear() {
+  symbols_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATConstituentResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATConstituentResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .NodeActiveTickProto.ATSymbol symbols = 1;
+      case 1: {
+        if (tag == 10) {
+         parse_symbols:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_symbols()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_symbols;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATConstituentResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATConstituentResponse)
+  return false;
+#undef DO_
+}
+
+void ATConstituentResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATConstituentResponse)
+  // repeated .NodeActiveTickProto.ATSymbol symbols = 1;
+  for (int i = 0; i < this->symbols_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->symbols(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATConstituentResponse)
+}
+
+::google::protobuf::uint8* ATConstituentResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATConstituentResponse)
+  // repeated .NodeActiveTickProto.ATSymbol symbols = 1;
+  for (int i = 0; i < this->symbols_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->symbols(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATConstituentResponse)
+  return target;
+}
+
+int ATConstituentResponse::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .NodeActiveTickProto.ATSymbol symbols = 1;
+  total_size += 1 * this->symbols_size();
+  for (int i = 0; i < this->symbols_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->symbols(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATConstituentResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATConstituentResponse* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATConstituentResponse*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATConstituentResponse::MergeFrom(const ATConstituentResponse& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  symbols_.MergeFrom(from.symbols_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATConstituentResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATConstituentResponse::CopyFrom(const ATConstituentResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATConstituentResponse::IsInitialized() const {
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->symbols())) return false;
+  return true;
+}
+
+void ATConstituentResponse::Swap(ATConstituentResponse* other) {
+  if (other != this) {
+    symbols_.Swap(&other->symbols_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATConstituentResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATConstituentResponse_descriptor_;
+  metadata.reflection = ATConstituentResponse_reflection_;
   return metadata;
 }
 
@@ -757,6 +1032,381 @@ void ATServerTime::Swap(ATServerTime* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ATServerTime_descriptor_;
   metadata.reflection = ATServerTime_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATSymbol::kSymbolFieldNumber;
+const int ATSymbol::kSymbolTypeFieldNumber;
+const int ATSymbol::kExchangeTypeFieldNumber;
+const int ATSymbol::kCountryTypeFieldNumber;
+#endif  // !_MSC_VER
+
+ATSymbol::ATSymbol()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATSymbol)
+}
+
+void ATSymbol::InitAsDefaultInstance() {
+}
+
+ATSymbol::ATSymbol(const ATSymbol& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATSymbol)
+}
+
+void ATSymbol::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  symbol_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  symboltype_ = 0;
+  exchangetype_ = 0;
+  countrytype_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATSymbol::~ATSymbol() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATSymbol)
+  SharedDtor();
+}
+
+void ATSymbol::SharedDtor() {
+  if (symbol_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete symbol_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void ATSymbol::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATSymbol::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATSymbol_descriptor_;
+}
+
+const ATSymbol& ATSymbol::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATSymbol* ATSymbol::default_instance_ = NULL;
+
+ATSymbol* ATSymbol::New() const {
+  return new ATSymbol;
+}
+
+void ATSymbol::Clear() {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<ATSymbol*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 15) {
+    ZR_(symboltype_, countrytype_);
+    if (has_symbol()) {
+      if (symbol_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        symbol_->clear();
+      }
+    }
+  }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATSymbol::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATSymbol)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string symbol = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_symbol()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->symbol().data(), this->symbol().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "symbol");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_symbolType;
+        break;
+      }
+
+      // optional int32 symbolType = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_symbolType:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &symboltype_)));
+          set_has_symboltype();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_exchangeType;
+        break;
+      }
+
+      // optional int32 exchangeType = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_exchangeType:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &exchangetype_)));
+          set_has_exchangetype();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_countryType;
+        break;
+      }
+
+      // optional int32 countryType = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_countryType:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &countrytype_)));
+          set_has_countrytype();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATSymbol)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATSymbol)
+  return false;
+#undef DO_
+}
+
+void ATSymbol::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATSymbol)
+  // required string symbol = 1;
+  if (has_symbol()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->symbol().data(), this->symbol().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "symbol");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->symbol(), output);
+  }
+
+  // optional int32 symbolType = 2;
+  if (has_symboltype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->symboltype(), output);
+  }
+
+  // optional int32 exchangeType = 3;
+  if (has_exchangetype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->exchangetype(), output);
+  }
+
+  // optional int32 countryType = 4;
+  if (has_countrytype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->countrytype(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATSymbol)
+}
+
+::google::protobuf::uint8* ATSymbol::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATSymbol)
+  // required string symbol = 1;
+  if (has_symbol()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->symbol().data(), this->symbol().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "symbol");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->symbol(), target);
+  }
+
+  // optional int32 symbolType = 2;
+  if (has_symboltype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->symboltype(), target);
+  }
+
+  // optional int32 exchangeType = 3;
+  if (has_exchangetype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->exchangetype(), target);
+  }
+
+  // optional int32 countryType = 4;
+  if (has_countrytype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->countrytype(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATSymbol)
+  return target;
+}
+
+int ATSymbol::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string symbol = 1;
+    if (has_symbol()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->symbol());
+    }
+
+    // optional int32 symbolType = 2;
+    if (has_symboltype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->symboltype());
+    }
+
+    // optional int32 exchangeType = 3;
+    if (has_exchangetype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->exchangetype());
+    }
+
+    // optional int32 countryType = 4;
+    if (has_countrytype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->countrytype());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATSymbol::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATSymbol* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATSymbol*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATSymbol::MergeFrom(const ATSymbol& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_symbol()) {
+      set_symbol(from.symbol());
+    }
+    if (from.has_symboltype()) {
+      set_symboltype(from.symboltype());
+    }
+    if (from.has_exchangetype()) {
+      set_exchangetype(from.exchangetype());
+    }
+    if (from.has_countrytype()) {
+      set_countrytype(from.countrytype());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATSymbol::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATSymbol::CopyFrom(const ATSymbol& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATSymbol::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void ATSymbol::Swap(ATSymbol* other) {
+  if (other != this) {
+    std::swap(symbol_, other->symbol_);
+    std::swap(symboltype_, other->symboltype_);
+    std::swap(exchangetype_, other->exchangetype_);
+    std::swap(countrytype_, other->countrytype_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATSymbol::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATSymbol_descriptor_;
+  metadata.reflection = ATSymbol_reflection_;
   return metadata;
 }
 

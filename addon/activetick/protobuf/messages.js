@@ -19,6 +19,17 @@
             ]
         },
         {
+            "name": "ATConstituentResponse",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "ATSymbol",
+                    "name": "symbols",
+                    "id": 1
+                }
+            ]
+        },
+        {
             "name": "ATServerTime",
             "fields": [
                 {
@@ -43,6 +54,35 @@
                     "rule": "required",
                     "type": "int32",
                     "name": "day",
+                    "id": 4
+                }
+            ]
+        },
+        {
+            "name": "ATSymbol",
+            "fields": [
+                {
+                    "rule": "required",
+                    "type": "string",
+                    "name": "symbol",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "symbolType",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "exchangeType",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "countryType",
                     "id": 4
                 }
             ]

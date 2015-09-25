@@ -91,6 +91,7 @@ INCS_Release := \
 OBJS := \
 	$(obj).target/$(TARGET)/NodeActiveTickAddon.o \
 	$(obj).target/$(TARGET)/NodeActiveTick.o \
+	$(obj).target/$(TARGET)/Requestor.o \
 	$(obj).target/$(TARGET)/import/atfeed-cppsdk/example/Helper.o \
 	$(obj).target/$(TARGET)/protobuf/messages.pb.o
 
