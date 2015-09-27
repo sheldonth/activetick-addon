@@ -2,7 +2,7 @@
 async = require 'async'
 _ = require 'underscore'
 config = require './config'
-ProtoBuf = require "protobufjs"
+ProtoBuf = require 'protobufjs'
 path = require 'path'
 
 noisy = yes
@@ -47,7 +47,7 @@ main = () ->
   # a.listRequest listType, key
   await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
   await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
-  console.log yang
-  console.log fb
+  console.log yang.symbols.length
+  console.log fb.symbols.length
   
 main() if not module.parent

@@ -31,7 +31,7 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
     symbol->set_countrytype(s.countryType);
   }
   int size = msg->ByteSize(); 
-  void *buffer = malloc(size);
+  void *buffer = new char[size];
   msg->SerializeToArray(buffer, size);
   MessageStruct* m = new MessageStruct();
   m->data_sz = size;
@@ -40,4 +40,13 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
   std::strcpy(m->messageType, "ATConstituentResponse");
   (&NodeActiveTick::s_pInstance->handle)->data = m;
   uv_async_send(&NodeActiveTick::s_pInstance->handle);
+}
+
+void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
+                                        ATStreamResponseType responseType,
+                                        LPATQUOTESTREAM_RESPONSE pResponse,
+                                        uint32_t responseCount)
+{
+  
+
 }

@@ -12,8 +12,14 @@ public:
   Requestor(const uint64_t session);
   virtual ~Requestor(void);
 private:
+  uint64_t session_handle;
   virtual void OnATConstituentListResponse( uint64_t origRequest,
                                             LPATSYMBOL pSymbols,
                                             uint32_t symbolsCount);
-  uint64_t session_handle;
+
+  virtual void OnATQuoteStreamResponse (  uint64_t origRequest,
+                                          ATStreamResponseType responseType,
+                                          LPATQUOTESTREAM_RESPONSE pResponse,
+                                          uint32_t responseCount);
+  
 };

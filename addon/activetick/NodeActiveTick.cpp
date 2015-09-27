@@ -251,7 +251,7 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   msg->set_loginresponsetype((int32_t)p);
   msg->set_loginresponsestring(strLoginResponseType);
   int size = msg->ByteSize(); 
-  void *buffer = malloc(size);
+  void *buffer = new char[size];
   msg->SerializeToArray(buffer, size);
   MessageStruct* m = new MessageStruct();
   m->data_sz = size;
@@ -288,6 +288,7 @@ void NodeActiveTick::DumpData(uv_async_t *handle) {
     Local<Value> argv[argc] = {str, request_id, actualBuffer};
     func->Call(Null(isolate), argc, argv);
   }
+  // TODO: Memory Management
   // uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
 }
 
