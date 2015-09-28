@@ -36,7 +36,7 @@ public:
     uv_async_t handle;
     Requestor* requestor;
     static NodeActiveTick* s_pInstance;
-        
+    
 private:
     explicit NodeActiveTick();
     ~NodeActiveTick();
@@ -49,6 +49,8 @@ private:
     static void Connect(
                   const FunctionCallbackInfo<Value> &args);
     static void ListRequest(
+                  const FunctionCallbackInfo<Value> &args);
+    static void BeginQuoteStream(
                   const FunctionCallbackInfo<Value> &args);
 
     // AT Callbacks

@@ -50,5 +50,4 @@ void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
                                         uint32_t responseCount)
 {
   
-
 }

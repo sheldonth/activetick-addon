@@ -40,6 +40,7 @@ void NodeActiveTick::Init( Handle<Object> exports ) {
     NODE_SET_PROTOTYPE_METHOD(tpl, "fireCallback", FireCallback);
     NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
     NODE_SET_PROTOTYPE_METHOD(tpl, "listRequest", ListRequest);
+    NODE_SET_PROTOTYPE_METHOD(tpl, "beginQuoteStream", BeginQuoteStream);
     
     constructor.Reset(isolate, tpl->GetFunction());
     exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
@@ -260,6 +261,14 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   std::strcpy(m->messageType, "ATLoginResponse");
   (&s_pInstance->handle)->data = m;
   uv_async_send(&s_pInstance->handle);
+}
+
+void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    
+  }
 }
 
 void NodeActiveTick::ATRequestTimeoutCallback( uint64_t hOrigRequest ) {

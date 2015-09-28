@@ -1,25 +1,24 @@
-cmd_Release/obj.target/NodeActiveTickAddon/Requestor.o := c++ '-DNODE_GYP_MODULE_NAME=NodeActiveTickAddon' '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-DBUILDING_NODE_EXTENSION' -I/Users/sheldonthomas/.node-gyp/0.12.7/include/node -I/Users/sheldonthomas/.node-gyp/0.12.7/src -I/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include -I/Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include -I../import/atfeed-cppsdk/include -I../node_modules/nan  -Os -gdwarf-2 -mmacosx-version-min=10.10 -arch x86_64 -Wall -Wendif-labels -W -Wno-unused-parameter -fno-threadsafe-statics -MMD -MF ./Release/.deps/Release/obj.target/NodeActiveTickAddon/Requestor.o.d.raw  -c -o Release/obj.target/NodeActiveTickAddon/Requestor.o ../Requestor.cpp
+cmd_Release/obj.target/NodeActiveTickAddon/Requestor.o := c++ '-DNODE_GYP_MODULE_NAME=NodeActiveTickAddon' '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-DBUILDING_NODE_EXTENSION' -I/Users/sthomas/.node-gyp/0.12.7/src -I/Users/sthomas/.node-gyp/0.12.7/deps/uv/include -I/Users/sthomas/.node-gyp/0.12.7/deps/v8/include -I../import/atfeed-cppsdk/include -I../node_modules/nan  -Os -gdwarf-2 -mmacosx-version-min=10.10 -arch x86_64 -Wall -Wendif-labels -W -Wno-unused-parameter -fno-threadsafe-statics -MMD -MF ./Release/.deps/Release/obj.target/NodeActiveTickAddon/Requestor.o.d.raw  -c -o Release/obj.target/NodeActiveTickAddon/Requestor.o ../Requestor.cpp
 Release/obj.target/NodeActiveTickAddon/Requestor.o: ../Requestor.cpp \
   ../Requestor.h \
   ../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerAPI.h \
   ../import/atfeed-cppsdk/include/Shared/ATServerAPIDefines.h \
   ../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerRequestor.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/src/node.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8stdint.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8config.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/src/node_version.h \
-  ../NodeActiveTick.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/src/node_object_wrap.h \
+  /Users/sthomas/.node-gyp/0.12.7/src/node.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/v8/include/v8.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/v8/include/v8stdint.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/v8/include/v8config.h \
+  /Users/sthomas/.node-gyp/0.12.7/src/node_version.h ../NodeActiveTick.h \
+  /Users/sthomas/.node-gyp/0.12.7/src/node_object_wrap.h \
   ../node_modules/nan/nan.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-errno.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-version.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-unix.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-threadpool.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-darwin.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/src/node_buffer.h \
-  /Users/sheldonthomas/.node-gyp/0.12.7/src/smalloc.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-errno.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-version.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-unix.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-threadpool.h \
+  /Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-darwin.h \
+  /Users/sthomas/.node-gyp/0.12.7/src/node_buffer.h \
+  /Users/sthomas/.node-gyp/0.12.7/src/smalloc.h \
   ../node_modules/nan/nan_callbacks.h \
   ../node_modules/nan/nan_callbacks_12_inl.h \
   ../node_modules/nan/nan_maybe_pre_43_inl.h \
@@ -35,22 +34,22 @@ Release/obj.target/NodeActiveTickAddon/Requestor.o: ../Requestor.cpp \
 ../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerAPI.h:
 ../import/atfeed-cppsdk/include/Shared/ATServerAPIDefines.h:
 ../import/atfeed-cppsdk/include/ActiveTickServerAPI/ActiveTickServerRequestor.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/src/node.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8stdint.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/v8/include/v8config.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/src/node_version.h:
+/Users/sthomas/.node-gyp/0.12.7/src/node.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/v8/include/v8.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/v8/include/v8stdint.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/v8/include/v8config.h:
+/Users/sthomas/.node-gyp/0.12.7/src/node_version.h:
 ../NodeActiveTick.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/src/node_object_wrap.h:
+/Users/sthomas/.node-gyp/0.12.7/src/node_object_wrap.h:
 ../node_modules/nan/nan.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-errno.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-version.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-unix.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-threadpool.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/deps/uv/include/uv-darwin.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/src/node_buffer.h:
-/Users/sheldonthomas/.node-gyp/0.12.7/src/smalloc.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-errno.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-version.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-unix.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-threadpool.h:
+/Users/sthomas/.node-gyp/0.12.7/deps/uv/include/uv-darwin.h:
+/Users/sthomas/.node-gyp/0.12.7/src/node_buffer.h:
+/Users/sthomas/.node-gyp/0.12.7/src/smalloc.h:
 ../node_modules/nan/nan_callbacks.h:
 ../node_modules/nan/nan_callbacks_12_inl.h:
 ../node_modules/nan/nan_maybe_pre_43_inl.h:

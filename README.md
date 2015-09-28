@@ -6,10 +6,16 @@
 - 'node-gyp rebuild' from inside /container
 - 'iced container/ActiveTick.iced' to test connection and download sample quote
 
-#### Milestone
+#### To-Do
 - Remove json queue polling as inter-language communication mechanism
-  - Google protobufs
   - 0MQ
+  - Support every API method
+  - Pass a callback for streaming updates, and the response to begin streaming updates
+    - keep the streaming update callback alive for the duration
+    - keep a separate libuv interrupter around
+  - Memory Management
+    - CPP: delete *pointer;
+  - Usage documentation
 
 # .getSessionHandle()
 # .closeAllATRequests()
