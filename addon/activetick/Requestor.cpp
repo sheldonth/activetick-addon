@@ -42,6 +42,8 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
   uv_async_send(&NodeActiveTick::s_pInstance->handle);
 }
 
+// Response that tells you whether your stream request was accepted
+// Actual stream callbacks are sent are in ActiveTickStreamListener::OnATStream*
 void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
                                         ATStreamResponseType responseType,
                                         LPATQUOTESTREAM_RESPONSE pResponse,
