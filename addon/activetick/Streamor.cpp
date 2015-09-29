@@ -1,3 +1,5 @@
+// Copyright 2015 Sheldon Thomas
+
 #include "Requestor.h"
 #include <fstream>
 #include <stdio.h>
@@ -10,18 +12,26 @@
 
 using namespace v8;
 
-void ActiveTickStreamListener::OnATStreamTradeUpdate (LPATQUOTESTREAM_TRADE_UPDATE pUpdate) {
+Streamor::Streamor(const uint64_t session) : ActiveTickStreamListener(session), Requestor(session) {
+  session_handle = session;
+}
+
+Streamor::~Streamor() {
   
 }
 
-void ActiveTickStreamListener::OnATStreamQuoteUpdate (LPATQUOTESTREAM_QUOTE_UPDATE pUpdate) {
+void Streamor::OnATStreamTradeUpdate (LPATQUOTESTREAM_TRADE_UPDATE pUpdate) {
   
 }
 
-void ActiveTickStreamListener::OnATStreamRefreshUpdate (LPATQUOTESTREAM_REFRESH_UPDATE pUpdate) {
+void Streamor::OnATStreamQuoteUpdate (LPATQUOTESTREAM_QUOTE_UPDATE pUpdate) {
   
 }
 
-void ActiveTickStreamListener::OnATStreamTopMarketMoversUpdate (LPATMARKET_MOVERS_STREAM_UPDATE pUpdate) {
+void Streamor::OnATStreamRefreshUpdate (LPATQUOTESTREAM_REFRESH_UPDATE pUpdate) {
+  
+}
+
+void Streamor::OnATStreamTopMarketMoversUpdate (LPATMARKET_MOVERS_STREAM_UPDATE pUpdate) {
   
 }

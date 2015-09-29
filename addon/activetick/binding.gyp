@@ -5,6 +5,7 @@
       "sources": [  "NodeActiveTickAddon.cpp",
                     "NodeActiveTick.cpp",
                     "Requestor.cpp",
+                    "Streamor.cpp",
                     "import/atfeed-cppsdk/example/Helper.cpp",
                     "protobuf/messages.pb.cc"
                  ],

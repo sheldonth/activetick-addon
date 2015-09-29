@@ -9,6 +9,11 @@ message ATConstituentResponse {
   repeated ATSymbol symbols = 1;
 }
 
+message ATQuoteStreamResponse {
+  optional int32 quoteStreamResponseType = 1;
+  optional int32 quoteResponseCount = 2;
+}
+
 message ATServerTime {
   required int32 year = 1;
   required int32 month = 2;
@@ -22,3 +27,23 @@ message ATSymbol {
   optional int32 exchangeType = 3;
   optional int32 countryType = 4;
 }
+
+message ATPrice {
+  required double price = 1;
+  required int32 precision = 2;
+}
+
+message ATQuote {
+  required ATSymbol symbol = 1;
+  required ATPrice bidPrice = 2;
+  required ATPrice askPrice = 3;
+  optional int32 bidSize = 4;
+  optional int32 askSize = 5;
+  optional int32 quoteConditionId = 6;
+  optional ATServerTime serverTime = 7;
+  optional int32 bidExchangeId = 8;
+  optional int32 askExchangeId = 9;
+}
+
+
+

@@ -1,15 +1,25 @@
+// Copyright 2015 Sheldon Thomas
+
 #pragma once
 #include "Requestor.h"
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
 #include <ActiveTickServerAPI/ActiveTickServerRequestor.h>
+#include <ActiveTickServerAPI/ActiveTickStreamListener.h>
 #include <node.h>
 
 using namespace v8;
 
-class Streamer : public ActiveTickStreamListener, public Requestor
+class Streamor : public ActiveTickStreamListener, public Requestor
 {
-  virtual ACTIVETICKSERVERAPI_API void ActiveTickStreamListener::OnATStreamTradeUpdate (LPATQUOTESTREAM_TRADE_UPDATE pUpdate);
-  virtual ACTIVETICKSERVERAPI_API void ActiveTickStreamListener::OnATStreamQuoteUpdate (LPATQUOTESTREAM_QUOTE_UPDATE pUpdate);
-  virtual ACTIVETICKSERVERAPI_API void ActiveTickStreamListener::OnATStreamRefreshUpdate (LPATQUOTESTREAM_REFRESH_UPDATE pUpdate);
-  virtual ACTIVETICKSERVERAPI_API void ActiveTickStreamListener::OnATStreamTopMarketMoversUpdate (LPATMARKET_MOVERS_STREAM_UPDATE pUpdate);
-}
+  public:
+    Streamor(const uint64_t session);
+    virtual ~Streamor(void);
+  
+  private:
+    uint64_t session_handle;
+
+  virtual ACTIVETICKSERVERAPI_API void OnATStreamTradeUpdate (LPATQUOTESTREAM_TRADE_UPDATE pUpdate);
+  virtual ACTIVETICKSERVERAPI_API void OnATStreamQuoteUpdate (LPATQUOTESTREAM_QUOTE_UPDATE pUpdate);
+  virtual ACTIVETICKSERVERAPI_API void OnATStreamRefreshUpdate (LPATQUOTESTREAM_REFRESH_UPDATE pUpdate);
+  virtual ACTIVETICKSERVERAPI_API void OnATStreamTopMarketMoversUpdate (LPATMARKET_MOVERS_STREAM_UPDATE pUpdate);
+};

@@ -35,8 +35,11 @@ void protobuf_ShutdownFile_messages_2eproto();
 
 class ATLoginResponse;
 class ATConstituentResponse;
+class ATQuoteStreamResponse;
 class ATServerTime;
 class ATSymbol;
+class ATPrice;
+class ATQuote;
 
 // ===================================================================
 
@@ -213,6 +216,95 @@ class ATConstituentResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ATConstituentResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteStreamResponse : public ::google::protobuf::Message {
+ public:
+  ATQuoteStreamResponse();
+  virtual ~ATQuoteStreamResponse();
+
+  ATQuoteStreamResponse(const ATQuoteStreamResponse& from);
+
+  inline ATQuoteStreamResponse& operator=(const ATQuoteStreamResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteStreamResponse& default_instance();
+
+  void Swap(ATQuoteStreamResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteStreamResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteStreamResponse& from);
+  void MergeFrom(const ATQuoteStreamResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 quoteStreamResponseType = 1;
+  inline bool has_quotestreamresponsetype() const;
+  inline void clear_quotestreamresponsetype();
+  static const int kQuoteStreamResponseTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 quotestreamresponsetype() const;
+  inline void set_quotestreamresponsetype(::google::protobuf::int32 value);
+
+  // optional int32 quoteResponseCount = 2;
+  inline bool has_quoteresponsecount() const;
+  inline void clear_quoteresponsecount();
+  static const int kQuoteResponseCountFieldNumber = 2;
+  inline ::google::protobuf::int32 quoteresponsecount() const;
+  inline void set_quoteresponsecount(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamResponse)
+ private:
+  inline void set_has_quotestreamresponsetype();
+  inline void clear_has_quotestreamresponsetype();
+  inline void set_has_quoteresponsecount();
+  inline void clear_has_quoteresponsecount();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 quotestreamresponsetype_;
+  ::google::protobuf::int32 quoteresponsecount_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteStreamResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -437,6 +529,262 @@ class ATSymbol : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static ATSymbol* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class ATPrice : public ::google::protobuf::Message {
+ public:
+  ATPrice();
+  virtual ~ATPrice();
+
+  ATPrice(const ATPrice& from);
+
+  inline ATPrice& operator=(const ATPrice& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATPrice& default_instance();
+
+  void Swap(ATPrice* other);
+
+  // implements Message ----------------------------------------------
+
+  ATPrice* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATPrice& from);
+  void MergeFrom(const ATPrice& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required double price = 1;
+  inline bool has_price() const;
+  inline void clear_price();
+  static const int kPriceFieldNumber = 1;
+  inline double price() const;
+  inline void set_price(double value);
+
+  // required int32 precision = 2;
+  inline bool has_precision() const;
+  inline void clear_precision();
+  static const int kPrecisionFieldNumber = 2;
+  inline ::google::protobuf::int32 precision() const;
+  inline void set_precision(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATPrice)
+ private:
+  inline void set_has_price();
+  inline void clear_has_price();
+  inline void set_has_precision();
+  inline void clear_has_precision();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  double price_;
+  ::google::protobuf::int32 precision_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATPrice* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuote : public ::google::protobuf::Message {
+ public:
+  ATQuote();
+  virtual ~ATQuote();
+
+  ATQuote(const ATQuote& from);
+
+  inline ATQuote& operator=(const ATQuote& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuote& default_instance();
+
+  void Swap(ATQuote* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuote* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuote& from);
+  void MergeFrom(const ATQuote& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .NodeActiveTickProto.ATSymbol symbol = 1;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
+
+  // required .NodeActiveTickProto.ATPrice bidPrice = 2;
+  inline bool has_bidprice() const;
+  inline void clear_bidprice();
+  static const int kBidPriceFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATPrice& bidprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_bidprice();
+  inline ::NodeActiveTickProto::ATPrice* release_bidprice();
+  inline void set_allocated_bidprice(::NodeActiveTickProto::ATPrice* bidprice);
+
+  // required .NodeActiveTickProto.ATPrice askPrice = 3;
+  inline bool has_askprice() const;
+  inline void clear_askprice();
+  static const int kAskPriceFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATPrice& askprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_askprice();
+  inline ::NodeActiveTickProto::ATPrice* release_askprice();
+  inline void set_allocated_askprice(::NodeActiveTickProto::ATPrice* askprice);
+
+  // optional int32 bidSize = 4;
+  inline bool has_bidsize() const;
+  inline void clear_bidsize();
+  static const int kBidSizeFieldNumber = 4;
+  inline ::google::protobuf::int32 bidsize() const;
+  inline void set_bidsize(::google::protobuf::int32 value);
+
+  // optional int32 askSize = 5;
+  inline bool has_asksize() const;
+  inline void clear_asksize();
+  static const int kAskSizeFieldNumber = 5;
+  inline ::google::protobuf::int32 asksize() const;
+  inline void set_asksize(::google::protobuf::int32 value);
+
+  // optional int32 quoteConditionId = 6;
+  inline bool has_quoteconditionid() const;
+  inline void clear_quoteconditionid();
+  static const int kQuoteConditionIdFieldNumber = 6;
+  inline ::google::protobuf::int32 quoteconditionid() const;
+  inline void set_quoteconditionid(::google::protobuf::int32 value);
+
+  // optional .NodeActiveTickProto.ATServerTime serverTime = 7;
+  inline bool has_servertime() const;
+  inline void clear_servertime();
+  static const int kServerTimeFieldNumber = 7;
+  inline const ::NodeActiveTickProto::ATServerTime& servertime() const;
+  inline ::NodeActiveTickProto::ATServerTime* mutable_servertime();
+  inline ::NodeActiveTickProto::ATServerTime* release_servertime();
+  inline void set_allocated_servertime(::NodeActiveTickProto::ATServerTime* servertime);
+
+  // optional int32 bidExchangeId = 8;
+  inline bool has_bidexchangeid() const;
+  inline void clear_bidexchangeid();
+  static const int kBidExchangeIdFieldNumber = 8;
+  inline ::google::protobuf::int32 bidexchangeid() const;
+  inline void set_bidexchangeid(::google::protobuf::int32 value);
+
+  // optional int32 askExchangeId = 9;
+  inline bool has_askexchangeid() const;
+  inline void clear_askexchangeid();
+  static const int kAskExchangeIdFieldNumber = 9;
+  inline ::google::protobuf::int32 askexchangeid() const;
+  inline void set_askexchangeid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuote)
+ private:
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_bidprice();
+  inline void clear_has_bidprice();
+  inline void set_has_askprice();
+  inline void clear_has_askprice();
+  inline void set_has_bidsize();
+  inline void clear_has_bidsize();
+  inline void set_has_asksize();
+  inline void clear_has_asksize();
+  inline void set_has_quoteconditionid();
+  inline void clear_has_quoteconditionid();
+  inline void set_has_servertime();
+  inline void clear_has_servertime();
+  inline void set_has_bidexchangeid();
+  inline void clear_has_bidexchangeid();
+  inline void set_has_askexchangeid();
+  inline void clear_has_askexchangeid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::NodeActiveTickProto::ATPrice* bidprice_;
+  ::NodeActiveTickProto::ATPrice* askprice_;
+  ::google::protobuf::int32 bidsize_;
+  ::google::protobuf::int32 asksize_;
+  ::NodeActiveTickProto::ATServerTime* servertime_;
+  ::google::protobuf::int32 quoteconditionid_;
+  ::google::protobuf::int32 bidexchangeid_;
+  ::google::protobuf::int32 askexchangeid_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuote* default_instance_;
+};
 // ===================================================================
 
 
@@ -576,6 +924,58 @@ inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATSymbol >*
 ATConstituentResponse::mutable_symbols() {
   // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATConstituentResponse.symbols)
   return &symbols_;
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteStreamResponse
+
+// optional int32 quoteStreamResponseType = 1;
+inline bool ATQuoteStreamResponse::has_quotestreamresponsetype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteStreamResponse::set_has_quotestreamresponsetype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteStreamResponse::clear_has_quotestreamresponsetype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteStreamResponse::clear_quotestreamresponsetype() {
+  quotestreamresponsetype_ = 0;
+  clear_has_quotestreamresponsetype();
+}
+inline ::google::protobuf::int32 ATQuoteStreamResponse::quotestreamresponsetype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+  return quotestreamresponsetype_;
+}
+inline void ATQuoteStreamResponse::set_quotestreamresponsetype(::google::protobuf::int32 value) {
+  set_has_quotestreamresponsetype();
+  quotestreamresponsetype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+}
+
+// optional int32 quoteResponseCount = 2;
+inline bool ATQuoteStreamResponse::has_quoteresponsecount() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteStreamResponse::set_has_quoteresponsecount() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteStreamResponse::clear_has_quoteresponsecount() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteStreamResponse::clear_quoteresponsecount() {
+  quoteresponsecount_ = 0;
+  clear_has_quoteresponsecount();
+}
+inline ::google::protobuf::int32 ATQuoteStreamResponse::quoteresponsecount() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponse.quoteResponseCount)
+  return quoteresponsecount_;
+}
+inline void ATQuoteStreamResponse::set_quoteresponsecount(::google::protobuf::int32 value) {
+  set_has_quoteresponsecount();
+  quoteresponsecount_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponse.quoteResponseCount)
 }
 
 // -------------------------------------------------------------------
@@ -828,6 +1228,346 @@ inline void ATSymbol::set_countrytype(::google::protobuf::int32 value) {
   set_has_countrytype();
   countrytype_ = value;
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.countryType)
+}
+
+// -------------------------------------------------------------------
+
+// ATPrice
+
+// required double price = 1;
+inline bool ATPrice::has_price() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATPrice::set_has_price() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATPrice::clear_has_price() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATPrice::clear_price() {
+  price_ = 0;
+  clear_has_price();
+}
+inline double ATPrice::price() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATPrice.price)
+  return price_;
+}
+inline void ATPrice::set_price(double value) {
+  set_has_price();
+  price_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATPrice.price)
+}
+
+// required int32 precision = 2;
+inline bool ATPrice::has_precision() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATPrice::set_has_precision() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATPrice::clear_has_precision() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATPrice::clear_precision() {
+  precision_ = 0;
+  clear_has_precision();
+}
+inline ::google::protobuf::int32 ATPrice::precision() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATPrice.precision)
+  return precision_;
+}
+inline void ATPrice::set_precision(::google::protobuf::int32 value) {
+  set_has_precision();
+  precision_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATPrice.precision)
+}
+
+// -------------------------------------------------------------------
+
+// ATQuote
+
+// required .NodeActiveTickProto.ATSymbol symbol = 1;
+inline bool ATQuote::has_symbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuote::set_has_symbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuote::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuote::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATQuote::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuote::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuote.symbol)
+  return symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuote::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
+  return temp;
+}
+inline void ATQuote::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
+  } else {
+    clear_has_symbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuote.symbol)
+}
+
+// required .NodeActiveTickProto.ATPrice bidPrice = 2;
+inline bool ATQuote::has_bidprice() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuote::set_has_bidprice() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuote::clear_has_bidprice() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuote::clear_bidprice() {
+  if (bidprice_ != NULL) bidprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_bidprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuote::bidprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.bidPrice)
+  return bidprice_ != NULL ? *bidprice_ : *default_instance_->bidprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuote::mutable_bidprice() {
+  set_has_bidprice();
+  if (bidprice_ == NULL) bidprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuote.bidPrice)
+  return bidprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuote::release_bidprice() {
+  clear_has_bidprice();
+  ::NodeActiveTickProto::ATPrice* temp = bidprice_;
+  bidprice_ = NULL;
+  return temp;
+}
+inline void ATQuote::set_allocated_bidprice(::NodeActiveTickProto::ATPrice* bidprice) {
+  delete bidprice_;
+  bidprice_ = bidprice;
+  if (bidprice) {
+    set_has_bidprice();
+  } else {
+    clear_has_bidprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuote.bidPrice)
+}
+
+// required .NodeActiveTickProto.ATPrice askPrice = 3;
+inline bool ATQuote::has_askprice() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATQuote::set_has_askprice() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATQuote::clear_has_askprice() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATQuote::clear_askprice() {
+  if (askprice_ != NULL) askprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_askprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuote::askprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.askPrice)
+  return askprice_ != NULL ? *askprice_ : *default_instance_->askprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuote::mutable_askprice() {
+  set_has_askprice();
+  if (askprice_ == NULL) askprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuote.askPrice)
+  return askprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuote::release_askprice() {
+  clear_has_askprice();
+  ::NodeActiveTickProto::ATPrice* temp = askprice_;
+  askprice_ = NULL;
+  return temp;
+}
+inline void ATQuote::set_allocated_askprice(::NodeActiveTickProto::ATPrice* askprice) {
+  delete askprice_;
+  askprice_ = askprice;
+  if (askprice) {
+    set_has_askprice();
+  } else {
+    clear_has_askprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuote.askPrice)
+}
+
+// optional int32 bidSize = 4;
+inline bool ATQuote::has_bidsize() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATQuote::set_has_bidsize() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATQuote::clear_has_bidsize() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATQuote::clear_bidsize() {
+  bidsize_ = 0;
+  clear_has_bidsize();
+}
+inline ::google::protobuf::int32 ATQuote::bidsize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.bidSize)
+  return bidsize_;
+}
+inline void ATQuote::set_bidsize(::google::protobuf::int32 value) {
+  set_has_bidsize();
+  bidsize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.bidSize)
+}
+
+// optional int32 askSize = 5;
+inline bool ATQuote::has_asksize() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATQuote::set_has_asksize() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATQuote::clear_has_asksize() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATQuote::clear_asksize() {
+  asksize_ = 0;
+  clear_has_asksize();
+}
+inline ::google::protobuf::int32 ATQuote::asksize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.askSize)
+  return asksize_;
+}
+inline void ATQuote::set_asksize(::google::protobuf::int32 value) {
+  set_has_asksize();
+  asksize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.askSize)
+}
+
+// optional int32 quoteConditionId = 6;
+inline bool ATQuote::has_quoteconditionid() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATQuote::set_has_quoteconditionid() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATQuote::clear_has_quoteconditionid() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATQuote::clear_quoteconditionid() {
+  quoteconditionid_ = 0;
+  clear_has_quoteconditionid();
+}
+inline ::google::protobuf::int32 ATQuote::quoteconditionid() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.quoteConditionId)
+  return quoteconditionid_;
+}
+inline void ATQuote::set_quoteconditionid(::google::protobuf::int32 value) {
+  set_has_quoteconditionid();
+  quoteconditionid_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.quoteConditionId)
+}
+
+// optional .NodeActiveTickProto.ATServerTime serverTime = 7;
+inline bool ATQuote::has_servertime() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATQuote::set_has_servertime() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATQuote::clear_has_servertime() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATQuote::clear_servertime() {
+  if (servertime_ != NULL) servertime_->::NodeActiveTickProto::ATServerTime::Clear();
+  clear_has_servertime();
+}
+inline const ::NodeActiveTickProto::ATServerTime& ATQuote::servertime() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.serverTime)
+  return servertime_ != NULL ? *servertime_ : *default_instance_->servertime_;
+}
+inline ::NodeActiveTickProto::ATServerTime* ATQuote::mutable_servertime() {
+  set_has_servertime();
+  if (servertime_ == NULL) servertime_ = new ::NodeActiveTickProto::ATServerTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuote.serverTime)
+  return servertime_;
+}
+inline ::NodeActiveTickProto::ATServerTime* ATQuote::release_servertime() {
+  clear_has_servertime();
+  ::NodeActiveTickProto::ATServerTime* temp = servertime_;
+  servertime_ = NULL;
+  return temp;
+}
+inline void ATQuote::set_allocated_servertime(::NodeActiveTickProto::ATServerTime* servertime) {
+  delete servertime_;
+  servertime_ = servertime;
+  if (servertime) {
+    set_has_servertime();
+  } else {
+    clear_has_servertime();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuote.serverTime)
+}
+
+// optional int32 bidExchangeId = 8;
+inline bool ATQuote::has_bidexchangeid() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ATQuote::set_has_bidexchangeid() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ATQuote::clear_has_bidexchangeid() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ATQuote::clear_bidexchangeid() {
+  bidexchangeid_ = 0;
+  clear_has_bidexchangeid();
+}
+inline ::google::protobuf::int32 ATQuote::bidexchangeid() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.bidExchangeId)
+  return bidexchangeid_;
+}
+inline void ATQuote::set_bidexchangeid(::google::protobuf::int32 value) {
+  set_has_bidexchangeid();
+  bidexchangeid_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.bidExchangeId)
+}
+
+// optional int32 askExchangeId = 9;
+inline bool ATQuote::has_askexchangeid() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ATQuote::set_has_askexchangeid() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void ATQuote::clear_has_askexchangeid() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void ATQuote::clear_askexchangeid() {
+  askexchangeid_ = 0;
+  clear_has_askexchangeid();
+}
+inline ::google::protobuf::int32 ATQuote::askexchangeid() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.askExchangeId)
+  return askexchangeid_;
+}
+inline void ATQuote::set_askexchangeid(::google::protobuf::int32 value) {
+  set_has_askexchangeid();
+  askexchangeid_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.askExchangeId)
 }
 
 

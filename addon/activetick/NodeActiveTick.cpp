@@ -9,6 +9,7 @@
 #include <nan.h>
 #include <uv.h>
 #include "NodeActiveTick.h"
+#include "Streamor.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 
 #define debug 0
@@ -22,6 +23,7 @@ NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
   requestor = new Requestor(session_handle);
+  // streamor = new Streamor(session_handle);
   uv_async_init(uv_default_loop(), &handle, DumpData);
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 }
@@ -172,31 +174,42 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
 void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
 {
   Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
-  
-  Local<String> list_type = args[0]->ToString();
-  Local<String> symbol = args[1]->ToString();
-  char cstr_list_type[list_type->Utf8Length()];
-  char cstr_symbol[symbol->Utf8Length()];
-  list_type->WriteUtf8(cstr_list_type);
-  symbol->WriteUtf8(cstr_symbol);
-  wchar16_t wchar_symbol[50];
-  Helper::ConvertString(cstr_symbol, wchar_symbol, sizeof(wchar_symbol));
-  ATConstituentListType type;
-  if (strcmp(cstr_list_type, "ATConstituentListIndex") == 0) {
-    type = ATConstituentListIndex;
+  if (isolate) {
+    HandleScope scope(isolate);
+
+    Local<String> list_type = args[0]->ToString();
+    Local<String> symbol = args[1]->ToString();
+    char cstr_list_type[list_type->Utf8Length()];
+    char cstr_symbol[symbol->Utf8Length()];
+    list_type->WriteUtf8(cstr_list_type);
+    symbol->WriteUtf8(cstr_symbol);
+    wchar16_t wchar_symbol[50];
+    Helper::ConvertString(cstr_symbol, wchar_symbol, sizeof(wchar_symbol));
+    ATConstituentListType type;
+    if (strcmp(cstr_list_type, "ATConstituentListIndex") == 0) {
+      type = ATConstituentListIndex;
+    }
+    else if (strcmp(cstr_list_type, "ATConstituentListSector") == 0) {
+      type = ATConstituentListSector;
+    }
+    else if (strcmp(cstr_list_type, "ATConstituentListOptionChain") == 0) {
+      type = ATConstituentListOptionChain;
+    }
+    else {
+      type = ATConstituentListIndex;
+    }
+    s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
+    args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
   }
-  else if (strcmp(cstr_list_type, "ATConstituentListSector") == 0) {
-    type = ATConstituentListSector;
+}
+
+void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
+    Local<String> list_type = args[0]->ToString();
   }
-  else if (strcmp(cstr_list_type, "ATConstituentListOptionChain") == 0) {
-    type = ATConstituentListOptionChain;
-  }
-  else {
-    type = ATConstituentListIndex;
-  }
-  s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
-  args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));  
 }
 
 
@@ -261,14 +274,6 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   std::strcpy(m->messageType, "ATLoginResponse");
   (&s_pInstance->handle)->data = m;
   uv_async_send(&s_pInstance->handle);
-}
-
-void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
-  Isolate* isolate = Isolate::GetCurrent();
-  if (isolate) {
-    HandleScope scope(isolate);
-    
-  }
 }
 
 void NodeActiveTick::ATRequestTimeoutCallback( uint64_t hOrigRequest ) {

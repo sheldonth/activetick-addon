@@ -8,6 +8,7 @@
 #include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 #include "Requestor.h"
+#include "Streamor.h"
 
 using namespace v8;
 
@@ -35,6 +36,7 @@ public:
     Nan::Callback *nan_cb;
     uv_async_t handle;
     Requestor* requestor;
+    Streamor* streamor;
     static NodeActiveTick* s_pInstance;
     
 private:

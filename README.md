@@ -17,6 +17,9 @@
     - CPP: delete *pointer;
   - Usage documentation
 
+#### Notes
+- What if it crawled?
+
 # .getSessionHandle()
 # .closeAllATRequests()
 # .closeATRequest()
