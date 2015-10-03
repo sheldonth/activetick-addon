@@ -15,7 +15,7 @@ DEFS_Debug := \
 CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.11 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -57,7 +57,7 @@ DEFS_Release := \
 CFLAGS_Release := \
 	-Os \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.11 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -92,7 +92,6 @@ OBJS := \
 	$(obj).target/$(TARGET)/NodeActiveTickAddon.o \
 	$(obj).target/$(TARGET)/NodeActiveTick.o \
 	$(obj).target/$(TARGET)/Requestor.o \
-	$(obj).target/$(TARGET)/Streamor.o \
 	$(obj).target/$(TARGET)/import/atfeed-cppsdk/example/Helper.o \
 	$(obj).target/$(TARGET)/protobuf/messages.pb.o
 
@@ -134,7 +133,7 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.11 \
 	-arch x86_64 \
 	-L$(builddir)
 
@@ -145,7 +144,7 @@ LIBTOOLFLAGS_Debug := \
 LDFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.11 \
 	-arch x86_64 \
 	-L$(builddir)
 

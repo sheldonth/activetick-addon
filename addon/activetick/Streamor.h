@@ -1,4 +1,5 @@
 // Copyright 2015 Sheldon Thomas
+// File Not currently active
 
 #pragma once
 #include "Requestor.h"
@@ -9,10 +10,11 @@
 
 using namespace v8;
 
-class Streamor : public ActiveTickStreamListener, public Requestor
+class Streamor : public ActiveTickStreamListener,
+                 public Requestor
 {
   public:
-    Streamor(const uint64_t session);
+    Streamor();
     virtual ~Streamor(void);
   
   private:

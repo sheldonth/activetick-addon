@@ -16,6 +16,8 @@
   - Memory Management
     - CPP: delete *pointer;
   - Usage documentation
+  - 1), you can create a debug build of your addon by adding the --debug switch when running node-gyp (note that it will be built into build/Debug instead of build/Release).
+  
 
 #### Notes
 - What if it crawled?

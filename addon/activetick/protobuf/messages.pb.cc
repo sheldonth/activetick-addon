@@ -233,7 +233,7 @@ void protobuf_AddDesc_messages_2eproto() {
     "nstituentResponse\022.\n\007symbols\030\001 \003(\0132\035.Nod"
     "eActiveTickProto.ATSymbol\"T\n\025ATQuoteStre"
     "amResponse\022\037\n\027quoteStreamResponseType\030\001 "
-    "\001(\005\022\032\n\022quoteResponseCount\030\002 \001(\005\"K\n\014ATSer"
+    "\001(\t\022\032\n\022quoteResponseCount\030\002 \001(\005\"K\n\014ATSer"
     "verTime\022\014\n\004year\030\001 \002(\005\022\r\n\005month\030\002 \002(\005\022\021\n\t"
     "dayOfWeek\030\003 \002(\005\022\013\n\003day\030\004 \002(\005\"Y\n\010ATSymbol"
     "\022\016\n\006symbol\030\001 \002(\t\022\022\n\nsymbolType\030\002 \001(\005\022\024\n\014"
@@ -802,8 +802,9 @@ ATQuoteStreamResponse::ATQuoteStreamResponse(const ATQuoteStreamResponse& from)
 }
 
 void ATQuoteStreamResponse::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  quotestreamresponsetype_ = 0;
+  quotestreamresponsetype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   quoteresponsecount_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -814,6 +815,9 @@ ATQuoteStreamResponse::~ATQuoteStreamResponse() {
 }
 
 void ATQuoteStreamResponse::SharedDtor() {
+  if (quotestreamresponsetype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete quotestreamresponsetype_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -840,21 +844,14 @@ ATQuoteStreamResponse* ATQuoteStreamResponse::New() const {
 }
 
 void ATQuoteStreamResponse::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<ATQuoteStreamResponse*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
-  ZR_(quotestreamresponsetype_, quoteresponsecount_);
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_quotestreamresponsetype()) {
+      if (quotestreamresponsetype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        quotestreamresponsetype_->clear();
+      }
+    }
+    quoteresponsecount_ = 0;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -869,13 +866,15 @@ bool ATQuoteStreamResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional int32 quoteStreamResponseType = 1;
+      // optional string quoteStreamResponseType = 1;
       case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &quotestreamresponsetype_)));
-          set_has_quotestreamresponsetype();
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_quotestreamresponsetype()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->quotestreamresponsetype().data(), this->quotestreamresponsetype().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "quotestreamresponsetype");
         } else {
           goto handle_unusual;
         }
@@ -923,9 +922,14 @@ failure:
 void ATQuoteStreamResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATQuoteStreamResponse)
-  // optional int32 quoteStreamResponseType = 1;
+  // optional string quoteStreamResponseType = 1;
   if (has_quotestreamresponsetype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->quotestreamresponsetype(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->quotestreamresponsetype().data(), this->quotestreamresponsetype().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "quotestreamresponsetype");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->quotestreamresponsetype(), output);
   }
 
   // optional int32 quoteResponseCount = 2;
@@ -943,9 +947,15 @@ void ATQuoteStreamResponse::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ATQuoteStreamResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATQuoteStreamResponse)
-  // optional int32 quoteStreamResponseType = 1;
+  // optional string quoteStreamResponseType = 1;
   if (has_quotestreamresponsetype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->quotestreamresponsetype(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->quotestreamresponsetype().data(), this->quotestreamresponsetype().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "quotestreamresponsetype");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->quotestreamresponsetype(), target);
   }
 
   // optional int32 quoteResponseCount = 2;
@@ -965,10 +975,10 @@ int ATQuoteStreamResponse::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional int32 quoteStreamResponseType = 1;
+    // optional string quoteStreamResponseType = 1;
     if (has_quotestreamresponsetype()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->quotestreamresponsetype());
     }
 

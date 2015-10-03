@@ -8,7 +8,6 @@
 #include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 #include "Requestor.h"
-#include "Streamor.h"
 
 using namespace v8;
 
@@ -24,7 +23,7 @@ public:
     static void Init(Handle<Object> exports);
     static void New (const FunctionCallbackInfo<Value> &args);
     Persistent<Function> p_dataCallback;
-    uint64_t    session_handle;    
+    uint64_t    session_handle;
     uint64_t    m_hLastRequest;
     char        m_userid[50];
     char        m_password[50];
@@ -36,7 +35,6 @@ public:
     Nan::Callback *nan_cb;
     uv_async_t handle;
     Requestor* requestor;
-    Streamor* streamor;
     static NodeActiveTick* s_pInstance;
     
 private:
@@ -54,8 +52,9 @@ private:
                   const FunctionCallbackInfo<Value> &args);
     static void BeginQuoteStream(
                   const FunctionCallbackInfo<Value> &args);
-
+    
     // AT Callbacks
+    static void ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate);
     static void ATSessionStatusChangeCallback(
                   uint64_t hSession,
                   ATSessionStatusType statusType);

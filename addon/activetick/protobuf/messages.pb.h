@@ -272,12 +272,17 @@ class ATQuoteStreamResponse : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional int32 quoteStreamResponseType = 1;
+  // optional string quoteStreamResponseType = 1;
   inline bool has_quotestreamresponsetype() const;
   inline void clear_quotestreamresponsetype();
   static const int kQuoteStreamResponseTypeFieldNumber = 1;
-  inline ::google::protobuf::int32 quotestreamresponsetype() const;
-  inline void set_quotestreamresponsetype(::google::protobuf::int32 value);
+  inline const ::std::string& quotestreamresponsetype() const;
+  inline void set_quotestreamresponsetype(const ::std::string& value);
+  inline void set_quotestreamresponsetype(const char* value);
+  inline void set_quotestreamresponsetype(const char* value, size_t size);
+  inline ::std::string* mutable_quotestreamresponsetype();
+  inline ::std::string* release_quotestreamresponsetype();
+  inline void set_allocated_quotestreamresponsetype(::std::string* quotestreamresponsetype);
 
   // optional int32 quoteResponseCount = 2;
   inline bool has_quoteresponsecount() const;
@@ -297,7 +302,7 @@ class ATQuoteStreamResponse : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int32 quotestreamresponsetype_;
+  ::std::string* quotestreamresponsetype_;
   ::google::protobuf::int32 quoteresponsecount_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
@@ -930,7 +935,7 @@ ATConstituentResponse::mutable_symbols() {
 
 // ATQuoteStreamResponse
 
-// optional int32 quoteStreamResponseType = 1;
+// optional string quoteStreamResponseType = 1;
 inline bool ATQuoteStreamResponse::has_quotestreamresponsetype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -941,17 +946,69 @@ inline void ATQuoteStreamResponse::clear_has_quotestreamresponsetype() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void ATQuoteStreamResponse::clear_quotestreamresponsetype() {
-  quotestreamresponsetype_ = 0;
+  if (quotestreamresponsetype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotestreamresponsetype_->clear();
+  }
   clear_has_quotestreamresponsetype();
 }
-inline ::google::protobuf::int32 ATQuoteStreamResponse::quotestreamresponsetype() const {
+inline const ::std::string& ATQuoteStreamResponse::quotestreamresponsetype() const {
   // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+  return *quotestreamresponsetype_;
+}
+inline void ATQuoteStreamResponse::set_quotestreamresponsetype(const ::std::string& value) {
+  set_has_quotestreamresponsetype();
+  if (quotestreamresponsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotestreamresponsetype_ = new ::std::string;
+  }
+  quotestreamresponsetype_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+}
+inline void ATQuoteStreamResponse::set_quotestreamresponsetype(const char* value) {
+  set_has_quotestreamresponsetype();
+  if (quotestreamresponsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotestreamresponsetype_ = new ::std::string;
+  }
+  quotestreamresponsetype_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+}
+inline void ATQuoteStreamResponse::set_quotestreamresponsetype(const char* value, size_t size) {
+  set_has_quotestreamresponsetype();
+  if (quotestreamresponsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotestreamresponsetype_ = new ::std::string;
+  }
+  quotestreamresponsetype_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+}
+inline ::std::string* ATQuoteStreamResponse::mutable_quotestreamresponsetype() {
+  set_has_quotestreamresponsetype();
+  if (quotestreamresponsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotestreamresponsetype_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
   return quotestreamresponsetype_;
 }
-inline void ATQuoteStreamResponse::set_quotestreamresponsetype(::google::protobuf::int32 value) {
-  set_has_quotestreamresponsetype();
-  quotestreamresponsetype_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
+inline ::std::string* ATQuoteStreamResponse::release_quotestreamresponsetype() {
+  clear_has_quotestreamresponsetype();
+  if (quotestreamresponsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = quotestreamresponsetype_;
+    quotestreamresponsetype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamResponse::set_allocated_quotestreamresponsetype(::std::string* quotestreamresponsetype) {
+  if (quotestreamresponsetype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete quotestreamresponsetype_;
+  }
+  if (quotestreamresponsetype) {
+    set_has_quotestreamresponsetype();
+    quotestreamresponsetype_ = quotestreamresponsetype;
+  } else {
+    clear_has_quotestreamresponsetype();
+    quotestreamresponsetype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamResponseType)
 }
 
 // optional int32 quoteResponseCount = 2;

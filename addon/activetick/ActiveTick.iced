@@ -1,4 +1,5 @@
-{NodeActiveTick} = require './build/Release/NodeActiveTickAddon'
+# {NodeActiveTick} = require './build/Release/NodeActiveTickAddon'
+{NodeActiveTick} = require './build/Debug/NodeActiveTickAddon'
 async = require 'async'
 _ = require 'underscore'
 config = require './config'
@@ -34,10 +35,13 @@ class ActiveTick
       @ATLoginResponse = @messages_builder.build "NodeActiveTickProto.ATLoginResponse"
       @ATConstituentResponse = @messages_builder.build "NodeActiveTickProto.ATConstituentResponse"
       @ATQuote = @messages_builder.build "NodeActiveTickProto.ATQuote"
+      @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
       readyCb()
 
   beginQuoteStream: (symbols, ATStreamRequestTypeIndex, @quoteCb, requestCb) =>
     _quoteDecode = (quote_buffer) =>
+      console.log 'hurro'
+      console.log quote_buffer
       quote = @ATQuote.decode quote_buffer
       @quoteCb quote
     if typeof symbols is 'object'
@@ -46,7 +50,7 @@ class ActiveTick
     else if typeof symbols is 'string'
       symbolParam = symbols
       symbolCount = 1
-    request_id = @api.beginQuoteStream symbols, ATStreamRequestTypes[ATStreamRequestTypeIndex], symbolCount, _quoteDecode
+    request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypes[ATStreamRequestTypeIndex], _quoteDecode
     @callbacks[request_id] = requestCb if requestCb?
     
   listRequest: (listType, key, cb) ->
@@ -64,21 +68,22 @@ class ActiveTick
     else if msgType is 'ATConstituentResponse'
       msg = @ATConstituentResponse.decode msgData
     else if msgType is 'ATQuoteStreamResponse'
-      msg = @ATQuoteStreamResponse.decode msgData
+      msg = @ATQuoteStreamResponse.decode msgData 
     if (c = @callbacks[msgID])?
       c(msg)
 
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
-  # a.listRequest listType, key
-  await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
-  await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
-  console.log yang.symbols.length
-  console.log fb.symbols.length
+  # await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
+  # await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
+  # console.log yang.symbols.length
+  # console.log fb.symbols.length
   getQuote = (quote) ->
-    console.log 'got quote'
+    console.log 'getQuote'
     console.log quote
-  # await a.beginQuoteStream ['AAPL', 'CSIQ', 'fb', 'baba'], 4, 3000, defer(result)
-  
+  a.beginQuoteStream ['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, (result) ->
+    console.log 'foo'
+    console.log result
+
 main() if not module.parent

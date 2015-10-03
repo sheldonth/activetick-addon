@@ -9,7 +9,6 @@
 #include <nan.h>
 #include <uv.h>
 #include "NodeActiveTick.h"
-#include "Streamor.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 
 #define debug 0
@@ -23,7 +22,7 @@ NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
   requestor = new Requestor(session_handle);
-  // streamor = new Streamor(session_handle);
+  ATSetStreamUpdateCallback(session_handle, &NodeActiveTick::ATStreamUpdateCallback);
   uv_async_init(uv_default_loop(), &handle, DumpData);
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 }
@@ -161,12 +160,12 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   
 
   // todo: activetick2.activetick.com
-  bool r2 = ATInitSession(obj->session_handle,
-                          "activetick1.activetick.com",
-                          "activetick2.activetick.com",
-                          api_port,
-                          ATSessionStatusChangeCallback,
-                          true);
+  ATInitSession(obj->session_handle,
+                "activetick1.activetick.com",
+                "activetick2.activetick.com",
+                api_port,
+                ATSessionStatusChangeCallback,
+                true);
   // hack: connect messages are always ID 1
   args.GetReturnValue().Set(Number::New(isolate, 1));
 }
@@ -205,15 +204,54 @@ void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
 
 void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
   Isolate* isolate = Isolate::GetCurrent();
+  uint64_t quote_stream_request;
   if (isolate) {
-    HandleScope scope(isolate);
-    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
-    Local<String> list_type = args[0]->ToString();
+      HandleScope scope(isolate);
+      NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
+      Local<String> str_symbols = (args[0]->ToString());
+      char cstr_symbols[str_symbols->Utf8Length()];
+      str_symbols->WriteUtf8(cstr_symbols);
+      std::string symbols = std::string(cstr_symbols);
+      std::vector<ATSYMBOL> v_symbols = Helper::StringToSymbols(symbols);
+      uint32_t symbol_count = args[1]->Uint32Value();
+      
+      Local<String> str_request_type = (args[2]->ToString());
+      char cstr_request_type[str_request_type->Utf8Length()];
+      str_request_type->WriteUtf8(cstr_request_type);
+      
+      ATStreamRequestType requestType = StreamRequestSubscribe; // default
+      if (strcmp(cstr_request_type, "StreamRequestSubscribe") == 0) {
+        requestType = StreamRequestSubscribe;
+      }
+      else if (strcmp(cstr_request_type, "StreamRequestUnsubscribe") == 0) {
+        requestType = StreamRequestUnsubscribe;
+      }
+      else if (strcmp(cstr_request_type, "StreamRequestSubscribeQuotesOnly") == 0) {
+        requestType = StreamRequestSubscribeQuotesOnly;
+      }
+      else if (strcmp(cstr_request_type, "StreamRequestUnsubscribeQuotesOnly") == 0) {
+        requestType = StreamRequestUnsubscribeQuotesOnly;
+      }
+      else if (strcmp(cstr_request_type, "StreamRequestSubscribeTradesOnly") == 0) {
+        requestType = StreamRequestSubscribeTradesOnly;
+      }
+      else if (strcmp(cstr_request_type, "StreamRequestUnsubscribeTradesOnly") == 0) {
+        requestType = StreamRequestUnsubscribeTradesOnly;
+      }
+      quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
+    }
+  else {
+    quote_stream_request = 0;
   }
+  args.GetReturnValue().Set(Number::New(isolate, quote_stream_request));
 }
 
 
 // AT Callbacks
+void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
+  std::printf("ATStreamUpdateCallback");
+}
+
 void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {
   std::string strStatusType;
   switch(statusType)

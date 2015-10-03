@@ -11,7 +11,8 @@
 using namespace v8;
 
 Requestor::Requestor(const uint64_t session):ActiveTickServerRequestor(session) {
-    session_handle = session;
+  std::printf("Can you hear me");
+  // session_handle = session;
 }
 
 Requestor::~Requestor() {
@@ -44,10 +45,30 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
 
 // Response that tells you whether your stream request was accepted
 // Actual stream callbacks are sent are in ActiveTickStreamListener::OnATStream*
+// Either all success or all failure. We pass back responseType
 void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
                                         ATStreamResponseType responseType,
                                         LPATQUOTESTREAM_RESPONSE pResponse,
                                         uint32_t responseCount)
 {
-  
+  std::string response;
+  switch(responseType) {
+    case StreamResponseSuccess: response = "StreamResponseSuccess"; break;
+    case StreamResponseInvalidRequest: response = "StreamResponseInvalidRequest"; break;
+    case StreamResponseDenied: response = "StreamResponseDenied"; break;
+    default: response = "Default Error"; break;
+  }
+  NodeActiveTickProto::ATQuoteStreamResponse *msg = new NodeActiveTickProto::ATQuoteStreamResponse;
+  msg->set_quotestreamresponsetype(response);
+  msg->set_quoteresponsecount(responseCount);
+  int size = msg->ByteSize(); 
+  void *buffer = new char[size];
+  msg->SerializeToArray(buffer, size);
+  MessageStruct* m = new MessageStruct();
+  m->data_sz = size;
+  m->c_str_data = buffer;
+  m->message_id = origRequest;
+  std::strcpy(m->messageType, "ATQuoteStreamResponse");
+  (&NodeActiveTick::s_pInstance->handle)->data = m;
+  uv_async_send(&NodeActiveTick::s_pInstance->handle);
 }

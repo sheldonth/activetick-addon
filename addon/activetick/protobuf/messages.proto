@@ -10,7 +10,7 @@ message ATConstituentResponse {
 }
 
 message ATQuoteStreamResponse {
-  optional int32 quoteStreamResponseType = 1;
+  optional string quoteStreamResponseType = 1;
   optional int32 quoteResponseCount = 2;
 }
 

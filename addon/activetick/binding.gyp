@@ -5,7 +5,6 @@
       "sources": [  "NodeActiveTickAddon.cpp",
                     "NodeActiveTick.cpp",
                     "Requestor.cpp",
-                    "Streamor.cpp",
                     "import/atfeed-cppsdk/example/Helper.cpp",
                     "protobuf/messages.pb.cc"
                  ],
@@ -20,7 +19,7 @@
       'conditions': [
         ['OS=="mac"', {
           'xcode_settings': {
-            'MACOSX_DEPLOYMENT_TARGET': '10.10',
+            'MACOSX_DEPLOYMENT_TARGET': '10.11',
             'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
             'GCC_ENABLE_CPP_RTTI': 'YES',
             'OTHER_CPLUSPLUSFLAGS': [

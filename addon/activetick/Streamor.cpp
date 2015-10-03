@@ -1,4 +1,5 @@
 // Copyright 2015 Sheldon Thomas
+// Not currently active
 
 #include "Requestor.h"
 #include <fstream>
@@ -12,8 +13,9 @@
 
 using namespace v8;
 
-Streamor::Streamor(const uint64_t session) : ActiveTickStreamListener(session), Requestor(session) {
-  session_handle = session;
+Streamor::Streamor() : ActiveTickStreamListener(0), Requestor(0) {
+  std::printf("Hashem?");
+  // this->session_handle = session;
 }
 
 Streamor::~Streamor() {

@@ -34,7 +34,7 @@
             "fields": [
                 {
                     "rule": "optional",
-                    "type": "int32",
+                    "type": "string",
                     "name": "quoteStreamResponseType",
                     "id": 1
                 },
