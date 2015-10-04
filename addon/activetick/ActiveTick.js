@@ -107,7 +107,7 @@
   })();
 
   main = function() {
-    var a, getQuote, result, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var a, getQuote, result, yang, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     (function(_this) {
@@ -138,12 +138,29 @@
           }));
           __iced_deferrals._fulfill();
         })(function() {
-          getQuote = function(quote) {
-            console.log('getQuote');
-            return console.log(quote);
-          };
-          return a.beginQuoteStream(['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, function(result) {
-            return console.log(result);
+          (function(__iced_k) {
+            __iced_deferrals = new iced.Deferrals(__iced_k, {
+              parent: ___iced_passed_deferral,
+              filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/ActiveTick.iced"
+            });
+            a.listRequest(ATConstituentRequestTypes[2], 'YANG', __iced_deferrals.defer({
+              assign_fn: (function() {
+                return function() {
+                  return yang = arguments[0];
+                };
+              })(),
+              lineno: 77
+            }));
+            __iced_deferrals._fulfill();
+          })(function() {
+            console.log(yang.symbols.length);
+            getQuote = function(quote) {
+              console.log('getQuote');
+              return console.log(quote);
+            };
+            return a.beginQuoteStream(['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, function(result) {
+              return console.log(result);
+            });
           });
         });
       };

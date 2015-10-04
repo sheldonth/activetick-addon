@@ -77,12 +77,14 @@ main = () ->
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
   await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
   # await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
-  console.log yang.symbols
+  console.log yang.symbols.length
   # console.log fb.symbols.length
-  # getQuote = (quote) ->
-  #   console.log 'getQuote'
-  #   console.log quote
-  # a.beginQuoteStream ['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, (result) ->
-  #   console.log result
+  getQuote = (quote) ->
+    console.log 'getQuote'
+    console.log quote
+  a.beginQuoteStream ['GLEN', 'foobar', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, (result) ->
+    console.log result
+    for i in result.quoteStreamItems
+      console.log i.symbol
 
 main() if not module.parent

@@ -50,27 +50,32 @@ void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
                                         LPATQUOTESTREAM_RESPONSE pResponse,
                                         uint32_t responseCount)
 { 
-  // ATQuoteStreamResponseParser parser(pResponse);
+  NodeActiveTickProto::ATQuoteStreamResponse *msg = new NodeActiveTickProto::ATQuoteStreamResponse;
   ATQuoteStreamResponseParser parser = ATQuoteStreamResponseParser(pResponse);
+  std::string response = ProtobufHelper::atresponsetype_string(responseType);
+  msg->set_quotestreamresponsetype(response);
+  msg->set_quoteresponsecount(responseCount);
+
   parser.MoveToBeginning();
   if (parser.MoveToFirstDataItem()) {
     // parse the first item
-    
+    NodeActiveTickProto::ATQuoteStreamResponseItem *item = msg->add_quotestreamitems();
+    item->set_responsetype(ProtobufHelper::atresponsetype_string(parser.GetResponseType()));
+    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    ProtobufHelper::atsymbol_insert(parser.GetSymbol(), symbol);
+    item->set_allocated_symbol(symbol);
+    item->set_symbolstatus(ProtobufHelper::atsymbolstatus_string(parser.GetSymbolStatus()));
     while (parser.MoveToNextDataItem()) {
       // parse all subsequent items
+      NodeActiveTickProto::ATQuoteStreamResponseItem *item = msg->add_quotestreamitems();
+      item->set_responsetype(ProtobufHelper::atresponsetype_string(parser.GetResponseType()));
+      NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+      ProtobufHelper::atsymbol_insert(parser.GetSymbol(), symbol);
+      item->set_allocated_symbol(symbol);
+      item->set_symbolstatus(ProtobufHelper::atsymbolstatus_string(parser.GetSymbolStatus()));
     }
   }
   
-  std::string response;
-  switch(responseType) {
-    case StreamResponseSuccess: response = "StreamResponseSuccess"; break;
-    case StreamResponseInvalidRequest: response = "StreamResponseInvalidRequest"; break;
-    case StreamResponseDenied: response = "StreamResponseDenied"; break;
-    default: response = "Default Error"; break;
-  }
-  NodeActiveTickProto::ATQuoteStreamResponse *msg = new NodeActiveTickProto::ATQuoteStreamResponse;
-  msg->set_quotestreamresponsetype(response);
-  msg->set_quoteresponsecount(responseCount);
   int size = msg->ByteSize(); 
   void *buffer = new char[size];
   msg->SerializeToArray(buffer, size);

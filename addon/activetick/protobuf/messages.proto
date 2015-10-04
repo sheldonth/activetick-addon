@@ -12,6 +12,13 @@ message ATConstituentResponse {
 message ATQuoteStreamResponse {
   optional string quoteStreamResponseType = 1;
   optional int32 quoteResponseCount = 2;
+  repeated ATQuoteStreamResponseItem quoteStreamItems = 3;
+}
+
+message ATQuoteStreamResponseItem {
+  optional string responseType = 1;
+  optional ATSymbol symbol = 2;
+  optional string symbolStatus = 3;
 }
 
 message ATServerTime {

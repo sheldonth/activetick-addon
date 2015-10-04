@@ -43,6 +43,35 @@
                     "type": "int32",
                     "name": "quoteResponseCount",
                     "id": 2
+                },
+                {
+                    "rule": "repeated",
+                    "type": "ATQuoteStreamResponseItem",
+                    "name": "quoteStreamItems",
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "name": "ATQuoteStreamResponseItem",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "responseType",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "ATSymbol",
+                    "name": "symbol",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "symbolStatus",
+                    "id": 3
                 }
             ]
         },

@@ -36,6 +36,7 @@ void protobuf_ShutdownFile_messages_2eproto();
 class ATLoginResponse;
 class ATConstituentResponse;
 class ATQuoteStreamResponse;
+class ATQuoteStreamResponseItem;
 class ATServerTime;
 class ATSymbol;
 class ATPrice;
@@ -291,6 +292,18 @@ class ATQuoteStreamResponse : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 quoteresponsecount() const;
   inline void set_quoteresponsecount(::google::protobuf::int32 value);
 
+  // repeated .NodeActiveTickProto.ATQuoteStreamResponseItem quoteStreamItems = 3;
+  inline int quotestreamitems_size() const;
+  inline void clear_quotestreamitems();
+  static const int kQuoteStreamItemsFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATQuoteStreamResponseItem& quotestreamitems(int index) const;
+  inline ::NodeActiveTickProto::ATQuoteStreamResponseItem* mutable_quotestreamitems(int index);
+  inline ::NodeActiveTickProto::ATQuoteStreamResponseItem* add_quotestreamitems();
+  inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteStreamResponseItem >&
+      quotestreamitems() const;
+  inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteStreamResponseItem >*
+      mutable_quotestreamitems();
+
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamResponse)
  private:
   inline void set_has_quotestreamresponsetype();
@@ -303,6 +316,7 @@ class ATQuoteStreamResponse : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* quotestreamresponsetype_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteStreamResponseItem > quotestreamitems_;
   ::google::protobuf::int32 quoteresponsecount_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
@@ -310,6 +324,117 @@ class ATQuoteStreamResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ATQuoteStreamResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteStreamResponseItem : public ::google::protobuf::Message {
+ public:
+  ATQuoteStreamResponseItem();
+  virtual ~ATQuoteStreamResponseItem();
+
+  ATQuoteStreamResponseItem(const ATQuoteStreamResponseItem& from);
+
+  inline ATQuoteStreamResponseItem& operator=(const ATQuoteStreamResponseItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteStreamResponseItem& default_instance();
+
+  void Swap(ATQuoteStreamResponseItem* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteStreamResponseItem* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteStreamResponseItem& from);
+  void MergeFrom(const ATQuoteStreamResponseItem& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string responseType = 1;
+  inline bool has_responsetype() const;
+  inline void clear_responsetype();
+  static const int kResponseTypeFieldNumber = 1;
+  inline const ::std::string& responsetype() const;
+  inline void set_responsetype(const ::std::string& value);
+  inline void set_responsetype(const char* value);
+  inline void set_responsetype(const char* value, size_t size);
+  inline ::std::string* mutable_responsetype();
+  inline ::std::string* release_responsetype();
+  inline void set_allocated_responsetype(::std::string* responsetype);
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 2;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
+
+  // optional string symbolStatus = 3;
+  inline bool has_symbolstatus() const;
+  inline void clear_symbolstatus();
+  static const int kSymbolStatusFieldNumber = 3;
+  inline const ::std::string& symbolstatus() const;
+  inline void set_symbolstatus(const ::std::string& value);
+  inline void set_symbolstatus(const char* value);
+  inline void set_symbolstatus(const char* value, size_t size);
+  inline ::std::string* mutable_symbolstatus();
+  inline ::std::string* release_symbolstatus();
+  inline void set_allocated_symbolstatus(::std::string* symbolstatus);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamResponseItem)
+ private:
+  inline void set_has_responsetype();
+  inline void clear_has_responsetype();
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_symbolstatus();
+  inline void clear_has_symbolstatus();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* responsetype_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::std::string* symbolstatus_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteStreamResponseItem* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1033,6 +1158,233 @@ inline void ATQuoteStreamResponse::set_quoteresponsecount(::google::protobuf::in
   set_has_quoteresponsecount();
   quoteresponsecount_ = value;
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponse.quoteResponseCount)
+}
+
+// repeated .NodeActiveTickProto.ATQuoteStreamResponseItem quoteStreamItems = 3;
+inline int ATQuoteStreamResponse::quotestreamitems_size() const {
+  return quotestreamitems_.size();
+}
+inline void ATQuoteStreamResponse::clear_quotestreamitems() {
+  quotestreamitems_.Clear();
+}
+inline const ::NodeActiveTickProto::ATQuoteStreamResponseItem& ATQuoteStreamResponse::quotestreamitems(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamItems)
+  return quotestreamitems_.Get(index);
+}
+inline ::NodeActiveTickProto::ATQuoteStreamResponseItem* ATQuoteStreamResponse::mutable_quotestreamitems(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamItems)
+  return quotestreamitems_.Mutable(index);
+}
+inline ::NodeActiveTickProto::ATQuoteStreamResponseItem* ATQuoteStreamResponse::add_quotestreamitems() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamItems)
+  return quotestreamitems_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteStreamResponseItem >&
+ATQuoteStreamResponse::quotestreamitems() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamItems)
+  return quotestreamitems_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteStreamResponseItem >*
+ATQuoteStreamResponse::mutable_quotestreamitems() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATQuoteStreamResponse.quoteStreamItems)
+  return &quotestreamitems_;
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteStreamResponseItem
+
+// optional string responseType = 1;
+inline bool ATQuoteStreamResponseItem::has_responsetype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteStreamResponseItem::set_has_responsetype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteStreamResponseItem::clear_has_responsetype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteStreamResponseItem::clear_responsetype() {
+  if (responsetype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    responsetype_->clear();
+  }
+  clear_has_responsetype();
+}
+inline const ::std::string& ATQuoteStreamResponseItem::responsetype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponseItem.responseType)
+  return *responsetype_;
+}
+inline void ATQuoteStreamResponseItem::set_responsetype(const ::std::string& value) {
+  set_has_responsetype();
+  if (responsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    responsetype_ = new ::std::string;
+  }
+  responsetype_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponseItem.responseType)
+}
+inline void ATQuoteStreamResponseItem::set_responsetype(const char* value) {
+  set_has_responsetype();
+  if (responsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    responsetype_ = new ::std::string;
+  }
+  responsetype_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamResponseItem.responseType)
+}
+inline void ATQuoteStreamResponseItem::set_responsetype(const char* value, size_t size) {
+  set_has_responsetype();
+  if (responsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    responsetype_ = new ::std::string;
+  }
+  responsetype_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamResponseItem.responseType)
+}
+inline ::std::string* ATQuoteStreamResponseItem::mutable_responsetype() {
+  set_has_responsetype();
+  if (responsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    responsetype_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamResponseItem.responseType)
+  return responsetype_;
+}
+inline ::std::string* ATQuoteStreamResponseItem::release_responsetype() {
+  clear_has_responsetype();
+  if (responsetype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = responsetype_;
+    responsetype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamResponseItem::set_allocated_responsetype(::std::string* responsetype) {
+  if (responsetype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete responsetype_;
+  }
+  if (responsetype) {
+    set_has_responsetype();
+    responsetype_ = responsetype;
+  } else {
+    clear_has_responsetype();
+    responsetype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamResponseItem.responseType)
+}
+
+// optional .NodeActiveTickProto.ATSymbol symbol = 2;
+inline bool ATQuoteStreamResponseItem::has_symbol() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteStreamResponseItem::set_has_symbol() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteStreamResponseItem::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteStreamResponseItem::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATQuoteStreamResponseItem::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponseItem.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamResponseItem::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamResponseItem.symbol)
+  return symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamResponseItem::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamResponseItem::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
+  } else {
+    clear_has_symbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamResponseItem.symbol)
+}
+
+// optional string symbolStatus = 3;
+inline bool ATQuoteStreamResponseItem::has_symbolstatus() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATQuoteStreamResponseItem::set_has_symbolstatus() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATQuoteStreamResponseItem::clear_has_symbolstatus() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATQuoteStreamResponseItem::clear_symbolstatus() {
+  if (symbolstatus_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbolstatus_->clear();
+  }
+  clear_has_symbolstatus();
+}
+inline const ::std::string& ATQuoteStreamResponseItem::symbolstatus() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamResponseItem.symbolStatus)
+  return *symbolstatus_;
+}
+inline void ATQuoteStreamResponseItem::set_symbolstatus(const ::std::string& value) {
+  set_has_symbolstatus();
+  if (symbolstatus_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbolstatus_ = new ::std::string;
+  }
+  symbolstatus_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamResponseItem.symbolStatus)
+}
+inline void ATQuoteStreamResponseItem::set_symbolstatus(const char* value) {
+  set_has_symbolstatus();
+  if (symbolstatus_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbolstatus_ = new ::std::string;
+  }
+  symbolstatus_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamResponseItem.symbolStatus)
+}
+inline void ATQuoteStreamResponseItem::set_symbolstatus(const char* value, size_t size) {
+  set_has_symbolstatus();
+  if (symbolstatus_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbolstatus_ = new ::std::string;
+  }
+  symbolstatus_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamResponseItem.symbolStatus)
+}
+inline ::std::string* ATQuoteStreamResponseItem::mutable_symbolstatus() {
+  set_has_symbolstatus();
+  if (symbolstatus_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    symbolstatus_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamResponseItem.symbolStatus)
+  return symbolstatus_;
+}
+inline ::std::string* ATQuoteStreamResponseItem::release_symbolstatus() {
+  clear_has_symbolstatus();
+  if (symbolstatus_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = symbolstatus_;
+    symbolstatus_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamResponseItem::set_allocated_symbolstatus(::std::string* symbolstatus) {
+  if (symbolstatus_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete symbolstatus_;
+  }
+  if (symbolstatus) {
+    set_has_symbolstatus();
+    symbolstatus_ = symbolstatus;
+  } else {
+    clear_has_symbolstatus();
+    symbolstatus_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamResponseItem.symbolStatus)
 }
 
 // -------------------------------------------------------------------
