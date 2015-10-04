@@ -2,6 +2,7 @@
 #include <queue>
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
 #include <ActiveTickServerAPI/ActiveTickServerRequestor.h>
+#include "ProtobufHelper.h"
 #include <node.h>
 
 using namespace v8;

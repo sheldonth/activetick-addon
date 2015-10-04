@@ -75,15 +75,14 @@ class ActiveTick
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
-  # await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
+  await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
   # await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
-  # console.log yang.symbols.length
+  console.log yang.symbols
   # console.log fb.symbols.length
-  getQuote = (quote) ->
-    console.log 'getQuote'
-    console.log quote
-  a.beginQuoteStream ['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, (result) ->
-    console.log 'foo'
-    console.log result
+  # getQuote = (quote) ->
+  #   console.log 'getQuote'
+  #   console.log quote
+  # a.beginQuoteStream ['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, (result) ->
+  #   console.log result
 
 main() if not module.parent

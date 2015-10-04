@@ -54,6 +54,8 @@
       _quoteDecode = (function(_this) {
         return function(quote_buffer) {
           var quote;
+          console.log('hurro');
+          console.log(quote_buffer);
           quote = _this.ATQuote.decode(quote_buffer);
           return _this.quoteCb(quote);
         };
@@ -85,7 +87,6 @@
 
     ActiveTick.prototype.handleProtoMsg = function(msgType, msgID, msgData) {
       var c, msg;
-      console.log(msgType);
       if (msgType === 'ATLoginResponse') {
         msg = this.ATLoginResponse.decode(msgData);
         if (msg.loginResponseString !== 'Success') {
@@ -116,7 +117,7 @@
           filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/ActiveTick.iced"
         });
         a = new ActiveTick(__iced_deferrals.defer({
-          lineno: 74
+          lineno: 75
         }));
         __iced_deferrals._fulfill();
       });
@@ -133,16 +134,15 @@
                 return result = arguments[0];
               };
             })(),
-            lineno: 75
+            lineno: 76
           }));
           __iced_deferrals._fulfill();
         })(function() {
           getQuote = function(quote) {
-            console.log('got quote');
+            console.log('getQuote');
             return console.log(quote);
           };
-          console.log(a.api);
-          return a.beginQuoteStream(['AAPL', 'CSIQ', 'fb', 'baba'], 0, 4, getQuote, function(result) {
+          return a.beginQuoteStream(['AAPL', 'CSIQ', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, function(result) {
             return console.log(result);
           });
         });

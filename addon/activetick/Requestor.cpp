@@ -4,6 +4,8 @@
 #include <string>
 #include <string.h>
 #include <node.h>
+#include <Shared/ATServerAPIDefines.h>
+#include <ActiveTickServerAPI/ATQuoteStreamResponseParser.h>
 #include "NodeActiveTick.h"
 #include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
@@ -24,12 +26,7 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
   for (uint32_t i = 0; i < symbolsCount; i++) {
     NodeActiveTickProto::ATSymbol *symbol = msg->add_symbols();
     ATSYMBOL s = pSymbols[i];
-    wchar16_t* wchar_symbol = s.symbol;
-    std::string str_symbol = Helper::ConvertString(wchar_symbol, ATSymbolMaxLength);
-    symbol->set_symbol(str_symbol);
-    symbol->set_symboltype(s.symbolType);
-    symbol->set_exchangetype(s.exchangeType);
-    symbol->set_countrytype(s.countryType);
+    ProtobufHelper::atsymbol_insert(&s, symbol);
   }
   int size = msg->ByteSize(); 
   void *buffer = new char[size];
@@ -46,11 +43,24 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
 // Response that tells you whether your stream request was accepted
 // Actual stream callbacks are sent are in ActiveTickStreamListener::OnATStream*
 // Either all success or all failure. We pass back responseType
+// ATStreamResponseType responseType
+// uint16_t dataItemCount
 void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
                                         ATStreamResponseType responseType,
                                         LPATQUOTESTREAM_RESPONSE pResponse,
                                         uint32_t responseCount)
-{
+{ 
+  // ATQuoteStreamResponseParser parser(pResponse);
+  ATQuoteStreamResponseParser parser = ATQuoteStreamResponseParser(pResponse);
+  parser.MoveToBeginning();
+  if (parser.MoveToFirstDataItem()) {
+    // parse the first item
+    
+    while (parser.MoveToNextDataItem()) {
+      // parse all subsequent items
+    }
+  }
+  
   std::string response;
   switch(responseType) {
     case StreamResponseSuccess: response = "StreamResponseSuccess"; break;
