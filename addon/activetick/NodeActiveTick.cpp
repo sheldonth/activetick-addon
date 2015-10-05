@@ -249,7 +249,25 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
 
 // AT Callbacks
 void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
-  std::printf("ATStreamUpdateCallback");
+  switch (pUpdate->updateType) {
+    case StreamUpdateTrade: {
+      ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
+      break;
+    }
+    case StreamUpdateQuote:{
+      ATQUOTESTREAM_QUOTE_UPDATE quote = pUpdate->quote;
+      break;
+    }
+    case StreamUpdateRefresh: {
+      ATQUOTESTREAM_REFRESH_UPDATE refresh = pUpdate->refresh;
+      break;
+    }
+    case StreamUpdateTopMarketMovers: {
+      ATMARKET_MOVERS_STREAM_UPDATE movers = pUpdate->marketMovers;
+      break;
+    }
+    default: break;
+  }
 }
 
 void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {

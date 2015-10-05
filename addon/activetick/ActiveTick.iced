@@ -72,19 +72,22 @@ class ActiveTick
     if (c = @callbacks[msgID])?
       c(msg)
 
+stripNull = (string) -> return string.replace(/\0/g, '')
+
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
   await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
+  console.log yang.symbols.length + ' YANG options.'
   # await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
-  console.log yang.symbols.length
-  # console.log fb.symbols.length
   getQuote = (quote) ->
     console.log 'getQuote'
     console.log quote
-  a.beginQuoteStream ['GLEN', 'foobar', 'fb', 'baba'], ATStreamRequestTypes[0], getQuote, (result) ->
+  a.beginQuoteStream ['WFM'], ATStreamRequestTypes[0], getQuote, (result) ->
     console.log result
-    for i in result.quoteStreamItems
-      console.log i.symbol
+  # a.beginQuoteStream [yang.symbols[3].symbol, yang.symbols[4].symbol], ATStreamRequestTypes[0], getQuote, (result) ->
+  #     console.log result
+  #   for i in result.quoteStreamItems
+  #     console.log i.symbol
 
 main() if not module.parent

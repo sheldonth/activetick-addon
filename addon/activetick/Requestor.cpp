@@ -75,7 +75,6 @@ void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
       item->set_symbolstatus(ProtobufHelper::atsymbolstatus_string(parser.GetSymbolStatus()));
     }
   }
-  
   int size = msg->ByteSize(); 
   void *buffer = new char[size];
   msg->SerializeToArray(buffer, size);
