@@ -108,28 +108,34 @@
             "name": "ATSymbol",
             "fields": [
                 {
-                    "rule": "required",
+                    "rule": "optional",
                     "type": "string",
                     "name": "symbol",
                     "id": 1
                 },
                 {
                     "rule": "optional",
-                    "type": "int32",
-                    "name": "symbolType",
+                    "type": "string",
+                    "name": "symbol_long",
                     "id": 2
                 },
                 {
                     "rule": "optional",
                     "type": "int32",
-                    "name": "exchangeType",
+                    "name": "symbolType",
                     "id": 3
                 },
                 {
                     "rule": "optional",
                     "type": "int32",
-                    "name": "countryType",
+                    "name": "exchangeType",
                     "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "countryType",
+                    "id": 5
                 }
             ]
         },

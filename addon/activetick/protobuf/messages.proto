@@ -29,10 +29,11 @@ message ATServerTime {
 }
 
 message ATSymbol {
-  required string symbol = 1;
-  optional int32 symbolType = 2;
-  optional int32 exchangeType = 3;
-  optional int32 countryType = 4;
+  optional string symbol = 1;
+  optional string symbol_long = 2;
+  optional int32 symbolType = 3;
+  optional int32 exchangeType = 4;
+  optional int32 countryType = 5;
 }
 
 message ATPrice {

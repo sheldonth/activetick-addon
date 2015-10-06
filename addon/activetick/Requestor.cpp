@@ -13,7 +13,6 @@
 using namespace v8;
 
 Requestor::Requestor(const uint64_t session):ActiveTickServerRequestor(session) {
-  std::printf("Can you hear me");
   // session_handle = session;
 }
 

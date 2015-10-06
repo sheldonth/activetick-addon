@@ -10,13 +10,15 @@ using namespace v8;
 class ProtobufHelper {
 public:
   static void atsymbol_insert(ATSYMBOL* s, NodeActiveTickProto::ATSymbol *symbol) {
-    std::string str_symbol = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
-    std::string str_symbol_1 = std::string(str_symbol.c_str());
-    symbol->set_symbol(str_symbol_1);
+    std::string str_symbol_long = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
+    std::string str_symbol_short = std::string(str_symbol_long.c_str());
+    symbol->set_symbol(str_symbol_short);
+    symbol->set_symbol_long(str_symbol_long);
     symbol->set_symboltype(s->symbolType);
     symbol->set_exchangetype(s->exchangeType);
     symbol->set_countrytype(s->countryType);
   }
+  
   static std::string atresponsetype_string(ATStreamResponseType responseType) {
     std::string response;
     switch(responseType) {
@@ -27,6 +29,7 @@ public:
     }
     return response;
   }
+  
   static std::string atsymbolstatus_string(ATSymbolStatus symbolStatus) {
     std::string response;
     switch(symbolStatus) {
