@@ -10,9 +10,9 @@ using namespace v8;
 class ProtobufHelper {
 public:
   static void atsymbol_insert(ATSYMBOL* s, NodeActiveTickProto::ATSymbol *symbol) {
-    wchar16_t* wchar_symbol = s->symbol;
-    std::string str_symbol = Helper::ConvertString(wchar_symbol, ATSymbolMaxLength);
-    symbol->set_symbol(str_symbol);
+    std::string str_symbol = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
+    std::string str_symbol_1 = std::string(str_symbol.c_str());
+    symbol->set_symbol(str_symbol_1);
     symbol->set_symboltype(s->symbolType);
     symbol->set_exchangetype(s->exchangeType);
     symbol->set_countrytype(s->countryType);

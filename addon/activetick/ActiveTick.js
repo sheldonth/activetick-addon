@@ -147,7 +147,7 @@
               parent: ___iced_passed_deferral,
               filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/ActiveTick.iced"
             });
-            a.listRequest(ATConstituentRequestTypes[2], 'YANG', __iced_deferrals.defer({
+            a.listRequest(ATConstituentRequestTypes[2], 'fb', __iced_deferrals.defer({
               assign_fn: (function() {
                 return function() {
                   return yang = arguments[0];
@@ -157,14 +157,13 @@
             }));
             __iced_deferrals._fulfill();
           })(function() {
-            console.log(yang.symbols.length + ' YANG options.');
+            console.log(yang);
             getQuote = function(quote) {
               console.log('getQuote');
               return console.log(quote);
             };
-            return a.beginQuoteStream(['WFM'], ATStreamRequestTypes[0], getQuote, function(result) {
-              return console.log(result);
-            });
+            console.log(yang.symbols[22]);
+            return console.log(yang.symbols[4]);
           });
         });
       };

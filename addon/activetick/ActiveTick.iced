@@ -77,16 +77,19 @@ stripNull = (string) -> return string.replace(/\0/g, '')
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
-  await a.listRequest ATConstituentRequestTypes[2], 'YANG',  defer(yang)
-  console.log yang.symbols.length + ' YANG options.'
+  await a.listRequest ATConstituentRequestTypes[2], 'fb',  defer(yang)
+  # console.log yang.symbols.length + ' options.'
+  console.log yang
   # await a.listRequest ATConstituentRequestTypes[2], 'FB', defer(fb)
   getQuote = (quote) ->
     console.log 'getQuote'
     console.log quote
-  a.beginQuoteStream ['WFM'], ATStreamRequestTypes[0], getQuote, (result) ->
-    console.log result
-  # a.beginQuoteStream [yang.symbols[3].symbol, yang.symbols[4].symbol], ATStreamRequestTypes[0], getQuote, (result) ->
-  #     console.log result
+  # a.beginQuoteStream ['WFM'], ATStreamRequestTypes[0], getQuote, (result) ->
+  #   console.log result
+  console.log yang.symbols[22]
+  console.log yang.symbols[4]
+  # a.beginQuoteStream [yang.symbols[22].symbol, yang.symbols[4].symbol], ATStreamRequestTypes[0], getQuote, (result) ->
+  #   console.log result
   #   for i in result.quoteStreamItems
   #     console.log i.symbol
 
