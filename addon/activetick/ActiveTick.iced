@@ -84,16 +84,17 @@ main = () ->
     console.log quote
   # a.beginQuoteStream ['WFM'], ATStreamRequestTypes[0], getQuote, (result) ->
   #   console.log result
-  sym1 = yang.symbols[22].symbol
-  sym2 = yang.symbols[4].symbol
-  sym3 = yang.symbols[188].symbol
-  sym4 = yang.symbols[588].symbol
+  sym1 = '.' + yang.symbols[22].symbol
+  sym2 = '.' + yang.symbols[4].symbol
+  sym3 = '.' + yang.symbols[188].symbol
+  sym4 = '.' + yang.symbols[588].symbol
   console.log sym1, sym2, sym3, sym4
   # a.beginQuoteStream [sym1, sym2, sym3, sym4], ATStreamRequestTypes[0], getQuote, (result) ->
   #   console.log result
   #   for i in result.quoteStreamItems
   #     console.log i.symbol
   a.beginQuoteStream sym1, ATStreamRequestTypes[0], getQuote, (result) ->
+    console.log result
     for i in result.quoteStreamItems
       console.log i.symbol
 

@@ -160,10 +160,10 @@
               console.log('getQuote');
               return console.log(quote);
             };
-            sym1 = yang.symbols[22].symbol;
-            sym2 = yang.symbols[4].symbol;
-            sym3 = yang.symbols[188].symbol;
-            sym4 = yang.symbols[588].symbol;
+            sym1 = '.' + yang.symbols[22].symbol;
+            sym2 = '.' + yang.symbols[4].symbol;
+            sym3 = '.' + yang.symbols[188].symbol;
+            sym4 = '.' + yang.symbols[588].symbol;
             console.log(sym1, sym2, sym3, sym4);
             return a.beginQuoteStream(sym1, ATStreamRequestTypes[0], getQuote, function(result) {
               var i, _i, _len, _ref, _results;
