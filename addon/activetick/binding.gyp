@@ -6,6 +6,7 @@
                     "NodeActiveTick.cpp",
                     "Requestor.cpp",
                     "import/atfeed-cppsdk/example/Helper.cpp",
+                    "AtEnumConverter.cpp",
                     "protobuf/messages.pb.cc"
                  ],
       'include_dirs': [

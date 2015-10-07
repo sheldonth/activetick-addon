@@ -22,6 +22,7 @@ NodeActiveTick::NodeActiveTick() {
   ATInitAPI();
   session_handle = ATCreateSession();
   requestor = new Requestor(session_handle);
+  enumConverter = new AtEnumConverter();
   ATSetStreamUpdateCallback(session_handle, &NodeActiveTick::ATStreamUpdateCallback);
   uv_async_init(uv_default_loop(), &handle, DumpData);
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -175,7 +176,7 @@ void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
   Isolate* isolate = Isolate::GetCurrent();
   if (isolate) {
     HandleScope scope(isolate);
-
+    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
     Local<String> list_type = args[0]->ToString();
     Local<String> symbol = args[1]->ToString();
     char cstr_list_type[list_type->Utf8Length()];
@@ -184,19 +185,8 @@ void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
     symbol->WriteUtf8(cstr_symbol);
     wchar16_t wchar_symbol[50];
     Helper::ConvertString(cstr_symbol, wchar_symbol, sizeof(wchar_symbol));
-    ATConstituentListType type;
-    if (strcmp(cstr_list_type, "ATConstituentListIndex") == 0) {
-      type = ATConstituentListIndex;
-    }
-    else if (strcmp(cstr_list_type, "ATConstituentListSector") == 0) {
-      type = ATConstituentListSector;
-    }
-    else if (strcmp(cstr_list_type, "ATConstituentListOptionChain") == 0) {
-      type = ATConstituentListOptionChain;
-    }
-    else {
-      type = ATConstituentListIndex;
-    }
+    std::string str_list_type = std::string(cstr_list_type);
+    ATConstituentListType type = obj->enumConverter->toAtConstituentList(str_list_type);
     s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
     args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
   }
@@ -219,25 +209,9 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
       char cstr_request_type[str_request_type->Utf8Length()];
       str_request_type->WriteUtf8(cstr_request_type);
       
-      ATStreamRequestType requestType = StreamRequestSubscribe; // default
-      if (strcmp(cstr_request_type, "StreamRequestSubscribe") == 0) {
-        requestType = StreamRequestSubscribe;
-      }
-      else if (strcmp(cstr_request_type, "StreamRequestUnsubscribe") == 0) {
-        requestType = StreamRequestUnsubscribe;
-      }
-      else if (strcmp(cstr_request_type, "StreamRequestSubscribeQuotesOnly") == 0) {
-        requestType = StreamRequestSubscribeQuotesOnly;
-      }
-      else if (strcmp(cstr_request_type, "StreamRequestUnsubscribeQuotesOnly") == 0) {
-        requestType = StreamRequestUnsubscribeQuotesOnly;
-      }
-      else if (strcmp(cstr_request_type, "StreamRequestSubscribeTradesOnly") == 0) {
-        requestType = StreamRequestSubscribeTradesOnly;
-      }
-      else if (strcmp(cstr_request_type, "StreamRequestUnsubscribeTradesOnly") == 0) {
-        requestType = StreamRequestUnsubscribeTradesOnly;
-      }
+      std::string request_type = std::string(cstr_request_type);
+      ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(request_type);
+
       quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
     }
   else {

@@ -93,6 +93,7 @@ OBJS := \
 	$(obj).target/$(TARGET)/NodeActiveTick.o \
 	$(obj).target/$(TARGET)/Requestor.o \
 	$(obj).target/$(TARGET)/import/atfeed-cppsdk/example/Helper.o \
+	$(obj).target/$(TARGET)/AtEnumConverter.o \
 	$(obj).target/$(TARGET)/protobuf/messages.pb.o
 
 # Add to the list of files we specially track dependencies for.

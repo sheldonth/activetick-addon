@@ -40,7 +40,6 @@ class ActiveTick
 
   beginQuoteStream: (symbols, ATStreamRequestTypeIndex, @quoteCb, requestCb) =>
     _quoteDecode = (quote_buffer) =>
-      console.log 'hurro'
       console.log quote_buffer
       quote = @ATQuote.decode quote_buffer
       @quoteCb quote
@@ -52,7 +51,7 @@ class ActiveTick
       symbolCount = 1
     console.log 'symbolParam'
     console.log symbolParam, symbolCount
-    request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypes[ATStreamRequestTypeIndex], _quoteDecode
+    request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypeIndex, _quoteDecode
     @callbacks[request_id] = requestCb if requestCb?
     
   listRequest: (listType, key, cb) ->

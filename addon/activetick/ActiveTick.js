@@ -54,7 +54,6 @@
       _quoteDecode = (function(_this) {
         return function(quote_buffer) {
           var quote;
-          console.log('hurro');
           console.log(quote_buffer);
           quote = _this.ATQuote.decode(quote_buffer);
           return _this.quoteCb(quote);
@@ -69,7 +68,7 @@
       }
       console.log('symbolParam');
       console.log(symbolParam, symbolCount);
-      request_id = this.api.beginQuoteStream(symbolParam, symbolCount, ATStreamRequestTypes[ATStreamRequestTypeIndex], _quoteDecode);
+      request_id = this.api.beginQuoteStream(symbolParam, symbolCount, ATStreamRequestTypeIndex, _quoteDecode);
       if (requestCb != null) {
         return this.callbacks[request_id] = requestCb;
       }
@@ -119,7 +118,7 @@
           filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/ActiveTick.iced"
         });
         a = new ActiveTick(__iced_deferrals.defer({
-          lineno: 77
+          lineno: 76
         }));
         __iced_deferrals._fulfill();
       });
@@ -136,7 +135,7 @@
                 return result = arguments[0];
               };
             })(),
-            lineno: 78
+            lineno: 77
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -151,7 +150,7 @@
                   return yang = arguments[0];
                 };
               })(),
-              lineno: 79
+              lineno: 78
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -167,6 +166,7 @@
             console.log(sym1, sym2, sym3, sym4);
             return a.beginQuoteStream(sym1, ATStreamRequestTypes[0], getQuote, function(result) {
               var i, _i, _len, _ref, _results;
+              console.log(result);
               _ref = result.quoteStreamItems;
               _results = [];
               for (_i = 0, _len = _ref.length; _i < _len; _i++) {

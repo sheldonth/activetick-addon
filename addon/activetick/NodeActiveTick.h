@@ -8,6 +8,7 @@
 #include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
 #include "Requestor.h"
+#include "AtEnumConverter.h"
 
 using namespace v8;
 
@@ -32,6 +33,7 @@ public:
     wchar16_t   wchar_password[50];
     wchar16_t   wchar_api_token[100];
     
+    AtEnumConverter *enumConverter;
     Nan::Callback *nan_cb;
     uv_async_t handle;
     Requestor* requestor;
