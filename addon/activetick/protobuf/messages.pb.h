@@ -37,7 +37,10 @@ class ATLoginResponse;
 class ATConstituentResponse;
 class ATQuoteStreamResponse;
 class ATQuoteStreamResponseItem;
-class ATServerTime;
+class ATTime;
+class ATQuoteStreamTradeUpdate;
+class ATQuoteStreamQuoteUpdate;
+class ATQuoteStreamRefreshUpdate;
 class ATSymbol;
 class ATPrice;
 class ATQuote;
@@ -438,14 +441,14 @@ class ATQuoteStreamResponseItem : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ATServerTime : public ::google::protobuf::Message {
+class ATTime : public ::google::protobuf::Message {
  public:
-  ATServerTime();
-  virtual ~ATServerTime();
+  ATTime();
+  virtual ~ATTime();
 
-  ATServerTime(const ATServerTime& from);
+  ATTime(const ATTime& from);
 
-  inline ATServerTime& operator=(const ATServerTime& from) {
+  inline ATTime& operator=(const ATTime& from) {
     CopyFrom(from);
     return *this;
   }
@@ -459,17 +462,17 @@ class ATServerTime : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ATServerTime& default_instance();
+  static const ATTime& default_instance();
 
-  void Swap(ATServerTime* other);
+  void Swap(ATTime* other);
 
   // implements Message ----------------------------------------------
 
-  ATServerTime* New() const;
+  ATTime* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ATServerTime& from);
-  void MergeFrom(const ATServerTime& from);
+  void CopyFrom(const ATTime& from);
+  void MergeFrom(const ATTime& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -491,35 +494,63 @@ class ATServerTime : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 year = 1;
+  // optional int32 year = 1;
   inline bool has_year() const;
   inline void clear_year();
   static const int kYearFieldNumber = 1;
   inline ::google::protobuf::int32 year() const;
   inline void set_year(::google::protobuf::int32 value);
 
-  // required int32 month = 2;
+  // optional int32 month = 2;
   inline bool has_month() const;
   inline void clear_month();
   static const int kMonthFieldNumber = 2;
   inline ::google::protobuf::int32 month() const;
   inline void set_month(::google::protobuf::int32 value);
 
-  // required int32 dayOfWeek = 3;
+  // optional int32 dayOfWeek = 3;
   inline bool has_dayofweek() const;
   inline void clear_dayofweek();
   static const int kDayOfWeekFieldNumber = 3;
   inline ::google::protobuf::int32 dayofweek() const;
   inline void set_dayofweek(::google::protobuf::int32 value);
 
-  // required int32 day = 4;
+  // optional int32 day = 4;
   inline bool has_day() const;
   inline void clear_day();
   static const int kDayFieldNumber = 4;
   inline ::google::protobuf::int32 day() const;
   inline void set_day(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATServerTime)
+  // optional int32 hour = 5;
+  inline bool has_hour() const;
+  inline void clear_hour();
+  static const int kHourFieldNumber = 5;
+  inline ::google::protobuf::int32 hour() const;
+  inline void set_hour(::google::protobuf::int32 value);
+
+  // optional int32 minute = 6;
+  inline bool has_minute() const;
+  inline void clear_minute();
+  static const int kMinuteFieldNumber = 6;
+  inline ::google::protobuf::int32 minute() const;
+  inline void set_minute(::google::protobuf::int32 value);
+
+  // optional int32 second = 7;
+  inline bool has_second() const;
+  inline void clear_second();
+  static const int kSecondFieldNumber = 7;
+  inline ::google::protobuf::int32 second() const;
+  inline void set_second(::google::protobuf::int32 value);
+
+  // optional int32 millisecond = 8;
+  inline bool has_millisecond() const;
+  inline void clear_millisecond();
+  static const int kMillisecondFieldNumber = 8;
+  inline ::google::protobuf::int32 millisecond() const;
+  inline void set_millisecond(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATTime)
  private:
   inline void set_has_year();
   inline void clear_has_year();
@@ -529,6 +560,14 @@ class ATServerTime : public ::google::protobuf::Message {
   inline void clear_has_dayofweek();
   inline void set_has_day();
   inline void clear_has_day();
+  inline void set_has_hour();
+  inline void clear_has_hour();
+  inline void set_has_minute();
+  inline void clear_has_minute();
+  inline void set_has_second();
+  inline void clear_has_second();
+  inline void set_has_millisecond();
+  inline void clear_has_millisecond();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -538,12 +577,472 @@ class ATServerTime : public ::google::protobuf::Message {
   ::google::protobuf::int32 month_;
   ::google::protobuf::int32 dayofweek_;
   ::google::protobuf::int32 day_;
+  ::google::protobuf::int32 hour_;
+  ::google::protobuf::int32 minute_;
+  ::google::protobuf::int32 second_;
+  ::google::protobuf::int32 millisecond_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
 
   void InitAsDefaultInstance();
-  static ATServerTime* default_instance_;
+  static ATTime* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteStreamTradeUpdate : public ::google::protobuf::Message {
+ public:
+  ATQuoteStreamTradeUpdate();
+  virtual ~ATQuoteStreamTradeUpdate();
+
+  ATQuoteStreamTradeUpdate(const ATQuoteStreamTradeUpdate& from);
+
+  inline ATQuoteStreamTradeUpdate& operator=(const ATQuoteStreamTradeUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteStreamTradeUpdate& default_instance();
+
+  void Swap(ATQuoteStreamTradeUpdate* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteStreamTradeUpdate* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteStreamTradeUpdate& from);
+  void MergeFrom(const ATQuoteStreamTradeUpdate& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATSymbol tradeSymbol = 1;
+  inline bool has_tradesymbol() const;
+  inline void clear_tradesymbol();
+  static const int kTradeSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& tradesymbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_tradesymbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_tradesymbol();
+  inline void set_allocated_tradesymbol(::NodeActiveTickProto::ATSymbol* tradesymbol);
+
+  // optional int32 tradeMessageFlags = 2;
+  inline bool has_trademessageflags() const;
+  inline void clear_trademessageflags();
+  static const int kTradeMessageFlagsFieldNumber = 2;
+  inline ::google::protobuf::int32 trademessageflags() const;
+  inline void set_trademessageflags(::google::protobuf::int32 value);
+
+  // optional int32 tradeConditionType = 3;
+  inline bool has_tradeconditiontype() const;
+  inline void clear_tradeconditiontype();
+  static const int kTradeConditionTypeFieldNumber = 3;
+  inline ::google::protobuf::int32 tradeconditiontype() const;
+  inline void set_tradeconditiontype(::google::protobuf::int32 value);
+
+  // optional string tradeExchange = 4;
+  inline bool has_tradeexchange() const;
+  inline void clear_tradeexchange();
+  static const int kTradeExchangeFieldNumber = 4;
+  inline const ::std::string& tradeexchange() const;
+  inline void set_tradeexchange(const ::std::string& value);
+  inline void set_tradeexchange(const char* value);
+  inline void set_tradeexchange(const char* value, size_t size);
+  inline ::std::string* mutable_tradeexchange();
+  inline ::std::string* release_tradeexchange();
+  inline void set_allocated_tradeexchange(::std::string* tradeexchange);
+
+  // optional .NodeActiveTickProto.ATPrice tradePrice = 5;
+  inline bool has_tradeprice() const;
+  inline void clear_tradeprice();
+  static const int kTradePriceFieldNumber = 5;
+  inline const ::NodeActiveTickProto::ATPrice& tradeprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_tradeprice();
+  inline ::NodeActiveTickProto::ATPrice* release_tradeprice();
+  inline void set_allocated_tradeprice(::NodeActiveTickProto::ATPrice* tradeprice);
+
+  // optional int32 tradeSize = 6;
+  inline bool has_tradesize() const;
+  inline void clear_tradesize();
+  static const int kTradeSizeFieldNumber = 6;
+  inline ::google::protobuf::int32 tradesize() const;
+  inline void set_tradesize(::google::protobuf::int32 value);
+
+  // optional .NodeActiveTickProto.ATTime tradeTime = 7;
+  inline bool has_tradetime() const;
+  inline void clear_tradetime();
+  static const int kTradeTimeFieldNumber = 7;
+  inline const ::NodeActiveTickProto::ATTime& tradetime() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_tradetime();
+  inline ::NodeActiveTickProto::ATTime* release_tradetime();
+  inline void set_allocated_tradetime(::NodeActiveTickProto::ATTime* tradetime);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamTradeUpdate)
+ private:
+  inline void set_has_tradesymbol();
+  inline void clear_has_tradesymbol();
+  inline void set_has_trademessageflags();
+  inline void clear_has_trademessageflags();
+  inline void set_has_tradeconditiontype();
+  inline void clear_has_tradeconditiontype();
+  inline void set_has_tradeexchange();
+  inline void clear_has_tradeexchange();
+  inline void set_has_tradeprice();
+  inline void clear_has_tradeprice();
+  inline void set_has_tradesize();
+  inline void clear_has_tradesize();
+  inline void set_has_tradetime();
+  inline void clear_has_tradetime();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* tradesymbol_;
+  ::google::protobuf::int32 trademessageflags_;
+  ::google::protobuf::int32 tradeconditiontype_;
+  ::std::string* tradeexchange_;
+  ::NodeActiveTickProto::ATPrice* tradeprice_;
+  ::NodeActiveTickProto::ATTime* tradetime_;
+  ::google::protobuf::int32 tradesize_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteStreamTradeUpdate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteStreamQuoteUpdate : public ::google::protobuf::Message {
+ public:
+  ATQuoteStreamQuoteUpdate();
+  virtual ~ATQuoteStreamQuoteUpdate();
+
+  ATQuoteStreamQuoteUpdate(const ATQuoteStreamQuoteUpdate& from);
+
+  inline ATQuoteStreamQuoteUpdate& operator=(const ATQuoteStreamQuoteUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteStreamQuoteUpdate& default_instance();
+
+  void Swap(ATQuoteStreamQuoteUpdate* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteStreamQuoteUpdate* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteStreamQuoteUpdate& from);
+  void MergeFrom(const ATQuoteStreamQuoteUpdate& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATSymbol quoteSymbol = 1;
+  inline bool has_quotesymbol() const;
+  inline void clear_quotesymbol();
+  static const int kQuoteSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& quotesymbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_quotesymbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_quotesymbol();
+  inline void set_allocated_quotesymbol(::NodeActiveTickProto::ATSymbol* quotesymbol);
+
+  // optional int32 quoteCondition = 2;
+  inline bool has_quotecondition() const;
+  inline void clear_quotecondition();
+  static const int kQuoteConditionFieldNumber = 2;
+  inline ::google::protobuf::int32 quotecondition() const;
+  inline void set_quotecondition(::google::protobuf::int32 value);
+
+  // optional string quoteBidExchange = 3;
+  inline bool has_quotebidexchange() const;
+  inline void clear_quotebidexchange();
+  static const int kQuoteBidExchangeFieldNumber = 3;
+  inline const ::std::string& quotebidexchange() const;
+  inline void set_quotebidexchange(const ::std::string& value);
+  inline void set_quotebidexchange(const char* value);
+  inline void set_quotebidexchange(const char* value, size_t size);
+  inline ::std::string* mutable_quotebidexchange();
+  inline ::std::string* release_quotebidexchange();
+  inline void set_allocated_quotebidexchange(::std::string* quotebidexchange);
+
+  // optional string quoteAskExchange = 4;
+  inline bool has_quoteaskexchange() const;
+  inline void clear_quoteaskexchange();
+  static const int kQuoteAskExchangeFieldNumber = 4;
+  inline const ::std::string& quoteaskexchange() const;
+  inline void set_quoteaskexchange(const ::std::string& value);
+  inline void set_quoteaskexchange(const char* value);
+  inline void set_quoteaskexchange(const char* value, size_t size);
+  inline ::std::string* mutable_quoteaskexchange();
+  inline ::std::string* release_quoteaskexchange();
+  inline void set_allocated_quoteaskexchange(::std::string* quoteaskexchange);
+
+  // optional .NodeActiveTickProto.ATPrice quoteBidPrice = 5;
+  inline bool has_quotebidprice() const;
+  inline void clear_quotebidprice();
+  static const int kQuoteBidPriceFieldNumber = 5;
+  inline const ::NodeActiveTickProto::ATPrice& quotebidprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_quotebidprice();
+  inline ::NodeActiveTickProto::ATPrice* release_quotebidprice();
+  inline void set_allocated_quotebidprice(::NodeActiveTickProto::ATPrice* quotebidprice);
+
+  // optional .NodeActiveTickProto.ATPrice quoteAskPrice = 6;
+  inline bool has_quoteaskprice() const;
+  inline void clear_quoteaskprice();
+  static const int kQuoteAskPriceFieldNumber = 6;
+  inline const ::NodeActiveTickProto::ATPrice& quoteaskprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_quoteaskprice();
+  inline ::NodeActiveTickProto::ATPrice* release_quoteaskprice();
+  inline void set_allocated_quoteaskprice(::NodeActiveTickProto::ATPrice* quoteaskprice);
+
+  // optional int32 quoteBidSize = 7;
+  inline bool has_quotebidsize() const;
+  inline void clear_quotebidsize();
+  static const int kQuoteBidSizeFieldNumber = 7;
+  inline ::google::protobuf::int32 quotebidsize() const;
+  inline void set_quotebidsize(::google::protobuf::int32 value);
+
+  // optional int32 quoteAskSize = 8;
+  inline bool has_quoteasksize() const;
+  inline void clear_quoteasksize();
+  static const int kQuoteAskSizeFieldNumber = 8;
+  inline ::google::protobuf::int32 quoteasksize() const;
+  inline void set_quoteasksize(::google::protobuf::int32 value);
+
+  // optional .NodeActiveTickProto.ATTime quoteTime = 9;
+  inline bool has_quotetime() const;
+  inline void clear_quotetime();
+  static const int kQuoteTimeFieldNumber = 9;
+  inline const ::NodeActiveTickProto::ATTime& quotetime() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_quotetime();
+  inline ::NodeActiveTickProto::ATTime* release_quotetime();
+  inline void set_allocated_quotetime(::NodeActiveTickProto::ATTime* quotetime);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamQuoteUpdate)
+ private:
+  inline void set_has_quotesymbol();
+  inline void clear_has_quotesymbol();
+  inline void set_has_quotecondition();
+  inline void clear_has_quotecondition();
+  inline void set_has_quotebidexchange();
+  inline void clear_has_quotebidexchange();
+  inline void set_has_quoteaskexchange();
+  inline void clear_has_quoteaskexchange();
+  inline void set_has_quotebidprice();
+  inline void clear_has_quotebidprice();
+  inline void set_has_quoteaskprice();
+  inline void clear_has_quoteaskprice();
+  inline void set_has_quotebidsize();
+  inline void clear_has_quotebidsize();
+  inline void set_has_quoteasksize();
+  inline void clear_has_quoteasksize();
+  inline void set_has_quotetime();
+  inline void clear_has_quotetime();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* quotesymbol_;
+  ::std::string* quotebidexchange_;
+  ::std::string* quoteaskexchange_;
+  ::google::protobuf::int32 quotecondition_;
+  ::google::protobuf::int32 quotebidsize_;
+  ::NodeActiveTickProto::ATPrice* quotebidprice_;
+  ::NodeActiveTickProto::ATPrice* quoteaskprice_;
+  ::NodeActiveTickProto::ATTime* quotetime_;
+  ::google::protobuf::int32 quoteasksize_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteStreamQuoteUpdate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteStreamRefreshUpdate : public ::google::protobuf::Message {
+ public:
+  ATQuoteStreamRefreshUpdate();
+  virtual ~ATQuoteStreamRefreshUpdate();
+
+  ATQuoteStreamRefreshUpdate(const ATQuoteStreamRefreshUpdate& from);
+
+  inline ATQuoteStreamRefreshUpdate& operator=(const ATQuoteStreamRefreshUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteStreamRefreshUpdate& default_instance();
+
+  void Swap(ATQuoteStreamRefreshUpdate* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteStreamRefreshUpdate* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteStreamRefreshUpdate& from);
+  void MergeFrom(const ATQuoteStreamRefreshUpdate& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
+  inline bool has_refreshsymbol() const;
+  inline void clear_refreshsymbol();
+  static const int kRefreshSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& refreshsymbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_refreshsymbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_refreshsymbol();
+  inline void set_allocated_refreshsymbol(::NodeActiveTickProto::ATSymbol* refreshsymbol);
+
+  // optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
+  inline bool has_refreshlastprice() const;
+  inline void clear_refreshlastprice();
+  static const int kRefreshLastPriceFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATPrice& refreshlastprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_refreshlastprice();
+  inline ::NodeActiveTickProto::ATPrice* release_refreshlastprice();
+  inline void set_allocated_refreshlastprice(::NodeActiveTickProto::ATPrice* refreshlastprice);
+
+  // optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
+  inline bool has_refreshopenprice() const;
+  inline void clear_refreshopenprice();
+  static const int kRefreshOpenPriceFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATPrice& refreshopenprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_refreshopenprice();
+  inline ::NodeActiveTickProto::ATPrice* release_refreshopenprice();
+  inline void set_allocated_refreshopenprice(::NodeActiveTickProto::ATPrice* refreshopenprice);
+
+  // optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
+  inline bool has_refreshhighprice() const;
+  inline void clear_refreshhighprice();
+  static const int kRefreshHighPriceFieldNumber = 4;
+  inline const ::NodeActiveTickProto::ATPrice& refreshhighprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_refreshhighprice();
+  inline ::NodeActiveTickProto::ATPrice* release_refreshhighprice();
+  inline void set_allocated_refreshhighprice(::NodeActiveTickProto::ATPrice* refreshhighprice);
+
+  // optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
+  inline bool has_refreshlowprice() const;
+  inline void clear_refreshlowprice();
+  static const int kRefreshLowPriceFieldNumber = 5;
+  inline const ::NodeActiveTickProto::ATPrice& refreshlowprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_refreshlowprice();
+  inline ::NodeActiveTickProto::ATPrice* release_refreshlowprice();
+  inline void set_allocated_refreshlowprice(::NodeActiveTickProto::ATPrice* refreshlowprice);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamRefreshUpdate)
+ private:
+  inline void set_has_refreshsymbol();
+  inline void clear_has_refreshsymbol();
+  inline void set_has_refreshlastprice();
+  inline void clear_has_refreshlastprice();
+  inline void set_has_refreshopenprice();
+  inline void clear_has_refreshopenprice();
+  inline void set_has_refreshhighprice();
+  inline void clear_has_refreshhighprice();
+  inline void set_has_refreshlowprice();
+  inline void clear_has_refreshlowprice();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* refreshsymbol_;
+  ::NodeActiveTickProto::ATPrice* refreshlastprice_;
+  ::NodeActiveTickProto::ATPrice* refreshopenprice_;
+  ::NodeActiveTickProto::ATPrice* refreshhighprice_;
+  ::NodeActiveTickProto::ATPrice* refreshlowprice_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteStreamRefreshUpdate* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -866,14 +1365,14 @@ class ATQuote : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 quoteconditionid() const;
   inline void set_quoteconditionid(::google::protobuf::int32 value);
 
-  // optional .NodeActiveTickProto.ATServerTime serverTime = 7;
+  // optional .NodeActiveTickProto.ATTime serverTime = 7;
   inline bool has_servertime() const;
   inline void clear_servertime();
   static const int kServerTimeFieldNumber = 7;
-  inline const ::NodeActiveTickProto::ATServerTime& servertime() const;
-  inline ::NodeActiveTickProto::ATServerTime* mutable_servertime();
-  inline ::NodeActiveTickProto::ATServerTime* release_servertime();
-  inline void set_allocated_servertime(::NodeActiveTickProto::ATServerTime* servertime);
+  inline const ::NodeActiveTickProto::ATTime& servertime() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_servertime();
+  inline ::NodeActiveTickProto::ATTime* release_servertime();
+  inline void set_allocated_servertime(::NodeActiveTickProto::ATTime* servertime);
 
   // optional int32 bidExchangeId = 8;
   inline bool has_bidexchangeid() const;
@@ -919,7 +1418,7 @@ class ATQuote : public ::google::protobuf::Message {
   ::NodeActiveTickProto::ATPrice* askprice_;
   ::google::protobuf::int32 bidsize_;
   ::google::protobuf::int32 asksize_;
-  ::NodeActiveTickProto::ATServerTime* servertime_;
+  ::NodeActiveTickProto::ATTime* servertime_;
   ::google::protobuf::int32 quoteconditionid_;
   ::google::protobuf::int32 bidexchangeid_;
   ::google::protobuf::int32 askexchangeid_;
@@ -1404,102 +1903,1074 @@ inline void ATQuoteStreamResponseItem::set_allocated_symbolstatus(::std::string*
 
 // -------------------------------------------------------------------
 
-// ATServerTime
+// ATTime
 
-// required int32 year = 1;
-inline bool ATServerTime::has_year() const {
+// optional int32 year = 1;
+inline bool ATTime::has_year() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ATServerTime::set_has_year() {
+inline void ATTime::set_has_year() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ATServerTime::clear_has_year() {
+inline void ATTime::clear_has_year() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ATServerTime::clear_year() {
+inline void ATTime::clear_year() {
   year_ = 0;
   clear_has_year();
 }
-inline ::google::protobuf::int32 ATServerTime::year() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.year)
+inline ::google::protobuf::int32 ATTime::year() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.year)
   return year_;
 }
-inline void ATServerTime::set_year(::google::protobuf::int32 value) {
+inline void ATTime::set_year(::google::protobuf::int32 value) {
   set_has_year();
   year_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.year)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.year)
 }
 
-// required int32 month = 2;
-inline bool ATServerTime::has_month() const {
+// optional int32 month = 2;
+inline bool ATTime::has_month() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ATServerTime::set_has_month() {
+inline void ATTime::set_has_month() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ATServerTime::clear_has_month() {
+inline void ATTime::clear_has_month() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ATServerTime::clear_month() {
+inline void ATTime::clear_month() {
   month_ = 0;
   clear_has_month();
 }
-inline ::google::protobuf::int32 ATServerTime::month() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.month)
+inline ::google::protobuf::int32 ATTime::month() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.month)
   return month_;
 }
-inline void ATServerTime::set_month(::google::protobuf::int32 value) {
+inline void ATTime::set_month(::google::protobuf::int32 value) {
   set_has_month();
   month_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.month)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.month)
 }
 
-// required int32 dayOfWeek = 3;
-inline bool ATServerTime::has_dayofweek() const {
+// optional int32 dayOfWeek = 3;
+inline bool ATTime::has_dayofweek() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ATServerTime::set_has_dayofweek() {
+inline void ATTime::set_has_dayofweek() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ATServerTime::clear_has_dayofweek() {
+inline void ATTime::clear_has_dayofweek() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ATServerTime::clear_dayofweek() {
+inline void ATTime::clear_dayofweek() {
   dayofweek_ = 0;
   clear_has_dayofweek();
 }
-inline ::google::protobuf::int32 ATServerTime::dayofweek() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.dayOfWeek)
+inline ::google::protobuf::int32 ATTime::dayofweek() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.dayOfWeek)
   return dayofweek_;
 }
-inline void ATServerTime::set_dayofweek(::google::protobuf::int32 value) {
+inline void ATTime::set_dayofweek(::google::protobuf::int32 value) {
   set_has_dayofweek();
   dayofweek_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.dayOfWeek)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.dayOfWeek)
 }
 
-// required int32 day = 4;
-inline bool ATServerTime::has_day() const {
+// optional int32 day = 4;
+inline bool ATTime::has_day() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void ATServerTime::set_has_day() {
+inline void ATTime::set_has_day() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void ATServerTime::clear_has_day() {
+inline void ATTime::clear_has_day() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void ATServerTime::clear_day() {
+inline void ATTime::clear_day() {
   day_ = 0;
   clear_has_day();
 }
-inline ::google::protobuf::int32 ATServerTime::day() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATServerTime.day)
+inline ::google::protobuf::int32 ATTime::day() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.day)
   return day_;
 }
-inline void ATServerTime::set_day(::google::protobuf::int32 value) {
+inline void ATTime::set_day(::google::protobuf::int32 value) {
   set_has_day();
   day_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATServerTime.day)
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.day)
+}
+
+// optional int32 hour = 5;
+inline bool ATTime::has_hour() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATTime::set_has_hour() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATTime::clear_has_hour() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATTime::clear_hour() {
+  hour_ = 0;
+  clear_has_hour();
+}
+inline ::google::protobuf::int32 ATTime::hour() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.hour)
+  return hour_;
+}
+inline void ATTime::set_hour(::google::protobuf::int32 value) {
+  set_has_hour();
+  hour_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.hour)
+}
+
+// optional int32 minute = 6;
+inline bool ATTime::has_minute() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATTime::set_has_minute() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATTime::clear_has_minute() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATTime::clear_minute() {
+  minute_ = 0;
+  clear_has_minute();
+}
+inline ::google::protobuf::int32 ATTime::minute() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.minute)
+  return minute_;
+}
+inline void ATTime::set_minute(::google::protobuf::int32 value) {
+  set_has_minute();
+  minute_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.minute)
+}
+
+// optional int32 second = 7;
+inline bool ATTime::has_second() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATTime::set_has_second() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATTime::clear_has_second() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATTime::clear_second() {
+  second_ = 0;
+  clear_has_second();
+}
+inline ::google::protobuf::int32 ATTime::second() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.second)
+  return second_;
+}
+inline void ATTime::set_second(::google::protobuf::int32 value) {
+  set_has_second();
+  second_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.second)
+}
+
+// optional int32 millisecond = 8;
+inline bool ATTime::has_millisecond() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ATTime::set_has_millisecond() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ATTime::clear_has_millisecond() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ATTime::clear_millisecond() {
+  millisecond_ = 0;
+  clear_has_millisecond();
+}
+inline ::google::protobuf::int32 ATTime::millisecond() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.millisecond)
+  return millisecond_;
+}
+inline void ATTime::set_millisecond(::google::protobuf::int32 value) {
+  set_has_millisecond();
+  millisecond_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.millisecond)
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteStreamTradeUpdate
+
+// optional .NodeActiveTickProto.ATSymbol tradeSymbol = 1;
+inline bool ATQuoteStreamTradeUpdate::has_tradesymbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_tradesymbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_tradesymbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_tradesymbol() {
+  if (tradesymbol_ != NULL) tradesymbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_tradesymbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATQuoteStreamTradeUpdate::tradesymbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeSymbol)
+  return tradesymbol_ != NULL ? *tradesymbol_ : *default_instance_->tradesymbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamTradeUpdate::mutable_tradesymbol() {
+  set_has_tradesymbol();
+  if (tradesymbol_ == NULL) tradesymbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeSymbol)
+  return tradesymbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamTradeUpdate::release_tradesymbol() {
+  clear_has_tradesymbol();
+  ::NodeActiveTickProto::ATSymbol* temp = tradesymbol_;
+  tradesymbol_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamTradeUpdate::set_allocated_tradesymbol(::NodeActiveTickProto::ATSymbol* tradesymbol) {
+  delete tradesymbol_;
+  tradesymbol_ = tradesymbol;
+  if (tradesymbol) {
+    set_has_tradesymbol();
+  } else {
+    clear_has_tradesymbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeSymbol)
+}
+
+// optional int32 tradeMessageFlags = 2;
+inline bool ATQuoteStreamTradeUpdate::has_trademessageflags() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_trademessageflags() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_trademessageflags() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_trademessageflags() {
+  trademessageflags_ = 0;
+  clear_has_trademessageflags();
+}
+inline ::google::protobuf::int32 ATQuoteStreamTradeUpdate::trademessageflags() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeMessageFlags)
+  return trademessageflags_;
+}
+inline void ATQuoteStreamTradeUpdate::set_trademessageflags(::google::protobuf::int32 value) {
+  set_has_trademessageflags();
+  trademessageflags_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeMessageFlags)
+}
+
+// optional int32 tradeConditionType = 3;
+inline bool ATQuoteStreamTradeUpdate::has_tradeconditiontype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_tradeconditiontype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_tradeconditiontype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_tradeconditiontype() {
+  tradeconditiontype_ = 0;
+  clear_has_tradeconditiontype();
+}
+inline ::google::protobuf::int32 ATQuoteStreamTradeUpdate::tradeconditiontype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+  return tradeconditiontype_;
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeconditiontype(::google::protobuf::int32 value) {
+  set_has_tradeconditiontype();
+  tradeconditiontype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+}
+
+// optional string tradeExchange = 4;
+inline bool ATQuoteStreamTradeUpdate::has_tradeexchange() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_tradeexchange() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_tradeexchange() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_tradeexchange() {
+  if (tradeexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tradeexchange_->clear();
+  }
+  clear_has_tradeexchange();
+}
+inline const ::std::string& ATQuoteStreamTradeUpdate::tradeexchange() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeExchange)
+  return *tradeexchange_;
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeexchange(const ::std::string& value) {
+  set_has_tradeexchange();
+  if (tradeexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tradeexchange_ = new ::std::string;
+  }
+  tradeexchange_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeExchange)
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeexchange(const char* value) {
+  set_has_tradeexchange();
+  if (tradeexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tradeexchange_ = new ::std::string;
+  }
+  tradeexchange_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeExchange)
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeexchange(const char* value, size_t size) {
+  set_has_tradeexchange();
+  if (tradeexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tradeexchange_ = new ::std::string;
+  }
+  tradeexchange_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeExchange)
+}
+inline ::std::string* ATQuoteStreamTradeUpdate::mutable_tradeexchange() {
+  set_has_tradeexchange();
+  if (tradeexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tradeexchange_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeExchange)
+  return tradeexchange_;
+}
+inline ::std::string* ATQuoteStreamTradeUpdate::release_tradeexchange() {
+  clear_has_tradeexchange();
+  if (tradeexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = tradeexchange_;
+    tradeexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamTradeUpdate::set_allocated_tradeexchange(::std::string* tradeexchange) {
+  if (tradeexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete tradeexchange_;
+  }
+  if (tradeexchange) {
+    set_has_tradeexchange();
+    tradeexchange_ = tradeexchange;
+  } else {
+    clear_has_tradeexchange();
+    tradeexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeExchange)
+}
+
+// optional .NodeActiveTickProto.ATPrice tradePrice = 5;
+inline bool ATQuoteStreamTradeUpdate::has_tradeprice() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_tradeprice() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_tradeprice() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_tradeprice() {
+  if (tradeprice_ != NULL) tradeprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_tradeprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamTradeUpdate::tradeprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradePrice)
+  return tradeprice_ != NULL ? *tradeprice_ : *default_instance_->tradeprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamTradeUpdate::mutable_tradeprice() {
+  set_has_tradeprice();
+  if (tradeprice_ == NULL) tradeprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradePrice)
+  return tradeprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamTradeUpdate::release_tradeprice() {
+  clear_has_tradeprice();
+  ::NodeActiveTickProto::ATPrice* temp = tradeprice_;
+  tradeprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamTradeUpdate::set_allocated_tradeprice(::NodeActiveTickProto::ATPrice* tradeprice) {
+  delete tradeprice_;
+  tradeprice_ = tradeprice;
+  if (tradeprice) {
+    set_has_tradeprice();
+  } else {
+    clear_has_tradeprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradePrice)
+}
+
+// optional int32 tradeSize = 6;
+inline bool ATQuoteStreamTradeUpdate::has_tradesize() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_tradesize() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_tradesize() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_tradesize() {
+  tradesize_ = 0;
+  clear_has_tradesize();
+}
+inline ::google::protobuf::int32 ATQuoteStreamTradeUpdate::tradesize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeSize)
+  return tradesize_;
+}
+inline void ATQuoteStreamTradeUpdate::set_tradesize(::google::protobuf::int32 value) {
+  set_has_tradesize();
+  tradesize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeSize)
+}
+
+// optional .NodeActiveTickProto.ATTime tradeTime = 7;
+inline bool ATQuoteStreamTradeUpdate::has_tradetime() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATQuoteStreamTradeUpdate::set_has_tradetime() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_has_tradetime() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATQuoteStreamTradeUpdate::clear_tradetime() {
+  if (tradetime_ != NULL) tradetime_->::NodeActiveTickProto::ATTime::Clear();
+  clear_has_tradetime();
+}
+inline const ::NodeActiveTickProto::ATTime& ATQuoteStreamTradeUpdate::tradetime() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeTime)
+  return tradetime_ != NULL ? *tradetime_ : *default_instance_->tradetime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATQuoteStreamTradeUpdate::mutable_tradetime() {
+  set_has_tradetime();
+  if (tradetime_ == NULL) tradetime_ = new ::NodeActiveTickProto::ATTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeTime)
+  return tradetime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATQuoteStreamTradeUpdate::release_tradetime() {
+  clear_has_tradetime();
+  ::NodeActiveTickProto::ATTime* temp = tradetime_;
+  tradetime_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamTradeUpdate::set_allocated_tradetime(::NodeActiveTickProto::ATTime* tradetime) {
+  delete tradetime_;
+  tradetime_ = tradetime;
+  if (tradetime) {
+    set_has_tradetime();
+  } else {
+    clear_has_tradetime();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeTime)
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteStreamQuoteUpdate
+
+// optional .NodeActiveTickProto.ATSymbol quoteSymbol = 1;
+inline bool ATQuoteStreamQuoteUpdate::has_quotesymbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quotesymbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quotesymbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quotesymbol() {
+  if (quotesymbol_ != NULL) quotesymbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_quotesymbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATQuoteStreamQuoteUpdate::quotesymbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteSymbol)
+  return quotesymbol_ != NULL ? *quotesymbol_ : *default_instance_->quotesymbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamQuoteUpdate::mutable_quotesymbol() {
+  set_has_quotesymbol();
+  if (quotesymbol_ == NULL) quotesymbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteSymbol)
+  return quotesymbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamQuoteUpdate::release_quotesymbol() {
+  clear_has_quotesymbol();
+  ::NodeActiveTickProto::ATSymbol* temp = quotesymbol_;
+  quotesymbol_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quotesymbol(::NodeActiveTickProto::ATSymbol* quotesymbol) {
+  delete quotesymbol_;
+  quotesymbol_ = quotesymbol;
+  if (quotesymbol) {
+    set_has_quotesymbol();
+  } else {
+    clear_has_quotesymbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteSymbol)
+}
+
+// optional int32 quoteCondition = 2;
+inline bool ATQuoteStreamQuoteUpdate::has_quotecondition() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quotecondition() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quotecondition() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quotecondition() {
+  quotecondition_ = 0;
+  clear_has_quotecondition();
+}
+inline ::google::protobuf::int32 ATQuoteStreamQuoteUpdate::quotecondition() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+  return quotecondition_;
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotecondition(::google::protobuf::int32 value) {
+  set_has_quotecondition();
+  quotecondition_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+}
+
+// optional string quoteBidExchange = 3;
+inline bool ATQuoteStreamQuoteUpdate::has_quotebidexchange() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quotebidexchange() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quotebidexchange() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quotebidexchange() {
+  if (quotebidexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotebidexchange_->clear();
+  }
+  clear_has_quotebidexchange();
+}
+inline const ::std::string& ATQuoteStreamQuoteUpdate::quotebidexchange() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidExchange)
+  return *quotebidexchange_;
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotebidexchange(const ::std::string& value) {
+  set_has_quotebidexchange();
+  if (quotebidexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotebidexchange_ = new ::std::string;
+  }
+  quotebidexchange_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidExchange)
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotebidexchange(const char* value) {
+  set_has_quotebidexchange();
+  if (quotebidexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotebidexchange_ = new ::std::string;
+  }
+  quotebidexchange_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidExchange)
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotebidexchange(const char* value, size_t size) {
+  set_has_quotebidexchange();
+  if (quotebidexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotebidexchange_ = new ::std::string;
+  }
+  quotebidexchange_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidExchange)
+}
+inline ::std::string* ATQuoteStreamQuoteUpdate::mutable_quotebidexchange() {
+  set_has_quotebidexchange();
+  if (quotebidexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotebidexchange_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidExchange)
+  return quotebidexchange_;
+}
+inline ::std::string* ATQuoteStreamQuoteUpdate::release_quotebidexchange() {
+  clear_has_quotebidexchange();
+  if (quotebidexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = quotebidexchange_;
+    quotebidexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quotebidexchange(::std::string* quotebidexchange) {
+  if (quotebidexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete quotebidexchange_;
+  }
+  if (quotebidexchange) {
+    set_has_quotebidexchange();
+    quotebidexchange_ = quotebidexchange;
+  } else {
+    clear_has_quotebidexchange();
+    quotebidexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidExchange)
+}
+
+// optional string quoteAskExchange = 4;
+inline bool ATQuoteStreamQuoteUpdate::has_quoteaskexchange() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quoteaskexchange() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quoteaskexchange() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quoteaskexchange() {
+  if (quoteaskexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quoteaskexchange_->clear();
+  }
+  clear_has_quoteaskexchange();
+}
+inline const ::std::string& ATQuoteStreamQuoteUpdate::quoteaskexchange() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskExchange)
+  return *quoteaskexchange_;
+}
+inline void ATQuoteStreamQuoteUpdate::set_quoteaskexchange(const ::std::string& value) {
+  set_has_quoteaskexchange();
+  if (quoteaskexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quoteaskexchange_ = new ::std::string;
+  }
+  quoteaskexchange_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskExchange)
+}
+inline void ATQuoteStreamQuoteUpdate::set_quoteaskexchange(const char* value) {
+  set_has_quoteaskexchange();
+  if (quoteaskexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quoteaskexchange_ = new ::std::string;
+  }
+  quoteaskexchange_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskExchange)
+}
+inline void ATQuoteStreamQuoteUpdate::set_quoteaskexchange(const char* value, size_t size) {
+  set_has_quoteaskexchange();
+  if (quoteaskexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quoteaskexchange_ = new ::std::string;
+  }
+  quoteaskexchange_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskExchange)
+}
+inline ::std::string* ATQuoteStreamQuoteUpdate::mutable_quoteaskexchange() {
+  set_has_quoteaskexchange();
+  if (quoteaskexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quoteaskexchange_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskExchange)
+  return quoteaskexchange_;
+}
+inline ::std::string* ATQuoteStreamQuoteUpdate::release_quoteaskexchange() {
+  clear_has_quoteaskexchange();
+  if (quoteaskexchange_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = quoteaskexchange_;
+    quoteaskexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quoteaskexchange(::std::string* quoteaskexchange) {
+  if (quoteaskexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete quoteaskexchange_;
+  }
+  if (quoteaskexchange) {
+    set_has_quoteaskexchange();
+    quoteaskexchange_ = quoteaskexchange;
+  } else {
+    clear_has_quoteaskexchange();
+    quoteaskexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskExchange)
+}
+
+// optional .NodeActiveTickProto.ATPrice quoteBidPrice = 5;
+inline bool ATQuoteStreamQuoteUpdate::has_quotebidprice() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quotebidprice() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quotebidprice() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quotebidprice() {
+  if (quotebidprice_ != NULL) quotebidprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_quotebidprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamQuoteUpdate::quotebidprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidPrice)
+  return quotebidprice_ != NULL ? *quotebidprice_ : *default_instance_->quotebidprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamQuoteUpdate::mutable_quotebidprice() {
+  set_has_quotebidprice();
+  if (quotebidprice_ == NULL) quotebidprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidPrice)
+  return quotebidprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamQuoteUpdate::release_quotebidprice() {
+  clear_has_quotebidprice();
+  ::NodeActiveTickProto::ATPrice* temp = quotebidprice_;
+  quotebidprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quotebidprice(::NodeActiveTickProto::ATPrice* quotebidprice) {
+  delete quotebidprice_;
+  quotebidprice_ = quotebidprice;
+  if (quotebidprice) {
+    set_has_quotebidprice();
+  } else {
+    clear_has_quotebidprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice quoteAskPrice = 6;
+inline bool ATQuoteStreamQuoteUpdate::has_quoteaskprice() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quoteaskprice() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quoteaskprice() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quoteaskprice() {
+  if (quoteaskprice_ != NULL) quoteaskprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_quoteaskprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamQuoteUpdate::quoteaskprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskPrice)
+  return quoteaskprice_ != NULL ? *quoteaskprice_ : *default_instance_->quoteaskprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamQuoteUpdate::mutable_quoteaskprice() {
+  set_has_quoteaskprice();
+  if (quoteaskprice_ == NULL) quoteaskprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskPrice)
+  return quoteaskprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamQuoteUpdate::release_quoteaskprice() {
+  clear_has_quoteaskprice();
+  ::NodeActiveTickProto::ATPrice* temp = quoteaskprice_;
+  quoteaskprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quoteaskprice(::NodeActiveTickProto::ATPrice* quoteaskprice) {
+  delete quoteaskprice_;
+  quoteaskprice_ = quoteaskprice;
+  if (quoteaskprice) {
+    set_has_quoteaskprice();
+  } else {
+    clear_has_quoteaskprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskPrice)
+}
+
+// optional int32 quoteBidSize = 7;
+inline bool ATQuoteStreamQuoteUpdate::has_quotebidsize() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quotebidsize() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quotebidsize() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quotebidsize() {
+  quotebidsize_ = 0;
+  clear_has_quotebidsize();
+}
+inline ::google::protobuf::int32 ATQuoteStreamQuoteUpdate::quotebidsize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidSize)
+  return quotebidsize_;
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotebidsize(::google::protobuf::int32 value) {
+  set_has_quotebidsize();
+  quotebidsize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteBidSize)
+}
+
+// optional int32 quoteAskSize = 8;
+inline bool ATQuoteStreamQuoteUpdate::has_quoteasksize() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quoteasksize() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quoteasksize() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quoteasksize() {
+  quoteasksize_ = 0;
+  clear_has_quoteasksize();
+}
+inline ::google::protobuf::int32 ATQuoteStreamQuoteUpdate::quoteasksize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskSize)
+  return quoteasksize_;
+}
+inline void ATQuoteStreamQuoteUpdate::set_quoteasksize(::google::protobuf::int32 value) {
+  set_has_quoteasksize();
+  quoteasksize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteAskSize)
+}
+
+// optional .NodeActiveTickProto.ATTime quoteTime = 9;
+inline bool ATQuoteStreamQuoteUpdate::has_quotetime() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ATQuoteStreamQuoteUpdate::set_has_quotetime() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_has_quotetime() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void ATQuoteStreamQuoteUpdate::clear_quotetime() {
+  if (quotetime_ != NULL) quotetime_->::NodeActiveTickProto::ATTime::Clear();
+  clear_has_quotetime();
+}
+inline const ::NodeActiveTickProto::ATTime& ATQuoteStreamQuoteUpdate::quotetime() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteTime)
+  return quotetime_ != NULL ? *quotetime_ : *default_instance_->quotetime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATQuoteStreamQuoteUpdate::mutable_quotetime() {
+  set_has_quotetime();
+  if (quotetime_ == NULL) quotetime_ = new ::NodeActiveTickProto::ATTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteTime)
+  return quotetime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATQuoteStreamQuoteUpdate::release_quotetime() {
+  clear_has_quotetime();
+  ::NodeActiveTickProto::ATTime* temp = quotetime_;
+  quotetime_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quotetime(::NodeActiveTickProto::ATTime* quotetime) {
+  delete quotetime_;
+  quotetime_ = quotetime;
+  if (quotetime) {
+    set_has_quotetime();
+  } else {
+    clear_has_quotetime();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteTime)
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteStreamRefreshUpdate
+
+// optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
+inline bool ATQuoteStreamRefreshUpdate::has_refreshsymbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_refreshsymbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_refreshsymbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_refreshsymbol() {
+  if (refreshsymbol_ != NULL) refreshsymbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_refreshsymbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATQuoteStreamRefreshUpdate::refreshsymbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshSymbol)
+  return refreshsymbol_ != NULL ? *refreshsymbol_ : *default_instance_->refreshsymbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamRefreshUpdate::mutable_refreshsymbol() {
+  set_has_refreshsymbol();
+  if (refreshsymbol_ == NULL) refreshsymbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshSymbol)
+  return refreshsymbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamRefreshUpdate::release_refreshsymbol() {
+  clear_has_refreshsymbol();
+  ::NodeActiveTickProto::ATSymbol* temp = refreshsymbol_;
+  refreshsymbol_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshsymbol(::NodeActiveTickProto::ATSymbol* refreshsymbol) {
+  delete refreshsymbol_;
+  refreshsymbol_ = refreshsymbol;
+  if (refreshsymbol) {
+    set_has_refreshsymbol();
+  } else {
+    clear_has_refreshsymbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshSymbol)
+}
+
+// optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
+inline bool ATQuoteStreamRefreshUpdate::has_refreshlastprice() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_refreshlastprice() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_refreshlastprice() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_refreshlastprice() {
+  if (refreshlastprice_ != NULL) refreshlastprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_refreshlastprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshlastprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLastPrice)
+  return refreshlastprice_ != NULL ? *refreshlastprice_ : *default_instance_->refreshlastprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshlastprice() {
+  set_has_refreshlastprice();
+  if (refreshlastprice_ == NULL) refreshlastprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLastPrice)
+  return refreshlastprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshlastprice() {
+  clear_has_refreshlastprice();
+  ::NodeActiveTickProto::ATPrice* temp = refreshlastprice_;
+  refreshlastprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshlastprice(::NodeActiveTickProto::ATPrice* refreshlastprice) {
+  delete refreshlastprice_;
+  refreshlastprice_ = refreshlastprice;
+  if (refreshlastprice) {
+    set_has_refreshlastprice();
+  } else {
+    clear_has_refreshlastprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLastPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
+inline bool ATQuoteStreamRefreshUpdate::has_refreshopenprice() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_refreshopenprice() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_refreshopenprice() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_refreshopenprice() {
+  if (refreshopenprice_ != NULL) refreshopenprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_refreshopenprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshopenprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshOpenPrice)
+  return refreshopenprice_ != NULL ? *refreshopenprice_ : *default_instance_->refreshopenprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshopenprice() {
+  set_has_refreshopenprice();
+  if (refreshopenprice_ == NULL) refreshopenprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshOpenPrice)
+  return refreshopenprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshopenprice() {
+  clear_has_refreshopenprice();
+  ::NodeActiveTickProto::ATPrice* temp = refreshopenprice_;
+  refreshopenprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshopenprice(::NodeActiveTickProto::ATPrice* refreshopenprice) {
+  delete refreshopenprice_;
+  refreshopenprice_ = refreshopenprice;
+  if (refreshopenprice) {
+    set_has_refreshopenprice();
+  } else {
+    clear_has_refreshopenprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshOpenPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
+inline bool ATQuoteStreamRefreshUpdate::has_refreshhighprice() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_refreshhighprice() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_refreshhighprice() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_refreshhighprice() {
+  if (refreshhighprice_ != NULL) refreshhighprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_refreshhighprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshhighprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshHighPrice)
+  return refreshhighprice_ != NULL ? *refreshhighprice_ : *default_instance_->refreshhighprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshhighprice() {
+  set_has_refreshhighprice();
+  if (refreshhighprice_ == NULL) refreshhighprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshHighPrice)
+  return refreshhighprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshhighprice() {
+  clear_has_refreshhighprice();
+  ::NodeActiveTickProto::ATPrice* temp = refreshhighprice_;
+  refreshhighprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshhighprice(::NodeActiveTickProto::ATPrice* refreshhighprice) {
+  delete refreshhighprice_;
+  refreshhighprice_ = refreshhighprice;
+  if (refreshhighprice) {
+    set_has_refreshhighprice();
+  } else {
+    clear_has_refreshhighprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshHighPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
+inline bool ATQuoteStreamRefreshUpdate::has_refreshlowprice() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_refreshlowprice() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_refreshlowprice() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_refreshlowprice() {
+  if (refreshlowprice_ != NULL) refreshlowprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_refreshlowprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshlowprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLowPrice)
+  return refreshlowprice_ != NULL ? *refreshlowprice_ : *default_instance_->refreshlowprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshlowprice() {
+  set_has_refreshlowprice();
+  if (refreshlowprice_ == NULL) refreshlowprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLowPrice)
+  return refreshlowprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshlowprice() {
+  clear_has_refreshlowprice();
+  ::NodeActiveTickProto::ATPrice* temp = refreshlowprice_;
+  refreshlowprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshlowprice(::NodeActiveTickProto::ATPrice* refreshlowprice) {
+  delete refreshlowprice_;
+  refreshlowprice_ = refreshlowprice;
+  if (refreshlowprice) {
+    set_has_refreshlowprice();
+  } else {
+    clear_has_refreshlowprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLowPrice)
 }
 
 // -------------------------------------------------------------------
@@ -1981,7 +3452,7 @@ inline void ATQuote::set_quoteconditionid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.quoteConditionId)
 }
 
-// optional .NodeActiveTickProto.ATServerTime serverTime = 7;
+// optional .NodeActiveTickProto.ATTime serverTime = 7;
 inline bool ATQuote::has_servertime() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
@@ -1992,26 +3463,26 @@ inline void ATQuote::clear_has_servertime() {
   _has_bits_[0] &= ~0x00000040u;
 }
 inline void ATQuote::clear_servertime() {
-  if (servertime_ != NULL) servertime_->::NodeActiveTickProto::ATServerTime::Clear();
+  if (servertime_ != NULL) servertime_->::NodeActiveTickProto::ATTime::Clear();
   clear_has_servertime();
 }
-inline const ::NodeActiveTickProto::ATServerTime& ATQuote::servertime() const {
+inline const ::NodeActiveTickProto::ATTime& ATQuote::servertime() const {
   // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuote.serverTime)
   return servertime_ != NULL ? *servertime_ : *default_instance_->servertime_;
 }
-inline ::NodeActiveTickProto::ATServerTime* ATQuote::mutable_servertime() {
+inline ::NodeActiveTickProto::ATTime* ATQuote::mutable_servertime() {
   set_has_servertime();
-  if (servertime_ == NULL) servertime_ = new ::NodeActiveTickProto::ATServerTime;
+  if (servertime_ == NULL) servertime_ = new ::NodeActiveTickProto::ATTime;
   // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuote.serverTime)
   return servertime_;
 }
-inline ::NodeActiveTickProto::ATServerTime* ATQuote::release_servertime() {
+inline ::NodeActiveTickProto::ATTime* ATQuote::release_servertime() {
   clear_has_servertime();
-  ::NodeActiveTickProto::ATServerTime* temp = servertime_;
+  ::NodeActiveTickProto::ATTime* temp = servertime_;
   servertime_ = NULL;
   return temp;
 }
-inline void ATQuote::set_allocated_servertime(::NodeActiveTickProto::ATServerTime* servertime) {
+inline void ATQuote::set_allocated_servertime(::NodeActiveTickProto::ATTime* servertime) {
   delete servertime_;
   servertime_ = servertime;
   if (servertime) {

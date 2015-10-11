@@ -49,8 +49,6 @@ class ActiveTick
     else if typeof symbols is 'string'
       symbolParam = symbols
       symbolCount = 1
-    console.log 'symbolParam'
-    console.log symbolParam, symbolCount
     request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypeIndex, _quoteDecode
     @callbacks[request_id] = requestCb if requestCb?
     
@@ -77,24 +75,18 @@ main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
   await a.listRequest ATConstituentRequestTypes[2], 'fb',  defer(yang)
-  console.log yang.symbols.length + ' options.'
+  await a.listRequest ATConstituentRequestTypes[2], 'aapl',  defer(aapl)
   getQuote = (quote) ->
     console.log 'getQuote'
     console.log quote
-  # a.beginQuoteStream ['WFM'], ATStreamRequestTypes[0], getQuote, (result) ->
-  #   console.log result
   sym1 = '.' + yang.symbols[22].symbol
   sym2 = '.' + yang.symbols[4].symbol
   sym3 = '.' + yang.symbols[188].symbol
   sym4 = '.' + yang.symbols[588].symbol
-  console.log sym1, sym2, sym3, sym4
-  # a.beginQuoteStream [sym1, sym2, sym3, sym4], ATStreamRequestTypes[0], getQuote, (result) ->
-  #   console.log result
-  #   for i in result.quoteStreamItems
-  #     console.log i.symbol
-  a.beginQuoteStream sym1, ATStreamRequestTypes[0], getQuote, (result) ->
+  sym5 = '.' + aapl.symbols[118].symbol
+  sym6 = '.' + aapl.symbols[277].symbol
+
+  a.beginQuoteStream [sym1, sym2, sym3, sym4, sym5, sym6], 'StreamRequestSubscribe', getQuote, (result) ->
     console.log result
-    for i in result.quoteStreamItems
-      console.log i.symbol
 
 main() if not module.parent

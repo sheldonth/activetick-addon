@@ -203,15 +203,12 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
       str_symbols->WriteUtf8(cstr_symbols);
       std::string symbols = std::string(cstr_symbols);
       std::vector<ATSYMBOL> v_symbols = Helper::StringToSymbols(symbols);
-      uint32_t symbol_count = args[1]->Uint32Value();
-      
+      uint32_t symbol_count = args[1]->Uint32Value();      
       Local<String> str_request_type = (args[2]->ToString());
       char cstr_request_type[str_request_type->Utf8Length()];
       str_request_type->WriteUtf8(cstr_request_type);
-      
       std::string request_type = std::string(cstr_request_type);
       ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(request_type);
-
       quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
     }
   else {
@@ -226,6 +223,7 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
   switch (pUpdate->updateType) {
     case StreamUpdateTrade: {
       ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
+      NodeActiveTickProto::ATQuoteStreamTradeUpdate msg = ProtobufHelper::quotestreamtradeupdate(trade);
       break;
     }
     case StreamUpdateQuote:{

@@ -21,11 +21,45 @@ message ATQuoteStreamResponseItem {
   optional string symbolStatus = 3;
 }
 
-message ATServerTime {
-  required int32 year = 1;
-  required int32 month = 2;
-  required int32 dayOfWeek = 3;
-  required int32 day = 4;
+message ATTime {
+  optional int32 year = 1;
+  optional int32 month = 2;
+  optional int32 dayOfWeek = 3;
+  optional int32 day = 4;
+  optional int32 hour = 5;
+  optional int32 minute = 6;
+  optional int32 second = 7;
+  optional int32 millisecond = 8;
+}
+
+message ATQuoteStreamTradeUpdate {
+  optional ATSymbol tradeSymbol = 1; 
+  optional int32 tradeMessageFlags = 2;
+  optional int32 tradeConditionType = 3;
+  optional string tradeExchange = 4;
+  optional ATPrice tradePrice = 5;
+  optional int32 tradeSize = 6;
+  optional ATTime tradeTime = 7;
+}
+
+message ATQuoteStreamQuoteUpdate {
+  optional ATSymbol quoteSymbol = 1; 
+  optional int32 quoteCondition = 2;
+  optional string quoteBidExchange = 3;
+  optional string quoteAskExchange = 4;
+  optional ATPrice quoteBidPrice = 5;
+  optional ATPrice quoteAskPrice = 6;
+  optional int32 quoteBidSize = 7;
+  optional int32 quoteAskSize = 8;
+  optional ATTime quoteTime = 9;
+}
+
+message ATQuoteStreamRefreshUpdate {
+  optional ATSymbol refreshSymbol = 1;
+  optional ATPrice refreshLastPrice = 2;
+  optional ATPrice refreshOpenPrice = 3;
+  optional ATPrice refreshHighPrice = 4;
+  optional ATPrice refreshLowPrice = 5;
 }
 
 message ATSymbol {
@@ -48,7 +82,7 @@ message ATQuote {
   optional int32 bidSize = 4;
   optional int32 askSize = 5;
   optional int32 quoteConditionId = 6;
-  optional ATServerTime serverTime = 7;
+  optional ATTime serverTime = 7;
   optional int32 bidExchangeId = 8;
   optional int32 askExchangeId = 9;
 }

@@ -9,6 +9,7 @@ using namespace v8;
 
 class ProtobufHelper {
 public:
+  
   static void atsymbol_insert(ATSYMBOL* s, NodeActiveTickProto::ATSymbol *symbol) {
     std::string str_symbol_long = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
     std::string str_symbol_short = std::string(str_symbol_long.c_str());
@@ -41,4 +42,11 @@ public:
     }
     return response;
   }
+  
+  // ATQUOTESTREAM_TRADE_UPDATE
+  static NodeActiveTickProto::ATQuoteStreamTradeUpdate quotestreamtradeupdate(ATQUOTESTREAM_TRADE_UPDATE u) {
+    NodeActiveTickProto::ATQuoteStreamTradeUpdate q = NodeActiveTickProto::ATQuoteStreamTradeUpdate();
+    return q;
+  }
+  
 };

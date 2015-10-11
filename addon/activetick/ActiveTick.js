@@ -66,8 +66,6 @@
         symbolParam = symbols;
         symbolCount = 1;
       }
-      console.log('symbolParam');
-      console.log(symbolParam, symbolCount);
       request_id = this.api.beginQuoteStream(symbolParam, symbolCount, ATStreamRequestTypeIndex, _quoteDecode);
       if (requestCb != null) {
         return this.callbacks[request_id] = requestCb;
@@ -108,7 +106,7 @@
   })();
 
   main = function() {
-    var a, getQuote, result, sym1, sym2, sym3, sym4, yang, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var a, aapl, getQuote, result, sym1, sym2, sym3, sym4, sym5, sym6, yang, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     (function(_this) {
@@ -118,7 +116,7 @@
           filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/ActiveTick.iced"
         });
         a = new ActiveTick(__iced_deferrals.defer({
-          lineno: 76
+          lineno: 74
         }));
         __iced_deferrals._fulfill();
       });
@@ -135,7 +133,7 @@
                 return result = arguments[0];
               };
             })(),
-            lineno: 77
+            lineno: 75
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -150,30 +148,38 @@
                   return yang = arguments[0];
                 };
               })(),
-              lineno: 78
+              lineno: 76
             }));
             __iced_deferrals._fulfill();
           })(function() {
-            console.log(yang.symbols.length + ' options.');
-            getQuote = function(quote) {
-              console.log('getQuote');
-              return console.log(quote);
-            };
-            sym1 = '.' + yang.symbols[22].symbol;
-            sym2 = '.' + yang.symbols[4].symbol;
-            sym3 = '.' + yang.symbols[188].symbol;
-            sym4 = '.' + yang.symbols[588].symbol;
-            console.log(sym1, sym2, sym3, sym4);
-            return a.beginQuoteStream(sym1, ATStreamRequestTypes[0], getQuote, function(result) {
-              var i, _i, _len, _ref, _results;
-              console.log(result);
-              _ref = result.quoteStreamItems;
-              _results = [];
-              for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                i = _ref[_i];
-                _results.push(console.log(i.symbol));
-              }
-              return _results;
+            (function(__iced_k) {
+              __iced_deferrals = new iced.Deferrals(__iced_k, {
+                parent: ___iced_passed_deferral,
+                filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/addon/activetick/ActiveTick.iced"
+              });
+              a.listRequest(ATConstituentRequestTypes[2], 'aapl', __iced_deferrals.defer({
+                assign_fn: (function() {
+                  return function() {
+                    return aapl = arguments[0];
+                  };
+                })(),
+                lineno: 77
+              }));
+              __iced_deferrals._fulfill();
+            })(function() {
+              getQuote = function(quote) {
+                console.log('getQuote');
+                return console.log(quote);
+              };
+              sym1 = '.' + yang.symbols[22].symbol;
+              sym2 = '.' + yang.symbols[4].symbol;
+              sym3 = '.' + yang.symbols[188].symbol;
+              sym4 = '.' + yang.symbols[588].symbol;
+              sym5 = '.' + aapl.symbols[118].symbol;
+              sym6 = '.' + aapl.symbols[277].symbol;
+              return a.beginQuoteStream([sym1, sym2, sym3, sym4, sym5, sym6], 'StreamRequestSubscribe', getQuote, function(result) {
+                return console.log(result);
+              });
             });
           });
         });
