@@ -1,11 +1,6 @@
 atfeed-cppsdk
-container/node-activetick-addon/import
-container/node-activetick-addon/build/
-container/config.js
-container/libActiveTickServerAPI.dylib
-container/node_modules
-addon/activetick/import
-addon/activetick/node_modules
-addon/activetick/libActiveTickServerAPI.dylib
-addon/activetick/config.js
-addon/activetick/build
+import
+build/
+config.js
+libActiveTickServerAPI.dylib
+node_modules
