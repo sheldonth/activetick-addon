@@ -8,10 +8,11 @@ if ! type protoc > /dev/null; then
   exit 1
 fi
 
-mkdir import
-cd import
 sysname=$(uname -s)
 arch=$(uname -m)
+
+mkdir import
+cd import
 
 case $( uname -s ) in
 Linux)
@@ -33,6 +34,9 @@ Darwin)
   cp atfeed-cppsdk/bin/libActiveTickServerAPI.dylib ..
   ;;
 esac
+
+cd ..
+./protobuf/build.sh
 
 exit 0
 
