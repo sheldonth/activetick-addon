@@ -7,8 +7,8 @@
 - 'iced container/ActiveTick.iced' to test connection and download sample quote
 
 #### To-Do
-- Remove json queue polling as inter-language communication mechanism
-  - 0MQ
+  - npm install script, {wget, unzip, move} {libraries, headers}
+    - For Linux and OS X
   - Support every API method
   - Pass a callback for streaming updates, and the response to begin streaming updates
     - keep the streaming update callback alive for the duration
@@ -17,10 +17,8 @@
     - CPP: delete *pointer;
   - Usage documentation
   - 1), you can create a debug build of your addon by adding the --debug switch when running node-gyp (note that it will be built into build/Debug instead of build/Release).
-  
-
-#### Notes
-- What if it crawled?
+  - Make node-version independent (using nan)
+  - Make username, password, etc allocation parameters rather than config.js 
 
 # .getSessionHandle()
 # .closeAllATRequests()
