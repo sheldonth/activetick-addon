@@ -1,10 +1,10 @@
 if ! type wget > /dev/null; then
-  echo 'Run \"sudo apt-get install wget\" and try again.'
+  echo 'Run "sudo apt-get install wget" and try again.'
   exit 1
 fi
 
 if ! type protoc > /dev/null; then
-  echo 'Run \"sudo apt-get install protobuf\" and try again'
+  echo 'Run "sudo apt-get install protobuf" and try again'
   exit 1
 fi
 
