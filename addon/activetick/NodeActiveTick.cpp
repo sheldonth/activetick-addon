@@ -223,7 +223,7 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
   switch (pUpdate->updateType) {
     case StreamUpdateTrade: {
       ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
-      NodeActiveTickProto::ATQuoteStreamTradeUpdate msg = ProtobufHelper::quotestreamtradeupdate(trade);
+      NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::quotestreamtradeupdate(trade);
       break;
     }
     case StreamUpdateQuote:{

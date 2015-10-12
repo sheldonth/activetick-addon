@@ -659,12 +659,21 @@ class ATQuoteStreamTradeUpdate : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 trademessageflags() const;
   inline void set_trademessageflags(::google::protobuf::int32 value);
 
-  // optional int32 tradeConditionType = 3;
-  inline bool has_tradeconditiontype() const;
+  // repeated string tradeConditionType = 3;
+  inline int tradeconditiontype_size() const;
   inline void clear_tradeconditiontype();
   static const int kTradeConditionTypeFieldNumber = 3;
-  inline ::google::protobuf::int32 tradeconditiontype() const;
-  inline void set_tradeconditiontype(::google::protobuf::int32 value);
+  inline const ::std::string& tradeconditiontype(int index) const;
+  inline ::std::string* mutable_tradeconditiontype(int index);
+  inline void set_tradeconditiontype(int index, const ::std::string& value);
+  inline void set_tradeconditiontype(int index, const char* value);
+  inline void set_tradeconditiontype(int index, const char* value, size_t size);
+  inline ::std::string* add_tradeconditiontype();
+  inline void add_tradeconditiontype(const ::std::string& value);
+  inline void add_tradeconditiontype(const char* value);
+  inline void add_tradeconditiontype(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& tradeconditiontype() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_tradeconditiontype();
 
   // optional string tradeExchange = 4;
   inline bool has_tradeexchange() const;
@@ -709,8 +718,6 @@ class ATQuoteStreamTradeUpdate : public ::google::protobuf::Message {
   inline void clear_has_tradesymbol();
   inline void set_has_trademessageflags();
   inline void clear_has_trademessageflags();
-  inline void set_has_tradeconditiontype();
-  inline void clear_has_tradeconditiontype();
   inline void set_has_tradeexchange();
   inline void clear_has_tradeexchange();
   inline void set_has_tradeprice();
@@ -725,12 +732,12 @@ class ATQuoteStreamTradeUpdate : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::NodeActiveTickProto::ATSymbol* tradesymbol_;
-  ::google::protobuf::int32 trademessageflags_;
-  ::google::protobuf::int32 tradeconditiontype_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> tradeconditiontype_;
   ::std::string* tradeexchange_;
+  ::google::protobuf::int32 trademessageflags_;
+  ::google::protobuf::int32 tradesize_;
   ::NodeActiveTickProto::ATPrice* tradeprice_;
   ::NodeActiveTickProto::ATTime* tradetime_;
-  ::google::protobuf::int32 tradesize_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
@@ -2166,28 +2173,58 @@ inline void ATQuoteStreamTradeUpdate::set_trademessageflags(::google::protobuf::
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeMessageFlags)
 }
 
-// optional int32 tradeConditionType = 3;
-inline bool ATQuoteStreamTradeUpdate::has_tradeconditiontype() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void ATQuoteStreamTradeUpdate::set_has_tradeconditiontype() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void ATQuoteStreamTradeUpdate::clear_has_tradeconditiontype() {
-  _has_bits_[0] &= ~0x00000004u;
+// repeated string tradeConditionType = 3;
+inline int ATQuoteStreamTradeUpdate::tradeconditiontype_size() const {
+  return tradeconditiontype_.size();
 }
 inline void ATQuoteStreamTradeUpdate::clear_tradeconditiontype() {
-  tradeconditiontype_ = 0;
-  clear_has_tradeconditiontype();
+  tradeconditiontype_.Clear();
 }
-inline ::google::protobuf::int32 ATQuoteStreamTradeUpdate::tradeconditiontype() const {
+inline const ::std::string& ATQuoteStreamTradeUpdate::tradeconditiontype(int index) const {
   // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+  return tradeconditiontype_.Get(index);
+}
+inline ::std::string* ATQuoteStreamTradeUpdate::mutable_tradeconditiontype(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+  return tradeconditiontype_.Mutable(index);
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeconditiontype(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+  tradeconditiontype_.Mutable(index)->assign(value);
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeconditiontype(int index, const char* value) {
+  tradeconditiontype_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+}
+inline void ATQuoteStreamTradeUpdate::set_tradeconditiontype(int index, const char* value, size_t size) {
+  tradeconditiontype_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+}
+inline ::std::string* ATQuoteStreamTradeUpdate::add_tradeconditiontype() {
+  return tradeconditiontype_.Add();
+}
+inline void ATQuoteStreamTradeUpdate::add_tradeconditiontype(const ::std::string& value) {
+  tradeconditiontype_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+}
+inline void ATQuoteStreamTradeUpdate::add_tradeconditiontype(const char* value) {
+  tradeconditiontype_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+}
+inline void ATQuoteStreamTradeUpdate::add_tradeconditiontype(const char* value, size_t size) {
+  tradeconditiontype_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ATQuoteStreamTradeUpdate::tradeconditiontype() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
   return tradeconditiontype_;
 }
-inline void ATQuoteStreamTradeUpdate::set_tradeconditiontype(::google::protobuf::int32 value) {
-  set_has_tradeconditiontype();
-  tradeconditiontype_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+ATQuoteStreamTradeUpdate::mutable_tradeconditiontype() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATQuoteStreamTradeUpdate.tradeConditionType)
+  return &tradeconditiontype_;
 }
 
 // optional string tradeExchange = 4;

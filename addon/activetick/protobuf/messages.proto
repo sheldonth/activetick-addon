@@ -35,7 +35,7 @@ message ATTime {
 message ATQuoteStreamTradeUpdate {
   optional ATSymbol tradeSymbol = 1; 
   optional int32 tradeMessageFlags = 2;
-  optional int32 tradeConditionType = 3;
+  repeated string tradeConditionType = 3;
   optional string tradeExchange = 4;
   optional ATPrice tradePrice = 5;
   optional int32 tradeSize = 6;

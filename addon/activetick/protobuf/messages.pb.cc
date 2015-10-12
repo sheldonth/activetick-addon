@@ -359,7 +359,7 @@ void protobuf_AddDesc_messages_2eproto() {
     "\010 \001(\005\"\221\002\n\030ATQuoteStreamTradeUpdate\0222\n\013tr"
     "adeSymbol\030\001 \001(\0132\035.NodeActiveTickProto.AT"
     "Symbol\022\031\n\021tradeMessageFlags\030\002 \001(\005\022\032\n\022tra"
-    "deConditionType\030\003 \001(\005\022\025\n\rtradeExchange\030\004"
+    "deConditionType\030\003 \003(\t\022\025\n\rtradeExchange\030\004"
     " \001(\t\0220\n\ntradePrice\030\005 \001(\0132\034.NodeActiveTic"
     "kProto.ATPrice\022\021\n\ttradeSize\030\006 \001(\005\022.\n\ttra"
     "deTime\030\007 \001(\0132\033.NodeActiveTickProto.ATTim"
@@ -2141,7 +2141,6 @@ void ATQuoteStreamTradeUpdate::SharedCtor() {
   _cached_size_ = 0;
   tradesymbol_ = NULL;
   trademessageflags_ = 0;
-  tradeconditiontype_ = 0;
   tradeexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   tradeprice_ = NULL;
   tradesize_ = 0;
@@ -2197,8 +2196,8 @@ void ATQuoteStreamTradeUpdate::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 127) {
-    ZR_(trademessageflags_, tradeconditiontype_);
+  if (_has_bits_[0 / 32] & 123) {
+    ZR_(trademessageflags_, tradesize_);
     if (has_tradesymbol()) {
       if (tradesymbol_ != NULL) tradesymbol_->::NodeActiveTickProto::ATSymbol::Clear();
     }
@@ -2210,7 +2209,6 @@ void ATQuoteStreamTradeUpdate::Clear() {
     if (has_tradeprice()) {
       if (tradeprice_ != NULL) tradeprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
-    tradesize_ = 0;
     if (has_tradetime()) {
       if (tradetime_ != NULL) tradetime_->::NodeActiveTickProto::ATTime::Clear();
     }
@@ -2219,6 +2217,7 @@ void ATQuoteStreamTradeUpdate::Clear() {
 #undef OFFSET_OF_FIELD_
 #undef ZR_
 
+  tradeconditiontype_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -2256,21 +2255,25 @@ bool ATQuoteStreamTradeUpdate::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_tradeConditionType;
+        if (input->ExpectTag(26)) goto parse_tradeConditionType;
         break;
       }
 
-      // optional int32 tradeConditionType = 3;
+      // repeated string tradeConditionType = 3;
       case 3: {
-        if (tag == 24) {
+        if (tag == 26) {
          parse_tradeConditionType:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &tradeconditiontype_)));
-          set_has_tradeconditiontype();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_tradeconditiontype()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->tradeconditiontype(this->tradeconditiontype_size() - 1).data(),
+            this->tradeconditiontype(this->tradeconditiontype_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "tradeconditiontype");
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(26)) goto parse_tradeConditionType;
         if (input->ExpectTag(34)) goto parse_tradeExchange;
         break;
       }
@@ -2369,9 +2372,14 @@ void ATQuoteStreamTradeUpdate::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->trademessageflags(), output);
   }
 
-  // optional int32 tradeConditionType = 3;
-  if (has_tradeconditiontype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->tradeconditiontype(), output);
+  // repeated string tradeConditionType = 3;
+  for (int i = 0; i < this->tradeconditiontype_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    this->tradeconditiontype(i).data(), this->tradeconditiontype(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE,
+    "tradeconditiontype");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->tradeconditiontype(i), output);
   }
 
   // optional string tradeExchange = 4;
@@ -2423,9 +2431,14 @@ void ATQuoteStreamTradeUpdate::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->trademessageflags(), target);
   }
 
-  // optional int32 tradeConditionType = 3;
-  if (has_tradeconditiontype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->tradeconditiontype(), target);
+  // repeated string tradeConditionType = 3;
+  for (int i = 0; i < this->tradeconditiontype_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->tradeconditiontype(i).data(), this->tradeconditiontype(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "tradeconditiontype");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->tradeconditiontype(i), target);
   }
 
   // optional string tradeExchange = 4;
@@ -2484,13 +2497,6 @@ int ATQuoteStreamTradeUpdate::ByteSize() const {
           this->trademessageflags());
     }
 
-    // optional int32 tradeConditionType = 3;
-    if (has_tradeconditiontype()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->tradeconditiontype());
-    }
-
     // optional string tradeExchange = 4;
     if (has_tradeexchange()) {
       total_size += 1 +
@@ -2520,6 +2526,13 @@ int ATQuoteStreamTradeUpdate::ByteSize() const {
     }
 
   }
+  // repeated string tradeConditionType = 3;
+  total_size += 1 * this->tradeconditiontype_size();
+  for (int i = 0; i < this->tradeconditiontype_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->tradeconditiontype(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -2545,15 +2558,13 @@ void ATQuoteStreamTradeUpdate::MergeFrom(const ::google::protobuf::Message& from
 
 void ATQuoteStreamTradeUpdate::MergeFrom(const ATQuoteStreamTradeUpdate& from) {
   GOOGLE_CHECK_NE(&from, this);
+  tradeconditiontype_.MergeFrom(from.tradeconditiontype_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_tradesymbol()) {
       mutable_tradesymbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.tradesymbol());
     }
     if (from.has_trademessageflags()) {
       set_trademessageflags(from.trademessageflags());
-    }
-    if (from.has_tradeconditiontype()) {
-      set_tradeconditiontype(from.tradeconditiontype());
     }
     if (from.has_tradeexchange()) {
       set_tradeexchange(from.tradeexchange());
@@ -2595,7 +2606,7 @@ void ATQuoteStreamTradeUpdate::Swap(ATQuoteStreamTradeUpdate* other) {
   if (other != this) {
     std::swap(tradesymbol_, other->tradesymbol_);
     std::swap(trademessageflags_, other->trademessageflags_);
-    std::swap(tradeconditiontype_, other->tradeconditiontype_);
+    tradeconditiontype_.Swap(&other->tradeconditiontype_);
     std::swap(tradeexchange_, other->tradeexchange_);
     std::swap(tradeprice_, other->tradeprice_);
     std::swap(tradesize_, other->tradesize_);

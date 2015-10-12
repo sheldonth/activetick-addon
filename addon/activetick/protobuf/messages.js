@@ -144,8 +144,8 @@
                     "id": 2
                 },
                 {
-                    "rule": "optional",
-                    "type": "int32",
+                    "rule": "repeated",
+                    "type": "string",
                     "name": "tradeConditionType",
                     "id": 3
                 },
