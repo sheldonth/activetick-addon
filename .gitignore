@@ -1,6 +1,7 @@
 atfeed-cppsdk
 import
-build/
+build
 config.js
 libActiveTickServerAPI.dylib
 node_modules
+example/config.js

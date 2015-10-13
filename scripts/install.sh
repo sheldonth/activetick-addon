@@ -1,10 +1,18 @@
 if ! type wget > /dev/null; then
-  echo 'Run "sudo apt-get install wget" and try again.'
+  case $( uname -s ) in
+  Linux)
+    echo 'Run "sudo apt-get install wget" and try again.'
+  Darwin)
+    echo echo 'Run "brew install wget" and try again.'
   exit 1
 fi
 
 if ! type protoc > /dev/null; then
-  echo 'Run "sudo apt-get install protobuf" and try again'
+  case $( uname -s ) in
+  Linux)
+    echo 'Run "sudo apt-get install protobuf" and try again'
+  Darwin)
+    echo echo 'Run "brew install protoc" and try again.'
   exit 1
 fi
 
@@ -25,12 +33,7 @@ Linux)
   cp atfeed-cppsdk/bin/libActiveTickServerAPI.so ..
   ;;
 Darwin)
-  if [ "$arch" == "x86_64" ]
-  then
-    curl https://www.activetick.com/activetick/contents/binaries/atfeedapi/atfeed-cppsdk-osx.i386.tar.gz | tar x
-  else
-    curl https://www.activetick.com/activetick/contents/binaries/atfeedapi/atfeed-cppsdk-osx.i386.tar.gz | tar x
-  fi
+  curl https://www.activetick.com/activetick/contents/binaries/atfeedapi/atfeed-cppsdk-osx.i386.tar.gz | tar x
   cp atfeed-cppsdk/bin/libActiveTickServerAPI.dylib ..
   ;;
 esac

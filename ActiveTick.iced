@@ -2,7 +2,6 @@
 {NodeActiveTick} = require './build/Debug/NodeActiveTickAddon'
 async = require 'async'
 _ = require 'underscore'
-config = require './config'
 ProtoBuf = require 'protobufjs'
 path = require 'path'
 

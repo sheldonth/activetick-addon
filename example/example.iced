@@ -1,7 +1,7 @@
 ActiveTick = require('../ActiveTick').ActiveTick
 fs = require 'fs'
 
-config = require '../config.js'
+config = require './config.js'
 
 main = () ->
   await a = new ActiveTick(defer())

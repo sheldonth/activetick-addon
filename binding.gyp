@@ -35,6 +35,7 @@
               '-lpthread',
               '-D_THREAD_SAFE',
               '<!@(pkg-config --libs protobuf)'
+              '-Wl,-rpath,./libActiveTickServerAPI.dylib'
             ]
           }
         }],
