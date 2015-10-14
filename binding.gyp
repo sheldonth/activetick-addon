@@ -42,6 +42,10 @@
           }
         }],
         ['OS=="linux"', {
+          'cflags': [
+            "-std=c++11",
+            "-stdlib=libc++"
+          ],
           'link_settings': {
             'libraries': [
               '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.so',
