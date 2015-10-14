@@ -1,3 +1,4 @@
+// Copyright 2015-present Sheldon Thomas
 #pragma once
 #include <queue>
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>

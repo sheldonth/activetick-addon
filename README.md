@@ -19,7 +19,7 @@
   - 1), you can create a debug build of your addon by adding the --debug switch when running node-gyp (note that it will be built into build/Debug instead of build/Release).
   - Make node-version independent (using nan)
   - Make username, password, etc allocation parameters rather than config.js 
-
+dwaynept4@yahoo.com / Qwertyu1
 # .getSessionHandle()
 # .closeAllATRequests()
 # .closeATRequest()
@@ -34,3 +34,12 @@
 # .sendATSectorListRequest( request )
 # .sendATConstituentListRequest( request )
 # .connect( apiKey, serverAddr, port, userid, passwd )
+
+'-Wl,-rpath,./libActiveTickServerAPI.dylib',
+,
+'-Wl,-rpath,<!(pwd)/build/Release/'
+
+  'ldflags': ['-L/home/roy/freeling/free3/lib/', '-lfreeling'],
+  
+  '-Limport/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib',
+  '-llibActiveTickServerAPI'

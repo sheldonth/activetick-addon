@@ -1,17 +1,25 @@
 {
   "name": "activetick-addon",
   "version": "0.0.1",
-  "description": "activetick.com c++ node.js addon",
-  "main": "config.js",
+  "description": "activetick.com c++ addon for node",
+  "main": "ActiveTick.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sheldonth/activetick-addon.git"
+    "url": "https://github.com/sheldonth/activetick-addon.git"
   },
-  "author": "Sheldon Thomas / Jae Yang",
-  "license": "ISC",
+  "scripts": {
+    "preinstall":"./scripts/install.sh"
+    "install":"node-gyp rebuild"
+  },
+  "author": {
+    "name":"Sheldon Thomas",
+    "email": "sheldon.thomas@me.com",
+    "url":"https://sheldonth.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sheldonth/activetick-addon/issues"
   },

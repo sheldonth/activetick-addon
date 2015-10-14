@@ -543,12 +543,12 @@ class ATTime : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 second() const;
   inline void set_second(::google::protobuf::int32 value);
 
-  // optional int32 millisecond = 8;
-  inline bool has_millisecond() const;
-  inline void clear_millisecond();
-  static const int kMillisecondFieldNumber = 8;
-  inline ::google::protobuf::int32 millisecond() const;
-  inline void set_millisecond(::google::protobuf::int32 value);
+  // optional int32 milliseconds = 8;
+  inline bool has_milliseconds() const;
+  inline void clear_milliseconds();
+  static const int kMillisecondsFieldNumber = 8;
+  inline ::google::protobuf::int32 milliseconds() const;
+  inline void set_milliseconds(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATTime)
  private:
@@ -566,8 +566,8 @@ class ATTime : public ::google::protobuf::Message {
   inline void clear_has_minute();
   inline void set_has_second();
   inline void clear_has_second();
-  inline void set_has_millisecond();
-  inline void clear_has_millisecond();
+  inline void set_has_milliseconds();
+  inline void clear_has_milliseconds();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -580,7 +580,7 @@ class ATTime : public ::google::protobuf::Message {
   ::google::protobuf::int32 hour_;
   ::google::protobuf::int32 minute_;
   ::google::protobuf::int32 second_;
-  ::google::protobuf::int32 millisecond_;
+  ::google::protobuf::int32 milliseconds_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
@@ -2080,28 +2080,28 @@ inline void ATTime::set_second(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.second)
 }
 
-// optional int32 millisecond = 8;
-inline bool ATTime::has_millisecond() const {
+// optional int32 milliseconds = 8;
+inline bool ATTime::has_milliseconds() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
-inline void ATTime::set_has_millisecond() {
+inline void ATTime::set_has_milliseconds() {
   _has_bits_[0] |= 0x00000080u;
 }
-inline void ATTime::clear_has_millisecond() {
+inline void ATTime::clear_has_milliseconds() {
   _has_bits_[0] &= ~0x00000080u;
 }
-inline void ATTime::clear_millisecond() {
-  millisecond_ = 0;
-  clear_has_millisecond();
+inline void ATTime::clear_milliseconds() {
+  milliseconds_ = 0;
+  clear_has_milliseconds();
 }
-inline ::google::protobuf::int32 ATTime::millisecond() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.millisecond)
-  return millisecond_;
+inline ::google::protobuf::int32 ATTime::milliseconds() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATTime.milliseconds)
+  return milliseconds_;
 }
-inline void ATTime::set_millisecond(::google::protobuf::int32 value) {
-  set_has_millisecond();
-  millisecond_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.millisecond)
+inline void ATTime::set_milliseconds(::google::protobuf::int32 value) {
+  set_has_milliseconds();
+  milliseconds_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATTime.milliseconds)
 }
 
 // -------------------------------------------------------------------

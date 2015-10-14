@@ -1,3 +1,4 @@
+// Copyright 2015-present Sheldon Thomas
 #include <cstring>
 #include <iostream>
 #include <locale>
@@ -220,10 +221,16 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
 
 // AT Callbacks
 void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
+  MessageStruct* m = new MessageStruct();
   switch (pUpdate->updateType) {
     case StreamUpdateTrade: {
       ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
       NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::quotestreamtradeupdate(trade);
+      int size = msg->ByteSize(); 
+      void *buffer = new char[size];
+      msg->SerializeToArray(buffer, size);
+      m->data_sz = size;
+      m->c_str_data = buffer;
       break;
     }
     case StreamUpdateQuote:{

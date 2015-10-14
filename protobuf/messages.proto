@@ -1,3 +1,4 @@
+// Copyright 2015-present Sheldon Thomas
 package NodeActiveTickProto;
 
 message ATLoginResponse {
@@ -29,7 +30,7 @@ message ATTime {
   optional int32 hour = 5;
   optional int32 minute = 6;
   optional int32 second = 7;
-  optional int32 millisecond = 8;
+  optional int32 milliseconds = 8;
 }
 
 message ATQuoteStreamTradeUpdate {

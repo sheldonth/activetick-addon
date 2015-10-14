@@ -1,3 +1,4 @@
+// Copyright 2015-present Sheldon Thomas
 #include <node.h>
 #include "NodeActiveTick.h"
 

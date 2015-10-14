@@ -27,7 +27,9 @@
                     ],
             'OTHER_CFLAGS': [
                       '<!@(pkg-config --cflags protobuf)'
-                    ]
+                    ],
+            'OTHER_LDFLAGS': [
+                     ]
           },
           'link_settings': {
             'libraries': [

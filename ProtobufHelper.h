@@ -1,3 +1,4 @@
+// Copyright 2015-present Sheldon Thomas
 #pragma once
 #include <node.h>
 #include <type_traits>
@@ -11,7 +12,7 @@ using namespace v8;
 
 class ProtobufHelper {
 public:
-  
+  // parse ATSYMBOL into NodeActiveTickProto::ATSymbol
   static void atsymbol_insert(ATSYMBOL* s, NodeActiveTickProto::ATSymbol *symbol) {
     std::string str_symbol_long = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
     std::string str_symbol_short = std::string(str_symbol_long.c_str());
@@ -21,19 +22,41 @@ public:
     symbol->set_exchangetype(s->exchangeType);
     symbol->set_countrytype(s->countryType);
   }
+  // parse ATPRICE into NodeActiveTickProto::ATPrice
+  static void atprice_insert(ATPRICE* p, NodeActiveTickProto::ATPrice *price) {
+    price->set_price(p->price);
+    price->set_precision(p->precision);
+  }
+  // parse ATTIME into NodeActiveTickProto::ATTime
+  static void attime_insert(ATTIME* t, NodeActiveTickProto::ATTime *time) {
+    time->set_year(t->year);
+    time->set_month(t->month);
+    time->set_dayofweek(t->dayOfWeek);
+    time->set_day(t->day);
+    time->set_hour(t->hour);
+    time->set_minute(t->minute);
+    time->set_second(t->second);
+    time->set_milliseconds(t->milliseconds);
+  }
   
-  // ATQUOTESTREAM_TRADE_UPDATE
+  // return NodeActiveTickProto::ATQuoteStreamTradeUpdate from ATQUOTESTREAM_TRADE_UPDATE
   static NodeActiveTickProto::ATQuoteStreamTradeUpdate* quotestreamtradeupdate(ATQUOTESTREAM_TRADE_UPDATE u) {
     NodeActiveTickProto::ATQuoteStreamTradeUpdate *q = new NodeActiveTickProto::ATQuoteStreamTradeUpdate();
     NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
     atsymbol_insert(&u.symbol, symbol);
+    q->set_allocated_tradesymbol(symbol);
     q->set_trademessageflags(u.flags);
     for (int i = 0; i < ATTradeConditionsCount; i++) {
         q->add_tradeconditiontype(attradeconditiontype_string(u.condition[i]));
     }
-    // (std::underlying_type<ATExchangeType>::type*) utype;
-    // utype a = static_cast<utype>();
-    // q->set_tradeexchange(a);
+    NodeActiveTickProto::ATPrice *price = new NodeActiveTickProto::ATPrice();
+    atprice_insert(&u.lastPrice, price);
+    q->set_allocated_tradeprice(price);
+    q->set_tradesize(u.lastSize);
+    NodeActiveTickProto::ATTime *timePtr = new NodeActiveTickProto::ATTime();
+    attime_insert(&u.lastDateTime, timePtr);
+    q->set_allocated_tradetime(timePtr);
+    // q->set_tradeexchange(a); TODO
     return q;
   }
   

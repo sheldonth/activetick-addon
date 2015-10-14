@@ -137,7 +137,7 @@ void protobuf_AssignDesc_messages_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATTime, hour_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATTime, minute_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATTime, second_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATTime, millisecond_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATTime, milliseconds_),
   };
   ATTime_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -352,46 +352,46 @@ void protobuf_AddDesc_messages_2eproto() {
     ".ATQuoteStreamResponseItem\"v\n\031ATQuoteStr"
     "eamResponseItem\022\024\n\014responseType\030\001 \001(\t\022-\n"
     "\006symbol\030\002 \001(\0132\035.NodeActiveTickProto.ATSy"
-    "mbol\022\024\n\014symbolStatus\030\003 \001(\t\"\210\001\n\006ATTime\022\014\n"
+    "mbol\022\024\n\014symbolStatus\030\003 \001(\t\"\211\001\n\006ATTime\022\014\n"
     "\004year\030\001 \001(\005\022\r\n\005month\030\002 \001(\005\022\021\n\tdayOfWeek\030"
     "\003 \001(\005\022\013\n\003day\030\004 \001(\005\022\014\n\004hour\030\005 \001(\005\022\016\n\006minu"
-    "te\030\006 \001(\005\022\016\n\006second\030\007 \001(\005\022\023\n\013millisecond\030"
-    "\010 \001(\005\"\221\002\n\030ATQuoteStreamTradeUpdate\0222\n\013tr"
-    "adeSymbol\030\001 \001(\0132\035.NodeActiveTickProto.AT"
-    "Symbol\022\031\n\021tradeMessageFlags\030\002 \001(\005\022\032\n\022tra"
-    "deConditionType\030\003 \003(\t\022\025\n\rtradeExchange\030\004"
-    " \001(\t\0220\n\ntradePrice\030\005 \001(\0132\034.NodeActiveTic"
-    "kProto.ATPrice\022\021\n\ttradeSize\030\006 \001(\005\022.\n\ttra"
-    "deTime\030\007 \001(\0132\033.NodeActiveTickProto.ATTim"
-    "e\"\340\002\n\030ATQuoteStreamQuoteUpdate\0222\n\013quoteS"
+    "te\030\006 \001(\005\022\016\n\006second\030\007 \001(\005\022\024\n\014milliseconds"
+    "\030\010 \001(\005\"\221\002\n\030ATQuoteStreamTradeUpdate\0222\n\013t"
+    "radeSymbol\030\001 \001(\0132\035.NodeActiveTickProto.A"
+    "TSymbol\022\031\n\021tradeMessageFlags\030\002 \001(\005\022\032\n\022tr"
+    "adeConditionType\030\003 \003(\t\022\025\n\rtradeExchange\030"
+    "\004 \001(\t\0220\n\ntradePrice\030\005 \001(\0132\034.NodeActiveTi"
+    "ckProto.ATPrice\022\021\n\ttradeSize\030\006 \001(\005\022.\n\ttr"
+    "adeTime\030\007 \001(\0132\033.NodeActiveTickProto.ATTi"
+    "me\"\340\002\n\030ATQuoteStreamQuoteUpdate\0222\n\013quote"
+    "Symbol\030\001 \001(\0132\035.NodeActiveTickProto.ATSym"
+    "bol\022\026\n\016quoteCondition\030\002 \001(\005\022\030\n\020quoteBidE"
+    "xchange\030\003 \001(\t\022\030\n\020quoteAskExchange\030\004 \001(\t\022"
+    "3\n\rquoteBidPrice\030\005 \001(\0132\034.NodeActiveTickP"
+    "roto.ATPrice\0223\n\rquoteAskPrice\030\006 \001(\0132\034.No"
+    "deActiveTickProto.ATPrice\022\024\n\014quoteBidSiz"
+    "e\030\007 \001(\005\022\024\n\014quoteAskSize\030\010 \001(\005\022.\n\tquoteTi"
+    "me\030\t \001(\0132\033.NodeActiveTickProto.ATTime\"\261\002"
+    "\n\032ATQuoteStreamRefreshUpdate\0224\n\rrefreshS"
     "ymbol\030\001 \001(\0132\035.NodeActiveTickProto.ATSymb"
-    "ol\022\026\n\016quoteCondition\030\002 \001(\005\022\030\n\020quoteBidEx"
-    "change\030\003 \001(\t\022\030\n\020quoteAskExchange\030\004 \001(\t\0223"
-    "\n\rquoteBidPrice\030\005 \001(\0132\034.NodeActiveTickPr"
-    "oto.ATPrice\0223\n\rquoteAskPrice\030\006 \001(\0132\034.Nod"
-    "eActiveTickProto.ATPrice\022\024\n\014quoteBidSize"
-    "\030\007 \001(\005\022\024\n\014quoteAskSize\030\010 \001(\005\022.\n\tquoteTim"
-    "e\030\t \001(\0132\033.NodeActiveTickProto.ATTime\"\261\002\n"
-    "\032ATQuoteStreamRefreshUpdate\0224\n\rrefreshSy"
-    "mbol\030\001 \001(\0132\035.NodeActiveTickProto.ATSymbo"
-    "l\0226\n\020refreshLastPrice\030\002 \001(\0132\034.NodeActive"
-    "TickProto.ATPrice\0226\n\020refreshOpenPrice\030\003 "
-    "\001(\0132\034.NodeActiveTickProto.ATPrice\0226\n\020ref"
-    "reshHighPrice\030\004 \001(\0132\034.NodeActiveTickProt"
-    "o.ATPrice\0225\n\017refreshLowPrice\030\005 \001(\0132\034.Nod"
-    "eActiveTickProto.ATPrice\"n\n\010ATSymbol\022\016\n\006"
-    "symbol\030\001 \001(\t\022\023\n\013symbol_long\030\002 \001(\t\022\022\n\nsym"
-    "bolType\030\003 \001(\005\022\024\n\014exchangeType\030\004 \001(\005\022\023\n\013c"
-    "ountryType\030\005 \001(\005\"+\n\007ATPrice\022\r\n\005price\030\001 \002"
-    "(\001\022\021\n\tprecision\030\002 \002(\005\"\263\002\n\007ATQuote\022-\n\006sym"
-    "bol\030\001 \002(\0132\035.NodeActiveTickProto.ATSymbol"
-    "\022.\n\010bidPrice\030\002 \002(\0132\034.NodeActiveTickProto"
-    ".ATPrice\022.\n\010askPrice\030\003 \002(\0132\034.NodeActiveT"
-    "ickProto.ATPrice\022\017\n\007bidSize\030\004 \001(\005\022\017\n\007ask"
-    "Size\030\005 \001(\005\022\030\n\020quoteConditionId\030\006 \001(\005\022/\n\n"
-    "serverTime\030\007 \001(\0132\033.NodeActiveTickProto.A"
-    "TTime\022\025\n\rbidExchangeId\030\010 \001(\005\022\025\n\raskExcha"
-    "ngeId\030\t \001(\005", 2011);
+    "ol\0226\n\020refreshLastPrice\030\002 \001(\0132\034.NodeActiv"
+    "eTickProto.ATPrice\0226\n\020refreshOpenPrice\030\003"
+    " \001(\0132\034.NodeActiveTickProto.ATPrice\0226\n\020re"
+    "freshHighPrice\030\004 \001(\0132\034.NodeActiveTickPro"
+    "to.ATPrice\0225\n\017refreshLowPrice\030\005 \001(\0132\034.No"
+    "deActiveTickProto.ATPrice\"n\n\010ATSymbol\022\016\n"
+    "\006symbol\030\001 \001(\t\022\023\n\013symbol_long\030\002 \001(\t\022\022\n\nsy"
+    "mbolType\030\003 \001(\005\022\024\n\014exchangeType\030\004 \001(\005\022\023\n\013"
+    "countryType\030\005 \001(\005\"+\n\007ATPrice\022\r\n\005price\030\001 "
+    "\002(\001\022\021\n\tprecision\030\002 \002(\005\"\263\002\n\007ATQuote\022-\n\006sy"
+    "mbol\030\001 \002(\0132\035.NodeActiveTickProto.ATSymbo"
+    "l\022.\n\010bidPrice\030\002 \002(\0132\034.NodeActiveTickProt"
+    "o.ATPrice\022.\n\010askPrice\030\003 \002(\0132\034.NodeActive"
+    "TickProto.ATPrice\022\017\n\007bidSize\030\004 \001(\005\022\017\n\007as"
+    "kSize\030\005 \001(\005\022\030\n\020quoteConditionId\030\006 \001(\005\022/\n"
+    "\nserverTime\030\007 \001(\0132\033.NodeActiveTickProto."
+    "ATTime\022\025\n\rbidExchangeId\030\010 \001(\005\022\025\n\raskExch"
+    "angeId\030\t \001(\005", 2012);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -1611,7 +1611,7 @@ const int ATTime::kDayFieldNumber;
 const int ATTime::kHourFieldNumber;
 const int ATTime::kMinuteFieldNumber;
 const int ATTime::kSecondFieldNumber;
-const int ATTime::kMillisecondFieldNumber;
+const int ATTime::kMillisecondsFieldNumber;
 #endif  // !_MSC_VER
 
 ATTime::ATTime()
@@ -1639,7 +1639,7 @@ void ATTime::SharedCtor() {
   hour_ = 0;
   minute_ = 0;
   second_ = 0;
-  millisecond_ = 0;
+  milliseconds_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1686,7 +1686,7 @@ void ATTime::Clear() {
   } while (0)
 
   if (_has_bits_[0 / 32] & 255) {
-    ZR_(year_, millisecond_);
+    ZR_(year_, milliseconds_);
   }
 
 #undef OFFSET_OF_FIELD_
@@ -1806,18 +1806,18 @@ bool ATTime::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(64)) goto parse_millisecond;
+        if (input->ExpectTag(64)) goto parse_milliseconds;
         break;
       }
 
-      // optional int32 millisecond = 8;
+      // optional int32 milliseconds = 8;
       case 8: {
         if (tag == 64) {
-         parse_millisecond:
+         parse_milliseconds:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &millisecond_)));
-          set_has_millisecond();
+                 input, &milliseconds_)));
+          set_has_milliseconds();
         } else {
           goto handle_unusual;
         }
@@ -1885,9 +1885,9 @@ void ATTime::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->second(), output);
   }
 
-  // optional int32 millisecond = 8;
-  if (has_millisecond()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->millisecond(), output);
+  // optional int32 milliseconds = 8;
+  if (has_milliseconds()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->milliseconds(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1935,9 +1935,9 @@ void ATTime::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->second(), target);
   }
 
-  // optional int32 millisecond = 8;
-  if (has_millisecond()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->millisecond(), target);
+  // optional int32 milliseconds = 8;
+  if (has_milliseconds()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->milliseconds(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2001,11 +2001,11 @@ int ATTime::ByteSize() const {
           this->second());
     }
 
-    // optional int32 millisecond = 8;
-    if (has_millisecond()) {
+    // optional int32 milliseconds = 8;
+    if (has_milliseconds()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->millisecond());
+          this->milliseconds());
     }
 
   }
@@ -2056,8 +2056,8 @@ void ATTime::MergeFrom(const ATTime& from) {
     if (from.has_second()) {
       set_second(from.second());
     }
-    if (from.has_millisecond()) {
-      set_millisecond(from.millisecond());
+    if (from.has_milliseconds()) {
+      set_milliseconds(from.milliseconds());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2089,7 +2089,7 @@ void ATTime::Swap(ATTime* other) {
     std::swap(hour_, other->hour_);
     std::swap(minute_, other->minute_);
     std::swap(second_, other->second_);
-    std::swap(millisecond_, other->millisecond_);
+    std::swap(milliseconds_, other->milliseconds_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

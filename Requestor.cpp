@@ -1,3 +1,4 @@
+// Copyright 2015-present Sheldon Thomas
 #include "Requestor.h"
 #include <fstream>
 #include <stdio.h>
