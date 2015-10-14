@@ -43,6 +43,8 @@
         }],
         ['OS=="linux"', {
           'link_settings': {
+            'ldflags': [
+            ],
             'libraries': [
               '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.so',
               '-lpthread',
