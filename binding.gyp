@@ -13,7 +13,7 @@
         './import/atfeed-cppsdk/include/',
         "<!(node -e \"require('nan')\")"
       ],
-      "cflags":  ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions'],
+      "cflags":  ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions -std=c++11'],
       "cflags_cc": ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions'],
       'cflags!': [ '-fno-rtti' ],
       'cflags_cc!': [ '-fno-rtti' ],
@@ -42,10 +42,6 @@
           }
         }],
         ['OS=="linux"', {
-          'cflags': [
-            "-std=c++11",
-            "-stdlib=libc++"
-          ],
           'link_settings': {
             'libraries': [
               '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.so',
