@@ -6,6 +6,9 @@
 - 'node-gyp rebuild' from inside /container
 - 'iced container/ActiveTick.iced' to test connection and download sample quote
 
+### USAGE UBUNTU LINUX
+- sudo apt-get install libprotobuf-dev protobuf-compiler
+
 #### To-Do
   - npm install script, {wget, unzip, move} {libraries, headers}
     - For Linux and OS X

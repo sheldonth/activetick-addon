@@ -1,17 +1,3 @@
-if [! type protoc > /dev/null]
-  then
-    case $( uname -s ) in
-    Linux)
-      echo 'Run "sudo apt-get install protobuf" and try again'
-      exit 1
-      ;;
-    Darwin)
-      echo echo 'Run "brew install protoc" and try again.'
-      exit 1
-      ;;
-    esac
-fi
-
 sysname=$(uname -s)
 arch=$(uname -m)
 
