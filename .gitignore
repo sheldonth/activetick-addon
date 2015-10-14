@@ -5,3 +5,4 @@ config.js
 libActiveTickServerAPI.dylib
 node_modules
 example/config.js
+npm-debug.log

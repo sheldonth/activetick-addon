@@ -11,7 +11,7 @@
     "url": "https://github.com/sheldonth/activetick-addon.git"
   },
   "scripts": {
-    "preinstall":"./scripts/install.sh"
+    "preinstall":"./scripts/install.sh",
     "install":"node-gyp rebuild"
   },
   "author": {
