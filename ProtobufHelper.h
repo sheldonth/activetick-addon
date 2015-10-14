@@ -2,7 +2,7 @@
 #pragma once
 #include <node.h>
 #include <type_traits>
-#import "protobuf/messages.pb.h"
+#include "protobuf/messages.pb.h"
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
 #include <Shared/ATServerAPIDefines.h>
 #include "import/atfeed-cppsdk/example/Helper.h"
