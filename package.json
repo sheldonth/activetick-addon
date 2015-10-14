@@ -23,6 +23,7 @@
   "homepage": "https://github.com/sheldonth/activetick-addon#readme",
   "dependencies": {
     "async": "^1.4.2",
+    "iced-runtime": "^1.0.3",
     "nan": "^2.0.9",
     "protobufjs": "^4.0.0",
     "underscore": "^1.8.3"
