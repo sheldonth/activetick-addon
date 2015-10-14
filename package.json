@@ -4,7 +4,7 @@
   "description": "activetick.com c++ addon for node",
   "main": "ActiveTick.js",
   "scripts": {
-    "postinstall": "./scripts/install.sh",
+    "preinstall": "./scripts/install.sh",
     "install": "node-gyp rebuild"
   },
   "repository": {
