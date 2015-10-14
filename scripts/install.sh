@@ -1,19 +1,15 @@
-if ! type wget > /dev/null; then
-  case $( uname -s ) in
-  Linux)
-    echo 'Run "sudo apt-get install wget" and try again.'
-  Darwin)
-    echo echo 'Run "brew install wget" and try again.'
-  exit 1
-fi
-
-if ! type protoc > /dev/null; then
-  case $( uname -s ) in
-  Linux)
-    echo 'Run "sudo apt-get install protobuf" and try again'
-  Darwin)
-    echo echo 'Run "brew install protoc" and try again.'
-  exit 1
+if [! type protoc > /dev/null]
+  then
+    case $( uname -s ) in
+    Linux)
+      echo 'Run "sudo apt-get install protobuf" and try again'
+      exit 1
+      ;;
+    Darwin)
+      echo echo 'Run "brew install protoc" and try again.'
+      exit 1
+      ;;
+    esac
 fi
 
 sysname=$(uname -s)
