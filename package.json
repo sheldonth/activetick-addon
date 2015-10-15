@@ -1,6 +1,6 @@
 {
   "name": "activetick-addon",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "activetick.com c++ addon for node",
   "main": "ActiveTick.js",
   "scripts": {
