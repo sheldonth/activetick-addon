@@ -46,7 +46,7 @@
             'ldflags': [
             ],
             'libraries':[
-              '/home/sheldon/activetick-addon/libActiveTickServerAPI.so',
+              '<(module_root_dir)/libActiveTickServerAPI.so',
               '-lpthread',
               '<!@(pkg-config --libs protobuf)'
             ]
