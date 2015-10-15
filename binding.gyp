@@ -45,8 +45,8 @@
           'link_settings': {
             'ldflags': [
             ],
-            'libraries': [
-              '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.so',
+            'libraries':[
+              '/home/sheldon/activetick-addon/libActiveTickServerAPI.so',
               '-lpthread',
               '<!@(pkg-config --libs protobuf)'
             ]
