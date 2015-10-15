@@ -33,11 +33,10 @@
           },
           'link_settings': {
             'libraries': [
-              '../import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib',
+              '<(module_root_dir)/libActiveTickServerAPI.dylib',
               '-lpthread',
               '-D_THREAD_SAFE',
               '<!@(pkg-config --libs protobuf)'
-              '-Wl,-rpath,./libActiveTickServerAPI.dylib'
             ]
           }
         }],
