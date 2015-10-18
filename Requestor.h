@@ -16,6 +16,10 @@ public:
 private:
   uint64_t session_handle;
   
+  virtual void OnATBarHistoryResponseCallback ( uint64_t origRequest,
+                                                ATBarHistoryResponseType responseType,
+                                                ATBARHISTORY_RESPONSE pResponse);
+  
   virtual void OnATConstituentListResponse( uint64_t origRequest,
                                             LPATSYMBOL pSymbols,
                                             uint32_t symbolsCount);

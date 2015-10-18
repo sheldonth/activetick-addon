@@ -44,6 +44,7 @@ void NodeActiveTick::Init( Handle<Object> exports ) {
     NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
     NODE_SET_PROTOTYPE_METHOD(tpl, "listRequest", ListRequest);
     NODE_SET_PROTOTYPE_METHOD(tpl, "beginQuoteStream", BeginQuoteStream);
+    NODE_SET_PROTOTYPE_METHOD(tpl, "barHistoryDBRequest", BarHistoryDBRequest);
     
     constructor.Reset(isolate, tpl->GetFunction());
     exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
@@ -170,6 +171,45 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
                 true);
   // hack: connect messages are always ID 1
   args.GetReturnValue().Set(Number::New(isolate, 1));
+}
+
+// (  const ATSYMBOL &  symbol,
+// ATBarHistoryType   barHistoryType: BarHistoryIntraday 	BarHistoryDaily 	BarHistoryWeekly
+// uint8_t  intradayMinuteCompression,
+// const ATTIME &   beginDateTime,
+// const ATTIME &   endDateTime,
+// uint32_t   timeout 
+// )
+// (  const ATSYMBOL &  symbol,
+// ATBarHistoryType   barHistoryType,
+// uint8_t  intradayMinuteCompression,
+// uint32_t   recordsWanted,
+// uint32_t   timeout 
+// )
+// (  const ATSYMBOL &  symbol,
+// ATBarHistoryType   barHistoryType,
+// uint8_t  intradayMinuteCompression,
+// const ATTIME &   beginDateTime,
+// uint32_t   recordsWanted,
+// ATCursorType   cursorType,
+// uint32_t   timeout 
+// )
+void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args)
+{
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
+    Local<String> symbol_string = args[0]->ToString();
+    char cstr_symbol[symbol_string->Utf8Length()];
+    symbol_string->WriteUtf8(cstr_symbol);
+    ATSYMBOL s = Helper::StringToSymbol(std::string(cstr_symbol));
+    
+    // obj->requestor->SendATBarHistoryDbRequest (const ATSYMBOL &symbol, ATBarHistoryType barHistoryType, uint8_t intradayMinuteCompression,
+    //     uint32_t   recordsWanted,
+    //     uint32_t   timeout 
+    //     )
+  }
 }
 
 void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)

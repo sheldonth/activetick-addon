@@ -21,6 +21,14 @@ Requestor::~Requestor() {
   
 }
 
+void Requestor::OnATBarHistoryResponseCallback (  uint64_t origRequest,
+                                                  ATBarHistoryResponseType responseType,
+                                                  ATBARHISTORY_RESPONSE pResponse)
+{
+  
+  
+}
+
 void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSymbols, uint32_t symbolsCount) {
   NodeActiveTickProto::ATConstituentResponse *msg = new NodeActiveTickProto::ATConstituentResponse;
   for (uint32_t i = 0; i < symbolsCount; i++) {

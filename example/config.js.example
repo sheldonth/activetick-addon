@@ -2,6 +2,6 @@ module.exports = {
   api_key : '',
   username : '',
   password : '',
-  ip : '',
+  url : '',
   port : 0
 }

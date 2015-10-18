@@ -55,6 +55,8 @@ private:
                   const FunctionCallbackInfo<Value> &args);
     static void BeginQuoteStream(
                   const FunctionCallbackInfo<Value> &args);
+    static void BarHistoryDBRequest(
+                  const FunctionCallbackInfo<Value> &args);
     
     // AT Callbacks
     static void ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate);

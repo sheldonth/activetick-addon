@@ -7,22 +7,11 @@ _ = require 'underscore'
 ProtoBuf = require 'protobufjs'
 path = require 'path'
 
+{ATConstituentRequestTypes,
+ATStreamRequestTypes,
+ATBarHistoryType} = require './ActiveTickDefines'
+
 noisy = yes
-
-ATConstituentRequestTypes = [
-  'ATConstituentListIndex',
-  'ATConstituentListSector',
-  'ATConstituentListOptionChain'
-]
-
-ATStreamRequestTypes = [
-  'StreamRequestSubscribe',
-  'StreamRequestUnsubscribe',
-  'StreamRequestSubscribeQuotesOnly',
-  'StreamRequestUnsubscribeQuotesOnly',
-  'StreamRequestSubscribeTradesOnly',
-  'StreamRequestUnsubscribeTradesOnly'
-]
 
 standard_timeout = 3000
 
@@ -32,12 +21,15 @@ class ActiveTick
       return console.error err if err
       @api = new NodeActiveTick(@handleProtoMsg)
       @callbacks = {}
-      @messages_builder = builder;
+      @messages_builder = builder
       @ATLoginResponse = @messages_builder.build "NodeActiveTickProto.ATLoginResponse"
       @ATConstituentResponse = @messages_builder.build "NodeActiveTickProto.ATConstituentResponse"
       @ATQuote = @messages_builder.build "NodeActiveTickProto.ATQuote"
       @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
       readyCb()
+
+  barHistoryDBRequest: (symbol) =>
+    @api.barHistoryDBRequest symbol
 
   beginQuoteStream: (symbols, ATStreamRequestTypeIndex, @quoteCb, requestCb) =>
     _quoteDecode = (quote_buffer) =>
