@@ -42,8 +42,12 @@
       })(this));
     }
 
-    ActiveTick.prototype.barHistoryDBRequest = function(symbol) {
-      return this.api.barHistoryDBRequest(symbol);
+    ActiveTick.prototype.barHistoryDBRequest = function(symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) {
+      var request_id;
+      request_id = this.api.barHistoryDBRequest(symbol, barhistorytype, intradayminutecompression, startime, endtime);
+      if (requestCb != null) {
+        return this.callbacks[request_id] = requestCb;
+      }
     };
 
     ActiveTick.prototype.beginQuoteStream = function(symbols, ATStreamRequestTypeIndex, quoteCb, requestCb) {

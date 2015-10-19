@@ -4,11 +4,11 @@ fs = require 'fs'
 config = require './config.js'
 
 # SYMBOL.EXCHANGE@COUNTRY -> CSCO.Q@U, CSCO.Q, CSCO, CSCO@U; .ABCDE.Q@U, .ABCDE.Q, .ABCDE;
-
+# YYYYMMDDHHMMSS
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
-  a.barHistoryDBRequest 'T'
+  a.barHistoryDBRequest 'T', 'BarHistoryIntraday', 1, '20150908100000', '20150910100000'
   # await a.listRequest 'ATConstituentListOptionChain', 'fb',  defer(yang)
   # await a.listRequest 'ATConstituentListOptionChain', 'aapl',  defer(aapl)
   # getQuote = (quote) ->

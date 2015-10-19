@@ -194,6 +194,7 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
 // ATCursorType   cursorType,
 // uint32_t   timeout 
 // )
+
 void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args)
 {
   Isolate* isolate = Isolate::GetCurrent();
@@ -204,6 +205,26 @@ void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args
     char cstr_symbol[symbol_string->Utf8Length()];
     symbol_string->WriteUtf8(cstr_symbol);
     ATSYMBOL s = Helper::StringToSymbol(std::string(cstr_symbol));
+    Local<String> barhistorytype_string = args[1]->ToString();
+    char cstr_barhistorytype[barhistorytype_string->Utf8Length()];
+    barhistorytype_string->WriteUtf8(cstr_barhistorytype);
+    ATBarHistoryType barHistoryType = obj->enumConverter->toATBarHistoryType(std::string(cstr_barhistorytype));
+    uint32_t c = args[2]->Uint32Value();
+    uint8_t compression = c;
+    Local<String> start_time = args[3]->ToString();
+    char cstr_start_time[start_time->Utf8Length()];
+    start_time->WriteUtf8(cstr_start_time);
+    Local<String> end_time = args[4]->ToString();
+    char cstr_end_time[end_time->Utf8Length()];
+    end_time->WriteUtf8(cstr_end_time);
+    ATTIME sTime = Helper::StringToATTime(std::string(cstr_start_time));
+    ATTIME eTime = Helper::StringToATTime(std::string(cstr_end_time));
+    
+    // obj->requestor->SendATBarHistoryDbRequest(s, barHistoryType, uint8_t   intradayMinuteCompression,
+    // const ATTIME &   beginDateTime,
+    // const ATTIME &   endDateTime,
+    // uint32_t   timeout 
+    // )
     
     // obj->requestor->SendATBarHistoryDbRequest (const ATSYMBOL &symbol, ATBarHistoryType barHistoryType, uint8_t intradayMinuteCompression,
     //     uint32_t   recordsWanted,

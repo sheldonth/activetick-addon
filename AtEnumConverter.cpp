@@ -394,9 +394,19 @@ AtEnumConverter::AtEnumConverter() {
     this->m_strToConstituentList.insert( std::pair<std::string, ATConstituentListType>("ATConstituentListIndex", ATConstituentListIndex) );
     this->m_strToConstituentList.insert( std::pair<std::string, ATConstituentListType>("ATConstituentListSector", ATConstituentListSector) );
     this->m_strToConstituentList.insert( std::pair<std::string, ATConstituentListType>("ATConstituentListOptionChain", ATConstituentListOptionChain) );
+
+    this->m_strToBarHistoryType.insert( std::pair<std::string, ATBarHistoryType>("BarHistoryIntraday", BarHistoryIntraday));
+    this->m_strToBarHistoryType.insert( std::pair<std::string, ATBarHistoryType>("BarHistoryDaily", BarHistoryDaily));
+    this->m_strToBarHistoryType.insert( std::pair<std::string, ATBarHistoryType>("BarHistoryWeekly", BarHistoryWeekly));
 }
 
 AtEnumConverter::~AtEnumConverter() {
+}
+
+ATBarHistoryType AtEnumConverter::toATBarHistoryType( std::string barHistoryType ) {
+  ATBarHistoryType retVal;
+  retVal = this->m_strToBarHistoryType [ barHistoryType ];
+  return retVal;
 }
 
 ATExchangeType AtEnumConverter::toAtExchange( std::string exchangeType ) {

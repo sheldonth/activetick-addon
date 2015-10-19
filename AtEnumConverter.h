@@ -39,6 +39,7 @@ public:
     ATQuoteFieldType toAtQuoteField( std::string quoteFieldType );
     ATCursorType toAtCursor( std::string cursorType );
     ATConstituentListType toAtConstituentList( std::string constituentListType );
+    ATBarHistoryType toATBarHistoryType( std::string barHistoryType );
 
 private:
     std::map<std::string, ATExchangeType> m_strToExchange;
@@ -47,5 +48,6 @@ private:
     std::map<std::string, ATQuoteFieldType> m_strToQuoteField;
     std::map<std::string, ATCursorType> m_strToCursor;
     std::map<std::string, ATConstituentListType> m_strToConstituentList;
+    std::map<std::string, ATBarHistoryType> m_strToBarHistoryType;
 
 };

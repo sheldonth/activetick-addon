@@ -43,7 +43,7 @@
           }));
           __iced_deferrals._fulfill();
         })(function() {
-          return a.barHistoryDBRequest('T');
+          return a.barHistoryDBRequest('T', 'BarHistoryIntraday', 1, '20150908100000', '20150910100000');
         });
       };
     })(this));

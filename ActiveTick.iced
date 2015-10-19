@@ -28,8 +28,9 @@ class ActiveTick
       @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
       readyCb()
 
-  barHistoryDBRequest: (symbol) =>
-    @api.barHistoryDBRequest symbol
+  barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
+    request_id = @api.barHistoryDBRequest symbol, barhistorytype, intradayminutecompression, startime, endtime
+    @callbacks[request_id] = requestCb if requestCb?
 
   beginQuoteStream: (symbols, ATStreamRequestTypeIndex, @quoteCb, requestCb) =>
     _quoteDecode = (quote_buffer) =>
