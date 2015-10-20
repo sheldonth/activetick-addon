@@ -28,6 +28,7 @@ class ActiveTick
       @ATQuote = @messages_builder.build "NodeActiveTickProto.ATQuote"
       @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
       @ATQuoteStreamTradeUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamTradeUpdate"
+      @ATBarHistoryDbResponse = @messages_builder.build "NodeActiveTickProto.ATBarHistoryDbResponse"
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
@@ -65,9 +66,8 @@ class ActiveTick
       msg = @ATQuoteStreamResponse.decode msgData
     else if msgType is 'ATQuoteStreamTradeUpdate'
       msg = @ATQuoteStreamTradeUpdate.decode msgData
-      funcs = @stream_callbacks[msg.tradeSymbol.symbol]
-      for f in funcs
-        f(msg)
+    else if msgType is 'ATBarHistoryDbResponse'
+      msg = @ATBarHistoryDbResponse.decode msgData
     if (c = @callbacks[msgID])?
       c(msg)
 

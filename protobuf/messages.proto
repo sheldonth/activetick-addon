@@ -88,5 +88,19 @@ message ATQuote {
   optional int32 askExchangeId = 9;
 }
 
+message ATBarHistoryValue {
+  optional ATPrice open = 1;
+  optional ATPrice high = 2;
+  optional ATPrice low = 3;
+  optional ATPrice close = 4;
+  optional int64 volume = 5;
+  optional ATTime time = 6;
+  optional ATSymbol symbol = 7;
+  optional string status = 8;
+}
+
+message ATBarHistoryDbResponse {
+  repeated ATBarHistoryValue value = 1;
+}
 
 

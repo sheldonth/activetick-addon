@@ -39,6 +39,7 @@
           _this.ATQuote = _this.messages_builder.build("NodeActiveTickProto.ATQuote");
           _this.ATQuoteStreamResponse = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamResponse");
           _this.ATQuoteStreamTradeUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamTradeUpdate");
+          _this.ATBarHistoryDbResponse = _this.messages_builder.build("NodeActiveTickProto.ATBarHistoryDbResponse");
           return readyCb();
         };
       })(this));
@@ -87,7 +88,7 @@
     };
 
     ActiveTick.prototype.handleProtoMsg = function(msgType, msgID, msgData) {
-      var c, f, funcs, msg, _i, _len;
+      var c, msg;
       if (msgType === 'ATLoginResponse') {
         msg = this.ATLoginResponse.decode(msgData);
         if (msg.loginResponseString !== 'Success') {
@@ -99,11 +100,8 @@
         msg = this.ATQuoteStreamResponse.decode(msgData);
       } else if (msgType === 'ATQuoteStreamTradeUpdate') {
         msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
-        funcs = this.stream_callbacks[msg.tradeSymbol.symbol];
-        for (_i = 0, _len = funcs.length; _i < _len; _i++) {
-          f = funcs[_i];
-          f(msg);
-        }
+      } else if (msgType === 'ATBarHistoryDbResponse') {
+        msg = this.ATBarHistoryDbResponse.decode(msgData);
       }
       if ((c = this.callbacks[msgID]) != null) {
         return c(msg);

@@ -33,7 +33,7 @@ main = () ->
   a.beginQuoteStream [facebook, apple], 'StreamRequestSubscribe', getQuote2, (result) ->
     console.log 'getQuote2', result
     
-  a.barHistoryDBRequest facebook, 'BarHistoryIntraday', 1, '20150908100000', '20150910100000', (result) ->
+  a.barHistoryDBRequest facebook, 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', (result) ->
     console.log 'barhistory', result
   
 

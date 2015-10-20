@@ -53,6 +53,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ATQuote_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATQuote_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATBarHistoryValue_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATBarHistoryValue_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATBarHistoryDbResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATBarHistoryDbResponse_reflection_ = NULL;
 
 }  // namespace
 
@@ -271,6 +277,43 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATQuote));
+  ATBarHistoryValue_descriptor_ = file->message_type(11);
+  static const int ATBarHistoryValue_offsets_[8] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, open_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, high_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, low_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, close_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, volume_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, symbol_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, status_),
+  };
+  ATBarHistoryValue_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATBarHistoryValue_descriptor_,
+      ATBarHistoryValue::default_instance_,
+      ATBarHistoryValue_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATBarHistoryValue));
+  ATBarHistoryDbResponse_descriptor_ = file->message_type(12);
+  static const int ATBarHistoryDbResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryDbResponse, value_),
+  };
+  ATBarHistoryDbResponse_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATBarHistoryDbResponse_descriptor_,
+      ATBarHistoryDbResponse::default_instance_,
+      ATBarHistoryDbResponse_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryDbResponse, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryDbResponse, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATBarHistoryDbResponse));
 }
 
 namespace {
@@ -305,6 +348,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     ATPrice_descriptor_, &ATPrice::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATQuote_descriptor_, &ATQuote::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATBarHistoryValue_descriptor_, &ATBarHistoryValue::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATBarHistoryDbResponse_descriptor_, &ATBarHistoryDbResponse::default_instance());
 }
 
 }  // namespace
@@ -332,6 +379,10 @@ void protobuf_ShutdownFile_messages_2eproto() {
   delete ATPrice_reflection_;
   delete ATQuote::default_instance_;
   delete ATQuote_reflection_;
+  delete ATBarHistoryValue::default_instance_;
+  delete ATBarHistoryValue_reflection_;
+  delete ATBarHistoryDbResponse::default_instance_;
+  delete ATBarHistoryDbResponse_reflection_;
 }
 
 void protobuf_AddDesc_messages_2eproto() {
@@ -391,7 +442,17 @@ void protobuf_AddDesc_messages_2eproto() {
     "kSize\030\005 \001(\005\022\030\n\020quoteConditionId\030\006 \001(\005\022/\n"
     "\nserverTime\030\007 \001(\0132\033.NodeActiveTickProto."
     "ATTime\022\025\n\rbidExchangeId\030\010 \001(\005\022\025\n\raskExch"
-    "angeId\030\t \001(\005", 2012);
+    "angeId\030\t \001(\005\"\275\002\n\021ATBarHistoryValue\022*\n\004op"
+    "en\030\001 \001(\0132\034.NodeActiveTickProto.ATPrice\022*"
+    "\n\004high\030\002 \001(\0132\034.NodeActiveTickProto.ATPri"
+    "ce\022)\n\003low\030\003 \001(\0132\034.NodeActiveTickProto.AT"
+    "Price\022+\n\005close\030\004 \001(\0132\034.NodeActiveTickPro"
+    "to.ATPrice\022\016\n\006volume\030\005 \001(\003\022)\n\004time\030\006 \001(\013"
+    "2\033.NodeActiveTickProto.ATTime\022-\n\006symbol\030"
+    "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
+    "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
+    "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
+    "rHistoryValue", 2413);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -405,6 +466,8 @@ void protobuf_AddDesc_messages_2eproto() {
   ATSymbol::default_instance_ = new ATSymbol();
   ATPrice::default_instance_ = new ATPrice();
   ATQuote::default_instance_ = new ATQuote();
+  ATBarHistoryValue::default_instance_ = new ATBarHistoryValue();
+  ATBarHistoryDbResponse::default_instance_ = new ATBarHistoryDbResponse();
   ATLoginResponse::default_instance_->InitAsDefaultInstance();
   ATConstituentResponse::default_instance_->InitAsDefaultInstance();
   ATQuoteStreamResponse::default_instance_->InitAsDefaultInstance();
@@ -416,6 +479,8 @@ void protobuf_AddDesc_messages_2eproto() {
   ATSymbol::default_instance_->InitAsDefaultInstance();
   ATPrice::default_instance_->InitAsDefaultInstance();
   ATQuote::default_instance_->InitAsDefaultInstance();
+  ATBarHistoryValue::default_instance_->InitAsDefaultInstance();
+  ATBarHistoryDbResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_messages_2eproto);
 }
 
@@ -4944,6 +5009,786 @@ void ATQuote::Swap(ATQuote* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ATQuote_descriptor_;
   metadata.reflection = ATQuote_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATBarHistoryValue::kOpenFieldNumber;
+const int ATBarHistoryValue::kHighFieldNumber;
+const int ATBarHistoryValue::kLowFieldNumber;
+const int ATBarHistoryValue::kCloseFieldNumber;
+const int ATBarHistoryValue::kVolumeFieldNumber;
+const int ATBarHistoryValue::kTimeFieldNumber;
+const int ATBarHistoryValue::kSymbolFieldNumber;
+const int ATBarHistoryValue::kStatusFieldNumber;
+#endif  // !_MSC_VER
+
+ATBarHistoryValue::ATBarHistoryValue()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATBarHistoryValue)
+}
+
+void ATBarHistoryValue::InitAsDefaultInstance() {
+  open_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  high_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  low_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  close_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  time_ = const_cast< ::NodeActiveTickProto::ATTime*>(&::NodeActiveTickProto::ATTime::default_instance());
+  symbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
+}
+
+ATBarHistoryValue::ATBarHistoryValue(const ATBarHistoryValue& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATBarHistoryValue)
+}
+
+void ATBarHistoryValue::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  open_ = NULL;
+  high_ = NULL;
+  low_ = NULL;
+  close_ = NULL;
+  volume_ = GOOGLE_LONGLONG(0);
+  time_ = NULL;
+  symbol_ = NULL;
+  status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATBarHistoryValue::~ATBarHistoryValue() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATBarHistoryValue)
+  SharedDtor();
+}
+
+void ATBarHistoryValue::SharedDtor() {
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete status_;
+  }
+  if (this != default_instance_) {
+    delete open_;
+    delete high_;
+    delete low_;
+    delete close_;
+    delete time_;
+    delete symbol_;
+  }
+}
+
+void ATBarHistoryValue::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATBarHistoryValue::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATBarHistoryValue_descriptor_;
+}
+
+const ATBarHistoryValue& ATBarHistoryValue::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATBarHistoryValue* ATBarHistoryValue::default_instance_ = NULL;
+
+ATBarHistoryValue* ATBarHistoryValue::New() const {
+  return new ATBarHistoryValue;
+}
+
+void ATBarHistoryValue::Clear() {
+  if (_has_bits_[0 / 32] & 255) {
+    if (has_open()) {
+      if (open_ != NULL) open_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_high()) {
+      if (high_ != NULL) high_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_low()) {
+      if (low_ != NULL) low_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_close()) {
+      if (close_ != NULL) close_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    volume_ = GOOGLE_LONGLONG(0);
+    if (has_time()) {
+      if (time_ != NULL) time_->::NodeActiveTickProto::ATTime::Clear();
+    }
+    if (has_symbol()) {
+      if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+    }
+    if (has_status()) {
+      if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        status_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATBarHistoryValue::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATBarHistoryValue)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NodeActiveTickProto.ATPrice open = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_open()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_high;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice high = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_high:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_high()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_low;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice low = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_low:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_low()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_close;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice close = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_close:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_close()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_volume;
+        break;
+      }
+
+      // optional int64 volume = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_volume:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &volume_)));
+          set_has_volume();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_time;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATTime time = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_time:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_time()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_symbol;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATSymbol symbol = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_symbol:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_symbol()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(66)) goto parse_status;
+        break;
+      }
+
+      // optional string status = 8;
+      case 8: {
+        if (tag == 66) {
+         parse_status:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_status()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->status().data(), this->status().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "status");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATBarHistoryValue)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATBarHistoryValue)
+  return false;
+#undef DO_
+}
+
+void ATBarHistoryValue::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATBarHistoryValue)
+  // optional .NodeActiveTickProto.ATPrice open = 1;
+  if (has_open()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->open(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice high = 2;
+  if (has_high()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->high(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice low = 3;
+  if (has_low()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->low(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice close = 4;
+  if (has_close()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->close(), output);
+  }
+
+  // optional int64 volume = 5;
+  if (has_volume()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(5, this->volume(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATTime time = 6;
+  if (has_time()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->time(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 7;
+  if (has_symbol()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->symbol(), output);
+  }
+
+  // optional string status = 8;
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->status().data(), this->status().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "status");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      8, this->status(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATBarHistoryValue)
+}
+
+::google::protobuf::uint8* ATBarHistoryValue::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATBarHistoryValue)
+  // optional .NodeActiveTickProto.ATPrice open = 1;
+  if (has_open()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->open(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice high = 2;
+  if (has_high()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->high(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice low = 3;
+  if (has_low()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->low(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice close = 4;
+  if (has_close()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->close(), target);
+  }
+
+  // optional int64 volume = 5;
+  if (has_volume()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(5, this->volume(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATTime time = 6;
+  if (has_time()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->time(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 7;
+  if (has_symbol()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->symbol(), target);
+  }
+
+  // optional string status = 8;
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->status().data(), this->status().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "status");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->status(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATBarHistoryValue)
+  return target;
+}
+
+int ATBarHistoryValue::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .NodeActiveTickProto.ATPrice open = 1;
+    if (has_open()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->open());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice high = 2;
+    if (has_high()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->high());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice low = 3;
+    if (has_low()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->low());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice close = 4;
+    if (has_close()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->close());
+    }
+
+    // optional int64 volume = 5;
+    if (has_volume()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->volume());
+    }
+
+    // optional .NodeActiveTickProto.ATTime time = 6;
+    if (has_time()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->time());
+    }
+
+    // optional .NodeActiveTickProto.ATSymbol symbol = 7;
+    if (has_symbol()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->symbol());
+    }
+
+    // optional string status = 8;
+    if (has_status()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->status());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATBarHistoryValue::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATBarHistoryValue* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATBarHistoryValue*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATBarHistoryValue::MergeFrom(const ATBarHistoryValue& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_open()) {
+      mutable_open()->::NodeActiveTickProto::ATPrice::MergeFrom(from.open());
+    }
+    if (from.has_high()) {
+      mutable_high()->::NodeActiveTickProto::ATPrice::MergeFrom(from.high());
+    }
+    if (from.has_low()) {
+      mutable_low()->::NodeActiveTickProto::ATPrice::MergeFrom(from.low());
+    }
+    if (from.has_close()) {
+      mutable_close()->::NodeActiveTickProto::ATPrice::MergeFrom(from.close());
+    }
+    if (from.has_volume()) {
+      set_volume(from.volume());
+    }
+    if (from.has_time()) {
+      mutable_time()->::NodeActiveTickProto::ATTime::MergeFrom(from.time());
+    }
+    if (from.has_symbol()) {
+      mutable_symbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.symbol());
+    }
+    if (from.has_status()) {
+      set_status(from.status());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATBarHistoryValue::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATBarHistoryValue::CopyFrom(const ATBarHistoryValue& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATBarHistoryValue::IsInitialized() const {
+
+  if (has_open()) {
+    if (!this->open().IsInitialized()) return false;
+  }
+  if (has_high()) {
+    if (!this->high().IsInitialized()) return false;
+  }
+  if (has_low()) {
+    if (!this->low().IsInitialized()) return false;
+  }
+  if (has_close()) {
+    if (!this->close().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void ATBarHistoryValue::Swap(ATBarHistoryValue* other) {
+  if (other != this) {
+    std::swap(open_, other->open_);
+    std::swap(high_, other->high_);
+    std::swap(low_, other->low_);
+    std::swap(close_, other->close_);
+    std::swap(volume_, other->volume_);
+    std::swap(time_, other->time_);
+    std::swap(symbol_, other->symbol_);
+    std::swap(status_, other->status_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATBarHistoryValue::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATBarHistoryValue_descriptor_;
+  metadata.reflection = ATBarHistoryValue_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATBarHistoryDbResponse::kValueFieldNumber;
+#endif  // !_MSC_VER
+
+ATBarHistoryDbResponse::ATBarHistoryDbResponse()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATBarHistoryDbResponse)
+}
+
+void ATBarHistoryDbResponse::InitAsDefaultInstance() {
+}
+
+ATBarHistoryDbResponse::ATBarHistoryDbResponse(const ATBarHistoryDbResponse& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATBarHistoryDbResponse)
+}
+
+void ATBarHistoryDbResponse::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATBarHistoryDbResponse::~ATBarHistoryDbResponse() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATBarHistoryDbResponse)
+  SharedDtor();
+}
+
+void ATBarHistoryDbResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void ATBarHistoryDbResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATBarHistoryDbResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATBarHistoryDbResponse_descriptor_;
+}
+
+const ATBarHistoryDbResponse& ATBarHistoryDbResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATBarHistoryDbResponse* ATBarHistoryDbResponse::default_instance_ = NULL;
+
+ATBarHistoryDbResponse* ATBarHistoryDbResponse::New() const {
+  return new ATBarHistoryDbResponse;
+}
+
+void ATBarHistoryDbResponse::Clear() {
+  value_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATBarHistoryDbResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATBarHistoryDbResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .NodeActiveTickProto.ATBarHistoryValue value = 1;
+      case 1: {
+        if (tag == 10) {
+         parse_value:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_value()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_value;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATBarHistoryDbResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATBarHistoryDbResponse)
+  return false;
+#undef DO_
+}
+
+void ATBarHistoryDbResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATBarHistoryDbResponse)
+  // repeated .NodeActiveTickProto.ATBarHistoryValue value = 1;
+  for (int i = 0; i < this->value_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->value(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATBarHistoryDbResponse)
+}
+
+::google::protobuf::uint8* ATBarHistoryDbResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATBarHistoryDbResponse)
+  // repeated .NodeActiveTickProto.ATBarHistoryValue value = 1;
+  for (int i = 0; i < this->value_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->value(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATBarHistoryDbResponse)
+  return target;
+}
+
+int ATBarHistoryDbResponse::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .NodeActiveTickProto.ATBarHistoryValue value = 1;
+  total_size += 1 * this->value_size();
+  for (int i = 0; i < this->value_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->value(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATBarHistoryDbResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATBarHistoryDbResponse* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATBarHistoryDbResponse*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATBarHistoryDbResponse::MergeFrom(const ATBarHistoryDbResponse& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  value_.MergeFrom(from.value_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATBarHistoryDbResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATBarHistoryDbResponse::CopyFrom(const ATBarHistoryDbResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATBarHistoryDbResponse::IsInitialized() const {
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->value())) return false;
+  return true;
+}
+
+void ATBarHistoryDbResponse::Swap(ATBarHistoryDbResponse* other) {
+  if (other != this) {
+    value_.Swap(&other->value_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATBarHistoryDbResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATBarHistoryDbResponse_descriptor_;
+  metadata.reflection = ATBarHistoryDbResponse_reflection_;
   return metadata;
 }
 

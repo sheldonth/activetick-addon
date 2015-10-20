@@ -44,6 +44,8 @@ class ATQuoteStreamRefreshUpdate;
 class ATSymbol;
 class ATPrice;
 class ATQuote;
+class ATBarHistoryValue;
+class ATBarHistoryDbResponse;
 
 // ===================================================================
 
@@ -1435,6 +1437,254 @@ class ATQuote : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ATQuote* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATBarHistoryValue : public ::google::protobuf::Message {
+ public:
+  ATBarHistoryValue();
+  virtual ~ATBarHistoryValue();
+
+  ATBarHistoryValue(const ATBarHistoryValue& from);
+
+  inline ATBarHistoryValue& operator=(const ATBarHistoryValue& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATBarHistoryValue& default_instance();
+
+  void Swap(ATBarHistoryValue* other);
+
+  // implements Message ----------------------------------------------
+
+  ATBarHistoryValue* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATBarHistoryValue& from);
+  void MergeFrom(const ATBarHistoryValue& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATPrice open = 1;
+  inline bool has_open() const;
+  inline void clear_open();
+  static const int kOpenFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATPrice& open() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_open();
+  inline ::NodeActiveTickProto::ATPrice* release_open();
+  inline void set_allocated_open(::NodeActiveTickProto::ATPrice* open);
+
+  // optional .NodeActiveTickProto.ATPrice high = 2;
+  inline bool has_high() const;
+  inline void clear_high();
+  static const int kHighFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATPrice& high() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_high();
+  inline ::NodeActiveTickProto::ATPrice* release_high();
+  inline void set_allocated_high(::NodeActiveTickProto::ATPrice* high);
+
+  // optional .NodeActiveTickProto.ATPrice low = 3;
+  inline bool has_low() const;
+  inline void clear_low();
+  static const int kLowFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATPrice& low() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_low();
+  inline ::NodeActiveTickProto::ATPrice* release_low();
+  inline void set_allocated_low(::NodeActiveTickProto::ATPrice* low);
+
+  // optional .NodeActiveTickProto.ATPrice close = 4;
+  inline bool has_close() const;
+  inline void clear_close();
+  static const int kCloseFieldNumber = 4;
+  inline const ::NodeActiveTickProto::ATPrice& close() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_close();
+  inline ::NodeActiveTickProto::ATPrice* release_close();
+  inline void set_allocated_close(::NodeActiveTickProto::ATPrice* close);
+
+  // optional int64 volume = 5;
+  inline bool has_volume() const;
+  inline void clear_volume();
+  static const int kVolumeFieldNumber = 5;
+  inline ::google::protobuf::int64 volume() const;
+  inline void set_volume(::google::protobuf::int64 value);
+
+  // optional .NodeActiveTickProto.ATTime time = 6;
+  inline bool has_time() const;
+  inline void clear_time();
+  static const int kTimeFieldNumber = 6;
+  inline const ::NodeActiveTickProto::ATTime& time() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_time();
+  inline ::NodeActiveTickProto::ATTime* release_time();
+  inline void set_allocated_time(::NodeActiveTickProto::ATTime* time);
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 7;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 7;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
+
+  // optional string status = 8;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 8;
+  inline const ::std::string& status() const;
+  inline void set_status(const ::std::string& value);
+  inline void set_status(const char* value);
+  inline void set_status(const char* value, size_t size);
+  inline ::std::string* mutable_status();
+  inline ::std::string* release_status();
+  inline void set_allocated_status(::std::string* status);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATBarHistoryValue)
+ private:
+  inline void set_has_open();
+  inline void clear_has_open();
+  inline void set_has_high();
+  inline void clear_has_high();
+  inline void set_has_low();
+  inline void clear_has_low();
+  inline void set_has_close();
+  inline void clear_has_close();
+  inline void set_has_volume();
+  inline void clear_has_volume();
+  inline void set_has_time();
+  inline void clear_has_time();
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_status();
+  inline void clear_has_status();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATPrice* open_;
+  ::NodeActiveTickProto::ATPrice* high_;
+  ::NodeActiveTickProto::ATPrice* low_;
+  ::NodeActiveTickProto::ATPrice* close_;
+  ::google::protobuf::int64 volume_;
+  ::NodeActiveTickProto::ATTime* time_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::std::string* status_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATBarHistoryValue* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATBarHistoryDbResponse : public ::google::protobuf::Message {
+ public:
+  ATBarHistoryDbResponse();
+  virtual ~ATBarHistoryDbResponse();
+
+  ATBarHistoryDbResponse(const ATBarHistoryDbResponse& from);
+
+  inline ATBarHistoryDbResponse& operator=(const ATBarHistoryDbResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATBarHistoryDbResponse& default_instance();
+
+  void Swap(ATBarHistoryDbResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  ATBarHistoryDbResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATBarHistoryDbResponse& from);
+  void MergeFrom(const ATBarHistoryDbResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .NodeActiveTickProto.ATBarHistoryValue value = 1;
+  inline int value_size() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATBarHistoryValue& value(int index) const;
+  inline ::NodeActiveTickProto::ATBarHistoryValue* mutable_value(int index);
+  inline ::NodeActiveTickProto::ATBarHistoryValue* add_value();
+  inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATBarHistoryValue >&
+      value() const;
+  inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATBarHistoryValue >*
+      mutable_value();
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATBarHistoryDbResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATBarHistoryValue > value_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATBarHistoryDbResponse* default_instance_;
 };
 // ===================================================================
 
@@ -3576,6 +3826,390 @@ inline void ATQuote::set_askexchangeid(::google::protobuf::int32 value) {
   set_has_askexchangeid();
   askexchangeid_ = value;
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuote.askExchangeId)
+}
+
+// -------------------------------------------------------------------
+
+// ATBarHistoryValue
+
+// optional .NodeActiveTickProto.ATPrice open = 1;
+inline bool ATBarHistoryValue::has_open() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATBarHistoryValue::set_has_open() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATBarHistoryValue::clear_has_open() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATBarHistoryValue::clear_open() {
+  if (open_ != NULL) open_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_open();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATBarHistoryValue::open() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.open)
+  return open_ != NULL ? *open_ : *default_instance_->open_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::mutable_open() {
+  set_has_open();
+  if (open_ == NULL) open_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.open)
+  return open_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::release_open() {
+  clear_has_open();
+  ::NodeActiveTickProto::ATPrice* temp = open_;
+  open_ = NULL;
+  return temp;
+}
+inline void ATBarHistoryValue::set_allocated_open(::NodeActiveTickProto::ATPrice* open) {
+  delete open_;
+  open_ = open;
+  if (open) {
+    set_has_open();
+  } else {
+    clear_has_open();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.open)
+}
+
+// optional .NodeActiveTickProto.ATPrice high = 2;
+inline bool ATBarHistoryValue::has_high() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATBarHistoryValue::set_has_high() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATBarHistoryValue::clear_has_high() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATBarHistoryValue::clear_high() {
+  if (high_ != NULL) high_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_high();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATBarHistoryValue::high() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.high)
+  return high_ != NULL ? *high_ : *default_instance_->high_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::mutable_high() {
+  set_has_high();
+  if (high_ == NULL) high_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.high)
+  return high_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::release_high() {
+  clear_has_high();
+  ::NodeActiveTickProto::ATPrice* temp = high_;
+  high_ = NULL;
+  return temp;
+}
+inline void ATBarHistoryValue::set_allocated_high(::NodeActiveTickProto::ATPrice* high) {
+  delete high_;
+  high_ = high;
+  if (high) {
+    set_has_high();
+  } else {
+    clear_has_high();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.high)
+}
+
+// optional .NodeActiveTickProto.ATPrice low = 3;
+inline bool ATBarHistoryValue::has_low() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATBarHistoryValue::set_has_low() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATBarHistoryValue::clear_has_low() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATBarHistoryValue::clear_low() {
+  if (low_ != NULL) low_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_low();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATBarHistoryValue::low() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.low)
+  return low_ != NULL ? *low_ : *default_instance_->low_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::mutable_low() {
+  set_has_low();
+  if (low_ == NULL) low_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.low)
+  return low_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::release_low() {
+  clear_has_low();
+  ::NodeActiveTickProto::ATPrice* temp = low_;
+  low_ = NULL;
+  return temp;
+}
+inline void ATBarHistoryValue::set_allocated_low(::NodeActiveTickProto::ATPrice* low) {
+  delete low_;
+  low_ = low;
+  if (low) {
+    set_has_low();
+  } else {
+    clear_has_low();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.low)
+}
+
+// optional .NodeActiveTickProto.ATPrice close = 4;
+inline bool ATBarHistoryValue::has_close() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATBarHistoryValue::set_has_close() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATBarHistoryValue::clear_has_close() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATBarHistoryValue::clear_close() {
+  if (close_ != NULL) close_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_close();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATBarHistoryValue::close() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.close)
+  return close_ != NULL ? *close_ : *default_instance_->close_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::mutable_close() {
+  set_has_close();
+  if (close_ == NULL) close_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.close)
+  return close_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATBarHistoryValue::release_close() {
+  clear_has_close();
+  ::NodeActiveTickProto::ATPrice* temp = close_;
+  close_ = NULL;
+  return temp;
+}
+inline void ATBarHistoryValue::set_allocated_close(::NodeActiveTickProto::ATPrice* close) {
+  delete close_;
+  close_ = close;
+  if (close) {
+    set_has_close();
+  } else {
+    clear_has_close();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.close)
+}
+
+// optional int64 volume = 5;
+inline bool ATBarHistoryValue::has_volume() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATBarHistoryValue::set_has_volume() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATBarHistoryValue::clear_has_volume() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATBarHistoryValue::clear_volume() {
+  volume_ = GOOGLE_LONGLONG(0);
+  clear_has_volume();
+}
+inline ::google::protobuf::int64 ATBarHistoryValue::volume() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.volume)
+  return volume_;
+}
+inline void ATBarHistoryValue::set_volume(::google::protobuf::int64 value) {
+  set_has_volume();
+  volume_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATBarHistoryValue.volume)
+}
+
+// optional .NodeActiveTickProto.ATTime time = 6;
+inline bool ATBarHistoryValue::has_time() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATBarHistoryValue::set_has_time() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATBarHistoryValue::clear_has_time() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATBarHistoryValue::clear_time() {
+  if (time_ != NULL) time_->::NodeActiveTickProto::ATTime::Clear();
+  clear_has_time();
+}
+inline const ::NodeActiveTickProto::ATTime& ATBarHistoryValue::time() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.time)
+  return time_ != NULL ? *time_ : *default_instance_->time_;
+}
+inline ::NodeActiveTickProto::ATTime* ATBarHistoryValue::mutable_time() {
+  set_has_time();
+  if (time_ == NULL) time_ = new ::NodeActiveTickProto::ATTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.time)
+  return time_;
+}
+inline ::NodeActiveTickProto::ATTime* ATBarHistoryValue::release_time() {
+  clear_has_time();
+  ::NodeActiveTickProto::ATTime* temp = time_;
+  time_ = NULL;
+  return temp;
+}
+inline void ATBarHistoryValue::set_allocated_time(::NodeActiveTickProto::ATTime* time) {
+  delete time_;
+  time_ = time;
+  if (time) {
+    set_has_time();
+  } else {
+    clear_has_time();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.time)
+}
+
+// optional .NodeActiveTickProto.ATSymbol symbol = 7;
+inline bool ATBarHistoryValue::has_symbol() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATBarHistoryValue::set_has_symbol() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATBarHistoryValue::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATBarHistoryValue::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATBarHistoryValue::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATBarHistoryValue::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.symbol)
+  return symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATBarHistoryValue::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
+  return temp;
+}
+inline void ATBarHistoryValue::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
+  } else {
+    clear_has_symbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.symbol)
+}
+
+// optional string status = 8;
+inline bool ATBarHistoryValue::has_status() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ATBarHistoryValue::set_has_status() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ATBarHistoryValue::clear_has_status() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ATBarHistoryValue::clear_status() {
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_->clear();
+  }
+  clear_has_status();
+}
+inline const ::std::string& ATBarHistoryValue::status() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryValue.status)
+  return *status_;
+}
+inline void ATBarHistoryValue::set_status(const ::std::string& value) {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  status_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATBarHistoryValue.status)
+}
+inline void ATBarHistoryValue::set_status(const char* value) {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  status_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATBarHistoryValue.status)
+}
+inline void ATBarHistoryValue::set_status(const char* value, size_t size) {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  status_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATBarHistoryValue.status)
+}
+inline ::std::string* ATBarHistoryValue::mutable_status() {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryValue.status)
+  return status_;
+}
+inline ::std::string* ATBarHistoryValue::release_status() {
+  clear_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = status_;
+    status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATBarHistoryValue::set_allocated_status(::std::string* status) {
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete status_;
+  }
+  if (status) {
+    set_has_status();
+    status_ = status;
+  } else {
+    clear_has_status();
+    status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATBarHistoryValue.status)
+}
+
+// -------------------------------------------------------------------
+
+// ATBarHistoryDbResponse
+
+// repeated .NodeActiveTickProto.ATBarHistoryValue value = 1;
+inline int ATBarHistoryDbResponse::value_size() const {
+  return value_.size();
+}
+inline void ATBarHistoryDbResponse::clear_value() {
+  value_.Clear();
+}
+inline const ::NodeActiveTickProto::ATBarHistoryValue& ATBarHistoryDbResponse::value(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATBarHistoryDbResponse.value)
+  return value_.Get(index);
+}
+inline ::NodeActiveTickProto::ATBarHistoryValue* ATBarHistoryDbResponse::mutable_value(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATBarHistoryDbResponse.value)
+  return value_.Mutable(index);
+}
+inline ::NodeActiveTickProto::ATBarHistoryValue* ATBarHistoryDbResponse::add_value() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATBarHistoryDbResponse.value)
+  return value_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATBarHistoryValue >&
+ATBarHistoryDbResponse::value() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATBarHistoryDbResponse.value)
+  return value_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATBarHistoryValue >*
+ATBarHistoryDbResponse::mutable_value() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATBarHistoryDbResponse.value)
+  return &value_;
 }
 
 

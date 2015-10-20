@@ -40,7 +40,7 @@ public:
     ATCursorType toAtCursor( std::string cursorType );
     ATConstituentListType toAtConstituentList( std::string constituentListType );
     ATBarHistoryType toATBarHistoryType( std::string barHistoryType );
-
+    
 private:
     std::map<std::string, ATExchangeType> m_strToExchange;
     std::map<std::string, ATCountryType> m_strToCountry;

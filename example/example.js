@@ -79,7 +79,7 @@
             a.beginQuoteStream([facebook, apple], 'StreamRequestSubscribe', getQuote2, function(result) {
               return console.log('getQuote2', result);
             });
-            return a.barHistoryDBRequest(facebook, 'BarHistoryIntraday', 1, '20150908100000', '20150910100000', function(result) {
+            return a.barHistoryDBRequest(facebook, 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', function(result) {
               return console.log('barhistory', result);
             });
           });

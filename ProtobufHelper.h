@@ -12,6 +12,7 @@ using namespace v8;
 
 class ProtobufHelper {
 public:
+  
   // parse ATSYMBOL into NodeActiveTickProto::ATSymbol
   static void atsymbol_insert(ATSYMBOL* s, NodeActiveTickProto::ATSymbol *symbol) {
     std::string str_symbol_long = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
