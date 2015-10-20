@@ -34,6 +34,8 @@ public:
     wchar16_t   wchar_password[50];
     wchar16_t   wchar_api_token[100];
     
+    // std::vector<Local <Function> > stream_functions;
+    
     AtEnumConverter *enumConverter;
     Nan::Callback *nan_cb;
     uv_async_t handle;

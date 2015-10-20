@@ -21,29 +21,30 @@ class ActiveTick
       return console.error err if err
       @api = new NodeActiveTick(@handleProtoMsg)
       @callbacks = {}
+      @stream_callbacks = {}
       @messages_builder = builder
       @ATLoginResponse = @messages_builder.build "NodeActiveTickProto.ATLoginResponse"
       @ATConstituentResponse = @messages_builder.build "NodeActiveTickProto.ATConstituentResponse"
       @ATQuote = @messages_builder.build "NodeActiveTickProto.ATQuote"
       @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
+      @ATQuoteStreamTradeUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamTradeUpdate"
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
     request_id = @api.barHistoryDBRequest symbol, barhistorytype, intradayminutecompression, startime, endtime
     @callbacks[request_id] = requestCb if requestCb?
 
-  beginQuoteStream: (symbols, ATStreamRequestTypeIndex, @quoteCb, requestCb) =>
-    _quoteDecode = (quote_buffer) =>
-      console.log quote_buffer
-      quote = @ATQuote.decode quote_buffer
-      @quoteCb quote
+  beginQuoteStream: (symbols, ATStreamRequestTypeIndex, quoteCb, requestCb) =>
     if typeof symbols is 'object'
       symbolParam = symbols.join ','
       symbolCount = symbols.length
     else if typeof symbols is 'string'
       symbolParam = symbols
       symbolCount = 1
-    request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypeIndex, _quoteDecode
+    request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypeIndex
+    for sym in symbols
+      @stream_callbacks[sym] = [] if not @stream_callbacks[sym]
+      @stream_callbacks[sym].push quoteCb
     @callbacks[request_id] = requestCb if requestCb?
     
   listRequest: (listType, key, cb) ->
@@ -61,7 +62,12 @@ class ActiveTick
     else if msgType is 'ATConstituentResponse'
       msg = @ATConstituentResponse.decode msgData
     else if msgType is 'ATQuoteStreamResponse'
-      msg = @ATQuoteStreamResponse.decode msgData 
+      msg = @ATQuoteStreamResponse.decode msgData
+    else if msgType is 'ATQuoteStreamTradeUpdate'
+      msg = @ATQuoteStreamTradeUpdate.decode msgData
+      funcs = @stream_callbacks[msg.tradeSymbol.symbol]
+      for f in funcs
+        f(msg)
     if (c = @callbacks[msgID])?
       c(msg)
 

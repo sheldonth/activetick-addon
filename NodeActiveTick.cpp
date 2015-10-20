@@ -218,18 +218,9 @@ void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args
     char cstr_end_time[end_time->Utf8Length()];
     end_time->WriteUtf8(cstr_end_time);
     ATTIME sTime = Helper::StringToATTime(std::string(cstr_start_time));
-    ATTIME eTime = Helper::StringToATTime(std::string(cstr_end_time));
-    
-    // obj->requestor->SendATBarHistoryDbRequest(s, barHistoryType, uint8_t   intradayMinuteCompression,
-    // const ATTIME &   beginDateTime,
-    // const ATTIME &   endDateTime,
-    // uint32_t   timeout 
-    // )
-    
-    // obj->requestor->SendATBarHistoryDbRequest (const ATSYMBOL &symbol, ATBarHistoryType barHistoryType, uint8_t intradayMinuteCompression,
-    //     uint32_t   recordsWanted,
-    //     uint32_t   timeout 
-    //     )
+    ATTIME eTime = Helper::StringToATTime(std::string(cstr_end_time));    
+    s_pInstance->m_hLastRequest = obj->requestor->SendATBarHistoryDbRequest(s, barHistoryType, compression, sTime, eTime, DEFAULT_REQUEST_TIMEOUT);
+    args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
   }
 }
 
@@ -271,6 +262,11 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
       str_request_type->WriteUtf8(cstr_request_type);
       std::string request_type = std::string(cstr_request_type);
       ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(request_type);
+      
+      // Local<Function> quoteStreamFn = Local<Function>::Cast(args[3]);
+      // obj->ticker_functions.insert(std::pair<ATSYMBOL, Local<Function> >())
+      // obj->stream_functions.push_back(quoteStreamFn);
+      
       quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
     }
   else {
@@ -292,18 +288,24 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       msg->SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
+      std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
+      (&s_pInstance->handle)->data = m;
+      uv_async_send(&s_pInstance->handle);
       break;
     }
     case StreamUpdateQuote:{
       ATQUOTESTREAM_QUOTE_UPDATE quote = pUpdate->quote;
+      std::printf("StreamUpdateQuote");
       break;
     }
     case StreamUpdateRefresh: {
       ATQUOTESTREAM_REFRESH_UPDATE refresh = pUpdate->refresh;
+      std::printf("StreamUpdateRefresh");
       break;
     }
     case StreamUpdateTopMarketMovers: {
       ATMARKET_MOVERS_STREAM_UPDATE movers = pUpdate->marketMovers;
+      std::printf("StreamUpdateTopMarketMovers");
       break;
     }
     default: break;

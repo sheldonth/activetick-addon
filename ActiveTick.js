@@ -32,11 +32,13 @@
           }
           _this.api = new NodeActiveTick(_this.handleProtoMsg);
           _this.callbacks = {};
+          _this.stream_callbacks = {};
           _this.messages_builder = builder;
           _this.ATLoginResponse = _this.messages_builder.build("NodeActiveTickProto.ATLoginResponse");
           _this.ATConstituentResponse = _this.messages_builder.build("NodeActiveTickProto.ATConstituentResponse");
           _this.ATQuote = _this.messages_builder.build("NodeActiveTickProto.ATQuote");
           _this.ATQuoteStreamResponse = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamResponse");
+          _this.ATQuoteStreamTradeUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamTradeUpdate");
           return readyCb();
         };
       })(this));
@@ -51,16 +53,7 @@
     };
 
     ActiveTick.prototype.beginQuoteStream = function(symbols, ATStreamRequestTypeIndex, quoteCb, requestCb) {
-      var request_id, symbolCount, symbolParam, _quoteDecode;
-      this.quoteCb = quoteCb;
-      _quoteDecode = (function(_this) {
-        return function(quote_buffer) {
-          var quote;
-          console.log(quote_buffer);
-          quote = _this.ATQuote.decode(quote_buffer);
-          return _this.quoteCb(quote);
-        };
-      })(this);
+      var request_id, sym, symbolCount, symbolParam, _i, _len;
       if (typeof symbols === 'object') {
         symbolParam = symbols.join(',');
         symbolCount = symbols.length;
@@ -68,7 +61,14 @@
         symbolParam = symbols;
         symbolCount = 1;
       }
-      request_id = this.api.beginQuoteStream(symbolParam, symbolCount, ATStreamRequestTypeIndex, _quoteDecode);
+      request_id = this.api.beginQuoteStream(symbolParam, symbolCount, ATStreamRequestTypeIndex);
+      for (_i = 0, _len = symbols.length; _i < _len; _i++) {
+        sym = symbols[_i];
+        if (!this.stream_callbacks[sym]) {
+          this.stream_callbacks[sym] = [];
+        }
+        this.stream_callbacks[sym].push(quoteCb);
+      }
       if (requestCb != null) {
         return this.callbacks[request_id] = requestCb;
       }
@@ -87,7 +87,7 @@
     };
 
     ActiveTick.prototype.handleProtoMsg = function(msgType, msgID, msgData) {
-      var c, msg;
+      var c, f, funcs, msg, _i, _len;
       if (msgType === 'ATLoginResponse') {
         msg = this.ATLoginResponse.decode(msgData);
         if (msg.loginResponseString !== 'Success') {
@@ -97,6 +97,13 @@
         msg = this.ATConstituentResponse.decode(msgData);
       } else if (msgType === 'ATQuoteStreamResponse') {
         msg = this.ATQuoteStreamResponse.decode(msgData);
+      } else if (msgType === 'ATQuoteStreamTradeUpdate') {
+        msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
+        funcs = this.stream_callbacks[msg.tradeSymbol.symbol];
+        for (_i = 0, _len = funcs.length; _i < _len; _i++) {
+          f = funcs[_i];
+          f(msg);
+        }
       }
       if ((c = this.callbacks[msgID]) != null) {
         return c(msg);

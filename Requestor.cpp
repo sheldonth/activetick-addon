@@ -21,11 +21,13 @@ Requestor::~Requestor() {
   
 }
 
-void Requestor::OnATBarHistoryResponseCallback (  uint64_t origRequest,
+void Requestor::OnATBarHistoryDbResponse (  uint64_t origRequest,
                                                   ATBarHistoryResponseType responseType,
-                                                  ATBARHISTORY_RESPONSE pResponse)
+                                                  LPATBARHISTORY_RESPONSE pResponse)
 {
-  
+  std::printf("SDFKLSDJFLSDKF");
+  std::printf("foo bar");
+  std::printf("mango");
   
 }
 

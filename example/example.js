@@ -12,7 +12,7 @@
   config = require('./config.js');
 
   main = function() {
-    var a, result, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var a, apple, att, facebook, getQuote1, getQuote2, result, sym1, sym2, sym3, sym4, yang, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     (function(_this) {
@@ -22,7 +22,7 @@
           filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/example/example.iced"
         });
         a = new ActiveTick(__iced_deferrals.defer({
-          lineno: 8
+          lineno: 9
         }));
         __iced_deferrals._fulfill();
       });
@@ -39,11 +39,50 @@
                 return result = arguments[0];
               };
             })(),
-            lineno: 9
+            lineno: 10
           }));
           __iced_deferrals._fulfill();
         })(function() {
-          return a.barHistoryDBRequest('T', 'BarHistoryIntraday', 1, '20150908100000', '20150910100000');
+          (function(__iced_k) {
+            __iced_deferrals = new iced.Deferrals(__iced_k, {
+              parent: ___iced_passed_deferral,
+              filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/example/example.iced"
+            });
+            a.listRequest('ATConstituentListOptionChain', 'fb', __iced_deferrals.defer({
+              assign_fn: (function() {
+                return function() {
+                  return yang = arguments[0];
+                };
+              })(),
+              lineno: 11
+            }));
+            __iced_deferrals._fulfill();
+          })(function() {
+            getQuote1 = function(quote) {
+              console.log('getQuote');
+              return console.log(quote);
+            };
+            getQuote2 = function(quote) {
+              console.log('getQuote2');
+              return console.log(quote);
+            };
+            sym1 = '.' + yang.symbols[22].symbol;
+            sym2 = '.' + yang.symbols[4].symbol;
+            sym3 = '.' + yang.symbols[188].symbol;
+            sym4 = '.' + yang.symbols[588].symbol;
+            att = 't';
+            facebook = 'fb';
+            apple = 'aapl';
+            a.beginQuoteStream([att], 'StreamRequestSubscribe', getQuote1, function(result) {
+              return console.log('getQuote1', result);
+            });
+            a.beginQuoteStream([facebook, apple], 'StreamRequestSubscribe', getQuote2, function(result) {
+              return console.log('getQuote2', result);
+            });
+            return a.barHistoryDBRequest(facebook, 'BarHistoryIntraday', 1, '20150908100000', '20150910100000', function(result) {
+              return console.log('barhistory', result);
+            });
+          });
         });
       };
     })(this));

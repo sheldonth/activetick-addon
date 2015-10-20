@@ -15,10 +15,10 @@ public:
   virtual ~Requestor(void);
 private:
   uint64_t session_handle;
-  
-  virtual void OnATBarHistoryResponseCallback ( uint64_t origRequest,
+
+  virtual void OnATBarHistoryDbResponse ( uint64_t origRequest,
                                                 ATBarHistoryResponseType responseType,
-                                                ATBARHISTORY_RESPONSE pResponse);
+                                                LPATBARHISTORY_RESPONSE pResponse);
   
   virtual void OnATConstituentListResponse( uint64_t origRequest,
                                             LPATSYMBOL pSymbols,

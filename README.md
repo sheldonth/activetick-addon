@@ -15,5 +15,5 @@
   - Make node-version independent (using nan)
   
 #### Repos Of Note
-- https://github.com/maxto/ubique 
+- https://github.com/maxto/ubique
 - http://quantlib.org/index.shtml (c++)
