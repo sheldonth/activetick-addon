@@ -1,5 +1,4 @@
 # Copyright 2015-present Sheldon Thomas
-
 {NodeActiveTick} = require  __dirname + '/../build/Release/NodeActiveTickAddon'
 # {NodeActiveTick} = require __dirname + '/../build/Debug/NodeActiveTickAddon'
 
@@ -19,7 +18,7 @@ standard_timeout = 3000
 
 class ActiveTick extends EventEmitter
   constructor: (readyCb) ->
-    ProtoBuf.loadProtoFile path.join(__dirname, "protobuf", "messages.proto"), (err, builder) =>
+    ProtoBuf.loadProtoFile path.join(__dirname, "../protobuf", "messages.proto"), (err, builder) =>
       return console.error err if err
       @api = new NodeActiveTick(@handleProtoMsg)
       @callbacks = {}
@@ -56,7 +55,7 @@ class ActiveTick extends EventEmitter
     @callbacks[request_id] = cb
   
   connect: (apiKey, username, password, cb) =>
-      request_id = @api.connect url, port, apiKey, username, password
+      request_id = @api.connect apiKey, username, password
       @callbacks[request_id] = cb
     
   handleProtoMsg: (msgType, msgID, msgData) =>

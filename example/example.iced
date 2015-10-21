@@ -1,3 +1,4 @@
+console.log 'herro'
 AT = require('..')
 fs = require 'fs'
 ActiveTick = AT.ActiveTick
@@ -32,7 +33,7 @@ main = () ->
   # apple = 'AAPL'
   
   a.beginQuoteStream [virgin_america], 'StreamRequestSubscribe', (result) ->
-    console.log 'getQuote result1', result.symbol
+    console.log 'getQuote result1', result.quoteStreamItems[0].symbol
   # a.beginQuoteStream [facebook, apple], 'StreamRequestSubscribe', (result) ->
     # console.log 'getQuote2 result2', result.symbol
     

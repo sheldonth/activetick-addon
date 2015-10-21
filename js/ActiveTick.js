@@ -31,7 +31,7 @@
       this.connect = __bind(this.connect, this);
       this.beginQuoteStream = __bind(this.beginQuoteStream, this);
       this.barHistoryDBRequest = __bind(this.barHistoryDBRequest, this);
-      ProtoBuf.loadProtoFile(path.join(__dirname, "protobuf", "messages.proto"), (function(_this) {
+      ProtoBuf.loadProtoFile(path.join(__dirname, "../protobuf", "messages.proto"), (function(_this) {
         return function(err, builder) {
           if (err) {
             return console.error(err);
@@ -87,7 +87,7 @@
 
     ActiveTick.prototype.connect = function(apiKey, username, password, cb) {
       var request_id;
-      request_id = this.api.connect(url, port, apiKey, username, password);
+      request_id = this.api.connect(apiKey, username, password);
       return this.callbacks[request_id] = cb;
     };
 
