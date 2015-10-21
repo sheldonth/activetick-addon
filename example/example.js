@@ -58,6 +58,9 @@
             }));
             __iced_deferrals._fulfill();
           })(function() {
+            a.on('trade', function(trade) {
+              return console.log(trade);
+            });
             getQuote1 = function(quote) {
               console.log('getQuote');
               return console.log(quote);
@@ -70,14 +73,14 @@
             sym2 = '.' + yang.symbols[4].symbol;
             sym3 = '.' + yang.symbols[188].symbol;
             sym4 = '.' + yang.symbols[588].symbol;
-            att = 't';
-            facebook = 'fb';
-            apple = 'aapl';
-            a.beginQuoteStream([att], 'StreamRequestSubscribe', getQuote1, function(result) {
-              return console.log('getQuote1', result);
+            att = 'T';
+            facebook = 'FB';
+            apple = 'AAPL';
+            a.beginQuoteStream([att], 'StreamRequestSubscribe', function(result) {
+              return console.log('getQuote result1', result.symbol);
             });
-            a.beginQuoteStream([facebook, apple], 'StreamRequestSubscribe', getQuote2, function(result) {
-              return console.log('getQuote2', result);
+            a.beginQuoteStream([facebook, apple], 'StreamRequestSubscribe', function(result) {
+              return console.log('getQuote2 result2', result.symbol);
             });
             return a.barHistoryDBRequest(facebook, 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', function(result) {
               return console.log('barhistory', result);

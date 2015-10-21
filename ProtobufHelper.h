@@ -61,6 +61,12 @@ public:
     return q;
   }
   
+  static NodeActiveTickProto::ATQuoteStreamQuoteUpdate atquotestreamquoteupdate(ATQUOTESTREAM_QUOTE_UPDATE u) {
+    NodeActiveTickProto::ATQuoteStreamQuoteUpdate quoteUpdate = new NodeActiveTickProto::ATQuoteStreamQuoteUpdate();
+    ATSymbol *symbol = new NodeActiveTickProto::ATSymbol()
+    atsymbol_insert(&u.symbol symbol)
+  }
+  
   static std::string attradeconditiontype_string(ATTradeConditionType t) {
     std::string response;
     switch(t) {

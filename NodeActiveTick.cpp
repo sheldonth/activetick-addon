@@ -263,11 +263,6 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
       str_request_type->WriteUtf8(cstr_request_type);
       std::string request_type = std::string(cstr_request_type);
       ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(request_type);
-      
-      // Local<Function> quoteStreamFn = Local<Function>::Cast(args[3]);
-      // obj->ticker_functions.insert(std::pair<ATSYMBOL, Local<Function> >())
-      // obj->stream_functions.push_back(quoteStreamFn);
-      
       quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
     }
   else {
@@ -284,19 +279,17 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
     case StreamUpdateTrade: {
       ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
       NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::quotestreamtradeupdate(trade);
+      std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
       int size = msg->ByteSize(); 
       void *buffer = new char[size];
       msg->SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
-      std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
-      (&s_pInstance->handle)->data = m;
-      uv_async_send(&s_pInstance->handle);
       break;
     }
     case StreamUpdateQuote:{
       ATQUOTESTREAM_QUOTE_UPDATE quote = pUpdate->quote;
-      std::printf("StreamUpdateQuote");
+      
       break;
     }
     case StreamUpdateRefresh: {
@@ -311,6 +304,8 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
     }
     default: break;
   }
+  (&s_pInstance->handle)->data = m;
+  uv_async_send(&s_pInstance->handle);
 }
 
 void NodeActiveTick::ATSessionStatusChangeCallback(uint64_t hSession, ATSessionStatusType statusType) {

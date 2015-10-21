@@ -1,7 +1,11 @@
-### OS X
+## Node package for millisecond-precision streaming financial data, historical lookups, complete activetick.com c++ sdk
+### Requires activetick.com subscription
+### Requires Node 0.12.7 - OS X or Ubuntu Linux  
+
+#### OS X
 - brew install protobuf
 
-### UBUNTU LINUX
+#### UBUNTU LINUX
 - sudo apt-get install libprotobuf-dev protobuf-compiler
 
 #### To-Do
