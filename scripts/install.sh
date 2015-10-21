@@ -20,7 +20,8 @@ Linux)
   ;;
 Darwin)
   curl https://www.activetick.com/activetick/contents/binaries/atfeedapi/atfeed-cppsdk-osx.i386.tar.gz | tar x
-  cp atfeed-cppsdk/bin/libActiveTickServerAPI.dylib ..
+  cp atfeed-cppsdk/bin/libActiveTickServerAPI.dylib ../iced
+  cp atfeed-cppsdk/bin/libActiveTickServerAPI.dylib ../js
   ;;
 esac
 

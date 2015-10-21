@@ -5,7 +5,7 @@
   iced = require('iced-runtime');
   __iced_k = __iced_k_noop = function() {};
 
-  ActiveTick = require('../ActiveTick').ActiveTick;
+  ActiveTick = require('../js/ActiveTick.js').ActiveTick;
 
   fs = require('fs');
 

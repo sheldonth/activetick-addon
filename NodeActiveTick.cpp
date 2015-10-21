@@ -142,8 +142,6 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   }
 
   if (debug) {
-    printf("A: %s \n", cstr_url_address);
-    printf("B: %i \n", api_port);
     printf("C: %s \n", cstr_api_key);
     printf("D: %s \n", cstr_api_user_id);
     printf("E: %s \n", cstr_api_password);

@@ -24,9 +24,9 @@
             'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
             'GCC_ENABLE_CPP_RTTI': 'YES',
             'OTHER_CPLUSPLUSFLAGS': [
+                      '<!@(pkg-config --cflags protobuf)'
                     ],
             'OTHER_CFLAGS': [
-                      '<!@(pkg-config --cflags protobuf)'
                     ],
             'OTHER_LDFLAGS': [
                      ]

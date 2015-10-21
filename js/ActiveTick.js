@@ -85,7 +85,7 @@
       return this.callbacks[request_id] = cb;
     };
 
-    ActiveTick.prototype.connect = function(url, port, apiKey, username, password, cb) {
+    ActiveTick.prototype.connect = function(apiKey, username, password, cb) {
       var request_id;
       request_id = this.api.connect(url, port, apiKey, username, password);
       return this.callbacks[request_id] = cb;

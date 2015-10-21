@@ -1,4 +1,4 @@
-ActiveTick = require('../js/ActiveTick').ActiveTick
+ActiveTick = require('../js/ActiveTick.js').ActiveTick
 fs = require 'fs'
 
 config = require './config.js'
