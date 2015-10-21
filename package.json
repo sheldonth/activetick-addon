@@ -2,7 +2,7 @@
   "name": "activetick-addon",
   "version": "0.0.6",
   "description": "activetick.com c++ addon for node",
-  "main": "ActiveTick.js",
+  "main": "js/ActiveTick.js",
   "scripts": {
     "preinstall": "bash ./scripts/install.sh",
     "install": "node-gyp rebuild"
