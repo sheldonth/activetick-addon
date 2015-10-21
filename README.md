@@ -1,8 +1,12 @@
 **Node package for millisecond-precision streaming financial data & historical data using activetick.com**
 
-**Requires activetick.com subscription**
+-- **C++ node extension that links against CppSDK. Uses Google Protobuf to structure data interchange between languages. As such it has a very small node footprint and is extremely flexible. Protocol Buffer could be used to interchange to any language or protocol. Also fast.**
 
-**Requires Node 0.12.7 - OS X or Ubuntu Linux**  
+-- **Uses libuv async_send() to interrupt Node.js runtime only as needed and immediately on message frames**
+
+-- **Requires activetick.com subscription**
+
+-- **Requires Node 0.12.7 - OS X or Ubuntu Linux**  
 
 ###### OS X
 - brew install protobuf
