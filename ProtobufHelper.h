@@ -41,7 +41,7 @@ public:
   }
   
   // return NodeActiveTickProto::ATQuoteStreamTradeUpdate from ATQUOTESTREAM_TRADE_UPDATE
-  static NodeActiveTickProto::ATQuoteStreamTradeUpdate* quotestreamtradeupdate(ATQUOTESTREAM_TRADE_UPDATE u) {
+  static NodeActiveTickProto::ATQuoteStreamTradeUpdate* atquotestreamtradeupdate(ATQUOTESTREAM_TRADE_UPDATE u) {
     NodeActiveTickProto::ATQuoteStreamTradeUpdate *q = new NodeActiveTickProto::ATQuoteStreamTradeUpdate();
     NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
     atsymbol_insert(&u.symbol, symbol);

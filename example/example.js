@@ -12,7 +12,7 @@
   config = require('./config.js');
 
   main = function() {
-    var a, apple, att, facebook, getQuote1, getQuote2, result, sym1, sym2, sym3, sym4, yang, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var a, getQuote1, getQuote2, result, sym1, sym2, sym3, sym4, virgin_america, yang, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     (function(_this) {
@@ -33,7 +33,7 @@
             parent: ___iced_passed_deferral,
             filename: "/Users/sheldonthomas/Documents/Resplendent/activetick-addon/example/example.iced"
           });
-          a.connect(config.url, config.port, config.api_key, config.username, config.password, __iced_deferrals.defer({
+          a.connect(config.api_key, config.username, config.password, __iced_deferrals.defer({
             assign_fn: (function() {
               return function() {
                 return result = arguments[0];
@@ -73,17 +73,9 @@
             sym2 = '.' + yang.symbols[4].symbol;
             sym3 = '.' + yang.symbols[188].symbol;
             sym4 = '.' + yang.symbols[588].symbol;
-            att = 'T';
-            facebook = 'FB';
-            apple = 'AAPL';
-            a.beginQuoteStream([att], 'StreamRequestSubscribe', function(result) {
+            virgin_america = 'VA';
+            return a.beginQuoteStream([virgin_america], 'StreamRequestSubscribe', function(result) {
               return console.log('getQuote result1', result.symbol);
-            });
-            a.beginQuoteStream([facebook, apple], 'StreamRequestSubscribe', function(result) {
-              return console.log('getQuote2 result2', result.symbol);
-            });
-            return a.barHistoryDBRequest(facebook, 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', function(result) {
-              return console.log('barhistory', result);
             });
           });
         });

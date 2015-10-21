@@ -117,24 +117,20 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
-
-  Local<String> str_url_address = args[0]->ToString();
-  char cstr_url_address[str_url_address->Utf8Length()];
-  str_url_address->WriteUtf8(cstr_url_address);
   
-  uint32_t api_port = args[1]->Uint32Value();
+  uint32_t api_port = 443;
   
-  Local<String> str_api_key = args[2]->ToString();
+  Local<String> str_api_key = args[0]->ToString();
   char cstr_api_key[str_api_key->Utf8Length()];
   str_api_key->WriteUtf8(cstr_api_key);
   
   ATGUID at_guid = Helper::StringToATGuid(cstr_api_key);
   
-  Local<String> str_user_id = args[3]->ToString();
+  Local<String> str_user_id = args[1]->ToString();
   char cstr_api_user_id[str_user_id->Utf8Length()];
   str_user_id->WriteUtf8(cstr_api_user_id);
   
-  Local<String> str_api_password = args[4]->ToString();
+  Local<String> str_api_password = args[2]->ToString();
   char cstr_api_password[str_api_password->Utf8Length()];
   str_api_password->WriteUtf8(cstr_api_password);
   
@@ -278,7 +274,7 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
   switch (pUpdate->updateType) {
     case StreamUpdateTrade: {
       ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
-      NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::quotestreamtradeupdate(trade);
+      NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::atquotestreamtradeupdate(trade);
       std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
       int size = msg->ByteSize(); 
       void *buffer = new char[size];
@@ -289,7 +285,13 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
     }
     case StreamUpdateQuote:{
       ATQUOTESTREAM_QUOTE_UPDATE quote = pUpdate->quote;
-      
+      NodeActiveTickProto::ATQuoteStreamQuoteUpdate* msg = ProtobufHelper::atquotestreamquoteupdate(quote);
+      std::strcpy(m->messageType, "ATQuoteStreamQuoteUpdate");
+      int size = msg->ByteSize(); 
+      void *buffer = new char[size];
+      msg->SerializeToArray(buffer, size);
+      m->data_sz = size;
+      m->c_str_data = buffer;
       break;
     }
     case StreamUpdateRefresh: {

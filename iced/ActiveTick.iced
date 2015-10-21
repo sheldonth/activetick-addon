@@ -54,7 +54,7 @@ class ActiveTick extends EventEmitter
     request_id = @api.listRequest listType, key
     @callbacks[request_id] = cb
   
-  connect: (url, port, apiKey, username, password, cb) =>
+  connect: (apiKey, username, password, cb) =>
       request_id = @api.connect url, port, apiKey, username, password
       @callbacks[request_id] = cb
     

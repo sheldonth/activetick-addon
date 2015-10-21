@@ -1,4 +1,4 @@
-ActiveTick = require('../ActiveTick').ActiveTick
+ActiveTick = require('../js/ActiveTick').ActiveTick
 fs = require 'fs'
 
 config = require './config.js'
@@ -8,7 +8,7 @@ config = require './config.js'
 
 main = () ->
   await a = new ActiveTick(defer())
-  await a.connect config.url, config.port, config.api_key, config.username, config.password, defer(result)
+  await a.connect config.api_key, config.username, config.password, defer(result)
   await a.listRequest 'ATConstituentListOptionChain', 'fb',  defer(yang)
   # await a.listRequest 'ATConstituentListOptionChain', 'aapl',  defer(aapl)
   a.on 'trade', (trade) ->
