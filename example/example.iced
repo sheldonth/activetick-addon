@@ -1,5 +1,6 @@
-ActiveTick = require('../js/ActiveTick.js').ActiveTick
+AT = require('..')
 fs = require 'fs'
+ActiveTick = AT.ActiveTick
 
 config = require './config.js'
 
