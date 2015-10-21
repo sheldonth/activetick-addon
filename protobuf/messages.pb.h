@@ -811,12 +811,17 @@ class ATQuoteStreamQuoteUpdate : public ::google::protobuf::Message {
   inline ::NodeActiveTickProto::ATSymbol* release_quotesymbol();
   inline void set_allocated_quotesymbol(::NodeActiveTickProto::ATSymbol* quotesymbol);
 
-  // optional int32 quoteCondition = 2;
+  // optional string quoteCondition = 2;
   inline bool has_quotecondition() const;
   inline void clear_quotecondition();
   static const int kQuoteConditionFieldNumber = 2;
-  inline ::google::protobuf::int32 quotecondition() const;
-  inline void set_quotecondition(::google::protobuf::int32 value);
+  inline const ::std::string& quotecondition() const;
+  inline void set_quotecondition(const ::std::string& value);
+  inline void set_quotecondition(const char* value);
+  inline void set_quotecondition(const char* value, size_t size);
+  inline ::std::string* mutable_quotecondition();
+  inline ::std::string* release_quotecondition();
+  inline void set_allocated_quotecondition(::std::string* quotecondition);
 
   // optional string quoteBidExchange = 3;
   inline bool has_quotebidexchange() const;
@@ -909,14 +914,14 @@ class ATQuoteStreamQuoteUpdate : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::NodeActiveTickProto::ATSymbol* quotesymbol_;
+  ::std::string* quotecondition_;
   ::std::string* quotebidexchange_;
   ::std::string* quoteaskexchange_;
-  ::google::protobuf::int32 quotecondition_;
-  ::google::protobuf::int32 quotebidsize_;
   ::NodeActiveTickProto::ATPrice* quotebidprice_;
   ::NodeActiveTickProto::ATPrice* quoteaskprice_;
-  ::NodeActiveTickProto::ATTime* quotetime_;
+  ::google::protobuf::int32 quotebidsize_;
   ::google::protobuf::int32 quoteasksize_;
+  ::NodeActiveTickProto::ATTime* quotetime_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
@@ -2704,7 +2709,7 @@ inline void ATQuoteStreamQuoteUpdate::set_allocated_quotesymbol(::NodeActiveTick
   // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteSymbol)
 }
 
-// optional int32 quoteCondition = 2;
+// optional string quoteCondition = 2;
 inline bool ATQuoteStreamQuoteUpdate::has_quotecondition() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2715,17 +2720,69 @@ inline void ATQuoteStreamQuoteUpdate::clear_has_quotecondition() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void ATQuoteStreamQuoteUpdate::clear_quotecondition() {
-  quotecondition_ = 0;
+  if (quotecondition_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotecondition_->clear();
+  }
   clear_has_quotecondition();
 }
-inline ::google::protobuf::int32 ATQuoteStreamQuoteUpdate::quotecondition() const {
+inline const ::std::string& ATQuoteStreamQuoteUpdate::quotecondition() const {
   // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+  return *quotecondition_;
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotecondition(const ::std::string& value) {
+  set_has_quotecondition();
+  if (quotecondition_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotecondition_ = new ::std::string;
+  }
+  quotecondition_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotecondition(const char* value) {
+  set_has_quotecondition();
+  if (quotecondition_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotecondition_ = new ::std::string;
+  }
+  quotecondition_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+}
+inline void ATQuoteStreamQuoteUpdate::set_quotecondition(const char* value, size_t size) {
+  set_has_quotecondition();
+  if (quotecondition_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotecondition_ = new ::std::string;
+  }
+  quotecondition_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+}
+inline ::std::string* ATQuoteStreamQuoteUpdate::mutable_quotecondition() {
+  set_has_quotecondition();
+  if (quotecondition_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    quotecondition_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
   return quotecondition_;
 }
-inline void ATQuoteStreamQuoteUpdate::set_quotecondition(::google::protobuf::int32 value) {
-  set_has_quotecondition();
-  quotecondition_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
+inline ::std::string* ATQuoteStreamQuoteUpdate::release_quotecondition() {
+  clear_has_quotecondition();
+  if (quotecondition_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = quotecondition_;
+    quotecondition_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteStreamQuoteUpdate::set_allocated_quotecondition(::std::string* quotecondition) {
+  if (quotecondition_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete quotecondition_;
+  }
+  if (quotecondition) {
+    set_has_quotecondition();
+    quotecondition_ = quotecondition;
+  } else {
+    clear_has_quotecondition();
+    quotecondition_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamQuoteUpdate.quoteCondition)
 }
 
 // optional string quoteBidExchange = 3;

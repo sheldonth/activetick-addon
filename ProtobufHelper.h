@@ -61,10 +61,67 @@ public:
     return q;
   }
   
-  static NodeActiveTickProto::ATQuoteStreamQuoteUpdate atquotestreamquoteupdate(ATQUOTESTREAM_QUOTE_UPDATE u) {
-    NodeActiveTickProto::ATQuoteStreamQuoteUpdate quoteUpdate = new NodeActiveTickProto::ATQuoteStreamQuoteUpdate();
-    ATSymbol *symbol = new NodeActiveTickProto::ATSymbol()
-    atsymbol_insert(&u.symbol symbol)
+  static NodeActiveTickProto::ATQuoteStreamQuoteUpdate* atquotestreamquoteupdate(ATQUOTESTREAM_QUOTE_UPDATE u) {
+    NodeActiveTickProto::ATQuoteStreamQuoteUpdate *quoteUpdate = new NodeActiveTickProto::ATQuoteStreamQuoteUpdate();
+    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    atsymbol_insert(&u.symbol, symbol);
+    quoteUpdate->set_allocated_quotesymbol(symbol);
+    quoteUpdate->set_quotecondition(atquoteconditiontype_string(u.condition));
+    NodeActiveTickProto::ATPrice *bid_price = new NodeActiveTickProto::ATPrice();
+    atprice_insert(&u.bidPrice, bid_price);
+    quoteUpdate->set_allocated_quotebidprice(bid_price);
+    quoteUpdate->set_quotebidsize(u.bidSize);
+    NodeActiveTickProto::ATPrice *ask_price = new NodeActiveTickProto::ATPrice();
+    atprice_insert(&u.askPrice, ask_price);
+    quoteUpdate->set_allocated_quoteaskprice(ask_price);
+    quoteUpdate->set_quoteasksize(u.askSize);
+    NodeActiveTickProto::ATTime *tim = new NodeActiveTickProto::ATTime();
+    attime_insert(&u.quoteDateTime, tim);
+    quoteUpdate->set_allocated_quotetime(tim);
+    return quoteUpdate;
+  }
+  
+  static std::string atquoteconditiontype_string(ATQuoteConditionType t) {
+    std::string response;
+    switch (t) {
+      case QuoteConditionRegular: response = "QuoteConditionRegular"; break;
+        case QuoteConditionRegularTwoSidedOpen: response = "QuoteConditionRegularTwoSidedOpen"; break;
+        case QuoteConditionRegularOneSidedOpen: response = "QuoteConditionRegularOneSidedOpen"; break;
+        case QuoteConditionSlowAsk: response = "QuoteConditionSlowAsk"; break;
+        case QuoteConditionSlowBid: response = "QuoteConditionSlowBid"; break;
+        case QuoteConditionSlowBidAsk: response = "QuoteConditionSlowBidAsk"; break;
+        case QuoteConditionSlowDueLRPBid: response = "QuoteConditionSlowDueLRPBid"; break;
+        case QuoteConditionSlowDueLRPAsk: response = "QuoteConditionSlowDueLRPAsk"; break;
+        case QuoteConditionSlowDueNYSELRP: response = "QuoteConditionSlowDueNYSELRP"; break;
+        case QuoteConditionSlowDueSetSlowListBidAsk: response = "QuoteConditionSlowDueSetSlowListBidAsk"; break;
+        case QuoteConditionManualAskAutomaticBid: response = "QuoteConditionManualAskAutomaticBid"; break;
+        case QuoteConditionManualBidAutomaticAsk: response = "QuoteConditionManualBidAutomaticAsk"; break;
+        case QuoteConditionManualBidAndAsk: response = "QuoteConditionManualBidAndAsk"; break;
+        case QuoteConditionOpening: response = "QuoteConditionOpening"; break;
+        case QuoteConditionClosing: response = "QuoteConditionClosing"; break;
+        case QuoteConditionClosed: response = "QuoteConditionClosed"; break;
+        case QuoteConditionResume: response = "QuoteConditionResume"; break;
+        case QuoteConditionFastTrading: response = "QuoteConditionFastTrading"; break;
+        case QuoteConditionTradingRangeIndication: response = "QuoteConditionTradingRangeIndication"; break;
+        case QuoteConditionMarketMakerQuotesClosed: response = "QuoteConditionMarketMakerQuotesClosed"; break;
+        case QuoteConditionNonFirm: response = "QuoteConditionNonFirm"; break;
+        case QuoteConditionNewsDissemination: response = "QuoteConditionNewsDissemination"; break;
+        case QuoteConditionOrderInflux: response = "QuoteConditionOrderInflux"; break;
+        case QuoteConditionOrderImbalance: response = "QuoteConditionOrderImbalance"; break;
+        case QuoteConditionDueToRelatedSecurityNewsDissemination: response = "QuoteConditionDueToRelatedSecurityNewsDissemination"; break;
+        case QuoteConditionDueToRelatedSecurityNewsPending: response = "QuoteConditionDueToRelatedSecurityNewsPending"; break;
+        case QuoteConditionAdditionalInformation: response = "QuoteConditionAdditionalInformation"; break;
+        case QuoteConditionNewsPending: response = "QuoteConditionNewsPending"; break;
+        case QuoteConditionAdditionalInformationDueToRelatedSecurity: response = "QuoteConditionAdditionalInformationDueToRelatedSecurity"; break;
+        case QuoteConditionDueToRelatedSecurity: response = "QuoteConditionDueToRelatedSecurity"; break;
+        case QuoteConditionInViewOfCommon: response = "QuoteConditionInViewOfCommon"; break;
+        case QuoteConditionEquipmentChangeover: response = "QuoteConditionEquipmentChangeover"; break;
+        case QuoteConditionNoOpenNoResume: response = "QuoteConditionNoOpenNoResume"; break;
+        case QuoteConditionSubPennyTrading: response = "QuoteConditionSubPennyTrading"; break;
+        case QuoteConditionAutomatedBidNoOfferNoBid: response = "QuoteConditionAutomatedBidNoOfferNoBid"; break;
+        default: response = ""; break;
+    }
+    return response;
   }
   
   static std::string attradeconditiontype_string(ATTradeConditionType t) {

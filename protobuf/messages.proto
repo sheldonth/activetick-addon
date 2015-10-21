@@ -45,7 +45,7 @@ message ATQuoteStreamTradeUpdate {
 
 message ATQuoteStreamQuoteUpdate {
   optional ATSymbol quoteSymbol = 1; 
-  optional int32 quoteCondition = 2;
+  optional string quoteCondition = 2;
   optional string quoteBidExchange = 3;
   optional string quoteAskExchange = 4;
   optional ATPrice quoteBidPrice = 5;

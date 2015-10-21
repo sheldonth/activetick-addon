@@ -416,7 +416,7 @@ void protobuf_AddDesc_messages_2eproto() {
     "adeTime\030\007 \001(\0132\033.NodeActiveTickProto.ATTi"
     "me\"\340\002\n\030ATQuoteStreamQuoteUpdate\0222\n\013quote"
     "Symbol\030\001 \001(\0132\035.NodeActiveTickProto.ATSym"
-    "bol\022\026\n\016quoteCondition\030\002 \001(\005\022\030\n\020quoteBidE"
+    "bol\022\026\n\016quoteCondition\030\002 \001(\t\022\030\n\020quoteBidE"
     "xchange\030\003 \001(\t\022\030\n\020quoteAskExchange\030\004 \001(\t\022"
     "3\n\rquoteBidPrice\030\005 \001(\0132\034.NodeActiveTickP"
     "roto.ATPrice\0223\n\rquoteAskPrice\030\006 \001(\0132\034.No"
@@ -2729,7 +2729,7 @@ void ATQuoteStreamQuoteUpdate::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   quotesymbol_ = NULL;
-  quotecondition_ = 0;
+  quotecondition_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   quotebidexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   quoteaskexchange_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   quotebidprice_ = NULL;
@@ -2746,6 +2746,9 @@ ATQuoteStreamQuoteUpdate::~ATQuoteStreamQuoteUpdate() {
 }
 
 void ATQuoteStreamQuoteUpdate::SharedDtor() {
+  if (quotecondition_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete quotecondition_;
+  }
   if (quotebidexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete quotebidexchange_;
   }
@@ -2793,9 +2796,14 @@ void ATQuoteStreamQuoteUpdate::Clear() {
   } while (0)
 
   if (_has_bits_[0 / 32] & 255) {
-    ZR_(quotecondition_, quotebidsize_);
+    ZR_(quotebidsize_, quoteasksize_);
     if (has_quotesymbol()) {
       if (quotesymbol_ != NULL) quotesymbol_->::NodeActiveTickProto::ATSymbol::Clear();
+    }
+    if (has_quotecondition()) {
+      if (quotecondition_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        quotecondition_->clear();
+      }
     }
     if (has_quotebidexchange()) {
       if (quotebidexchange_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -2813,7 +2821,6 @@ void ATQuoteStreamQuoteUpdate::Clear() {
     if (has_quoteaskprice()) {
       if (quoteaskprice_ != NULL) quoteaskprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
-    quoteasksize_ = 0;
   }
   if (has_quotetime()) {
     if (quotetime_ != NULL) quotetime_->::NodeActiveTickProto::ATTime::Clear();
@@ -2844,18 +2851,20 @@ bool ATQuoteStreamQuoteUpdate::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_quoteCondition;
+        if (input->ExpectTag(18)) goto parse_quoteCondition;
         break;
       }
 
-      // optional int32 quoteCondition = 2;
+      // optional string quoteCondition = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_quoteCondition:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &quotecondition_)));
-          set_has_quotecondition();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_quotecondition()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->quotecondition().data(), this->quotecondition().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "quotecondition");
         } else {
           goto handle_unusual;
         }
@@ -2997,9 +3006,14 @@ void ATQuoteStreamQuoteUpdate::SerializeWithCachedSizes(
       1, this->quotesymbol(), output);
   }
 
-  // optional int32 quoteCondition = 2;
+  // optional string quoteCondition = 2;
   if (has_quotecondition()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->quotecondition(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->quotecondition().data(), this->quotecondition().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "quotecondition");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->quotecondition(), output);
   }
 
   // optional string quoteBidExchange = 3;
@@ -3067,9 +3081,15 @@ void ATQuoteStreamQuoteUpdate::SerializeWithCachedSizes(
         1, this->quotesymbol(), target);
   }
 
-  // optional int32 quoteCondition = 2;
+  // optional string quoteCondition = 2;
   if (has_quotecondition()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->quotecondition(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->quotecondition().data(), this->quotecondition().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "quotecondition");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->quotecondition(), target);
   }
 
   // optional string quoteBidExchange = 3;
@@ -3144,10 +3164,10 @@ int ATQuoteStreamQuoteUpdate::ByteSize() const {
           this->quotesymbol());
     }
 
-    // optional int32 quoteCondition = 2;
+    // optional string quoteCondition = 2;
     if (has_quotecondition()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->quotecondition());
     }
 

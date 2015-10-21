@@ -16,9 +16,6 @@
 
 ###### To-Do
   - Support every API method
-  - Pass a callback for streaming updates, and the response to begin streaming updates
-    - keep the streaming update callback alive for the duration
-    - keep a separate libuv interrupter around
   - Memory Management
     - CPP: delete *pointer;
   - Usage documentation
