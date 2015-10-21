@@ -5,7 +5,7 @@
   "main": "js/ActiveTick.js",
   "scripts": {
     "preinstall": "bash ./scripts/install.sh",
-    "install": "node-gyp rebuild"
+    "install": "node-gyp rebuild && bash ./scripts/postinstall.sh"
   },
   "repository": {
     "type": "git",

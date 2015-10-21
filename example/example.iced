@@ -3,7 +3,7 @@ fs = require 'fs'
 ActiveTick = AT.ActiveTick
 
 config = require './config.js'
-
+  
 # SYMBOL.EXCHANGE@COUNTRY -> CSCO.Q@U, CSCO.Q, CSCO, CSCO@U; .ABCDE.Q@U, .ABCDE.Q, .ABCDE;
 # YYYYMMDDHHMMSS
 
