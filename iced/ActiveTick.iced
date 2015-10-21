@@ -1,7 +1,7 @@
 # Copyright 2015-present Sheldon Thomas
 
-# {NodeActiveTick} = require  __dirname + '/../build/Release/NodeActiveTickAddon'
-{NodeActiveTick} = require __dirname + '/../build/Debug/NodeActiveTickAddon'
+{NodeActiveTick} = require  __dirname + '/../build/Release/NodeActiveTickAddon'
+# {NodeActiveTick} = require __dirname + '/../build/Debug/NodeActiveTickAddon'
 
 async = require 'async'
 _ = require 'underscore'
