@@ -33,7 +33,7 @@
           },
           'link_settings': {
             'libraries': [
-              '<(module_root_dir)/libActiveTickServerAPI.dylib',
+              '<(module_root_dir)/import/atfeed-cppsdk/bin/libActiveTickServerAPI.dylib',
               '-lpthread',
               '-D_THREAD_SAFE',
               '<!@(pkg-config --libs protobuf)'
