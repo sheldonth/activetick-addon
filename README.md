@@ -1,5 +1,7 @@
 **Node package for millisecond-precision streaming financial data & historical data using activetick.com
+
 **Requires activetick.com subscription**
+
 **Requires Node 0.12.7 - OS X or Ubuntu Linux**  
 
 ###### OS X
