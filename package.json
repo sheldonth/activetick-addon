@@ -1,6 +1,6 @@
 {
   "name": "activetick-addon",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "activetick.com c++ addon for node",
   "main": "js/ActiveTick.js",
   "scripts": {
@@ -17,9 +17,12 @@
     "url": "https://sheldonth.com"
   },
   "license": "MIT",
-  "os" : [ "darwin", "linux" ],
+  "os": [
+    "darwin",
+    "linux"
+  ],
   "engines": {
-      "node": "0.12.7"
+    "node": "0.12.7"
   },
   "bugs": {
     "url": "https://github.com/sheldonth/activetick-addon/issues"
