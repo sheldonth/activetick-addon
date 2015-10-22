@@ -45,6 +45,7 @@
           _this.ATQuote = _this.messages_builder.build("NodeActiveTickProto.ATQuote");
           _this.ATQuoteStreamResponse = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamResponse");
           _this.ATQuoteStreamTradeUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamTradeUpdate");
+          _this.ATQuoteStreamQuoteUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamQuoteUpdate");
           _this.ATBarHistoryDbResponse = _this.messages_builder.build("NodeActiveTickProto.ATBarHistoryDbResponse");
           return readyCb();
         };
@@ -102,11 +103,14 @@
         msg = this.ATConstituentResponse.decode(msgData);
       } else if (msgType === 'ATQuoteStreamResponse') {
         msg = this.ATQuoteStreamResponse.decode(msgData);
+      } else if (msgType === 'ATBarHistoryDbResponse') {
+        msg = this.ATBarHistoryDbResponse.decode(msgData);
       } else if (msgType === 'ATQuoteStreamTradeUpdate') {
         msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
         this.emit('trade', msg);
-      } else if (msgType === 'ATBarHistoryDbResponse') {
-        msg = this.ATBarHistoryDbResponse.decode(msgData);
+      } else if (msgType === 'ATQuoteStreamQuoteUpdate') {
+        msg = this.ATQuoteStreamQuoteUpdate.decode(msgData);
+        this.emit('quote', msg);
       }
       if ((c = this.callbacks[msgID]) != null) {
         return c(msg);

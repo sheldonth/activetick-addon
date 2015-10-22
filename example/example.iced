@@ -1,7 +1,5 @@
-console.log 'herro'
-AT = require('..')
+ActiveTick = require('..').ActiveTick
 fs = require 'fs'
-ActiveTick = AT.ActiveTick
 
 config = require './config.js'
   
@@ -15,13 +13,8 @@ main = () ->
   # await a.listRequest 'ATConstituentListOptionChain', 'aapl',  defer(aapl)
   a.on 'trade', (trade) ->
     console.log trade
-  getQuote1 = (quote) ->
-    console.log 'getQuote'
-    console.log quote
-  getQuote2 = (quote) ->
-    console.log 'getQuote2'
-    console.log quote
-    
+  a.on 'quote', (quote) ->
+    console.log quote    
   sym1 = '.' + yang.symbols[22].symbol
   sym2 = '.' + yang.symbols[4].symbol
   sym3 = '.' + yang.symbols[188].symbol

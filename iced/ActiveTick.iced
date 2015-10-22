@@ -29,6 +29,7 @@ class ActiveTick extends EventEmitter
       @ATQuote = @messages_builder.build "NodeActiveTickProto.ATQuote"
       @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
       @ATQuoteStreamTradeUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamTradeUpdate"
+      @ATQuoteStreamQuoteUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamQuoteUpdate"
       @ATBarHistoryDbResponse = @messages_builder.build "NodeActiveTickProto.ATBarHistoryDbResponse"
       readyCb()
 
@@ -66,11 +67,14 @@ class ActiveTick extends EventEmitter
       msg = @ATConstituentResponse.decode msgData
     else if msgType is 'ATQuoteStreamResponse'
       msg = @ATQuoteStreamResponse.decode msgData
+    else if msgType is 'ATBarHistoryDbResponse'
+      msg = @ATBarHistoryDbResponse.decode msgData
     else if msgType is 'ATQuoteStreamTradeUpdate'
       msg = @ATQuoteStreamTradeUpdate.decode msgData
       @emit 'trade', msg
-    else if msgType is 'ATBarHistoryDbResponse'
-      msg = @ATBarHistoryDbResponse.decode msgData
+    else if msgType is 'ATQuoteStreamQuoteUpdate'
+      msg = @ATQuoteStreamQuoteUpdate.decode msgData
+      @emit 'quote', msg
     if (c = @callbacks[msgID])?
       c(msg)
 
