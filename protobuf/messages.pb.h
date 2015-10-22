@@ -1125,36 +1125,24 @@ class ATSymbol : public ::google::protobuf::Message {
   inline ::std::string* release_symbol();
   inline void set_allocated_symbol(::std::string* symbol);
 
-  // optional string symbol_long = 2;
-  inline bool has_symbol_long() const;
-  inline void clear_symbol_long();
-  static const int kSymbolLongFieldNumber = 2;
-  inline const ::std::string& symbol_long() const;
-  inline void set_symbol_long(const ::std::string& value);
-  inline void set_symbol_long(const char* value);
-  inline void set_symbol_long(const char* value, size_t size);
-  inline ::std::string* mutable_symbol_long();
-  inline ::std::string* release_symbol_long();
-  inline void set_allocated_symbol_long(::std::string* symbol_long);
-
-  // optional int32 symbolType = 3;
+  // optional int32 symbolType = 2;
   inline bool has_symboltype() const;
   inline void clear_symboltype();
-  static const int kSymbolTypeFieldNumber = 3;
+  static const int kSymbolTypeFieldNumber = 2;
   inline ::google::protobuf::int32 symboltype() const;
   inline void set_symboltype(::google::protobuf::int32 value);
 
-  // optional int32 exchangeType = 4;
+  // optional int32 exchangeType = 3;
   inline bool has_exchangetype() const;
   inline void clear_exchangetype();
-  static const int kExchangeTypeFieldNumber = 4;
+  static const int kExchangeTypeFieldNumber = 3;
   inline ::google::protobuf::int32 exchangetype() const;
   inline void set_exchangetype(::google::protobuf::int32 value);
 
-  // optional int32 countryType = 5;
+  // optional int32 countryType = 4;
   inline bool has_countrytype() const;
   inline void clear_countrytype();
-  static const int kCountryTypeFieldNumber = 5;
+  static const int kCountryTypeFieldNumber = 4;
   inline ::google::protobuf::int32 countrytype() const;
   inline void set_countrytype(::google::protobuf::int32 value);
 
@@ -1162,8 +1150,6 @@ class ATSymbol : public ::google::protobuf::Message {
  private:
   inline void set_has_symbol();
   inline void clear_has_symbol();
-  inline void set_has_symbol_long();
-  inline void clear_has_symbol_long();
   inline void set_has_symboltype();
   inline void clear_has_symboltype();
   inline void set_has_exchangetype();
@@ -1176,7 +1162,6 @@ class ATSymbol : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* symbol_;
-  ::std::string* symbol_long_;
   ::google::protobuf::int32 symboltype_;
   ::google::protobuf::int32 exchangetype_;
   ::google::protobuf::int32 countrytype_;
@@ -3397,91 +3382,15 @@ inline void ATSymbol::set_allocated_symbol(::std::string* symbol) {
   // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATSymbol.symbol)
 }
 
-// optional string symbol_long = 2;
-inline bool ATSymbol::has_symbol_long() const {
+// optional int32 symbolType = 2;
+inline bool ATSymbol::has_symboltype() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ATSymbol::set_has_symbol_long() {
+inline void ATSymbol::set_has_symboltype() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ATSymbol::clear_has_symbol_long() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void ATSymbol::clear_symbol_long() {
-  if (symbol_long_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    symbol_long_->clear();
-  }
-  clear_has_symbol_long();
-}
-inline const ::std::string& ATSymbol::symbol_long() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATSymbol.symbol_long)
-  return *symbol_long_;
-}
-inline void ATSymbol::set_symbol_long(const ::std::string& value) {
-  set_has_symbol_long();
-  if (symbol_long_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    symbol_long_ = new ::std::string;
-  }
-  symbol_long_->assign(value);
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.symbol_long)
-}
-inline void ATSymbol::set_symbol_long(const char* value) {
-  set_has_symbol_long();
-  if (symbol_long_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    symbol_long_ = new ::std::string;
-  }
-  symbol_long_->assign(value);
-  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATSymbol.symbol_long)
-}
-inline void ATSymbol::set_symbol_long(const char* value, size_t size) {
-  set_has_symbol_long();
-  if (symbol_long_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    symbol_long_ = new ::std::string;
-  }
-  symbol_long_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATSymbol.symbol_long)
-}
-inline ::std::string* ATSymbol::mutable_symbol_long() {
-  set_has_symbol_long();
-  if (symbol_long_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    symbol_long_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATSymbol.symbol_long)
-  return symbol_long_;
-}
-inline ::std::string* ATSymbol::release_symbol_long() {
-  clear_has_symbol_long();
-  if (symbol_long_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = symbol_long_;
-    symbol_long_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void ATSymbol::set_allocated_symbol_long(::std::string* symbol_long) {
-  if (symbol_long_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete symbol_long_;
-  }
-  if (symbol_long) {
-    set_has_symbol_long();
-    symbol_long_ = symbol_long;
-  } else {
-    clear_has_symbol_long();
-    symbol_long_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATSymbol.symbol_long)
-}
-
-// optional int32 symbolType = 3;
-inline bool ATSymbol::has_symboltype() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void ATSymbol::set_has_symboltype() {
-  _has_bits_[0] |= 0x00000004u;
-}
 inline void ATSymbol::clear_has_symboltype() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void ATSymbol::clear_symboltype() {
   symboltype_ = 0;
@@ -3497,15 +3406,15 @@ inline void ATSymbol::set_symboltype(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.symbolType)
 }
 
-// optional int32 exchangeType = 4;
+// optional int32 exchangeType = 3;
 inline bool ATSymbol::has_exchangetype() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void ATSymbol::set_has_exchangetype() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void ATSymbol::clear_has_exchangetype() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void ATSymbol::clear_exchangetype() {
   exchangetype_ = 0;
@@ -3521,15 +3430,15 @@ inline void ATSymbol::set_exchangetype(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.exchangeType)
 }
 
-// optional int32 countryType = 5;
+// optional int32 countryType = 4;
 inline bool ATSymbol::has_countrytype() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void ATSymbol::set_has_countrytype() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void ATSymbol::clear_has_countrytype() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void ATSymbol::clear_countrytype() {
   countrytype_ = 0;

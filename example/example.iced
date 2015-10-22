@@ -21,12 +21,15 @@ main = () ->
   sym4 = '.' + yang.symbols[588].symbol
 
   virgin_america = 'VA'
-  # att = 'T'
-  # facebook = 'FB'
-  # apple = 'AAPL'
+  att = 'T'
+  facebook = 'FB'
+  apple = 'AAPL'
+  alibaba = 'BABA'
+  shake_shack = 'SHAK'
   
-  a.beginQuoteStream [virgin_america], 'StreamRequestSubscribe', (result) ->
-    console.log 'getQuote result1', result.quoteStreamItems[0].symbol.symbol
+  a.beginQuoteStream [virgin_america, att, apple, alibaba, shake_shack], 'StreamRequestSubscribe', (result) ->
+    for i in result.quoteStreamItems
+      console.log 'Quote Stream:', i.symbol.symbol
   # a.beginQuoteStream [facebook, apple], 'StreamRequestSubscribe', (result) ->
     # console.log 'getQuote2 result2', result.symbol
     

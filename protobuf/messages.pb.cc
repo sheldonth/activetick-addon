@@ -220,9 +220,8 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATQuoteStreamRefreshUpdate));
   ATSymbol_descriptor_ = file->message_type(8);
-  static const int ATSymbol_offsets_[5] = {
+  static const int ATSymbol_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symbol_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symbol_long_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symboltype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, exchangetype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, countrytype_),
@@ -430,29 +429,28 @@ void protobuf_AddDesc_messages_2eproto() {
     " \001(\0132\034.NodeActiveTickProto.ATPrice\0226\n\020re"
     "freshHighPrice\030\004 \001(\0132\034.NodeActiveTickPro"
     "to.ATPrice\0225\n\017refreshLowPrice\030\005 \001(\0132\034.No"
-    "deActiveTickProto.ATPrice\"n\n\010ATSymbol\022\016\n"
-    "\006symbol\030\001 \001(\t\022\023\n\013symbol_long\030\002 \001(\t\022\022\n\nsy"
-    "mbolType\030\003 \001(\005\022\024\n\014exchangeType\030\004 \001(\005\022\023\n\013"
-    "countryType\030\005 \001(\005\"+\n\007ATPrice\022\r\n\005price\030\001 "
-    "\002(\001\022\021\n\tprecision\030\002 \002(\005\"\263\002\n\007ATQuote\022-\n\006sy"
-    "mbol\030\001 \002(\0132\035.NodeActiveTickProto.ATSymbo"
-    "l\022.\n\010bidPrice\030\002 \002(\0132\034.NodeActiveTickProt"
-    "o.ATPrice\022.\n\010askPrice\030\003 \002(\0132\034.NodeActive"
-    "TickProto.ATPrice\022\017\n\007bidSize\030\004 \001(\005\022\017\n\007as"
-    "kSize\030\005 \001(\005\022\030\n\020quoteConditionId\030\006 \001(\005\022/\n"
-    "\nserverTime\030\007 \001(\0132\033.NodeActiveTickProto."
-    "ATTime\022\025\n\rbidExchangeId\030\010 \001(\005\022\025\n\raskExch"
-    "angeId\030\t \001(\005\"\275\002\n\021ATBarHistoryValue\022*\n\004op"
-    "en\030\001 \001(\0132\034.NodeActiveTickProto.ATPrice\022*"
-    "\n\004high\030\002 \001(\0132\034.NodeActiveTickProto.ATPri"
-    "ce\022)\n\003low\030\003 \001(\0132\034.NodeActiveTickProto.AT"
-    "Price\022+\n\005close\030\004 \001(\0132\034.NodeActiveTickPro"
-    "to.ATPrice\022\016\n\006volume\030\005 \001(\003\022)\n\004time\030\006 \001(\013"
-    "2\033.NodeActiveTickProto.ATTime\022-\n\006symbol\030"
-    "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
-    "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
-    "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
-    "rHistoryValue", 2413);
+    "deActiveTickProto.ATPrice\"Y\n\010ATSymbol\022\016\n"
+    "\006symbol\030\001 \001(\t\022\022\n\nsymbolType\030\002 \001(\005\022\024\n\014exc"
+    "hangeType\030\003 \001(\005\022\023\n\013countryType\030\004 \001(\005\"+\n\007"
+    "ATPrice\022\r\n\005price\030\001 \002(\001\022\021\n\tprecision\030\002 \002("
+    "\005\"\263\002\n\007ATQuote\022-\n\006symbol\030\001 \002(\0132\035.NodeActi"
+    "veTickProto.ATSymbol\022.\n\010bidPrice\030\002 \002(\0132\034"
+    ".NodeActiveTickProto.ATPrice\022.\n\010askPrice"
+    "\030\003 \002(\0132\034.NodeActiveTickProto.ATPrice\022\017\n\007"
+    "bidSize\030\004 \001(\005\022\017\n\007askSize\030\005 \001(\005\022\030\n\020quoteC"
+    "onditionId\030\006 \001(\005\022/\n\nserverTime\030\007 \001(\0132\033.N"
+    "odeActiveTickProto.ATTime\022\025\n\rbidExchange"
+    "Id\030\010 \001(\005\022\025\n\raskExchangeId\030\t \001(\005\"\275\002\n\021ATBa"
+    "rHistoryValue\022*\n\004open\030\001 \001(\0132\034.NodeActive"
+    "TickProto.ATPrice\022*\n\004high\030\002 \001(\0132\034.NodeAc"
+    "tiveTickProto.ATPrice\022)\n\003low\030\003 \001(\0132\034.Nod"
+    "eActiveTickProto.ATPrice\022+\n\005close\030\004 \001(\0132"
+    "\034.NodeActiveTickProto.ATPrice\022\016\n\006volume\030"
+    "\005 \001(\003\022)\n\004time\030\006 \001(\0132\033.NodeActiveTickProt"
+    "o.ATTime\022-\n\006symbol\030\007 \001(\0132\035.NodeActiveTic"
+    "kProto.ATSymbol\022\016\n\006status\030\010 \001(\t\"O\n\026ATBar"
+    "HistoryDbResponse\0225\n\005value\030\001 \003(\0132&.NodeA"
+    "ctiveTickProto.ATBarHistoryValue", 2392);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -3752,7 +3750,6 @@ void ATQuoteStreamRefreshUpdate::Swap(ATQuoteStreamRefreshUpdate* other) {
 
 #ifndef _MSC_VER
 const int ATSymbol::kSymbolFieldNumber;
-const int ATSymbol::kSymbolLongFieldNumber;
 const int ATSymbol::kSymbolTypeFieldNumber;
 const int ATSymbol::kExchangeTypeFieldNumber;
 const int ATSymbol::kCountryTypeFieldNumber;
@@ -3778,7 +3775,6 @@ void ATSymbol::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   symbol_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  symbol_long_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   symboltype_ = 0;
   exchangetype_ = 0;
   countrytype_ = 0;
@@ -3793,9 +3789,6 @@ ATSymbol::~ATSymbol() {
 void ATSymbol::SharedDtor() {
   if (symbol_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete symbol_;
-  }
-  if (symbol_long_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete symbol_long_;
   }
   if (this != default_instance_) {
   }
@@ -3833,16 +3826,11 @@ void ATSymbol::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 31) {
+  if (_has_bits_[0 / 32] & 15) {
     ZR_(symboltype_, countrytype_);
     if (has_symbol()) {
       if (symbol_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         symbol_->clear();
-      }
-    }
-    if (has_symbol_long()) {
-      if (symbol_long_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        symbol_long_->clear();
       }
     }
   }
@@ -3876,30 +3864,13 @@ bool ATSymbol::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_symbol_long;
+        if (input->ExpectTag(16)) goto parse_symbolType;
         break;
       }
 
-      // optional string symbol_long = 2;
+      // optional int32 symbolType = 2;
       case 2: {
-        if (tag == 18) {
-         parse_symbol_long:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_symbol_long()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->symbol_long().data(), this->symbol_long().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "symbol_long");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(24)) goto parse_symbolType;
-        break;
-      }
-
-      // optional int32 symbolType = 3;
-      case 3: {
-        if (tag == 24) {
+        if (tag == 16) {
          parse_symbolType:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3908,13 +3879,13 @@ bool ATSymbol::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_exchangeType;
+        if (input->ExpectTag(24)) goto parse_exchangeType;
         break;
       }
 
-      // optional int32 exchangeType = 4;
-      case 4: {
-        if (tag == 32) {
+      // optional int32 exchangeType = 3;
+      case 3: {
+        if (tag == 24) {
          parse_exchangeType:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3923,13 +3894,13 @@ bool ATSymbol::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(40)) goto parse_countryType;
+        if (input->ExpectTag(32)) goto parse_countryType;
         break;
       }
 
-      // optional int32 countryType = 5;
-      case 5: {
-        if (tag == 40) {
+      // optional int32 countryType = 4;
+      case 4: {
+        if (tag == 32) {
          parse_countryType:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3977,29 +3948,19 @@ void ATSymbol::SerializeWithCachedSizes(
       1, this->symbol(), output);
   }
 
-  // optional string symbol_long = 2;
-  if (has_symbol_long()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->symbol_long().data(), this->symbol_long().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "symbol_long");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->symbol_long(), output);
-  }
-
-  // optional int32 symbolType = 3;
+  // optional int32 symbolType = 2;
   if (has_symboltype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->symboltype(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->symboltype(), output);
   }
 
-  // optional int32 exchangeType = 4;
+  // optional int32 exchangeType = 3;
   if (has_exchangetype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->exchangetype(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->exchangetype(), output);
   }
 
-  // optional int32 countryType = 5;
+  // optional int32 countryType = 4;
   if (has_countrytype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->countrytype(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->countrytype(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4023,30 +3984,19 @@ void ATSymbol::SerializeWithCachedSizes(
         1, this->symbol(), target);
   }
 
-  // optional string symbol_long = 2;
-  if (has_symbol_long()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->symbol_long().data(), this->symbol_long().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "symbol_long");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->symbol_long(), target);
-  }
-
-  // optional int32 symbolType = 3;
+  // optional int32 symbolType = 2;
   if (has_symboltype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->symboltype(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->symboltype(), target);
   }
 
-  // optional int32 exchangeType = 4;
+  // optional int32 exchangeType = 3;
   if (has_exchangetype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->exchangetype(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->exchangetype(), target);
   }
 
-  // optional int32 countryType = 5;
+  // optional int32 countryType = 4;
   if (has_countrytype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->countrytype(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->countrytype(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4068,28 +4018,21 @@ int ATSymbol::ByteSize() const {
           this->symbol());
     }
 
-    // optional string symbol_long = 2;
-    if (has_symbol_long()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->symbol_long());
-    }
-
-    // optional int32 symbolType = 3;
+    // optional int32 symbolType = 2;
     if (has_symboltype()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->symboltype());
     }
 
-    // optional int32 exchangeType = 4;
+    // optional int32 exchangeType = 3;
     if (has_exchangetype()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->exchangetype());
     }
 
-    // optional int32 countryType = 5;
+    // optional int32 countryType = 4;
     if (has_countrytype()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -4126,9 +4069,6 @@ void ATSymbol::MergeFrom(const ATSymbol& from) {
     if (from.has_symbol()) {
       set_symbol(from.symbol());
     }
-    if (from.has_symbol_long()) {
-      set_symbol_long(from.symbol_long());
-    }
     if (from.has_symboltype()) {
       set_symboltype(from.symboltype());
     }
@@ -4162,7 +4102,6 @@ bool ATSymbol::IsInitialized() const {
 void ATSymbol::Swap(ATSymbol* other) {
   if (other != this) {
     std::swap(symbol_, other->symbol_);
-    std::swap(symbol_long_, other->symbol_long_);
     std::swap(symboltype_, other->symboltype_);
     std::swap(exchangetype_, other->exchangetype_);
     std::swap(countrytype_, other->countrytype_);
