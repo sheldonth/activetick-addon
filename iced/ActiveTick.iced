@@ -1,6 +1,12 @@
 # Copyright 2015-present Sheldon Thomas
-{NodeActiveTick} = require  __dirname + '/../build/Release/NodeActiveTickAddon'
-# {NodeActiveTick} = require __dirname + '/../build/Debug/NodeActiveTickAddon'
+fs = require 'fs'
+release_path = __dirname + '/../build/Release/NodeActiveTickAddon'
+debug_path = __dirname + '/../build/Debug/NodeActiveTickAddon'
+debug_exists = fs.existsSync debug_path
+if debug_exists # prefer debug
+  {NodeActiveTick} = require(debug_path).ActiveTick
+else
+  {NodeActiveTick} = require(release_path).ActiveTick
 
 async = require 'async'
 _ = require 'underscore'

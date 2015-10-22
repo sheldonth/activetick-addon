@@ -26,7 +26,7 @@ main = () ->
   # apple = 'AAPL'
   
   a.beginQuoteStream [virgin_america], 'StreamRequestSubscribe', (result) ->
-    console.log 'getQuote result1', result.quoteStreamItems[0].symbol
+    console.log 'getQuote result1', result.quoteStreamItems[0].symbol.symbol
   # a.beginQuoteStream [facebook, apple], 'StreamRequestSubscribe', (result) ->
     # console.log 'getQuote2 result2', result.symbol
     
