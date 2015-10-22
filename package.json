@@ -17,6 +17,10 @@
     "url": "https://sheldonth.com"
   },
   "license": "MIT",
+  "os" : [ "darwin", "linux" ],
+  "engines": {
+      "node": "0.12.7"
+  },
   "bugs": {
     "url": "https://github.com/sheldonth/activetick-addon/issues"
   },
