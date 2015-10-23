@@ -274,7 +274,7 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
       NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::atquotestreamtradeupdate(trade);
       std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
-      int size = msg->ByteSize(); 
+      int size = msg->ByteSize();
       void *buffer = new char[size];
       msg->SerializeToArray(buffer, size);
       m->data_sz = size;
@@ -294,12 +294,18 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
     }
     case StreamUpdateRefresh: {
       ATQUOTESTREAM_REFRESH_UPDATE refresh = pUpdate->refresh;
-      std::printf("StreamUpdateRefresh");
+      NodeActiveTickProto::ATQuoteStreamRefreshUpdate* msg = ProtobufHelper::atquotestreamrefreshquote(refresh);
+      std::strcpy(m->messageType, "ATQuoteStreamRefreshUpdate");
+      int size = msg->ByteSize();
+      void *buffer = new char[size];
+      msg->SerializeToArray(buffer, size);
+      m->data_sz = size;
+      m->c_str_data = buffer;
       break;
     }
     case StreamUpdateTopMarketMovers: {
       ATMARKET_MOVERS_STREAM_UPDATE movers = pUpdate->marketMovers;
-      std::printf("StreamUpdateTopMarketMovers");
+      
       break;
     }
     default: break;

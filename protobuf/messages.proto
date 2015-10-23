@@ -56,11 +56,39 @@ message ATQuoteStreamQuoteUpdate {
 }
 
 message ATQuoteStreamRefreshUpdate {
-  optional ATSymbol refreshSymbol = 1;
-  optional ATPrice refreshLastPrice = 2;
-  optional ATPrice refreshOpenPrice = 3;
-  optional ATPrice refreshHighPrice = 4;
-  optional ATPrice refreshLowPrice = 5;
+  optional ATSymbol symbol = 1;
+  optional ATPrice lastPrice = 2;
+  optional ATPrice openPrice = 3;
+  optional ATPrice highPrice = 4;
+  optional ATPrice lowPrice = 5;
+  optional ATPrice closePrice = 6;
+  optional ATPrice prevClosePrice = 7;
+  optional ATPrice afterMarketClosePrice = 8;
+  optional ATPrice bidPrice = 9;
+  optional ATPrice askPrice = 10;
+  optional int32 bidSize = 11;
+  optional int32 askSize = 12;
+  optional int32 lastSize = 13;
+  optional int64 volume = 14;
+}
+
+message ATMarketMoversStreamUpdate {
+  optional ATMarketMoversRecord marketMovers = 1;
+  optional ATTime lastUpdatedTime = 2;
+}
+
+message ATMarketMoversRecord {
+  optional ATSymbol symbol = 1;
+  optional string status = 2;
+  repeated ATMarketMoversItem item = 3;
+}
+
+message ATMarketMoversItem {
+  optional ATSymbol symbol = 1;
+  optional string name = 2;
+  optional ATPrice lastPrice = 3;
+  optional ATPrice closePrice = 4;
+  optional int32 lastDateTime = 5;
 }
 
 message ATSymbol {
