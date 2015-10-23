@@ -41,6 +41,9 @@ class ATTime;
 class ATQuoteStreamTradeUpdate;
 class ATQuoteStreamQuoteUpdate;
 class ATQuoteStreamRefreshUpdate;
+class ATMarketMoversStreamUpdate;
+class ATMarketMoversRecord;
+class ATMarketMoversItem;
 class ATSymbol;
 class ATPrice;
 class ATQuote;
@@ -984,79 +987,511 @@ class ATQuoteStreamRefreshUpdate : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
-  inline bool has_refreshsymbol() const;
-  inline void clear_refreshsymbol();
-  static const int kRefreshSymbolFieldNumber = 1;
-  inline const ::NodeActiveTickProto::ATSymbol& refreshsymbol() const;
-  inline ::NodeActiveTickProto::ATSymbol* mutable_refreshsymbol();
-  inline ::NodeActiveTickProto::ATSymbol* release_refreshsymbol();
-  inline void set_allocated_refreshsymbol(::NodeActiveTickProto::ATSymbol* refreshsymbol);
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
 
-  // optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
-  inline bool has_refreshlastprice() const;
-  inline void clear_refreshlastprice();
-  static const int kRefreshLastPriceFieldNumber = 2;
-  inline const ::NodeActiveTickProto::ATPrice& refreshlastprice() const;
-  inline ::NodeActiveTickProto::ATPrice* mutable_refreshlastprice();
-  inline ::NodeActiveTickProto::ATPrice* release_refreshlastprice();
-  inline void set_allocated_refreshlastprice(::NodeActiveTickProto::ATPrice* refreshlastprice);
+  // optional .NodeActiveTickProto.ATPrice lastPrice = 2;
+  inline bool has_lastprice() const;
+  inline void clear_lastprice();
+  static const int kLastPriceFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATPrice& lastprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_lastprice();
+  inline ::NodeActiveTickProto::ATPrice* release_lastprice();
+  inline void set_allocated_lastprice(::NodeActiveTickProto::ATPrice* lastprice);
 
-  // optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
-  inline bool has_refreshopenprice() const;
-  inline void clear_refreshopenprice();
-  static const int kRefreshOpenPriceFieldNumber = 3;
-  inline const ::NodeActiveTickProto::ATPrice& refreshopenprice() const;
-  inline ::NodeActiveTickProto::ATPrice* mutable_refreshopenprice();
-  inline ::NodeActiveTickProto::ATPrice* release_refreshopenprice();
-  inline void set_allocated_refreshopenprice(::NodeActiveTickProto::ATPrice* refreshopenprice);
+  // optional .NodeActiveTickProto.ATPrice openPrice = 3;
+  inline bool has_openprice() const;
+  inline void clear_openprice();
+  static const int kOpenPriceFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATPrice& openprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_openprice();
+  inline ::NodeActiveTickProto::ATPrice* release_openprice();
+  inline void set_allocated_openprice(::NodeActiveTickProto::ATPrice* openprice);
 
-  // optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
-  inline bool has_refreshhighprice() const;
-  inline void clear_refreshhighprice();
-  static const int kRefreshHighPriceFieldNumber = 4;
-  inline const ::NodeActiveTickProto::ATPrice& refreshhighprice() const;
-  inline ::NodeActiveTickProto::ATPrice* mutable_refreshhighprice();
-  inline ::NodeActiveTickProto::ATPrice* release_refreshhighprice();
-  inline void set_allocated_refreshhighprice(::NodeActiveTickProto::ATPrice* refreshhighprice);
+  // optional .NodeActiveTickProto.ATPrice highPrice = 4;
+  inline bool has_highprice() const;
+  inline void clear_highprice();
+  static const int kHighPriceFieldNumber = 4;
+  inline const ::NodeActiveTickProto::ATPrice& highprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_highprice();
+  inline ::NodeActiveTickProto::ATPrice* release_highprice();
+  inline void set_allocated_highprice(::NodeActiveTickProto::ATPrice* highprice);
 
-  // optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
-  inline bool has_refreshlowprice() const;
-  inline void clear_refreshlowprice();
-  static const int kRefreshLowPriceFieldNumber = 5;
-  inline const ::NodeActiveTickProto::ATPrice& refreshlowprice() const;
-  inline ::NodeActiveTickProto::ATPrice* mutable_refreshlowprice();
-  inline ::NodeActiveTickProto::ATPrice* release_refreshlowprice();
-  inline void set_allocated_refreshlowprice(::NodeActiveTickProto::ATPrice* refreshlowprice);
+  // optional .NodeActiveTickProto.ATPrice lowPrice = 5;
+  inline bool has_lowprice() const;
+  inline void clear_lowprice();
+  static const int kLowPriceFieldNumber = 5;
+  inline const ::NodeActiveTickProto::ATPrice& lowprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_lowprice();
+  inline ::NodeActiveTickProto::ATPrice* release_lowprice();
+  inline void set_allocated_lowprice(::NodeActiveTickProto::ATPrice* lowprice);
+
+  // optional .NodeActiveTickProto.ATPrice closePrice = 6;
+  inline bool has_closeprice() const;
+  inline void clear_closeprice();
+  static const int kClosePriceFieldNumber = 6;
+  inline const ::NodeActiveTickProto::ATPrice& closeprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_closeprice();
+  inline ::NodeActiveTickProto::ATPrice* release_closeprice();
+  inline void set_allocated_closeprice(::NodeActiveTickProto::ATPrice* closeprice);
+
+  // optional .NodeActiveTickProto.ATPrice prevClosePrice = 7;
+  inline bool has_prevcloseprice() const;
+  inline void clear_prevcloseprice();
+  static const int kPrevClosePriceFieldNumber = 7;
+  inline const ::NodeActiveTickProto::ATPrice& prevcloseprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_prevcloseprice();
+  inline ::NodeActiveTickProto::ATPrice* release_prevcloseprice();
+  inline void set_allocated_prevcloseprice(::NodeActiveTickProto::ATPrice* prevcloseprice);
+
+  // optional .NodeActiveTickProto.ATPrice afterMarketClosePrice = 8;
+  inline bool has_aftermarketcloseprice() const;
+  inline void clear_aftermarketcloseprice();
+  static const int kAfterMarketClosePriceFieldNumber = 8;
+  inline const ::NodeActiveTickProto::ATPrice& aftermarketcloseprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_aftermarketcloseprice();
+  inline ::NodeActiveTickProto::ATPrice* release_aftermarketcloseprice();
+  inline void set_allocated_aftermarketcloseprice(::NodeActiveTickProto::ATPrice* aftermarketcloseprice);
+
+  // optional .NodeActiveTickProto.ATPrice bidPrice = 9;
+  inline bool has_bidprice() const;
+  inline void clear_bidprice();
+  static const int kBidPriceFieldNumber = 9;
+  inline const ::NodeActiveTickProto::ATPrice& bidprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_bidprice();
+  inline ::NodeActiveTickProto::ATPrice* release_bidprice();
+  inline void set_allocated_bidprice(::NodeActiveTickProto::ATPrice* bidprice);
+
+  // optional .NodeActiveTickProto.ATPrice askPrice = 10;
+  inline bool has_askprice() const;
+  inline void clear_askprice();
+  static const int kAskPriceFieldNumber = 10;
+  inline const ::NodeActiveTickProto::ATPrice& askprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_askprice();
+  inline ::NodeActiveTickProto::ATPrice* release_askprice();
+  inline void set_allocated_askprice(::NodeActiveTickProto::ATPrice* askprice);
+
+  // optional int32 bidSize = 11;
+  inline bool has_bidsize() const;
+  inline void clear_bidsize();
+  static const int kBidSizeFieldNumber = 11;
+  inline ::google::protobuf::int32 bidsize() const;
+  inline void set_bidsize(::google::protobuf::int32 value);
+
+  // optional int32 askSize = 12;
+  inline bool has_asksize() const;
+  inline void clear_asksize();
+  static const int kAskSizeFieldNumber = 12;
+  inline ::google::protobuf::int32 asksize() const;
+  inline void set_asksize(::google::protobuf::int32 value);
+
+  // optional int32 lastSize = 13;
+  inline bool has_lastsize() const;
+  inline void clear_lastsize();
+  static const int kLastSizeFieldNumber = 13;
+  inline ::google::protobuf::int32 lastsize() const;
+  inline void set_lastsize(::google::protobuf::int32 value);
+
+  // optional int64 volume = 14;
+  inline bool has_volume() const;
+  inline void clear_volume();
+  static const int kVolumeFieldNumber = 14;
+  inline ::google::protobuf::int64 volume() const;
+  inline void set_volume(::google::protobuf::int64 value);
 
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteStreamRefreshUpdate)
  private:
-  inline void set_has_refreshsymbol();
-  inline void clear_has_refreshsymbol();
-  inline void set_has_refreshlastprice();
-  inline void clear_has_refreshlastprice();
-  inline void set_has_refreshopenprice();
-  inline void clear_has_refreshopenprice();
-  inline void set_has_refreshhighprice();
-  inline void clear_has_refreshhighprice();
-  inline void set_has_refreshlowprice();
-  inline void clear_has_refreshlowprice();
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_lastprice();
+  inline void clear_has_lastprice();
+  inline void set_has_openprice();
+  inline void clear_has_openprice();
+  inline void set_has_highprice();
+  inline void clear_has_highprice();
+  inline void set_has_lowprice();
+  inline void clear_has_lowprice();
+  inline void set_has_closeprice();
+  inline void clear_has_closeprice();
+  inline void set_has_prevcloseprice();
+  inline void clear_has_prevcloseprice();
+  inline void set_has_aftermarketcloseprice();
+  inline void clear_has_aftermarketcloseprice();
+  inline void set_has_bidprice();
+  inline void clear_has_bidprice();
+  inline void set_has_askprice();
+  inline void clear_has_askprice();
+  inline void set_has_bidsize();
+  inline void clear_has_bidsize();
+  inline void set_has_asksize();
+  inline void clear_has_asksize();
+  inline void set_has_lastsize();
+  inline void clear_has_lastsize();
+  inline void set_has_volume();
+  inline void clear_has_volume();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::NodeActiveTickProto::ATSymbol* refreshsymbol_;
-  ::NodeActiveTickProto::ATPrice* refreshlastprice_;
-  ::NodeActiveTickProto::ATPrice* refreshopenprice_;
-  ::NodeActiveTickProto::ATPrice* refreshhighprice_;
-  ::NodeActiveTickProto::ATPrice* refreshlowprice_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::NodeActiveTickProto::ATPrice* lastprice_;
+  ::NodeActiveTickProto::ATPrice* openprice_;
+  ::NodeActiveTickProto::ATPrice* highprice_;
+  ::NodeActiveTickProto::ATPrice* lowprice_;
+  ::NodeActiveTickProto::ATPrice* closeprice_;
+  ::NodeActiveTickProto::ATPrice* prevcloseprice_;
+  ::NodeActiveTickProto::ATPrice* aftermarketcloseprice_;
+  ::NodeActiveTickProto::ATPrice* bidprice_;
+  ::NodeActiveTickProto::ATPrice* askprice_;
+  ::google::protobuf::int32 bidsize_;
+  ::google::protobuf::int32 asksize_;
+  ::google::protobuf::int64 volume_;
+  ::google::protobuf::int32 lastsize_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
 
   void InitAsDefaultInstance();
   static ATQuoteStreamRefreshUpdate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATMarketMoversStreamUpdate : public ::google::protobuf::Message {
+ public:
+  ATMarketMoversStreamUpdate();
+  virtual ~ATMarketMoversStreamUpdate();
+
+  ATMarketMoversStreamUpdate(const ATMarketMoversStreamUpdate& from);
+
+  inline ATMarketMoversStreamUpdate& operator=(const ATMarketMoversStreamUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATMarketMoversStreamUpdate& default_instance();
+
+  void Swap(ATMarketMoversStreamUpdate* other);
+
+  // implements Message ----------------------------------------------
+
+  ATMarketMoversStreamUpdate* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATMarketMoversStreamUpdate& from);
+  void MergeFrom(const ATMarketMoversStreamUpdate& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATMarketMoversRecord marketMovers = 1;
+  inline bool has_marketmovers() const;
+  inline void clear_marketmovers();
+  static const int kMarketMoversFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATMarketMoversRecord& marketmovers() const;
+  inline ::NodeActiveTickProto::ATMarketMoversRecord* mutable_marketmovers();
+  inline ::NodeActiveTickProto::ATMarketMoversRecord* release_marketmovers();
+  inline void set_allocated_marketmovers(::NodeActiveTickProto::ATMarketMoversRecord* marketmovers);
+
+  // optional .NodeActiveTickProto.ATTime lastUpdatedTime = 2;
+  inline bool has_lastupdatedtime() const;
+  inline void clear_lastupdatedtime();
+  static const int kLastUpdatedTimeFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATTime& lastupdatedtime() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_lastupdatedtime();
+  inline ::NodeActiveTickProto::ATTime* release_lastupdatedtime();
+  inline void set_allocated_lastupdatedtime(::NodeActiveTickProto::ATTime* lastupdatedtime);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+ private:
+  inline void set_has_marketmovers();
+  inline void clear_has_marketmovers();
+  inline void set_has_lastupdatedtime();
+  inline void clear_has_lastupdatedtime();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATMarketMoversRecord* marketmovers_;
+  ::NodeActiveTickProto::ATTime* lastupdatedtime_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATMarketMoversStreamUpdate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATMarketMoversRecord : public ::google::protobuf::Message {
+ public:
+  ATMarketMoversRecord();
+  virtual ~ATMarketMoversRecord();
+
+  ATMarketMoversRecord(const ATMarketMoversRecord& from);
+
+  inline ATMarketMoversRecord& operator=(const ATMarketMoversRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATMarketMoversRecord& default_instance();
+
+  void Swap(ATMarketMoversRecord* other);
+
+  // implements Message ----------------------------------------------
+
+  ATMarketMoversRecord* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATMarketMoversRecord& from);
+  void MergeFrom(const ATMarketMoversRecord& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
+
+  // optional string status = 2;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 2;
+  inline const ::std::string& status() const;
+  inline void set_status(const ::std::string& value);
+  inline void set_status(const char* value);
+  inline void set_status(const char* value, size_t size);
+  inline ::std::string* mutable_status();
+  inline ::std::string* release_status();
+  inline void set_allocated_status(::std::string* status);
+
+  // repeated .NodeActiveTickProto.ATMarketMoversItem item = 3;
+  inline int item_size() const;
+  inline void clear_item();
+  static const int kItemFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATMarketMoversItem& item(int index) const;
+  inline ::NodeActiveTickProto::ATMarketMoversItem* mutable_item(int index);
+  inline ::NodeActiveTickProto::ATMarketMoversItem* add_item();
+  inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATMarketMoversItem >&
+      item() const;
+  inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATMarketMoversItem >*
+      mutable_item();
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATMarketMoversRecord)
+ private:
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_status();
+  inline void clear_has_status();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::std::string* status_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATMarketMoversItem > item_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATMarketMoversRecord* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATMarketMoversItem : public ::google::protobuf::Message {
+ public:
+  ATMarketMoversItem();
+  virtual ~ATMarketMoversItem();
+
+  ATMarketMoversItem(const ATMarketMoversItem& from);
+
+  inline ATMarketMoversItem& operator=(const ATMarketMoversItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATMarketMoversItem& default_instance();
+
+  void Swap(ATMarketMoversItem* other);
+
+  // implements Message ----------------------------------------------
+
+  ATMarketMoversItem* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATMarketMoversItem& from);
+  void MergeFrom(const ATMarketMoversItem& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 1;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
+
+  // optional string name = 2;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 2;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // optional .NodeActiveTickProto.ATPrice lastPrice = 3;
+  inline bool has_lastprice() const;
+  inline void clear_lastprice();
+  static const int kLastPriceFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATPrice& lastprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_lastprice();
+  inline ::NodeActiveTickProto::ATPrice* release_lastprice();
+  inline void set_allocated_lastprice(::NodeActiveTickProto::ATPrice* lastprice);
+
+  // optional .NodeActiveTickProto.ATPrice closePrice = 4;
+  inline bool has_closeprice() const;
+  inline void clear_closeprice();
+  static const int kClosePriceFieldNumber = 4;
+  inline const ::NodeActiveTickProto::ATPrice& closeprice() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_closeprice();
+  inline ::NodeActiveTickProto::ATPrice* release_closeprice();
+  inline void set_allocated_closeprice(::NodeActiveTickProto::ATPrice* closeprice);
+
+  // optional int32 lastDateTime = 5;
+  inline bool has_lastdatetime() const;
+  inline void clear_lastdatetime();
+  static const int kLastDateTimeFieldNumber = 5;
+  inline ::google::protobuf::int32 lastdatetime() const;
+  inline void set_lastdatetime(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATMarketMoversItem)
+ private:
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+  inline void set_has_name();
+  inline void clear_has_name();
+  inline void set_has_lastprice();
+  inline void clear_has_lastprice();
+  inline void set_has_closeprice();
+  inline void clear_has_closeprice();
+  inline void set_has_lastdatetime();
+  inline void clear_has_lastdatetime();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::std::string* name_;
+  ::NodeActiveTickProto::ATPrice* lastprice_;
+  ::NodeActiveTickProto::ATPrice* closeprice_;
+  ::google::protobuf::int32 lastdatetime_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATMarketMoversItem* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -3097,209 +3532,974 @@ inline void ATQuoteStreamQuoteUpdate::set_allocated_quotetime(::NodeActiveTickPr
 
 // ATQuoteStreamRefreshUpdate
 
-// optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
-inline bool ATQuoteStreamRefreshUpdate::has_refreshsymbol() const {
+// optional .NodeActiveTickProto.ATSymbol symbol = 1;
+inline bool ATQuoteStreamRefreshUpdate::has_symbol() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ATQuoteStreamRefreshUpdate::set_has_refreshsymbol() {
+inline void ATQuoteStreamRefreshUpdate::set_has_symbol() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_has_refreshsymbol() {
+inline void ATQuoteStreamRefreshUpdate::clear_has_symbol() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_refreshsymbol() {
-  if (refreshsymbol_ != NULL) refreshsymbol_->::NodeActiveTickProto::ATSymbol::Clear();
-  clear_has_refreshsymbol();
+inline void ATQuoteStreamRefreshUpdate::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
 }
-inline const ::NodeActiveTickProto::ATSymbol& ATQuoteStreamRefreshUpdate::refreshsymbol() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshSymbol)
-  return refreshsymbol_ != NULL ? *refreshsymbol_ : *default_instance_->refreshsymbol_;
+inline const ::NodeActiveTickProto::ATSymbol& ATQuoteStreamRefreshUpdate::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
 }
-inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamRefreshUpdate::mutable_refreshsymbol() {
-  set_has_refreshsymbol();
-  if (refreshsymbol_ == NULL) refreshsymbol_ = new ::NodeActiveTickProto::ATSymbol;
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshSymbol)
-  return refreshsymbol_;
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamRefreshUpdate::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.symbol)
+  return symbol_;
 }
-inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamRefreshUpdate::release_refreshsymbol() {
-  clear_has_refreshsymbol();
-  ::NodeActiveTickProto::ATSymbol* temp = refreshsymbol_;
-  refreshsymbol_ = NULL;
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteStreamRefreshUpdate::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
   return temp;
 }
-inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshsymbol(::NodeActiveTickProto::ATSymbol* refreshsymbol) {
-  delete refreshsymbol_;
-  refreshsymbol_ = refreshsymbol;
-  if (refreshsymbol) {
-    set_has_refreshsymbol();
+inline void ATQuoteStreamRefreshUpdate::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
   } else {
-    clear_has_refreshsymbol();
+    clear_has_symbol();
   }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshSymbol)
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.symbol)
 }
 
-// optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
-inline bool ATQuoteStreamRefreshUpdate::has_refreshlastprice() const {
+// optional .NodeActiveTickProto.ATPrice lastPrice = 2;
+inline bool ATQuoteStreamRefreshUpdate::has_lastprice() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ATQuoteStreamRefreshUpdate::set_has_refreshlastprice() {
+inline void ATQuoteStreamRefreshUpdate::set_has_lastprice() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_has_refreshlastprice() {
+inline void ATQuoteStreamRefreshUpdate::clear_has_lastprice() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_refreshlastprice() {
-  if (refreshlastprice_ != NULL) refreshlastprice_->::NodeActiveTickProto::ATPrice::Clear();
-  clear_has_refreshlastprice();
+inline void ATQuoteStreamRefreshUpdate::clear_lastprice() {
+  if (lastprice_ != NULL) lastprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_lastprice();
 }
-inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshlastprice() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLastPrice)
-  return refreshlastprice_ != NULL ? *refreshlastprice_ : *default_instance_->refreshlastprice_;
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::lastprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lastPrice)
+  return lastprice_ != NULL ? *lastprice_ : *default_instance_->lastprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshlastprice() {
-  set_has_refreshlastprice();
-  if (refreshlastprice_ == NULL) refreshlastprice_ = new ::NodeActiveTickProto::ATPrice;
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLastPrice)
-  return refreshlastprice_;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_lastprice() {
+  set_has_lastprice();
+  if (lastprice_ == NULL) lastprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lastPrice)
+  return lastprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshlastprice() {
-  clear_has_refreshlastprice();
-  ::NodeActiveTickProto::ATPrice* temp = refreshlastprice_;
-  refreshlastprice_ = NULL;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_lastprice() {
+  clear_has_lastprice();
+  ::NodeActiveTickProto::ATPrice* temp = lastprice_;
+  lastprice_ = NULL;
   return temp;
 }
-inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshlastprice(::NodeActiveTickProto::ATPrice* refreshlastprice) {
-  delete refreshlastprice_;
-  refreshlastprice_ = refreshlastprice;
-  if (refreshlastprice) {
-    set_has_refreshlastprice();
+inline void ATQuoteStreamRefreshUpdate::set_allocated_lastprice(::NodeActiveTickProto::ATPrice* lastprice) {
+  delete lastprice_;
+  lastprice_ = lastprice;
+  if (lastprice) {
+    set_has_lastprice();
   } else {
-    clear_has_refreshlastprice();
+    clear_has_lastprice();
   }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLastPrice)
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lastPrice)
 }
 
-// optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
-inline bool ATQuoteStreamRefreshUpdate::has_refreshopenprice() const {
+// optional .NodeActiveTickProto.ATPrice openPrice = 3;
+inline bool ATQuoteStreamRefreshUpdate::has_openprice() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ATQuoteStreamRefreshUpdate::set_has_refreshopenprice() {
+inline void ATQuoteStreamRefreshUpdate::set_has_openprice() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_has_refreshopenprice() {
+inline void ATQuoteStreamRefreshUpdate::clear_has_openprice() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_refreshopenprice() {
-  if (refreshopenprice_ != NULL) refreshopenprice_->::NodeActiveTickProto::ATPrice::Clear();
-  clear_has_refreshopenprice();
+inline void ATQuoteStreamRefreshUpdate::clear_openprice() {
+  if (openprice_ != NULL) openprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_openprice();
 }
-inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshopenprice() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshOpenPrice)
-  return refreshopenprice_ != NULL ? *refreshopenprice_ : *default_instance_->refreshopenprice_;
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::openprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.openPrice)
+  return openprice_ != NULL ? *openprice_ : *default_instance_->openprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshopenprice() {
-  set_has_refreshopenprice();
-  if (refreshopenprice_ == NULL) refreshopenprice_ = new ::NodeActiveTickProto::ATPrice;
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshOpenPrice)
-  return refreshopenprice_;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_openprice() {
+  set_has_openprice();
+  if (openprice_ == NULL) openprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.openPrice)
+  return openprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshopenprice() {
-  clear_has_refreshopenprice();
-  ::NodeActiveTickProto::ATPrice* temp = refreshopenprice_;
-  refreshopenprice_ = NULL;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_openprice() {
+  clear_has_openprice();
+  ::NodeActiveTickProto::ATPrice* temp = openprice_;
+  openprice_ = NULL;
   return temp;
 }
-inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshopenprice(::NodeActiveTickProto::ATPrice* refreshopenprice) {
-  delete refreshopenprice_;
-  refreshopenprice_ = refreshopenprice;
-  if (refreshopenprice) {
-    set_has_refreshopenprice();
+inline void ATQuoteStreamRefreshUpdate::set_allocated_openprice(::NodeActiveTickProto::ATPrice* openprice) {
+  delete openprice_;
+  openprice_ = openprice;
+  if (openprice) {
+    set_has_openprice();
   } else {
-    clear_has_refreshopenprice();
+    clear_has_openprice();
   }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshOpenPrice)
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.openPrice)
 }
 
-// optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
-inline bool ATQuoteStreamRefreshUpdate::has_refreshhighprice() const {
+// optional .NodeActiveTickProto.ATPrice highPrice = 4;
+inline bool ATQuoteStreamRefreshUpdate::has_highprice() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void ATQuoteStreamRefreshUpdate::set_has_refreshhighprice() {
+inline void ATQuoteStreamRefreshUpdate::set_has_highprice() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_has_refreshhighprice() {
+inline void ATQuoteStreamRefreshUpdate::clear_has_highprice() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_refreshhighprice() {
-  if (refreshhighprice_ != NULL) refreshhighprice_->::NodeActiveTickProto::ATPrice::Clear();
-  clear_has_refreshhighprice();
+inline void ATQuoteStreamRefreshUpdate::clear_highprice() {
+  if (highprice_ != NULL) highprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_highprice();
 }
-inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshhighprice() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshHighPrice)
-  return refreshhighprice_ != NULL ? *refreshhighprice_ : *default_instance_->refreshhighprice_;
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::highprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.highPrice)
+  return highprice_ != NULL ? *highprice_ : *default_instance_->highprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshhighprice() {
-  set_has_refreshhighprice();
-  if (refreshhighprice_ == NULL) refreshhighprice_ = new ::NodeActiveTickProto::ATPrice;
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshHighPrice)
-  return refreshhighprice_;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_highprice() {
+  set_has_highprice();
+  if (highprice_ == NULL) highprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.highPrice)
+  return highprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshhighprice() {
-  clear_has_refreshhighprice();
-  ::NodeActiveTickProto::ATPrice* temp = refreshhighprice_;
-  refreshhighprice_ = NULL;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_highprice() {
+  clear_has_highprice();
+  ::NodeActiveTickProto::ATPrice* temp = highprice_;
+  highprice_ = NULL;
   return temp;
 }
-inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshhighprice(::NodeActiveTickProto::ATPrice* refreshhighprice) {
-  delete refreshhighprice_;
-  refreshhighprice_ = refreshhighprice;
-  if (refreshhighprice) {
-    set_has_refreshhighprice();
+inline void ATQuoteStreamRefreshUpdate::set_allocated_highprice(::NodeActiveTickProto::ATPrice* highprice) {
+  delete highprice_;
+  highprice_ = highprice;
+  if (highprice) {
+    set_has_highprice();
   } else {
-    clear_has_refreshhighprice();
+    clear_has_highprice();
   }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshHighPrice)
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.highPrice)
 }
 
-// optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
-inline bool ATQuoteStreamRefreshUpdate::has_refreshlowprice() const {
+// optional .NodeActiveTickProto.ATPrice lowPrice = 5;
+inline bool ATQuoteStreamRefreshUpdate::has_lowprice() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void ATQuoteStreamRefreshUpdate::set_has_refreshlowprice() {
+inline void ATQuoteStreamRefreshUpdate::set_has_lowprice() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_has_refreshlowprice() {
+inline void ATQuoteStreamRefreshUpdate::clear_has_lowprice() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void ATQuoteStreamRefreshUpdate::clear_refreshlowprice() {
-  if (refreshlowprice_ != NULL) refreshlowprice_->::NodeActiveTickProto::ATPrice::Clear();
-  clear_has_refreshlowprice();
+inline void ATQuoteStreamRefreshUpdate::clear_lowprice() {
+  if (lowprice_ != NULL) lowprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_lowprice();
 }
-inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::refreshlowprice() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLowPrice)
-  return refreshlowprice_ != NULL ? *refreshlowprice_ : *default_instance_->refreshlowprice_;
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::lowprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lowPrice)
+  return lowprice_ != NULL ? *lowprice_ : *default_instance_->lowprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_refreshlowprice() {
-  set_has_refreshlowprice();
-  if (refreshlowprice_ == NULL) refreshlowprice_ = new ::NodeActiveTickProto::ATPrice;
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLowPrice)
-  return refreshlowprice_;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_lowprice() {
+  set_has_lowprice();
+  if (lowprice_ == NULL) lowprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lowPrice)
+  return lowprice_;
 }
-inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_refreshlowprice() {
-  clear_has_refreshlowprice();
-  ::NodeActiveTickProto::ATPrice* temp = refreshlowprice_;
-  refreshlowprice_ = NULL;
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_lowprice() {
+  clear_has_lowprice();
+  ::NodeActiveTickProto::ATPrice* temp = lowprice_;
+  lowprice_ = NULL;
   return temp;
 }
-inline void ATQuoteStreamRefreshUpdate::set_allocated_refreshlowprice(::NodeActiveTickProto::ATPrice* refreshlowprice) {
-  delete refreshlowprice_;
-  refreshlowprice_ = refreshlowprice;
-  if (refreshlowprice) {
-    set_has_refreshlowprice();
+inline void ATQuoteStreamRefreshUpdate::set_allocated_lowprice(::NodeActiveTickProto::ATPrice* lowprice) {
+  delete lowprice_;
+  lowprice_ = lowprice;
+  if (lowprice) {
+    set_has_lowprice();
   } else {
-    clear_has_refreshlowprice();
+    clear_has_lowprice();
   }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.refreshLowPrice)
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lowPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice closePrice = 6;
+inline bool ATQuoteStreamRefreshUpdate::has_closeprice() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_closeprice() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_closeprice() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_closeprice() {
+  if (closeprice_ != NULL) closeprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_closeprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::closeprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.closePrice)
+  return closeprice_ != NULL ? *closeprice_ : *default_instance_->closeprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_closeprice() {
+  set_has_closeprice();
+  if (closeprice_ == NULL) closeprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.closePrice)
+  return closeprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_closeprice() {
+  clear_has_closeprice();
+  ::NodeActiveTickProto::ATPrice* temp = closeprice_;
+  closeprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_closeprice(::NodeActiveTickProto::ATPrice* closeprice) {
+  delete closeprice_;
+  closeprice_ = closeprice;
+  if (closeprice) {
+    set_has_closeprice();
+  } else {
+    clear_has_closeprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.closePrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice prevClosePrice = 7;
+inline bool ATQuoteStreamRefreshUpdate::has_prevcloseprice() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_prevcloseprice() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_prevcloseprice() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_prevcloseprice() {
+  if (prevcloseprice_ != NULL) prevcloseprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_prevcloseprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::prevcloseprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.prevClosePrice)
+  return prevcloseprice_ != NULL ? *prevcloseprice_ : *default_instance_->prevcloseprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_prevcloseprice() {
+  set_has_prevcloseprice();
+  if (prevcloseprice_ == NULL) prevcloseprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.prevClosePrice)
+  return prevcloseprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_prevcloseprice() {
+  clear_has_prevcloseprice();
+  ::NodeActiveTickProto::ATPrice* temp = prevcloseprice_;
+  prevcloseprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_prevcloseprice(::NodeActiveTickProto::ATPrice* prevcloseprice) {
+  delete prevcloseprice_;
+  prevcloseprice_ = prevcloseprice;
+  if (prevcloseprice) {
+    set_has_prevcloseprice();
+  } else {
+    clear_has_prevcloseprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.prevClosePrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice afterMarketClosePrice = 8;
+inline bool ATQuoteStreamRefreshUpdate::has_aftermarketcloseprice() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_aftermarketcloseprice() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_aftermarketcloseprice() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_aftermarketcloseprice() {
+  if (aftermarketcloseprice_ != NULL) aftermarketcloseprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_aftermarketcloseprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::aftermarketcloseprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.afterMarketClosePrice)
+  return aftermarketcloseprice_ != NULL ? *aftermarketcloseprice_ : *default_instance_->aftermarketcloseprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_aftermarketcloseprice() {
+  set_has_aftermarketcloseprice();
+  if (aftermarketcloseprice_ == NULL) aftermarketcloseprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.afterMarketClosePrice)
+  return aftermarketcloseprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_aftermarketcloseprice() {
+  clear_has_aftermarketcloseprice();
+  ::NodeActiveTickProto::ATPrice* temp = aftermarketcloseprice_;
+  aftermarketcloseprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_aftermarketcloseprice(::NodeActiveTickProto::ATPrice* aftermarketcloseprice) {
+  delete aftermarketcloseprice_;
+  aftermarketcloseprice_ = aftermarketcloseprice;
+  if (aftermarketcloseprice) {
+    set_has_aftermarketcloseprice();
+  } else {
+    clear_has_aftermarketcloseprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.afterMarketClosePrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice bidPrice = 9;
+inline bool ATQuoteStreamRefreshUpdate::has_bidprice() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_bidprice() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_bidprice() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_bidprice() {
+  if (bidprice_ != NULL) bidprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_bidprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::bidprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.bidPrice)
+  return bidprice_ != NULL ? *bidprice_ : *default_instance_->bidprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_bidprice() {
+  set_has_bidprice();
+  if (bidprice_ == NULL) bidprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.bidPrice)
+  return bidprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_bidprice() {
+  clear_has_bidprice();
+  ::NodeActiveTickProto::ATPrice* temp = bidprice_;
+  bidprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_bidprice(::NodeActiveTickProto::ATPrice* bidprice) {
+  delete bidprice_;
+  bidprice_ = bidprice;
+  if (bidprice) {
+    set_has_bidprice();
+  } else {
+    clear_has_bidprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.bidPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice askPrice = 10;
+inline bool ATQuoteStreamRefreshUpdate::has_askprice() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_askprice() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_askprice() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_askprice() {
+  if (askprice_ != NULL) askprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_askprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteStreamRefreshUpdate::askprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.askPrice)
+  return askprice_ != NULL ? *askprice_ : *default_instance_->askprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::mutable_askprice() {
+  set_has_askprice();
+  if (askprice_ == NULL) askprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.askPrice)
+  return askprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteStreamRefreshUpdate::release_askprice() {
+  clear_has_askprice();
+  ::NodeActiveTickProto::ATPrice* temp = askprice_;
+  askprice_ = NULL;
+  return temp;
+}
+inline void ATQuoteStreamRefreshUpdate::set_allocated_askprice(::NodeActiveTickProto::ATPrice* askprice) {
+  delete askprice_;
+  askprice_ = askprice;
+  if (askprice) {
+    set_has_askprice();
+  } else {
+    clear_has_askprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.askPrice)
+}
+
+// optional int32 bidSize = 11;
+inline bool ATQuoteStreamRefreshUpdate::has_bidsize() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_bidsize() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_bidsize() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_bidsize() {
+  bidsize_ = 0;
+  clear_has_bidsize();
+}
+inline ::google::protobuf::int32 ATQuoteStreamRefreshUpdate::bidsize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.bidSize)
+  return bidsize_;
+}
+inline void ATQuoteStreamRefreshUpdate::set_bidsize(::google::protobuf::int32 value) {
+  set_has_bidsize();
+  bidsize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.bidSize)
+}
+
+// optional int32 askSize = 12;
+inline bool ATQuoteStreamRefreshUpdate::has_asksize() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_asksize() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_asksize() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_asksize() {
+  asksize_ = 0;
+  clear_has_asksize();
+}
+inline ::google::protobuf::int32 ATQuoteStreamRefreshUpdate::asksize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.askSize)
+  return asksize_;
+}
+inline void ATQuoteStreamRefreshUpdate::set_asksize(::google::protobuf::int32 value) {
+  set_has_asksize();
+  asksize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.askSize)
+}
+
+// optional int32 lastSize = 13;
+inline bool ATQuoteStreamRefreshUpdate::has_lastsize() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_lastsize() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_lastsize() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_lastsize() {
+  lastsize_ = 0;
+  clear_has_lastsize();
+}
+inline ::google::protobuf::int32 ATQuoteStreamRefreshUpdate::lastsize() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lastSize)
+  return lastsize_;
+}
+inline void ATQuoteStreamRefreshUpdate::set_lastsize(::google::protobuf::int32 value) {
+  set_has_lastsize();
+  lastsize_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.lastSize)
+}
+
+// optional int64 volume = 14;
+inline bool ATQuoteStreamRefreshUpdate::has_volume() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void ATQuoteStreamRefreshUpdate::set_has_volume() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_has_volume() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void ATQuoteStreamRefreshUpdate::clear_volume() {
+  volume_ = GOOGLE_LONGLONG(0);
+  clear_has_volume();
+}
+inline ::google::protobuf::int64 ATQuoteStreamRefreshUpdate::volume() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.volume)
+  return volume_;
+}
+inline void ATQuoteStreamRefreshUpdate::set_volume(::google::protobuf::int64 value) {
+  set_has_volume();
+  volume_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteStreamRefreshUpdate.volume)
+}
+
+// -------------------------------------------------------------------
+
+// ATMarketMoversStreamUpdate
+
+// optional .NodeActiveTickProto.ATMarketMoversRecord marketMovers = 1;
+inline bool ATMarketMoversStreamUpdate::has_marketmovers() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATMarketMoversStreamUpdate::set_has_marketmovers() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATMarketMoversStreamUpdate::clear_has_marketmovers() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATMarketMoversStreamUpdate::clear_marketmovers() {
+  if (marketmovers_ != NULL) marketmovers_->::NodeActiveTickProto::ATMarketMoversRecord::Clear();
+  clear_has_marketmovers();
+}
+inline const ::NodeActiveTickProto::ATMarketMoversRecord& ATMarketMoversStreamUpdate::marketmovers() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversStreamUpdate.marketMovers)
+  return marketmovers_ != NULL ? *marketmovers_ : *default_instance_->marketmovers_;
+}
+inline ::NodeActiveTickProto::ATMarketMoversRecord* ATMarketMoversStreamUpdate::mutable_marketmovers() {
+  set_has_marketmovers();
+  if (marketmovers_ == NULL) marketmovers_ = new ::NodeActiveTickProto::ATMarketMoversRecord;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversStreamUpdate.marketMovers)
+  return marketmovers_;
+}
+inline ::NodeActiveTickProto::ATMarketMoversRecord* ATMarketMoversStreamUpdate::release_marketmovers() {
+  clear_has_marketmovers();
+  ::NodeActiveTickProto::ATMarketMoversRecord* temp = marketmovers_;
+  marketmovers_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversStreamUpdate::set_allocated_marketmovers(::NodeActiveTickProto::ATMarketMoversRecord* marketmovers) {
+  delete marketmovers_;
+  marketmovers_ = marketmovers;
+  if (marketmovers) {
+    set_has_marketmovers();
+  } else {
+    clear_has_marketmovers();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversStreamUpdate.marketMovers)
+}
+
+// optional .NodeActiveTickProto.ATTime lastUpdatedTime = 2;
+inline bool ATMarketMoversStreamUpdate::has_lastupdatedtime() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATMarketMoversStreamUpdate::set_has_lastupdatedtime() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATMarketMoversStreamUpdate::clear_has_lastupdatedtime() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATMarketMoversStreamUpdate::clear_lastupdatedtime() {
+  if (lastupdatedtime_ != NULL) lastupdatedtime_->::NodeActiveTickProto::ATTime::Clear();
+  clear_has_lastupdatedtime();
+}
+inline const ::NodeActiveTickProto::ATTime& ATMarketMoversStreamUpdate::lastupdatedtime() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversStreamUpdate.lastUpdatedTime)
+  return lastupdatedtime_ != NULL ? *lastupdatedtime_ : *default_instance_->lastupdatedtime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATMarketMoversStreamUpdate::mutable_lastupdatedtime() {
+  set_has_lastupdatedtime();
+  if (lastupdatedtime_ == NULL) lastupdatedtime_ = new ::NodeActiveTickProto::ATTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversStreamUpdate.lastUpdatedTime)
+  return lastupdatedtime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATMarketMoversStreamUpdate::release_lastupdatedtime() {
+  clear_has_lastupdatedtime();
+  ::NodeActiveTickProto::ATTime* temp = lastupdatedtime_;
+  lastupdatedtime_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversStreamUpdate::set_allocated_lastupdatedtime(::NodeActiveTickProto::ATTime* lastupdatedtime) {
+  delete lastupdatedtime_;
+  lastupdatedtime_ = lastupdatedtime;
+  if (lastupdatedtime) {
+    set_has_lastupdatedtime();
+  } else {
+    clear_has_lastupdatedtime();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversStreamUpdate.lastUpdatedTime)
+}
+
+// -------------------------------------------------------------------
+
+// ATMarketMoversRecord
+
+// optional .NodeActiveTickProto.ATSymbol symbol = 1;
+inline bool ATMarketMoversRecord::has_symbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATMarketMoversRecord::set_has_symbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATMarketMoversRecord::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATMarketMoversRecord::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATMarketMoversRecord::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversRecord.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATMarketMoversRecord::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversRecord.symbol)
+  return symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATMarketMoversRecord::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversRecord::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
+  } else {
+    clear_has_symbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversRecord.symbol)
+}
+
+// optional string status = 2;
+inline bool ATMarketMoversRecord::has_status() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATMarketMoversRecord::set_has_status() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATMarketMoversRecord::clear_has_status() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATMarketMoversRecord::clear_status() {
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_->clear();
+  }
+  clear_has_status();
+}
+inline const ::std::string& ATMarketMoversRecord::status() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversRecord.status)
+  return *status_;
+}
+inline void ATMarketMoversRecord::set_status(const ::std::string& value) {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  status_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATMarketMoversRecord.status)
+}
+inline void ATMarketMoversRecord::set_status(const char* value) {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  status_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATMarketMoversRecord.status)
+}
+inline void ATMarketMoversRecord::set_status(const char* value, size_t size) {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  status_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATMarketMoversRecord.status)
+}
+inline ::std::string* ATMarketMoversRecord::mutable_status() {
+  set_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    status_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversRecord.status)
+  return status_;
+}
+inline ::std::string* ATMarketMoversRecord::release_status() {
+  clear_has_status();
+  if (status_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = status_;
+    status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATMarketMoversRecord::set_allocated_status(::std::string* status) {
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete status_;
+  }
+  if (status) {
+    set_has_status();
+    status_ = status;
+  } else {
+    clear_has_status();
+    status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversRecord.status)
+}
+
+// repeated .NodeActiveTickProto.ATMarketMoversItem item = 3;
+inline int ATMarketMoversRecord::item_size() const {
+  return item_.size();
+}
+inline void ATMarketMoversRecord::clear_item() {
+  item_.Clear();
+}
+inline const ::NodeActiveTickProto::ATMarketMoversItem& ATMarketMoversRecord::item(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversRecord.item)
+  return item_.Get(index);
+}
+inline ::NodeActiveTickProto::ATMarketMoversItem* ATMarketMoversRecord::mutable_item(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversRecord.item)
+  return item_.Mutable(index);
+}
+inline ::NodeActiveTickProto::ATMarketMoversItem* ATMarketMoversRecord::add_item() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATMarketMoversRecord.item)
+  return item_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATMarketMoversItem >&
+ATMarketMoversRecord::item() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATMarketMoversRecord.item)
+  return item_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATMarketMoversItem >*
+ATMarketMoversRecord::mutable_item() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATMarketMoversRecord.item)
+  return &item_;
+}
+
+// -------------------------------------------------------------------
+
+// ATMarketMoversItem
+
+// optional .NodeActiveTickProto.ATSymbol symbol = 1;
+inline bool ATMarketMoversItem::has_symbol() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATMarketMoversItem::set_has_symbol() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATMarketMoversItem::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATMarketMoversItem::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATMarketMoversItem::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversItem.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATMarketMoversItem::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversItem.symbol)
+  return symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATMarketMoversItem::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversItem::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
+  } else {
+    clear_has_symbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversItem.symbol)
+}
+
+// optional string name = 2;
+inline bool ATMarketMoversItem::has_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATMarketMoversItem::set_has_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATMarketMoversItem::clear_has_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATMarketMoversItem::clear_name() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& ATMarketMoversItem::name() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversItem.name)
+  return *name_;
+}
+inline void ATMarketMoversItem::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATMarketMoversItem.name)
+}
+inline void ATMarketMoversItem::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATMarketMoversItem.name)
+}
+inline void ATMarketMoversItem::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATMarketMoversItem.name)
+}
+inline ::std::string* ATMarketMoversItem::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversItem.name)
+  return name_;
+}
+inline ::std::string* ATMarketMoversItem::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATMarketMoversItem::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversItem.name)
+}
+
+// optional .NodeActiveTickProto.ATPrice lastPrice = 3;
+inline bool ATMarketMoversItem::has_lastprice() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATMarketMoversItem::set_has_lastprice() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATMarketMoversItem::clear_has_lastprice() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATMarketMoversItem::clear_lastprice() {
+  if (lastprice_ != NULL) lastprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_lastprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATMarketMoversItem::lastprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversItem.lastPrice)
+  return lastprice_ != NULL ? *lastprice_ : *default_instance_->lastprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATMarketMoversItem::mutable_lastprice() {
+  set_has_lastprice();
+  if (lastprice_ == NULL) lastprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversItem.lastPrice)
+  return lastprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATMarketMoversItem::release_lastprice() {
+  clear_has_lastprice();
+  ::NodeActiveTickProto::ATPrice* temp = lastprice_;
+  lastprice_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversItem::set_allocated_lastprice(::NodeActiveTickProto::ATPrice* lastprice) {
+  delete lastprice_;
+  lastprice_ = lastprice;
+  if (lastprice) {
+    set_has_lastprice();
+  } else {
+    clear_has_lastprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversItem.lastPrice)
+}
+
+// optional .NodeActiveTickProto.ATPrice closePrice = 4;
+inline bool ATMarketMoversItem::has_closeprice() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATMarketMoversItem::set_has_closeprice() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATMarketMoversItem::clear_has_closeprice() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATMarketMoversItem::clear_closeprice() {
+  if (closeprice_ != NULL) closeprice_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_closeprice();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATMarketMoversItem::closeprice() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversItem.closePrice)
+  return closeprice_ != NULL ? *closeprice_ : *default_instance_->closeprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATMarketMoversItem::mutable_closeprice() {
+  set_has_closeprice();
+  if (closeprice_ == NULL) closeprice_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversItem.closePrice)
+  return closeprice_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATMarketMoversItem::release_closeprice() {
+  clear_has_closeprice();
+  ::NodeActiveTickProto::ATPrice* temp = closeprice_;
+  closeprice_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversItem::set_allocated_closeprice(::NodeActiveTickProto::ATPrice* closeprice) {
+  delete closeprice_;
+  closeprice_ = closeprice;
+  if (closeprice) {
+    set_has_closeprice();
+  } else {
+    clear_has_closeprice();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversItem.closePrice)
+}
+
+// optional int32 lastDateTime = 5;
+inline bool ATMarketMoversItem::has_lastdatetime() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATMarketMoversItem::set_has_lastdatetime() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATMarketMoversItem::clear_has_lastdatetime() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATMarketMoversItem::clear_lastdatetime() {
+  lastdatetime_ = 0;
+  clear_has_lastdatetime();
+}
+inline ::google::protobuf::int32 ATMarketMoversItem::lastdatetime() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversItem.lastDateTime)
+  return lastdatetime_;
+}
+inline void ATMarketMoversItem::set_lastdatetime(::google::protobuf::int32 value) {
+  set_has_lastdatetime();
+  lastdatetime_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATMarketMoversItem.lastDateTime)
 }
 
 // -------------------------------------------------------------------

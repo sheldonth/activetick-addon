@@ -39,6 +39,51 @@ public:
     time->set_milliseconds(t->milliseconds);
   }
   
+  static NodeActiveTickProto::ATMarketMoversStreamUpdate *atmarketmoversstreamupdate(ATMARKET_MOVERS_STREAM_UPDATE u) {
+    NodeActiveTickProto::ATMarketMoversStreamUpdate *m = new NodeActiveTickProto::ATMarketMoversStreamUpdate();
+    // todo
+    return m;
+  }
+  
+  static NodeActiveTickProto::ATQuoteStreamRefreshUpdate* atquotestreamrefreshquote(ATQUOTESTREAM_REFRESH_UPDATE u) {
+    NodeActiveTickProto::ATQuoteStreamRefreshUpdate *r = new NodeActiveTickProto::ATQuoteStreamRefreshUpdate();
+    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    atsymbol_insert(&u.symbol, symbol);
+    r->set_allocated_symbol(symbol);
+    NodeActiveTickProto::ATPrice *lastPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *openPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *highPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *lowPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *closePrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *prevClosePrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *afterMarketClosePrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *bidPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice *askPrice =  new NodeActiveTickProto::ATPrice();
+    atprice_insert(&u.lastPrice, lastPrice);
+    atprice_insert(&u.openPrice, openPrice);
+    atprice_insert(&u.highPrice, highPrice);
+    atprice_insert(&u.lowPrice, lowPrice);
+    atprice_insert(&u.closePrice, closePrice);
+    atprice_insert(&u.prevClosePrice, prevClosePrice);
+    atprice_insert(&u.afterMarketClosePrice, afterMarketClosePrice);
+    atprice_insert(&u.bidPrice, bidPrice);
+    atprice_insert(&u.askPrice, askPrice);
+    r->set_allocated_openprice(openPrice);
+    r->set_allocated_lastprice(lastPrice);
+    r->set_allocated_highprice(highPrice);
+    r->set_allocated_lowprice(lowPrice);
+    r->set_allocated_closeprice(closePrice);
+    r->set_allocated_prevcloseprice(prevClosePrice);
+    r->set_allocated_aftermarketcloseprice(afterMarketClosePrice);
+    r->set_allocated_bidprice(bidPrice);
+    r->set_allocated_askprice(askPrice);
+    r->set_bidsize(u.bidSize);
+    r->set_asksize(u.askSize);
+    r->set_lastsize(u.lastSize);
+    r->set_volume(u.volume);
+    return r;
+  }
+  
   // return NodeActiveTickProto::ATQuoteStreamTradeUpdate from ATQUOTESTREAM_TRADE_UPDATE
   static NodeActiveTickProto::ATQuoteStreamTradeUpdate* atquotestreamtradeupdate(ATQUOTESTREAM_TRADE_UPDATE u) {
     NodeActiveTickProto::ATQuoteStreamTradeUpdate *q = new NodeActiveTickProto::ATQuoteStreamTradeUpdate();

@@ -44,6 +44,15 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ATQuoteStreamRefreshUpdate_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATQuoteStreamRefreshUpdate_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATMarketMoversStreamUpdate_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATMarketMoversStreamUpdate_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATMarketMoversRecord_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATMarketMoversRecord_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATMarketMoversItem_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATMarketMoversItem_reflection_ = NULL;
 const ::google::protobuf::Descriptor* ATSymbol_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATSymbol_reflection_ = NULL;
@@ -201,12 +210,21 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATQuoteStreamQuoteUpdate));
   ATQuoteStreamRefreshUpdate_descriptor_ = file->message_type(7);
-  static const int ATQuoteStreamRefreshUpdate_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, refreshsymbol_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, refreshlastprice_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, refreshopenprice_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, refreshhighprice_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, refreshlowprice_),
+  static const int ATQuoteStreamRefreshUpdate_offsets_[14] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, symbol_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, lastprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, openprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, highprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, lowprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, closeprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, prevcloseprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, aftermarketcloseprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, bidprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, askprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, bidsize_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, asksize_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, lastsize_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteStreamRefreshUpdate, volume_),
   };
   ATQuoteStreamRefreshUpdate_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -219,7 +237,59 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATQuoteStreamRefreshUpdate));
-  ATSymbol_descriptor_ = file->message_type(8);
+  ATMarketMoversStreamUpdate_descriptor_ = file->message_type(8);
+  static const int ATMarketMoversStreamUpdate_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversStreamUpdate, marketmovers_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversStreamUpdate, lastupdatedtime_),
+  };
+  ATMarketMoversStreamUpdate_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATMarketMoversStreamUpdate_descriptor_,
+      ATMarketMoversStreamUpdate::default_instance_,
+      ATMarketMoversStreamUpdate_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversStreamUpdate, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversStreamUpdate, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATMarketMoversStreamUpdate));
+  ATMarketMoversRecord_descriptor_ = file->message_type(9);
+  static const int ATMarketMoversRecord_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversRecord, symbol_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversRecord, status_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversRecord, item_),
+  };
+  ATMarketMoversRecord_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATMarketMoversRecord_descriptor_,
+      ATMarketMoversRecord::default_instance_,
+      ATMarketMoversRecord_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversRecord, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversRecord, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATMarketMoversRecord));
+  ATMarketMoversItem_descriptor_ = file->message_type(10);
+  static const int ATMarketMoversItem_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, symbol_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, lastprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, closeprice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, lastdatetime_),
+  };
+  ATMarketMoversItem_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATMarketMoversItem_descriptor_,
+      ATMarketMoversItem::default_instance_,
+      ATMarketMoversItem_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATMarketMoversItem, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATMarketMoversItem));
+  ATSymbol_descriptor_ = file->message_type(11);
   static const int ATSymbol_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symbol_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATSymbol, symboltype_),
@@ -237,7 +307,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATSymbol));
-  ATPrice_descriptor_ = file->message_type(9);
+  ATPrice_descriptor_ = file->message_type(12);
   static const int ATPrice_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATPrice, price_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATPrice, precision_),
@@ -253,7 +323,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATPrice));
-  ATQuote_descriptor_ = file->message_type(10);
+  ATQuote_descriptor_ = file->message_type(13);
   static const int ATQuote_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuote, symbol_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuote, bidprice_),
@@ -276,7 +346,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATQuote));
-  ATBarHistoryValue_descriptor_ = file->message_type(11);
+  ATBarHistoryValue_descriptor_ = file->message_type(14);
   static const int ATBarHistoryValue_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, open_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryValue, high_),
@@ -298,7 +368,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATBarHistoryValue));
-  ATBarHistoryDbResponse_descriptor_ = file->message_type(12);
+  ATBarHistoryDbResponse_descriptor_ = file->message_type(15);
   static const int ATBarHistoryDbResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATBarHistoryDbResponse, value_),
   };
@@ -342,6 +412,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATQuoteStreamRefreshUpdate_descriptor_, &ATQuoteStreamRefreshUpdate::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATMarketMoversStreamUpdate_descriptor_, &ATMarketMoversStreamUpdate::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATMarketMoversRecord_descriptor_, &ATMarketMoversRecord::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATMarketMoversItem_descriptor_, &ATMarketMoversItem::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATSymbol_descriptor_, &ATSymbol::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATPrice_descriptor_, &ATPrice::default_instance());
@@ -372,6 +448,12 @@ void protobuf_ShutdownFile_messages_2eproto() {
   delete ATQuoteStreamQuoteUpdate_reflection_;
   delete ATQuoteStreamRefreshUpdate::default_instance_;
   delete ATQuoteStreamRefreshUpdate_reflection_;
+  delete ATMarketMoversStreamUpdate::default_instance_;
+  delete ATMarketMoversStreamUpdate_reflection_;
+  delete ATMarketMoversRecord::default_instance_;
+  delete ATMarketMoversRecord_reflection_;
+  delete ATMarketMoversItem::default_instance_;
+  delete ATMarketMoversItem_reflection_;
   delete ATSymbol::default_instance_;
   delete ATSymbol_reflection_;
   delete ATPrice::default_instance_;
@@ -421,36 +503,56 @@ void protobuf_AddDesc_messages_2eproto() {
     "roto.ATPrice\0223\n\rquoteAskPrice\030\006 \001(\0132\034.No"
     "deActiveTickProto.ATPrice\022\024\n\014quoteBidSiz"
     "e\030\007 \001(\005\022\024\n\014quoteAskSize\030\010 \001(\005\022.\n\tquoteTi"
-    "me\030\t \001(\0132\033.NodeActiveTickProto.ATTime\"\261\002"
-    "\n\032ATQuoteStreamRefreshUpdate\0224\n\rrefreshS"
+    "me\030\t \001(\0132\033.NodeActiveTickProto.ATTime\"\327\004"
+    "\n\032ATQuoteStreamRefreshUpdate\022-\n\006symbol\030\001"
+    " \001(\0132\035.NodeActiveTickProto.ATSymbol\022/\n\tl"
+    "astPrice\030\002 \001(\0132\034.NodeActiveTickProto.ATP"
+    "rice\022/\n\topenPrice\030\003 \001(\0132\034.NodeActiveTick"
+    "Proto.ATPrice\022/\n\thighPrice\030\004 \001(\0132\034.NodeA"
+    "ctiveTickProto.ATPrice\022.\n\010lowPrice\030\005 \001(\013"
+    "2\034.NodeActiveTickProto.ATPrice\0220\n\ncloseP"
+    "rice\030\006 \001(\0132\034.NodeActiveTickProto.ATPrice"
+    "\0224\n\016prevClosePrice\030\007 \001(\0132\034.NodeActiveTic"
+    "kProto.ATPrice\022;\n\025afterMarketClosePrice\030"
+    "\010 \001(\0132\034.NodeActiveTickProto.ATPrice\022.\n\010b"
+    "idPrice\030\t \001(\0132\034.NodeActiveTickProto.ATPr"
+    "ice\022.\n\010askPrice\030\n \001(\0132\034.NodeActiveTickPr"
+    "oto.ATPrice\022\017\n\007bidSize\030\013 \001(\005\022\017\n\007askSize\030"
+    "\014 \001(\005\022\020\n\010lastSize\030\r \001(\005\022\016\n\006volume\030\016 \001(\003\""
+    "\223\001\n\032ATMarketMoversStreamUpdate\022\?\n\014market"
+    "Movers\030\001 \001(\0132).NodeActiveTickProto.ATMar"
+    "ketMoversRecord\0224\n\017lastUpdatedTime\030\002 \001(\013"
+    "2\033.NodeActiveTickProto.ATTime\"\214\001\n\024ATMark"
+    "etMoversRecord\022-\n\006symbol\030\001 \001(\0132\035.NodeAct"
+    "iveTickProto.ATSymbol\022\016\n\006status\030\002 \001(\t\0225\n"
+    "\004item\030\003 \003(\0132\'.NodeActiveTickProto.ATMark"
+    "etMoversItem\"\312\001\n\022ATMarketMoversItem\022-\n\006s"
     "ymbol\030\001 \001(\0132\035.NodeActiveTickProto.ATSymb"
-    "ol\0226\n\020refreshLastPrice\030\002 \001(\0132\034.NodeActiv"
-    "eTickProto.ATPrice\0226\n\020refreshOpenPrice\030\003"
-    " \001(\0132\034.NodeActiveTickProto.ATPrice\0226\n\020re"
-    "freshHighPrice\030\004 \001(\0132\034.NodeActiveTickPro"
-    "to.ATPrice\0225\n\017refreshLowPrice\030\005 \001(\0132\034.No"
-    "deActiveTickProto.ATPrice\"Y\n\010ATSymbol\022\016\n"
-    "\006symbol\030\001 \001(\t\022\022\n\nsymbolType\030\002 \001(\005\022\024\n\014exc"
-    "hangeType\030\003 \001(\005\022\023\n\013countryType\030\004 \001(\005\"+\n\007"
-    "ATPrice\022\r\n\005price\030\001 \002(\001\022\021\n\tprecision\030\002 \002("
-    "\005\"\263\002\n\007ATQuote\022-\n\006symbol\030\001 \002(\0132\035.NodeActi"
-    "veTickProto.ATSymbol\022.\n\010bidPrice\030\002 \002(\0132\034"
-    ".NodeActiveTickProto.ATPrice\022.\n\010askPrice"
-    "\030\003 \002(\0132\034.NodeActiveTickProto.ATPrice\022\017\n\007"
-    "bidSize\030\004 \001(\005\022\017\n\007askSize\030\005 \001(\005\022\030\n\020quoteC"
-    "onditionId\030\006 \001(\005\022/\n\nserverTime\030\007 \001(\0132\033.N"
-    "odeActiveTickProto.ATTime\022\025\n\rbidExchange"
-    "Id\030\010 \001(\005\022\025\n\raskExchangeId\030\t \001(\005\"\275\002\n\021ATBa"
-    "rHistoryValue\022*\n\004open\030\001 \001(\0132\034.NodeActive"
-    "TickProto.ATPrice\022*\n\004high\030\002 \001(\0132\034.NodeAc"
-    "tiveTickProto.ATPrice\022)\n\003low\030\003 \001(\0132\034.Nod"
-    "eActiveTickProto.ATPrice\022+\n\005close\030\004 \001(\0132"
-    "\034.NodeActiveTickProto.ATPrice\022\016\n\006volume\030"
-    "\005 \001(\003\022)\n\004time\030\006 \001(\0132\033.NodeActiveTickProt"
-    "o.ATTime\022-\n\006symbol\030\007 \001(\0132\035.NodeActiveTic"
-    "kProto.ATSymbol\022\016\n\006status\030\010 \001(\t\"O\n\026ATBar"
-    "HistoryDbResponse\0225\n\005value\030\001 \003(\0132&.NodeA"
-    "ctiveTickProto.ATBarHistoryValue", 2392);
+    "ol\022\014\n\004name\030\002 \001(\t\022/\n\tlastPrice\030\003 \001(\0132\034.No"
+    "deActiveTickProto.ATPrice\0220\n\nclosePrice\030"
+    "\004 \001(\0132\034.NodeActiveTickProto.ATPrice\022\024\n\014l"
+    "astDateTime\030\005 \001(\005\"Y\n\010ATSymbol\022\016\n\006symbol\030"
+    "\001 \001(\t\022\022\n\nsymbolType\030\002 \001(\005\022\024\n\014exchangeTyp"
+    "e\030\003 \001(\005\022\023\n\013countryType\030\004 \001(\005\"+\n\007ATPrice\022"
+    "\r\n\005price\030\001 \002(\001\022\021\n\tprecision\030\002 \002(\005\"\263\002\n\007AT"
+    "Quote\022-\n\006symbol\030\001 \002(\0132\035.NodeActiveTickPr"
+    "oto.ATSymbol\022.\n\010bidPrice\030\002 \002(\0132\034.NodeAct"
+    "iveTickProto.ATPrice\022.\n\010askPrice\030\003 \002(\0132\034"
+    ".NodeActiveTickProto.ATPrice\022\017\n\007bidSize\030"
+    "\004 \001(\005\022\017\n\007askSize\030\005 \001(\005\022\030\n\020quoteCondition"
+    "Id\030\006 \001(\005\022/\n\nserverTime\030\007 \001(\0132\033.NodeActiv"
+    "eTickProto.ATTime\022\025\n\rbidExchangeId\030\010 \001(\005"
+    "\022\025\n\raskExchangeId\030\t \001(\005\"\275\002\n\021ATBarHistory"
+    "Value\022*\n\004open\030\001 \001(\0132\034.NodeActiveTickProt"
+    "o.ATPrice\022*\n\004high\030\002 \001(\0132\034.NodeActiveTick"
+    "Proto.ATPrice\022)\n\003low\030\003 \001(\0132\034.NodeActiveT"
+    "ickProto.ATPrice\022+\n\005close\030\004 \001(\0132\034.NodeAc"
+    "tiveTickProto.ATPrice\022\016\n\006volume\030\005 \001(\003\022)\n"
+    "\004time\030\006 \001(\0132\033.NodeActiveTickProto.ATTime"
+    "\022-\n\006symbol\030\007 \001(\0132\035.NodeActiveTickProto.A"
+    "TSymbol\022\016\n\006status\030\010 \001(\t\"O\n\026ATBarHistoryD"
+    "bResponse\0225\n\005value\030\001 \003(\0132&.NodeActiveTic"
+    "kProto.ATBarHistoryValue", 3184);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -461,6 +563,9 @@ void protobuf_AddDesc_messages_2eproto() {
   ATQuoteStreamTradeUpdate::default_instance_ = new ATQuoteStreamTradeUpdate();
   ATQuoteStreamQuoteUpdate::default_instance_ = new ATQuoteStreamQuoteUpdate();
   ATQuoteStreamRefreshUpdate::default_instance_ = new ATQuoteStreamRefreshUpdate();
+  ATMarketMoversStreamUpdate::default_instance_ = new ATMarketMoversStreamUpdate();
+  ATMarketMoversRecord::default_instance_ = new ATMarketMoversRecord();
+  ATMarketMoversItem::default_instance_ = new ATMarketMoversItem();
   ATSymbol::default_instance_ = new ATSymbol();
   ATPrice::default_instance_ = new ATPrice();
   ATQuote::default_instance_ = new ATQuote();
@@ -474,6 +579,9 @@ void protobuf_AddDesc_messages_2eproto() {
   ATQuoteStreamTradeUpdate::default_instance_->InitAsDefaultInstance();
   ATQuoteStreamQuoteUpdate::default_instance_->InitAsDefaultInstance();
   ATQuoteStreamRefreshUpdate::default_instance_->InitAsDefaultInstance();
+  ATMarketMoversStreamUpdate::default_instance_->InitAsDefaultInstance();
+  ATMarketMoversRecord::default_instance_->InitAsDefaultInstance();
+  ATMarketMoversItem::default_instance_->InitAsDefaultInstance();
   ATSymbol::default_instance_->InitAsDefaultInstance();
   ATPrice::default_instance_->InitAsDefaultInstance();
   ATQuote::default_instance_->InitAsDefaultInstance();
@@ -3332,11 +3440,20 @@ void ATQuoteStreamQuoteUpdate::Swap(ATQuoteStreamQuoteUpdate* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int ATQuoteStreamRefreshUpdate::kRefreshSymbolFieldNumber;
-const int ATQuoteStreamRefreshUpdate::kRefreshLastPriceFieldNumber;
-const int ATQuoteStreamRefreshUpdate::kRefreshOpenPriceFieldNumber;
-const int ATQuoteStreamRefreshUpdate::kRefreshHighPriceFieldNumber;
-const int ATQuoteStreamRefreshUpdate::kRefreshLowPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kSymbolFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kLastPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kOpenPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kHighPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kLowPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kClosePriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kPrevClosePriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kAfterMarketClosePriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kBidPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kAskPriceFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kBidSizeFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kAskSizeFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kLastSizeFieldNumber;
+const int ATQuoteStreamRefreshUpdate::kVolumeFieldNumber;
 #endif  // !_MSC_VER
 
 ATQuoteStreamRefreshUpdate::ATQuoteStreamRefreshUpdate()
@@ -3346,11 +3463,16 @@ ATQuoteStreamRefreshUpdate::ATQuoteStreamRefreshUpdate()
 }
 
 void ATQuoteStreamRefreshUpdate::InitAsDefaultInstance() {
-  refreshsymbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
-  refreshlastprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
-  refreshopenprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
-  refreshhighprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
-  refreshlowprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  symbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
+  lastprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  openprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  highprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  lowprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  closeprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  prevcloseprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  aftermarketcloseprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  bidprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  askprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
 }
 
 ATQuoteStreamRefreshUpdate::ATQuoteStreamRefreshUpdate(const ATQuoteStreamRefreshUpdate& from)
@@ -3362,11 +3484,20 @@ ATQuoteStreamRefreshUpdate::ATQuoteStreamRefreshUpdate(const ATQuoteStreamRefres
 
 void ATQuoteStreamRefreshUpdate::SharedCtor() {
   _cached_size_ = 0;
-  refreshsymbol_ = NULL;
-  refreshlastprice_ = NULL;
-  refreshopenprice_ = NULL;
-  refreshhighprice_ = NULL;
-  refreshlowprice_ = NULL;
+  symbol_ = NULL;
+  lastprice_ = NULL;
+  openprice_ = NULL;
+  highprice_ = NULL;
+  lowprice_ = NULL;
+  closeprice_ = NULL;
+  prevcloseprice_ = NULL;
+  aftermarketcloseprice_ = NULL;
+  bidprice_ = NULL;
+  askprice_ = NULL;
+  bidsize_ = 0;
+  asksize_ = 0;
+  lastsize_ = 0;
+  volume_ = GOOGLE_LONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3377,11 +3508,16 @@ ATQuoteStreamRefreshUpdate::~ATQuoteStreamRefreshUpdate() {
 
 void ATQuoteStreamRefreshUpdate::SharedDtor() {
   if (this != default_instance_) {
-    delete refreshsymbol_;
-    delete refreshlastprice_;
-    delete refreshopenprice_;
-    delete refreshhighprice_;
-    delete refreshlowprice_;
+    delete symbol_;
+    delete lastprice_;
+    delete openprice_;
+    delete highprice_;
+    delete lowprice_;
+    delete closeprice_;
+    delete prevcloseprice_;
+    delete aftermarketcloseprice_;
+    delete bidprice_;
+    delete askprice_;
   }
 }
 
@@ -3407,23 +3543,55 @@ ATQuoteStreamRefreshUpdate* ATQuoteStreamRefreshUpdate::New() const {
 }
 
 void ATQuoteStreamRefreshUpdate::Clear() {
-  if (_has_bits_[0 / 32] & 31) {
-    if (has_refreshsymbol()) {
-      if (refreshsymbol_ != NULL) refreshsymbol_->::NodeActiveTickProto::ATSymbol::Clear();
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<ATQuoteStreamRefreshUpdate*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 255) {
+    if (has_symbol()) {
+      if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
     }
-    if (has_refreshlastprice()) {
-      if (refreshlastprice_ != NULL) refreshlastprice_->::NodeActiveTickProto::ATPrice::Clear();
+    if (has_lastprice()) {
+      if (lastprice_ != NULL) lastprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
-    if (has_refreshopenprice()) {
-      if (refreshopenprice_ != NULL) refreshopenprice_->::NodeActiveTickProto::ATPrice::Clear();
+    if (has_openprice()) {
+      if (openprice_ != NULL) openprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
-    if (has_refreshhighprice()) {
-      if (refreshhighprice_ != NULL) refreshhighprice_->::NodeActiveTickProto::ATPrice::Clear();
+    if (has_highprice()) {
+      if (highprice_ != NULL) highprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
-    if (has_refreshlowprice()) {
-      if (refreshlowprice_ != NULL) refreshlowprice_->::NodeActiveTickProto::ATPrice::Clear();
+    if (has_lowprice()) {
+      if (lowprice_ != NULL) lowprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_closeprice()) {
+      if (closeprice_ != NULL) closeprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_prevcloseprice()) {
+      if (prevcloseprice_ != NULL) prevcloseprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_aftermarketcloseprice()) {
+      if (aftermarketcloseprice_ != NULL) aftermarketcloseprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
   }
+  if (_has_bits_[8 / 32] & 16128) {
+    ZR_(bidsize_, lastsize_);
+    if (has_bidprice()) {
+      if (bidprice_ != NULL) bidprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_askprice()) {
+      if (askprice_ != NULL) askprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+  }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -3438,63 +3606,188 @@ bool ATQuoteStreamRefreshUpdate::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
+      // optional .NodeActiveTickProto.ATSymbol symbol = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_refreshsymbol()));
+               input, mutable_symbol()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_refreshLastPrice;
+        if (input->ExpectTag(18)) goto parse_lastPrice;
         break;
       }
 
-      // optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
+      // optional .NodeActiveTickProto.ATPrice lastPrice = 2;
       case 2: {
         if (tag == 18) {
-         parse_refreshLastPrice:
+         parse_lastPrice:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_refreshlastprice()));
+               input, mutable_lastprice()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_refreshOpenPrice;
+        if (input->ExpectTag(26)) goto parse_openPrice;
         break;
       }
 
-      // optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
+      // optional .NodeActiveTickProto.ATPrice openPrice = 3;
       case 3: {
         if (tag == 26) {
-         parse_refreshOpenPrice:
+         parse_openPrice:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_refreshopenprice()));
+               input, mutable_openprice()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_refreshHighPrice;
+        if (input->ExpectTag(34)) goto parse_highPrice;
         break;
       }
 
-      // optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
+      // optional .NodeActiveTickProto.ATPrice highPrice = 4;
       case 4: {
         if (tag == 34) {
-         parse_refreshHighPrice:
+         parse_highPrice:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_refreshhighprice()));
+               input, mutable_highprice()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_refreshLowPrice;
+        if (input->ExpectTag(42)) goto parse_lowPrice;
         break;
       }
 
-      // optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
+      // optional .NodeActiveTickProto.ATPrice lowPrice = 5;
       case 5: {
         if (tag == 42) {
-         parse_refreshLowPrice:
+         parse_lowPrice:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_refreshlowprice()));
+               input, mutable_lowprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_closePrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice closePrice = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_closePrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_closeprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_prevClosePrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice prevClosePrice = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_prevClosePrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_prevcloseprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(66)) goto parse_afterMarketClosePrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice afterMarketClosePrice = 8;
+      case 8: {
+        if (tag == 66) {
+         parse_afterMarketClosePrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_aftermarketcloseprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(74)) goto parse_bidPrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice bidPrice = 9;
+      case 9: {
+        if (tag == 74) {
+         parse_bidPrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_bidprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(82)) goto parse_askPrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice askPrice = 10;
+      case 10: {
+        if (tag == 82) {
+         parse_askPrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_askprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(88)) goto parse_bidSize;
+        break;
+      }
+
+      // optional int32 bidSize = 11;
+      case 11: {
+        if (tag == 88) {
+         parse_bidSize:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &bidsize_)));
+          set_has_bidsize();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(96)) goto parse_askSize;
+        break;
+      }
+
+      // optional int32 askSize = 12;
+      case 12: {
+        if (tag == 96) {
+         parse_askSize:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &asksize_)));
+          set_has_asksize();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(104)) goto parse_lastSize;
+        break;
+      }
+
+      // optional int32 lastSize = 13;
+      case 13: {
+        if (tag == 104) {
+         parse_lastSize:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lastsize_)));
+          set_has_lastsize();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(112)) goto parse_volume;
+        break;
+      }
+
+      // optional int64 volume = 14;
+      case 14: {
+        if (tag == 112) {
+         parse_volume:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &volume_)));
+          set_has_volume();
         } else {
           goto handle_unusual;
         }
@@ -3527,34 +3820,84 @@ failure:
 void ATQuoteStreamRefreshUpdate::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATQuoteStreamRefreshUpdate)
-  // optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
-  if (has_refreshsymbol()) {
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  if (has_symbol()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->refreshsymbol(), output);
+      1, this->symbol(), output);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
-  if (has_refreshlastprice()) {
+  // optional .NodeActiveTickProto.ATPrice lastPrice = 2;
+  if (has_lastprice()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->refreshlastprice(), output);
+      2, this->lastprice(), output);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
-  if (has_refreshopenprice()) {
+  // optional .NodeActiveTickProto.ATPrice openPrice = 3;
+  if (has_openprice()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->refreshopenprice(), output);
+      3, this->openprice(), output);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
-  if (has_refreshhighprice()) {
+  // optional .NodeActiveTickProto.ATPrice highPrice = 4;
+  if (has_highprice()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->refreshhighprice(), output);
+      4, this->highprice(), output);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
-  if (has_refreshlowprice()) {
+  // optional .NodeActiveTickProto.ATPrice lowPrice = 5;
+  if (has_lowprice()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->refreshlowprice(), output);
+      5, this->lowprice(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice closePrice = 6;
+  if (has_closeprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->closeprice(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice prevClosePrice = 7;
+  if (has_prevcloseprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->prevcloseprice(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice afterMarketClosePrice = 8;
+  if (has_aftermarketcloseprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->aftermarketcloseprice(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice bidPrice = 9;
+  if (has_bidprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->bidprice(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice askPrice = 10;
+  if (has_askprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, this->askprice(), output);
+  }
+
+  // optional int32 bidSize = 11;
+  if (has_bidsize()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->bidsize(), output);
+  }
+
+  // optional int32 askSize = 12;
+  if (has_asksize()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->asksize(), output);
+  }
+
+  // optional int32 lastSize = 13;
+  if (has_lastsize()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->lastsize(), output);
+  }
+
+  // optional int64 volume = 14;
+  if (has_volume()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(14, this->volume(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3567,39 +3910,94 @@ void ATQuoteStreamRefreshUpdate::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ATQuoteStreamRefreshUpdate::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATQuoteStreamRefreshUpdate)
-  // optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
-  if (has_refreshsymbol()) {
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  if (has_symbol()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->refreshsymbol(), target);
+        1, this->symbol(), target);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
-  if (has_refreshlastprice()) {
+  // optional .NodeActiveTickProto.ATPrice lastPrice = 2;
+  if (has_lastprice()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->refreshlastprice(), target);
+        2, this->lastprice(), target);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
-  if (has_refreshopenprice()) {
+  // optional .NodeActiveTickProto.ATPrice openPrice = 3;
+  if (has_openprice()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->refreshopenprice(), target);
+        3, this->openprice(), target);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
-  if (has_refreshhighprice()) {
+  // optional .NodeActiveTickProto.ATPrice highPrice = 4;
+  if (has_highprice()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->refreshhighprice(), target);
+        4, this->highprice(), target);
   }
 
-  // optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
-  if (has_refreshlowprice()) {
+  // optional .NodeActiveTickProto.ATPrice lowPrice = 5;
+  if (has_lowprice()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->refreshlowprice(), target);
+        5, this->lowprice(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice closePrice = 6;
+  if (has_closeprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->closeprice(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice prevClosePrice = 7;
+  if (has_prevcloseprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->prevcloseprice(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice afterMarketClosePrice = 8;
+  if (has_aftermarketcloseprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, this->aftermarketcloseprice(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice bidPrice = 9;
+  if (has_bidprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->bidprice(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice askPrice = 10;
+  if (has_askprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, this->askprice(), target);
+  }
+
+  // optional int32 bidSize = 11;
+  if (has_bidsize()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->bidsize(), target);
+  }
+
+  // optional int32 askSize = 12;
+  if (has_asksize()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->asksize(), target);
+  }
+
+  // optional int32 lastSize = 13;
+  if (has_lastsize()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->lastsize(), target);
+  }
+
+  // optional int64 volume = 14;
+  if (has_volume()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(14, this->volume(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3614,39 +4012,104 @@ int ATQuoteStreamRefreshUpdate::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .NodeActiveTickProto.ATSymbol refreshSymbol = 1;
-    if (has_refreshsymbol()) {
+    // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+    if (has_symbol()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->refreshsymbol());
+          this->symbol());
     }
 
-    // optional .NodeActiveTickProto.ATPrice refreshLastPrice = 2;
-    if (has_refreshlastprice()) {
+    // optional .NodeActiveTickProto.ATPrice lastPrice = 2;
+    if (has_lastprice()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->refreshlastprice());
+          this->lastprice());
     }
 
-    // optional .NodeActiveTickProto.ATPrice refreshOpenPrice = 3;
-    if (has_refreshopenprice()) {
+    // optional .NodeActiveTickProto.ATPrice openPrice = 3;
+    if (has_openprice()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->refreshopenprice());
+          this->openprice());
     }
 
-    // optional .NodeActiveTickProto.ATPrice refreshHighPrice = 4;
-    if (has_refreshhighprice()) {
+    // optional .NodeActiveTickProto.ATPrice highPrice = 4;
+    if (has_highprice()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->refreshhighprice());
+          this->highprice());
     }
 
-    // optional .NodeActiveTickProto.ATPrice refreshLowPrice = 5;
-    if (has_refreshlowprice()) {
+    // optional .NodeActiveTickProto.ATPrice lowPrice = 5;
+    if (has_lowprice()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->refreshlowprice());
+          this->lowprice());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice closePrice = 6;
+    if (has_closeprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->closeprice());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice prevClosePrice = 7;
+    if (has_prevcloseprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->prevcloseprice());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice afterMarketClosePrice = 8;
+    if (has_aftermarketcloseprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->aftermarketcloseprice());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .NodeActiveTickProto.ATPrice bidPrice = 9;
+    if (has_bidprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->bidprice());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice askPrice = 10;
+    if (has_askprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->askprice());
+    }
+
+    // optional int32 bidSize = 11;
+    if (has_bidsize()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->bidsize());
+    }
+
+    // optional int32 askSize = 12;
+    if (has_asksize()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->asksize());
+    }
+
+    // optional int32 lastSize = 13;
+    if (has_lastsize()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lastsize());
+    }
+
+    // optional int64 volume = 14;
+    if (has_volume()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->volume());
     }
 
   }
@@ -3676,20 +4139,49 @@ void ATQuoteStreamRefreshUpdate::MergeFrom(const ::google::protobuf::Message& fr
 void ATQuoteStreamRefreshUpdate::MergeFrom(const ATQuoteStreamRefreshUpdate& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_refreshsymbol()) {
-      mutable_refreshsymbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.refreshsymbol());
+    if (from.has_symbol()) {
+      mutable_symbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.symbol());
     }
-    if (from.has_refreshlastprice()) {
-      mutable_refreshlastprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.refreshlastprice());
+    if (from.has_lastprice()) {
+      mutable_lastprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.lastprice());
     }
-    if (from.has_refreshopenprice()) {
-      mutable_refreshopenprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.refreshopenprice());
+    if (from.has_openprice()) {
+      mutable_openprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.openprice());
     }
-    if (from.has_refreshhighprice()) {
-      mutable_refreshhighprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.refreshhighprice());
+    if (from.has_highprice()) {
+      mutable_highprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.highprice());
     }
-    if (from.has_refreshlowprice()) {
-      mutable_refreshlowprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.refreshlowprice());
+    if (from.has_lowprice()) {
+      mutable_lowprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.lowprice());
+    }
+    if (from.has_closeprice()) {
+      mutable_closeprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.closeprice());
+    }
+    if (from.has_prevcloseprice()) {
+      mutable_prevcloseprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.prevcloseprice());
+    }
+    if (from.has_aftermarketcloseprice()) {
+      mutable_aftermarketcloseprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.aftermarketcloseprice());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_bidprice()) {
+      mutable_bidprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.bidprice());
+    }
+    if (from.has_askprice()) {
+      mutable_askprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.askprice());
+    }
+    if (from.has_bidsize()) {
+      set_bidsize(from.bidsize());
+    }
+    if (from.has_asksize()) {
+      set_asksize(from.asksize());
+    }
+    if (from.has_lastsize()) {
+      set_lastsize(from.lastsize());
+    }
+    if (from.has_volume()) {
+      set_volume(from.volume());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3709,28 +4201,52 @@ void ATQuoteStreamRefreshUpdate::CopyFrom(const ATQuoteStreamRefreshUpdate& from
 
 bool ATQuoteStreamRefreshUpdate::IsInitialized() const {
 
-  if (has_refreshlastprice()) {
-    if (!this->refreshlastprice().IsInitialized()) return false;
+  if (has_lastprice()) {
+    if (!this->lastprice().IsInitialized()) return false;
   }
-  if (has_refreshopenprice()) {
-    if (!this->refreshopenprice().IsInitialized()) return false;
+  if (has_openprice()) {
+    if (!this->openprice().IsInitialized()) return false;
   }
-  if (has_refreshhighprice()) {
-    if (!this->refreshhighprice().IsInitialized()) return false;
+  if (has_highprice()) {
+    if (!this->highprice().IsInitialized()) return false;
   }
-  if (has_refreshlowprice()) {
-    if (!this->refreshlowprice().IsInitialized()) return false;
+  if (has_lowprice()) {
+    if (!this->lowprice().IsInitialized()) return false;
+  }
+  if (has_closeprice()) {
+    if (!this->closeprice().IsInitialized()) return false;
+  }
+  if (has_prevcloseprice()) {
+    if (!this->prevcloseprice().IsInitialized()) return false;
+  }
+  if (has_aftermarketcloseprice()) {
+    if (!this->aftermarketcloseprice().IsInitialized()) return false;
+  }
+  if (has_bidprice()) {
+    if (!this->bidprice().IsInitialized()) return false;
+  }
+  if (has_askprice()) {
+    if (!this->askprice().IsInitialized()) return false;
   }
   return true;
 }
 
 void ATQuoteStreamRefreshUpdate::Swap(ATQuoteStreamRefreshUpdate* other) {
   if (other != this) {
-    std::swap(refreshsymbol_, other->refreshsymbol_);
-    std::swap(refreshlastprice_, other->refreshlastprice_);
-    std::swap(refreshopenprice_, other->refreshopenprice_);
-    std::swap(refreshhighprice_, other->refreshhighprice_);
-    std::swap(refreshlowprice_, other->refreshlowprice_);
+    std::swap(symbol_, other->symbol_);
+    std::swap(lastprice_, other->lastprice_);
+    std::swap(openprice_, other->openprice_);
+    std::swap(highprice_, other->highprice_);
+    std::swap(lowprice_, other->lowprice_);
+    std::swap(closeprice_, other->closeprice_);
+    std::swap(prevcloseprice_, other->prevcloseprice_);
+    std::swap(aftermarketcloseprice_, other->aftermarketcloseprice_);
+    std::swap(bidprice_, other->bidprice_);
+    std::swap(askprice_, other->askprice_);
+    std::swap(bidsize_, other->bidsize_);
+    std::swap(asksize_, other->asksize_);
+    std::swap(lastsize_, other->lastsize_);
+    std::swap(volume_, other->volume_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -3742,6 +4258,1033 @@ void ATQuoteStreamRefreshUpdate::Swap(ATQuoteStreamRefreshUpdate* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ATQuoteStreamRefreshUpdate_descriptor_;
   metadata.reflection = ATQuoteStreamRefreshUpdate_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATMarketMoversStreamUpdate::kMarketMoversFieldNumber;
+const int ATMarketMoversStreamUpdate::kLastUpdatedTimeFieldNumber;
+#endif  // !_MSC_VER
+
+ATMarketMoversStreamUpdate::ATMarketMoversStreamUpdate()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+}
+
+void ATMarketMoversStreamUpdate::InitAsDefaultInstance() {
+  marketmovers_ = const_cast< ::NodeActiveTickProto::ATMarketMoversRecord*>(&::NodeActiveTickProto::ATMarketMoversRecord::default_instance());
+  lastupdatedtime_ = const_cast< ::NodeActiveTickProto::ATTime*>(&::NodeActiveTickProto::ATTime::default_instance());
+}
+
+ATMarketMoversStreamUpdate::ATMarketMoversStreamUpdate(const ATMarketMoversStreamUpdate& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+}
+
+void ATMarketMoversStreamUpdate::SharedCtor() {
+  _cached_size_ = 0;
+  marketmovers_ = NULL;
+  lastupdatedtime_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATMarketMoversStreamUpdate::~ATMarketMoversStreamUpdate() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  SharedDtor();
+}
+
+void ATMarketMoversStreamUpdate::SharedDtor() {
+  if (this != default_instance_) {
+    delete marketmovers_;
+    delete lastupdatedtime_;
+  }
+}
+
+void ATMarketMoversStreamUpdate::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATMarketMoversStreamUpdate::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATMarketMoversStreamUpdate_descriptor_;
+}
+
+const ATMarketMoversStreamUpdate& ATMarketMoversStreamUpdate::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATMarketMoversStreamUpdate* ATMarketMoversStreamUpdate::default_instance_ = NULL;
+
+ATMarketMoversStreamUpdate* ATMarketMoversStreamUpdate::New() const {
+  return new ATMarketMoversStreamUpdate;
+}
+
+void ATMarketMoversStreamUpdate::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_marketmovers()) {
+      if (marketmovers_ != NULL) marketmovers_->::NodeActiveTickProto::ATMarketMoversRecord::Clear();
+    }
+    if (has_lastupdatedtime()) {
+      if (lastupdatedtime_ != NULL) lastupdatedtime_->::NodeActiveTickProto::ATTime::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATMarketMoversStreamUpdate::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NodeActiveTickProto.ATMarketMoversRecord marketMovers = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_marketmovers()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_lastUpdatedTime;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATTime lastUpdatedTime = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_lastUpdatedTime:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_lastupdatedtime()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  return false;
+#undef DO_
+}
+
+void ATMarketMoversStreamUpdate::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  // optional .NodeActiveTickProto.ATMarketMoversRecord marketMovers = 1;
+  if (has_marketmovers()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->marketmovers(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATTime lastUpdatedTime = 2;
+  if (has_lastupdatedtime()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->lastupdatedtime(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+}
+
+::google::protobuf::uint8* ATMarketMoversStreamUpdate::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  // optional .NodeActiveTickProto.ATMarketMoversRecord marketMovers = 1;
+  if (has_marketmovers()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->marketmovers(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATTime lastUpdatedTime = 2;
+  if (has_lastupdatedtime()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->lastupdatedtime(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATMarketMoversStreamUpdate)
+  return target;
+}
+
+int ATMarketMoversStreamUpdate::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .NodeActiveTickProto.ATMarketMoversRecord marketMovers = 1;
+    if (has_marketmovers()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->marketmovers());
+    }
+
+    // optional .NodeActiveTickProto.ATTime lastUpdatedTime = 2;
+    if (has_lastupdatedtime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->lastupdatedtime());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATMarketMoversStreamUpdate::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATMarketMoversStreamUpdate* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATMarketMoversStreamUpdate*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATMarketMoversStreamUpdate::MergeFrom(const ATMarketMoversStreamUpdate& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_marketmovers()) {
+      mutable_marketmovers()->::NodeActiveTickProto::ATMarketMoversRecord::MergeFrom(from.marketmovers());
+    }
+    if (from.has_lastupdatedtime()) {
+      mutable_lastupdatedtime()->::NodeActiveTickProto::ATTime::MergeFrom(from.lastupdatedtime());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATMarketMoversStreamUpdate::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATMarketMoversStreamUpdate::CopyFrom(const ATMarketMoversStreamUpdate& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATMarketMoversStreamUpdate::IsInitialized() const {
+
+  if (has_marketmovers()) {
+    if (!this->marketmovers().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void ATMarketMoversStreamUpdate::Swap(ATMarketMoversStreamUpdate* other) {
+  if (other != this) {
+    std::swap(marketmovers_, other->marketmovers_);
+    std::swap(lastupdatedtime_, other->lastupdatedtime_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATMarketMoversStreamUpdate::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATMarketMoversStreamUpdate_descriptor_;
+  metadata.reflection = ATMarketMoversStreamUpdate_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATMarketMoversRecord::kSymbolFieldNumber;
+const int ATMarketMoversRecord::kStatusFieldNumber;
+const int ATMarketMoversRecord::kItemFieldNumber;
+#endif  // !_MSC_VER
+
+ATMarketMoversRecord::ATMarketMoversRecord()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATMarketMoversRecord)
+}
+
+void ATMarketMoversRecord::InitAsDefaultInstance() {
+  symbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
+}
+
+ATMarketMoversRecord::ATMarketMoversRecord(const ATMarketMoversRecord& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATMarketMoversRecord)
+}
+
+void ATMarketMoversRecord::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  symbol_ = NULL;
+  status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATMarketMoversRecord::~ATMarketMoversRecord() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATMarketMoversRecord)
+  SharedDtor();
+}
+
+void ATMarketMoversRecord::SharedDtor() {
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete status_;
+  }
+  if (this != default_instance_) {
+    delete symbol_;
+  }
+}
+
+void ATMarketMoversRecord::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATMarketMoversRecord::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATMarketMoversRecord_descriptor_;
+}
+
+const ATMarketMoversRecord& ATMarketMoversRecord::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATMarketMoversRecord* ATMarketMoversRecord::default_instance_ = NULL;
+
+ATMarketMoversRecord* ATMarketMoversRecord::New() const {
+  return new ATMarketMoversRecord;
+}
+
+void ATMarketMoversRecord::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_symbol()) {
+      if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+    }
+    if (has_status()) {
+      if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        status_->clear();
+      }
+    }
+  }
+  item_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATMarketMoversRecord::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATMarketMoversRecord)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_symbol()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_status;
+        break;
+      }
+
+      // optional string status = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_status:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_status()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->status().data(), this->status().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "status");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_item;
+        break;
+      }
+
+      // repeated .NodeActiveTickProto.ATMarketMoversItem item = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_item:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_item()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_item;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATMarketMoversRecord)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATMarketMoversRecord)
+  return false;
+#undef DO_
+}
+
+void ATMarketMoversRecord::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATMarketMoversRecord)
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  if (has_symbol()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->symbol(), output);
+  }
+
+  // optional string status = 2;
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->status().data(), this->status().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "status");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->status(), output);
+  }
+
+  // repeated .NodeActiveTickProto.ATMarketMoversItem item = 3;
+  for (int i = 0; i < this->item_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->item(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATMarketMoversRecord)
+}
+
+::google::protobuf::uint8* ATMarketMoversRecord::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATMarketMoversRecord)
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  if (has_symbol()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->symbol(), target);
+  }
+
+  // optional string status = 2;
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->status().data(), this->status().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "status");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->status(), target);
+  }
+
+  // repeated .NodeActiveTickProto.ATMarketMoversItem item = 3;
+  for (int i = 0; i < this->item_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->item(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATMarketMoversRecord)
+  return target;
+}
+
+int ATMarketMoversRecord::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+    if (has_symbol()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->symbol());
+    }
+
+    // optional string status = 2;
+    if (has_status()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->status());
+    }
+
+  }
+  // repeated .NodeActiveTickProto.ATMarketMoversItem item = 3;
+  total_size += 1 * this->item_size();
+  for (int i = 0; i < this->item_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->item(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATMarketMoversRecord::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATMarketMoversRecord* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATMarketMoversRecord*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATMarketMoversRecord::MergeFrom(const ATMarketMoversRecord& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  item_.MergeFrom(from.item_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_symbol()) {
+      mutable_symbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.symbol());
+    }
+    if (from.has_status()) {
+      set_status(from.status());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATMarketMoversRecord::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATMarketMoversRecord::CopyFrom(const ATMarketMoversRecord& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATMarketMoversRecord::IsInitialized() const {
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->item())) return false;
+  return true;
+}
+
+void ATMarketMoversRecord::Swap(ATMarketMoversRecord* other) {
+  if (other != this) {
+    std::swap(symbol_, other->symbol_);
+    std::swap(status_, other->status_);
+    item_.Swap(&other->item_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATMarketMoversRecord::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATMarketMoversRecord_descriptor_;
+  metadata.reflection = ATMarketMoversRecord_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATMarketMoversItem::kSymbolFieldNumber;
+const int ATMarketMoversItem::kNameFieldNumber;
+const int ATMarketMoversItem::kLastPriceFieldNumber;
+const int ATMarketMoversItem::kClosePriceFieldNumber;
+const int ATMarketMoversItem::kLastDateTimeFieldNumber;
+#endif  // !_MSC_VER
+
+ATMarketMoversItem::ATMarketMoversItem()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATMarketMoversItem)
+}
+
+void ATMarketMoversItem::InitAsDefaultInstance() {
+  symbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
+  lastprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  closeprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+}
+
+ATMarketMoversItem::ATMarketMoversItem(const ATMarketMoversItem& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATMarketMoversItem)
+}
+
+void ATMarketMoversItem::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  symbol_ = NULL;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  lastprice_ = NULL;
+  closeprice_ = NULL;
+  lastdatetime_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATMarketMoversItem::~ATMarketMoversItem() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATMarketMoversItem)
+  SharedDtor();
+}
+
+void ATMarketMoversItem::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+    delete symbol_;
+    delete lastprice_;
+    delete closeprice_;
+  }
+}
+
+void ATMarketMoversItem::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATMarketMoversItem::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATMarketMoversItem_descriptor_;
+}
+
+const ATMarketMoversItem& ATMarketMoversItem::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATMarketMoversItem* ATMarketMoversItem::default_instance_ = NULL;
+
+ATMarketMoversItem* ATMarketMoversItem::New() const {
+  return new ATMarketMoversItem;
+}
+
+void ATMarketMoversItem::Clear() {
+  if (_has_bits_[0 / 32] & 31) {
+    if (has_symbol()) {
+      if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+    }
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        name_->clear();
+      }
+    }
+    if (has_lastprice()) {
+      if (lastprice_ != NULL) lastprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_closeprice()) {
+      if (closeprice_ != NULL) closeprice_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    lastdatetime_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATMarketMoversItem::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATMarketMoversItem)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_symbol()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_name;
+        break;
+      }
+
+      // optional string name = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "name");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_lastPrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice lastPrice = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_lastPrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_lastprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_closePrice;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice closePrice = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_closePrice:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_closeprice()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_lastDateTime;
+        break;
+      }
+
+      // optional int32 lastDateTime = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_lastDateTime:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lastdatetime_)));
+          set_has_lastdatetime();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATMarketMoversItem)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATMarketMoversItem)
+  return false;
+#undef DO_
+}
+
+void ATMarketMoversItem::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATMarketMoversItem)
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  if (has_symbol()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->symbol(), output);
+  }
+
+  // optional string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->name(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice lastPrice = 3;
+  if (has_lastprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->lastprice(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice closePrice = 4;
+  if (has_closeprice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->closeprice(), output);
+  }
+
+  // optional int32 lastDateTime = 5;
+  if (has_lastdatetime()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->lastdatetime(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATMarketMoversItem)
+}
+
+::google::protobuf::uint8* ATMarketMoversItem::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATMarketMoversItem)
+  // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+  if (has_symbol()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->symbol(), target);
+  }
+
+  // optional string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice lastPrice = 3;
+  if (has_lastprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->lastprice(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice closePrice = 4;
+  if (has_closeprice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->closeprice(), target);
+  }
+
+  // optional int32 lastDateTime = 5;
+  if (has_lastdatetime()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->lastdatetime(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATMarketMoversItem)
+  return target;
+}
+
+int ATMarketMoversItem::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .NodeActiveTickProto.ATSymbol symbol = 1;
+    if (has_symbol()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->symbol());
+    }
+
+    // optional string name = 2;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice lastPrice = 3;
+    if (has_lastprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->lastprice());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice closePrice = 4;
+    if (has_closeprice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->closeprice());
+    }
+
+    // optional int32 lastDateTime = 5;
+    if (has_lastdatetime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lastdatetime());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATMarketMoversItem::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATMarketMoversItem* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATMarketMoversItem*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATMarketMoversItem::MergeFrom(const ATMarketMoversItem& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_symbol()) {
+      mutable_symbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.symbol());
+    }
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+    if (from.has_lastprice()) {
+      mutable_lastprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.lastprice());
+    }
+    if (from.has_closeprice()) {
+      mutable_closeprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.closeprice());
+    }
+    if (from.has_lastdatetime()) {
+      set_lastdatetime(from.lastdatetime());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATMarketMoversItem::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATMarketMoversItem::CopyFrom(const ATMarketMoversItem& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATMarketMoversItem::IsInitialized() const {
+
+  if (has_lastprice()) {
+    if (!this->lastprice().IsInitialized()) return false;
+  }
+  if (has_closeprice()) {
+    if (!this->closeprice().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void ATMarketMoversItem::Swap(ATMarketMoversItem* other) {
+  if (other != this) {
+    std::swap(symbol_, other->symbol_);
+    std::swap(name_, other->name_);
+    std::swap(lastprice_, other->lastprice_);
+    std::swap(closeprice_, other->closeprice_);
+    std::swap(lastdatetime_, other->lastdatetime_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATMarketMoversItem::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATMarketMoversItem_descriptor_;
+  metadata.reflection = ATMarketMoversItem_reflection_;
   return metadata;
 }
 
