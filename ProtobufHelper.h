@@ -39,9 +39,42 @@ public:
     time->set_milliseconds(t->milliseconds);
   }
   
-  static NodeActiveTickProto::ATMarketMoversStreamUpdate *atmarketmoversstreamupdate(ATMARKET_MOVERS_STREAM_UPDATE u) {
+  static void atmarketmoversitem_insert(ATMARKET_MOVERS_ITEM* i, NodeActiveTickProto::ATMarketMoversItem* item) {
+    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    atsymbol_insert(&i->symbol, symbol);
+    item->set_allocated_symbol(symbol);
+    // std::string str_symbol_long = Helper::ConvertString(i->symbol, ATSymbolMaxLength);
+    // std::string str_symbol_short = std::string(str_symbol_long.c_str());
+    // item->set_name(str_symbol_short);
+    NodeActiveTickProto::ATPrice *lastPrice = new NodeActiveTickProto::ATPrice();
+    atprice_insert(&i->lastPrice, lastPrice);
+    item->set_allocated_lastprice(lastPrice);
+    NodeActiveTickProto::ATPrice *closePrice = new NodeActiveTickProto::ATPrice();
+    atprice_insert(&i->closePrice, closePrice);
+    item->set_allocated_closeprice(closePrice);
+    NodeActiveTickProto::ATTime* t = new NodeActiveTickProto::ATTime();
+    attime_insert(&i->lastDateTime, t);
+    item->set_allocated_lastdatetime(t);
+  }
+  
+  static void atmarketmoversrecord_insert(ATMARKET_MOVERS_RECORD* r, NodeActiveTickProto::ATMarketMoversRecord *marketMovers) {
+    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol;
+    atsymbol_insert(&r->symbol, symbol);
+    marketMovers->set_allocated_symbol(symbol);
+    marketMovers->set_status(atsymbolstatus_string(r->status));
+    for (int i=0; i<ATMarketMoversMaxRecords; i++) {
+      ATMARKET_MOVERS_ITEM item = r->items[i];
+      NodeActiveTickProto::ATMarketMoversItem *it = marketMovers->add_item();
+      atmarketmoversitem_insert(&item, it);
+    }
+  }
+  
+  static NodeActiveTickProto::ATMarketMoversStreamUpdate* atmarketmoversstreamupdate(ATMARKET_MOVERS_STREAM_UPDATE u) {
     NodeActiveTickProto::ATMarketMoversStreamUpdate *m = new NodeActiveTickProto::ATMarketMoversStreamUpdate();
-    // todo
+    NodeActiveTickProto::ATTime *lastUpdateTime = new NodeActiveTickProto::ATTime();
+    attime_insert(&u.lastUpdateTime, lastUpdateTime);
+    NodeActiveTickProto::ATMarketMoversRecord *marketMovers = new NodeActiveTickProto::ATMarketMoversRecord();
+    atmarketmoversrecord_insert(&u.marketMovers, marketMovers);
     return m;
   }
   

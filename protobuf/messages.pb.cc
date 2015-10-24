@@ -526,33 +526,34 @@ void protobuf_AddDesc_messages_2eproto() {
     "etMoversRecord\022-\n\006symbol\030\001 \001(\0132\035.NodeAct"
     "iveTickProto.ATSymbol\022\016\n\006status\030\002 \001(\t\0225\n"
     "\004item\030\003 \003(\0132\'.NodeActiveTickProto.ATMark"
-    "etMoversItem\"\312\001\n\022ATMarketMoversItem\022-\n\006s"
+    "etMoversItem\"\347\001\n\022ATMarketMoversItem\022-\n\006s"
     "ymbol\030\001 \001(\0132\035.NodeActiveTickProto.ATSymb"
     "ol\022\014\n\004name\030\002 \001(\t\022/\n\tlastPrice\030\003 \001(\0132\034.No"
     "deActiveTickProto.ATPrice\0220\n\nclosePrice\030"
-    "\004 \001(\0132\034.NodeActiveTickProto.ATPrice\022\024\n\014l"
-    "astDateTime\030\005 \001(\005\"Y\n\010ATSymbol\022\016\n\006symbol\030"
-    "\001 \001(\t\022\022\n\nsymbolType\030\002 \001(\005\022\024\n\014exchangeTyp"
-    "e\030\003 \001(\005\022\023\n\013countryType\030\004 \001(\005\"+\n\007ATPrice\022"
-    "\r\n\005price\030\001 \002(\001\022\021\n\tprecision\030\002 \002(\005\"\263\002\n\007AT"
-    "Quote\022-\n\006symbol\030\001 \002(\0132\035.NodeActiveTickPr"
-    "oto.ATSymbol\022.\n\010bidPrice\030\002 \002(\0132\034.NodeAct"
-    "iveTickProto.ATPrice\022.\n\010askPrice\030\003 \002(\0132\034"
-    ".NodeActiveTickProto.ATPrice\022\017\n\007bidSize\030"
-    "\004 \001(\005\022\017\n\007askSize\030\005 \001(\005\022\030\n\020quoteCondition"
-    "Id\030\006 \001(\005\022/\n\nserverTime\030\007 \001(\0132\033.NodeActiv"
-    "eTickProto.ATTime\022\025\n\rbidExchangeId\030\010 \001(\005"
-    "\022\025\n\raskExchangeId\030\t \001(\005\"\275\002\n\021ATBarHistory"
-    "Value\022*\n\004open\030\001 \001(\0132\034.NodeActiveTickProt"
-    "o.ATPrice\022*\n\004high\030\002 \001(\0132\034.NodeActiveTick"
-    "Proto.ATPrice\022)\n\003low\030\003 \001(\0132\034.NodeActiveT"
-    "ickProto.ATPrice\022+\n\005close\030\004 \001(\0132\034.NodeAc"
-    "tiveTickProto.ATPrice\022\016\n\006volume\030\005 \001(\003\022)\n"
-    "\004time\030\006 \001(\0132\033.NodeActiveTickProto.ATTime"
-    "\022-\n\006symbol\030\007 \001(\0132\035.NodeActiveTickProto.A"
-    "TSymbol\022\016\n\006status\030\010 \001(\t\"O\n\026ATBarHistoryD"
-    "bResponse\0225\n\005value\030\001 \003(\0132&.NodeActiveTic"
-    "kProto.ATBarHistoryValue", 3184);
+    "\004 \001(\0132\034.NodeActiveTickProto.ATPrice\0221\n\014l"
+    "astDateTime\030\005 \001(\0132\033.NodeActiveTickProto."
+    "ATTime\"Y\n\010ATSymbol\022\016\n\006symbol\030\001 \001(\t\022\022\n\nsy"
+    "mbolType\030\002 \001(\005\022\024\n\014exchangeType\030\003 \001(\005\022\023\n\013"
+    "countryType\030\004 \001(\005\"+\n\007ATPrice\022\r\n\005price\030\001 "
+    "\002(\001\022\021\n\tprecision\030\002 \002(\005\"\263\002\n\007ATQuote\022-\n\006sy"
+    "mbol\030\001 \002(\0132\035.NodeActiveTickProto.ATSymbo"
+    "l\022.\n\010bidPrice\030\002 \002(\0132\034.NodeActiveTickProt"
+    "o.ATPrice\022.\n\010askPrice\030\003 \002(\0132\034.NodeActive"
+    "TickProto.ATPrice\022\017\n\007bidSize\030\004 \001(\005\022\017\n\007as"
+    "kSize\030\005 \001(\005\022\030\n\020quoteConditionId\030\006 \001(\005\022/\n"
+    "\nserverTime\030\007 \001(\0132\033.NodeActiveTickProto."
+    "ATTime\022\025\n\rbidExchangeId\030\010 \001(\005\022\025\n\raskExch"
+    "angeId\030\t \001(\005\"\275\002\n\021ATBarHistoryValue\022*\n\004op"
+    "en\030\001 \001(\0132\034.NodeActiveTickProto.ATPrice\022*"
+    "\n\004high\030\002 \001(\0132\034.NodeActiveTickProto.ATPri"
+    "ce\022)\n\003low\030\003 \001(\0132\034.NodeActiveTickProto.AT"
+    "Price\022+\n\005close\030\004 \001(\0132\034.NodeActiveTickPro"
+    "to.ATPrice\022\016\n\006volume\030\005 \001(\003\022)\n\004time\030\006 \001(\013"
+    "2\033.NodeActiveTickProto.ATTime\022-\n\006symbol\030"
+    "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
+    "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
+    "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
+    "rHistoryValue", 3213);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -4887,6 +4888,7 @@ void ATMarketMoversItem::InitAsDefaultInstance() {
   symbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
   lastprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
   closeprice_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  lastdatetime_ = const_cast< ::NodeActiveTickProto::ATTime*>(&::NodeActiveTickProto::ATTime::default_instance());
 }
 
 ATMarketMoversItem::ATMarketMoversItem(const ATMarketMoversItem& from)
@@ -4903,7 +4905,7 @@ void ATMarketMoversItem::SharedCtor() {
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   lastprice_ = NULL;
   closeprice_ = NULL;
-  lastdatetime_ = 0;
+  lastdatetime_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4920,6 +4922,7 @@ void ATMarketMoversItem::SharedDtor() {
     delete symbol_;
     delete lastprice_;
     delete closeprice_;
+    delete lastdatetime_;
   }
 }
 
@@ -4960,7 +4963,9 @@ void ATMarketMoversItem::Clear() {
     if (has_closeprice()) {
       if (closeprice_ != NULL) closeprice_->::NodeActiveTickProto::ATPrice::Clear();
     }
-    lastdatetime_ = 0;
+    if (has_lastdatetime()) {
+      if (lastdatetime_ != NULL) lastdatetime_->::NodeActiveTickProto::ATTime::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -5027,18 +5032,16 @@ bool ATMarketMoversItem::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(40)) goto parse_lastDateTime;
+        if (input->ExpectTag(42)) goto parse_lastDateTime;
         break;
       }
 
-      // optional int32 lastDateTime = 5;
+      // optional .NodeActiveTickProto.ATTime lastDateTime = 5;
       case 5: {
-        if (tag == 40) {
+        if (tag == 42) {
          parse_lastDateTime:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &lastdatetime_)));
-          set_has_lastdatetime();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_lastdatetime()));
         } else {
           goto handle_unusual;
         }
@@ -5099,9 +5102,10 @@ void ATMarketMoversItem::SerializeWithCachedSizes(
       4, this->closeprice(), output);
   }
 
-  // optional int32 lastDateTime = 5;
+  // optional .NodeActiveTickProto.ATTime lastDateTime = 5;
   if (has_lastdatetime()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->lastdatetime(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->lastdatetime(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -5146,9 +5150,11 @@ void ATMarketMoversItem::SerializeWithCachedSizes(
         4, this->closeprice(), target);
   }
 
-  // optional int32 lastDateTime = 5;
+  // optional .NodeActiveTickProto.ATTime lastDateTime = 5;
   if (has_lastdatetime()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->lastdatetime(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->lastdatetime(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -5191,10 +5197,10 @@ int ATMarketMoversItem::ByteSize() const {
           this->closeprice());
     }
 
-    // optional int32 lastDateTime = 5;
+    // optional .NodeActiveTickProto.ATTime lastDateTime = 5;
     if (has_lastdatetime()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->lastdatetime());
     }
 
@@ -5238,7 +5244,7 @@ void ATMarketMoversItem::MergeFrom(const ATMarketMoversItem& from) {
       mutable_closeprice()->::NodeActiveTickProto::ATPrice::MergeFrom(from.closeprice());
     }
     if (from.has_lastdatetime()) {
-      set_lastdatetime(from.lastdatetime());
+      mutable_lastdatetime()->::NodeActiveTickProto::ATTime::MergeFrom(from.lastdatetime());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

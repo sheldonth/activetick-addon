@@ -305,7 +305,13 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
     }
     case StreamUpdateTopMarketMovers: {
       ATMARKET_MOVERS_STREAM_UPDATE movers = pUpdate->marketMovers;
-      
+      NodeActiveTickProto::ATMarketMoversStreamUpdate* msg = ProtobufHelper::atmarketmoversstreamupdate(movers);
+      std::strcpy(m->messageType, "ATMarketMoversStreamUpdate");
+      int size = msg->ByteSize();
+      void *buffer = new char[size];
+      msg->SerializeToArray(buffer, size);
+      m->data_sz = size;
+      m->c_str_data = buffer;
       break;
     }
     default: break;

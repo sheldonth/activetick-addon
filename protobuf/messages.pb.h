@@ -1457,12 +1457,14 @@ class ATMarketMoversItem : public ::google::protobuf::Message {
   inline ::NodeActiveTickProto::ATPrice* release_closeprice();
   inline void set_allocated_closeprice(::NodeActiveTickProto::ATPrice* closeprice);
 
-  // optional int32 lastDateTime = 5;
+  // optional .NodeActiveTickProto.ATTime lastDateTime = 5;
   inline bool has_lastdatetime() const;
   inline void clear_lastdatetime();
   static const int kLastDateTimeFieldNumber = 5;
-  inline ::google::protobuf::int32 lastdatetime() const;
-  inline void set_lastdatetime(::google::protobuf::int32 value);
+  inline const ::NodeActiveTickProto::ATTime& lastdatetime() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_lastdatetime();
+  inline ::NodeActiveTickProto::ATTime* release_lastdatetime();
+  inline void set_allocated_lastdatetime(::NodeActiveTickProto::ATTime* lastdatetime);
 
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATMarketMoversItem)
  private:
@@ -1485,7 +1487,7 @@ class ATMarketMoversItem : public ::google::protobuf::Message {
   ::std::string* name_;
   ::NodeActiveTickProto::ATPrice* lastprice_;
   ::NodeActiveTickProto::ATPrice* closeprice_;
-  ::google::protobuf::int32 lastdatetime_;
+  ::NodeActiveTickProto::ATTime* lastdatetime_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
@@ -4478,7 +4480,7 @@ inline void ATMarketMoversItem::set_allocated_closeprice(::NodeActiveTickProto::
   // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversItem.closePrice)
 }
 
-// optional int32 lastDateTime = 5;
+// optional .NodeActiveTickProto.ATTime lastDateTime = 5;
 inline bool ATMarketMoversItem::has_lastdatetime() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -4489,17 +4491,34 @@ inline void ATMarketMoversItem::clear_has_lastdatetime() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void ATMarketMoversItem::clear_lastdatetime() {
-  lastdatetime_ = 0;
+  if (lastdatetime_ != NULL) lastdatetime_->::NodeActiveTickProto::ATTime::Clear();
   clear_has_lastdatetime();
 }
-inline ::google::protobuf::int32 ATMarketMoversItem::lastdatetime() const {
+inline const ::NodeActiveTickProto::ATTime& ATMarketMoversItem::lastdatetime() const {
   // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATMarketMoversItem.lastDateTime)
+  return lastdatetime_ != NULL ? *lastdatetime_ : *default_instance_->lastdatetime_;
+}
+inline ::NodeActiveTickProto::ATTime* ATMarketMoversItem::mutable_lastdatetime() {
+  set_has_lastdatetime();
+  if (lastdatetime_ == NULL) lastdatetime_ = new ::NodeActiveTickProto::ATTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATMarketMoversItem.lastDateTime)
   return lastdatetime_;
 }
-inline void ATMarketMoversItem::set_lastdatetime(::google::protobuf::int32 value) {
-  set_has_lastdatetime();
-  lastdatetime_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATMarketMoversItem.lastDateTime)
+inline ::NodeActiveTickProto::ATTime* ATMarketMoversItem::release_lastdatetime() {
+  clear_has_lastdatetime();
+  ::NodeActiveTickProto::ATTime* temp = lastdatetime_;
+  lastdatetime_ = NULL;
+  return temp;
+}
+inline void ATMarketMoversItem::set_allocated_lastdatetime(::NodeActiveTickProto::ATTime* lastdatetime) {
+  delete lastdatetime_;
+  lastdatetime_ = lastdatetime;
+  if (lastdatetime) {
+    set_has_lastdatetime();
+  } else {
+    clear_has_lastdatetime();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATMarketMoversItem.lastDateTime)
 }
 
 // -------------------------------------------------------------------
