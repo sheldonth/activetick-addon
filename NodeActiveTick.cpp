@@ -407,7 +407,7 @@ void NodeActiveTick::DumpData(uv_async_t *handle) {
     const unsigned argc = 3;
     Local<Value> argv[argc] = {str, request_id, actualBuffer};
     func->Call(Null(isolate), argc, argv);
-    delete m;
+    // delete m;
   }
   // TODO: Memory Management
   // uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
