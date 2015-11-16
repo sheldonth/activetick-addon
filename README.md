@@ -9,10 +9,10 @@
 -- **Requires Node 0.12.7 - OS X or Ubuntu Linux**  
 
 ###### OS X
-- brew install protobuf
+- brew install protobuf pkg-config
 
 ###### UBUNTU LINUX
-- sudo apt-get install libprotobuf-dev protobuf-compiler
+- sudo apt-get install libprotobuf-dev protobuf-compiler pkg-config
 
 ###### To-Do
   - Support every API method
