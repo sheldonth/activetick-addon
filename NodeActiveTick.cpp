@@ -16,7 +16,7 @@
 
 using namespace v8;
 
-Persistent<Function> NodeActiveTick::constructor;
+// Persistent<Function> NodeActiveTick::constructor;
 NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 
 NodeActiveTick::NodeActiveTick() {
@@ -33,42 +33,55 @@ NodeActiveTick::~NodeActiveTick() {
   ATDestroySession(session_handle);
 }
 
-void NodeActiveTick::Init( Handle<Object> exports ) {
-    Isolate* isolate = Isolate::GetCurrent();
+// void NodeActiveTick::Init( Handle<Object> exports ) {
+NAN_MODULE_INIT(NodeActiveTick::Init) {
+    // Isolate* isolate = Isolate::GetCurrent();
 
-    Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-    tpl->SetClassName( String::NewFromUtf8(isolate, "NodeActiveTick"));
+    Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>(New);
+    // v8::Local<v8::FunctionTemplate> tpl = Nan::New<v8::FunctionTemplate>(New);
+    // tpl->SetClassName( String::NewFromUtf8(isolate, "NodeActiveTick"));
+    tpl->SetClassName(Nan::New("NodeActiveTick").ToLocalChecked());
     tpl->InstanceTemplate()->SetInternalFieldCount(1);
     
-    NODE_SET_PROTOTYPE_METHOD(tpl, "fireCallback", FireCallback);
-    NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
-    NODE_SET_PROTOTYPE_METHOD(tpl, "listRequest", ListRequest);
-    NODE_SET_PROTOTYPE_METHOD(tpl, "beginQuoteStream", BeginQuoteStream);
-    NODE_SET_PROTOTYPE_METHOD(tpl, "barHistoryDBRequest", BarHistoryDBRequest);
+    // NODE_SET_PROTOTYPE_METHOD(tpl, "fireCallback", FireCallback);
+    // NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
+    // NODE_SET_PROTOTYPE_METHOD(tpl, "listRequest", ListRequest);
+    // NODE_SET_PROTOTYPE_METHOD(tpl, "beginQuoteStream", BeginQuoteStream);
+    // NODE_SET_PROTOTYPE_METHOD(tpl, "barHistoryDBRequest", BarHistoryDBRequest);
+    // NODE_SET_PROTOTYPE_METHOD(tpl, "quoteDbRequest", QuoteDbRequest);
+    Nan::SetPrototypeMethod(tpl, "fireCallback", FireCallback);
+    Nan::SetPrototypeMethod(tpl, "connect", Connect);
+    Nan::SetPrototypeMethod(tpl, "listRequest", ListRequest);
+    Nan::SetPrototypeMethod(tpl, "beginQuoteStream", BeginQuoteStream);
+    Nan::SetPrototypeMethod(tpl, "barHistoryDBRequest", BarHistoryDBRequest);
+    Nan::SetPrototypeMethod(tpl, "quoteDbRequest", QuoteDbRequest);
     
-    constructor.Reset(isolate, tpl->GetFunction());
-    exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
+    // constructor.Reset(isolate, tpl->GetFunction());
+    constructor().Reset(Nan::GetFunction(tpl).ToLocalChecked());
+    // exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
+    Nan::Set(target, Nan::New("NodeActiveTick").ToLocalChecked(), Nan::GetFunction(tpl).ToLocalChecked());
 }
   
-void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
+// void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
+NAN_METHOD(NodeActiveTick::New) {
     Isolate* isolate = Isolate::GetCurrent();
     HandleScope scope(isolate);
 
-    if (args.IsConstructCall()) {
+    if (info.IsConstructCall()) {
         NodeActiveTick* obj = new NodeActiveTick();
         NodeActiveTick::s_pInstance = obj;
-        if (!args[0]->IsFunction()) {
+        if (!info[0]->IsFunction()) {
           isolate->ThrowException(Exception::TypeError(
                   String::NewFromUtf8(isolate, "NodeActiveTick requires a callback parameter in first argument position")));
         }
-        Local<Function> cb = Local<Function>::Cast(args[0]);
+        Local<Function> cb = Local<Function>::Cast(info[0]);
         obj->p_dataCallback.Reset(isolate, cb);
         
         // Experimental Nan::Callback structure
         obj->nan_cb = new Nan::Callback(cb);
         
-        obj->Wrap( args.This() );
-        args.GetReturnValue().Set( args.This() );
+        obj->Wrap(info.This());
+        info.GetReturnValue().Set(info.This());
   }
   else {
     isolate->ThrowException(Exception::TypeError(
@@ -76,10 +89,11 @@ void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
   }
 }
   
-void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
+// void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
+NAN_METHOD(NodeActiveTick::FireCallback) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
   
   // !!!!!!!!!!!!!!!!!!!!!!!!!  CALLING FUNCTION PASSING BUFFER IN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const char *data = "Hello World FOOBAR!";
@@ -113,24 +127,25 @@ void NodeActiveTick::FireCallback(const FunctionCallbackInfo<Value> &args) {
   func->Call(Null(isolate), argcc, argvv);
 }
 
-void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
+// void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
+NAN_METHOD(NodeActiveTick::Connect) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
   
   uint32_t api_port = 443;
   
-  Local<String> str_api_key = args[0]->ToString();
+  Local<String> str_api_key = info[0]->ToString();
   char cstr_api_key[str_api_key->Utf8Length()];
   str_api_key->WriteUtf8(cstr_api_key);
   
   ATGUID at_guid = Helper::StringToATGuid(cstr_api_key);
   
-  Local<String> str_user_id = args[1]->ToString();
+  Local<String> str_user_id = info[1]->ToString();
   char cstr_api_user_id[str_user_id->Utf8Length()];
   str_user_id->WriteUtf8(cstr_api_user_id);
   
-  Local<String> str_api_password = args[2]->ToString();
+  Local<String> str_api_password = info[2]->ToString();
   char cstr_api_password[str_api_password->Utf8Length()];
   str_api_password->WriteUtf8(cstr_api_password);
   
@@ -164,7 +179,7 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
                 ATSessionStatusChangeCallback,
                 true);
   // hack: connect messages are always ID 1
-  args.GetReturnValue().Set(Number::New(isolate, 1));
+  info.GetReturnValue().Set(Number::New(isolate, 1));
 }
 
 // (  const ATSYMBOL &  symbol,
@@ -189,44 +204,58 @@ void NodeActiveTick::Connect(const FunctionCallbackInfo<Value> &args) {
 // uint32_t   timeout 
 // )
 
-void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args)
-{
+// void NodeActiveTick::QuoteDbRequest(const FunctionCallbackInfo<Value> &args) {
+NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
   Isolate* isolate = Isolate::GetCurrent();
   if (isolate) {
     HandleScope scope(isolate);
-    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
-    Local<String> symbol_string = args[0]->ToString();
+    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+    Local<String> symbol_string = info[0]->ToString();
     char cstr_symbol[symbol_string->Utf8Length()];
     symbol_string->WriteUtf8(cstr_symbol);
     ATSYMBOL s = Helper::StringToSymbol(std::string(cstr_symbol));
-    Local<String> barhistorytype_string = args[1]->ToString();
+    
+  }
+}
+
+// void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args) {
+NAN_METHOD(NodeActiveTick::BarHistoryDBRequest) {
+  Isolate* isolate = Isolate::GetCurrent();
+  if (isolate) {
+    HandleScope scope(isolate);
+    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+    Local<String> symbol_string = info[0]->ToString();
+    char cstr_symbol[symbol_string->Utf8Length()];
+    symbol_string->WriteUtf8(cstr_symbol);
+    ATSYMBOL s = Helper::StringToSymbol(std::string(cstr_symbol));
+    Local<String> barhistorytype_string = info[1]->ToString();
     char cstr_barhistorytype[barhistorytype_string->Utf8Length()];
     barhistorytype_string->WriteUtf8(cstr_barhistorytype);
     ATBarHistoryType barHistoryType = obj->enumConverter->toATBarHistoryType(std::string(cstr_barhistorytype));
-    Local<Uint32> ca = args[2]->ToUint32();
+    Local<Uint32> ca = info[2]->ToUint32();
     uint32_t c = ca->Value();
     uint8_t compression = c;
-    Local<String> start_time = args[3]->ToString();
+    Local<String> start_time = info[3]->ToString();
     char cstr_start_time[start_time->Utf8Length()];
     start_time->WriteUtf8(cstr_start_time);
-    Local<String> end_time = args[4]->ToString();
+    Local<String> end_time = info[4]->ToString();
     char cstr_end_time[end_time->Utf8Length()];
     end_time->WriteUtf8(cstr_end_time);
     ATTIME sTime = Helper::StringToATTime(std::string(cstr_start_time));
     ATTIME eTime = Helper::StringToATTime(std::string(cstr_end_time));    
     s_pInstance->m_hLastRequest = obj->requestor->SendATBarHistoryDbRequest(s, barHistoryType, compression, sTime, eTime, DEFAULT_REQUEST_TIMEOUT);
-    args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
+    info.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
   }
 }
 
-void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
-{
+// void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args) {
+NAN_METHOD(NodeActiveTick::ListRequest) {
   Isolate* isolate = Isolate::GetCurrent();
   if (isolate) {
     HandleScope scope(isolate);
-    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
-    Local<String> list_type = args[0]->ToString();
-    Local<String> symbol = args[1]->ToString();
+    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+    Local<String> list_type = info[0]->ToString();
+    Local<String> symbol = info[1]->ToString();
     char cstr_list_type[list_type->Utf8Length()];
     char cstr_symbol[symbol->Utf8Length()];
     list_type->WriteUtf8(cstr_list_type);
@@ -236,23 +265,24 @@ void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args)
     std::string str_list_type = std::string(cstr_list_type);
     ATConstituentListType type = obj->enumConverter->toAtConstituentList(str_list_type);
     s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
-    args.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
+    info.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
   }
 }
 
-void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
+// void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
+NAN_METHOD(NodeActiveTick::BeginQuoteStream) {
   Isolate* isolate = Isolate::GetCurrent();
   uint64_t quote_stream_request;
   if (isolate) {
       HandleScope scope(isolate);
-      NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(args.Holder());
-      Local<String> str_symbols = (args[0]->ToString());
+      NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+      Local<String> str_symbols = (info[0]->ToString());
       char cstr_symbols[str_symbols->Utf8Length()];
       str_symbols->WriteUtf8(cstr_symbols);
       std::string symbols = std::string(cstr_symbols);
       std::vector<ATSYMBOL> v_symbols = Helper::StringToSymbols(symbols);
-      uint32_t symbol_count = args[1]->Uint32Value();      
-      Local<String> str_request_type = (args[2]->ToString());
+      uint32_t symbol_count = info[1]->Uint32Value();      
+      Local<String> str_request_type = (info[2]->ToString());
       char cstr_request_type[str_request_type->Utf8Length()];
       str_request_type->WriteUtf8(cstr_request_type);
       std::string request_type = std::string(cstr_request_type);
@@ -262,7 +292,7 @@ void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
   else {
     quote_stream_request = 0;
   }
-  args.GetReturnValue().Set(Number::New(isolate, quote_stream_request));
+  info.GetReturnValue().Set(Number::New(isolate, quote_stream_request));
 }
 
 
@@ -412,8 +442,6 @@ void NodeActiveTick::DumpData(uv_async_t *handle) {
   // TODO: Memory Management
   // uv_close((uv_handle_t*) &s_pInstance->handle, NULL);
 }
-
-
 
 
 

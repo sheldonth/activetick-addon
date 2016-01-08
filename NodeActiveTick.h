@@ -20,10 +20,13 @@ struct MessageStruct {
   char messageType[60];
 };
 
-class NodeActiveTick : public node::ObjectWrap {
+class NodeActiveTick : public Nan::ObjectWrap {
 public:
-    static void Init(Handle<Object> exports);
-    static void New (const FunctionCallbackInfo<Value> &args);
+  
+    // static void Init(Handle<Object> exports);
+    // static void New (const FunctionCallbackInfo<Value> &args);
+    static NAN_MODULE_INIT(Init);
+    
     Persistent<Function> p_dataCallback;
     uint64_t    session_handle;
     uint64_t    m_hLastRequest;
@@ -47,19 +50,31 @@ private:
     ~NodeActiveTick();
     
 private:
-    static Persistent<Function> constructor;
+    // static Persistent<Function> constructor;
+    static inline Nan::Persistent<v8::Function> & constructor() {
+        static Nan::Persistent<v8::Function> my_constructor;
+        return my_constructor;
+      }
     // Javascript Methods
-    static void FireCallback(
-                  const FunctionCallbackInfo<Value> &args);
-    static void Connect(
-                  const FunctionCallbackInfo<Value> &args);
-    static void ListRequest(
-                  const FunctionCallbackInfo<Value> &args);
-    static void BeginQuoteStream(
-                  const FunctionCallbackInfo<Value> &args);
-    static void BarHistoryDBRequest(
-                  const FunctionCallbackInfo<Value> &args);
-    
+    // static void FireCallback(
+    //               const FunctionCallbackInfo<Value> &args);
+    // static void Connect(
+    //               const FunctionCallbackInfo<Value> &args);
+    // static void ListRequest(
+    //               const FunctionCallbackInfo<Value> &args);
+    // static void BeginQuoteStream(
+    //               const FunctionCallbackInfo<Value> &args);
+    // static void BarHistoryDBRequest(
+    //               const FunctionCallbackInfo<Value> &args);
+    // static void QuoteDbRequest(
+    //               const FunctionCallbackInfo<Value> &args);
+    static NAN_METHOD(New);
+    static NAN_METHOD(FireCallback);
+    static NAN_METHOD(Connect);
+    static NAN_METHOD(ListRequest);
+    static NAN_METHOD(BeginQuoteStream);
+    static NAN_METHOD(BarHistoryDBRequest);
+    static NAN_METHOD(QuoteDbRequest);    
     // AT Callbacks
     static void ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate);
     static void ATSessionStatusChangeCallback(
