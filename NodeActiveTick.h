@@ -22,9 +22,6 @@ struct MessageStruct {
 
 class NodeActiveTick : public Nan::ObjectWrap {
 public:
-  
-    // static void Init(Handle<Object> exports);
-    // static void New (const FunctionCallbackInfo<Value> &args);
     static NAN_MODULE_INIT(Init);
     
     Persistent<Function> p_dataCallback;
@@ -37,8 +34,6 @@ public:
     wchar16_t   wchar_password[50];
     wchar16_t   wchar_api_token[100];
     
-    // std::vector<Local <Function> > stream_functions;
-    
     AtEnumConverter *enumConverter;
     Nan::Callback *nan_cb;
     uv_async_t handle;
@@ -50,31 +45,18 @@ private:
     ~NodeActiveTick();
     
 private:
-    // static Persistent<Function> constructor;
     static inline Nan::Persistent<v8::Function> & constructor() {
         static Nan::Persistent<v8::Function> my_constructor;
         return my_constructor;
       }
     // Javascript Methods
-    // static void FireCallback(
-    //               const FunctionCallbackInfo<Value> &args);
-    // static void Connect(
-    //               const FunctionCallbackInfo<Value> &args);
-    // static void ListRequest(
-    //               const FunctionCallbackInfo<Value> &args);
-    // static void BeginQuoteStream(
-    //               const FunctionCallbackInfo<Value> &args);
-    // static void BarHistoryDBRequest(
-    //               const FunctionCallbackInfo<Value> &args);
-    // static void QuoteDbRequest(
-    //               const FunctionCallbackInfo<Value> &args);
     static NAN_METHOD(New);
     static NAN_METHOD(FireCallback);
     static NAN_METHOD(Connect);
     static NAN_METHOD(ListRequest);
     static NAN_METHOD(BeginQuoteStream);
-    static NAN_METHOD(BarHistoryDBRequest);
-    static NAN_METHOD(QuoteDbRequest);    
+    static NAN_METHOD(BarHistoryDbRequest);
+    static NAN_METHOD(QuoteDbRequest);
     // AT Callbacks
     static void ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate);
     static void ATSessionStatusChangeCallback(

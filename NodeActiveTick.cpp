@@ -16,7 +16,6 @@
 
 using namespace v8;
 
-// Persistent<Function> NodeActiveTick::constructor;
 NodeActiveTick* NodeActiveTick::s_pInstance = NULL;
 
 NodeActiveTick::NodeActiveTick() {
@@ -33,7 +32,6 @@ NodeActiveTick::~NodeActiveTick() {
   ATDestroySession(session_handle);
 }
 
-// void NodeActiveTick::Init( Handle<Object> exports ) {
 NAN_MODULE_INIT(NodeActiveTick::Init) {
     // Isolate* isolate = Isolate::GetCurrent();
 
@@ -44,16 +42,11 @@ NAN_MODULE_INIT(NodeActiveTick::Init) {
     tpl->InstanceTemplate()->SetInternalFieldCount(1);
     
     // NODE_SET_PROTOTYPE_METHOD(tpl, "fireCallback", FireCallback);
-    // NODE_SET_PROTOTYPE_METHOD(tpl, "connect", Connect);
-    // NODE_SET_PROTOTYPE_METHOD(tpl, "listRequest", ListRequest);
-    // NODE_SET_PROTOTYPE_METHOD(tpl, "beginQuoteStream", BeginQuoteStream);
-    // NODE_SET_PROTOTYPE_METHOD(tpl, "barHistoryDBRequest", BarHistoryDBRequest);
-    // NODE_SET_PROTOTYPE_METHOD(tpl, "quoteDbRequest", QuoteDbRequest);
     Nan::SetPrototypeMethod(tpl, "fireCallback", FireCallback);
     Nan::SetPrototypeMethod(tpl, "connect", Connect);
     Nan::SetPrototypeMethod(tpl, "listRequest", ListRequest);
     Nan::SetPrototypeMethod(tpl, "beginQuoteStream", BeginQuoteStream);
-    Nan::SetPrototypeMethod(tpl, "barHistoryDBRequest", BarHistoryDBRequest);
+    Nan::SetPrototypeMethod(tpl, "barHistoryDbRequest", BarHistoryDbRequest);
     Nan::SetPrototypeMethod(tpl, "quoteDbRequest", QuoteDbRequest);
     
     // constructor.Reset(isolate, tpl->GetFunction());
@@ -61,8 +54,7 @@ NAN_MODULE_INIT(NodeActiveTick::Init) {
     // exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
     Nan::Set(target, Nan::New("NodeActiveTick").ToLocalChecked(), Nan::GetFunction(tpl).ToLocalChecked());
 }
-  
-// void NodeActiveTick::New( const FunctionCallbackInfo<Value> &args ) {
+
 NAN_METHOD(NodeActiveTick::New) {
     Isolate* isolate = Isolate::GetCurrent();
     HandleScope scope(isolate);
@@ -85,7 +77,7 @@ NAN_METHOD(NodeActiveTick::New) {
   }
   else {
     isolate->ThrowException(Exception::TypeError(
-            String::NewFromUtf8(isolate, "NodeActiveTick cannot be allocated without javascript new")));
+            String::NewFromUtf8(isolate, "NodeActiveTick cannot be allocated without javascript new keyword")));
   }
 }
   
@@ -204,22 +196,20 @@ NAN_METHOD(NodeActiveTick::Connect) {
 // uint32_t   timeout 
 // )
 
-// void NodeActiveTick::QuoteDbRequest(const FunctionCallbackInfo<Value> &args) {
 NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
-  Isolate* isolate = Isolate::GetCurrent();
-  if (isolate) {
-    HandleScope scope(isolate);
+  // Isolate* isolate = Isolate::GetCurrent();
+  // if (isolate) {
+    // HandleScope scope(isolate);
     NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
     Local<String> symbol_string = info[0]->ToString();
     char cstr_symbol[symbol_string->Utf8Length()];
     symbol_string->WriteUtf8(cstr_symbol);
     ATSYMBOL s = Helper::StringToSymbol(std::string(cstr_symbol));
-    
-  }
+    printf("Foo bar");
+  // }
 }
 
-// void NodeActiveTick::BarHistoryDBRequest(const FunctionCallbackInfo<Value> &args) {
-NAN_METHOD(NodeActiveTick::BarHistoryDBRequest) {
+NAN_METHOD(NodeActiveTick::BarHistoryDbRequest) {
   Isolate* isolate = Isolate::GetCurrent();
   if (isolate) {
     HandleScope scope(isolate);
@@ -248,7 +238,6 @@ NAN_METHOD(NodeActiveTick::BarHistoryDBRequest) {
   }
 }
 
-// void NodeActiveTick::ListRequest(const FunctionCallbackInfo<Value> &args) {
 NAN_METHOD(NodeActiveTick::ListRequest) {
   Isolate* isolate = Isolate::GetCurrent();
   if (isolate) {
@@ -269,7 +258,6 @@ NAN_METHOD(NodeActiveTick::ListRequest) {
   }
 }
 
-// void NodeActiveTick::BeginQuoteStream(const FunctionCallbackInfo<Value> &args) {
 NAN_METHOD(NodeActiveTick::BeginQuoteStream) {
   Isolate* isolate = Isolate::GetCurrent();
   uint64_t quote_stream_request;

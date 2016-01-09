@@ -19,6 +19,8 @@
     NodeActiveTick = require(release_path).NodeActiveTick;
   }
 
+  console.log(NodeActiveTick);
+
   async = require('async');
 
   _ = require('underscore');
@@ -42,6 +44,7 @@
       this.handleProtoMsg = __bind(this.handleProtoMsg, this);
       this.connect = __bind(this.connect, this);
       this.beginQuoteStream = __bind(this.beginQuoteStream, this);
+      this.quoteDBRequest = __bind(this.quoteDBRequest, this);
       this.barHistoryDBRequest = __bind(this.barHistoryDBRequest, this);
       ProtoBuf.loadProtoFile(path.join(__dirname, "../protobuf", "messages.proto"), (function(_this) {
         return function(err, builder) {
@@ -66,9 +69,17 @@
 
     ActiveTick.prototype.barHistoryDBRequest = function(symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) {
       var request_id;
-      request_id = this.api.barHistoryDBRequest(symbol, barhistorytype, intradayminutecompression, startime, endtime);
+      request_id = this.api.barHistoryDbRequest(symbol, barhistorytype, intradayminutecompression, startime, endtime);
       if (requestCb != null) {
         return this.callbacks[request_id] = requestCb;
+      }
+    };
+
+    ActiveTick.prototype.quoteDBRequest = function(symbol, requestCb) {
+      var request_id;
+      request_id = this.api.quoteDbRequest(symbol);
+      if (requestCb != null) {
+        return this.callbacks[request_id] = request;
       }
     };
 
@@ -100,6 +111,8 @@
 
     ActiveTick.prototype.connect = function(apiKey, username, password, cb) {
       var request_id;
+      console.log(this.api);
+      console.log(this.api.connect);
       request_id = this.api.connect(apiKey, username, password);
       return this.callbacks[request_id] = cb;
     };
