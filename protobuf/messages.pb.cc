@@ -68,6 +68,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ATBarHistoryDbResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATBarHistoryDbResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATQuoteDbResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATQuoteDbResponse_reflection_ = NULL;
 
 }  // namespace
 
@@ -383,6 +386,21 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATBarHistoryDbResponse));
+  ATQuoteDbResponse_descriptor_ = file->message_type(16);
+  static const int ATQuoteDbResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, atquotedbresponsetype_),
+  };
+  ATQuoteDbResponse_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATQuoteDbResponse_descriptor_,
+      ATQuoteDbResponse::default_instance_,
+      ATQuoteDbResponse_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATQuoteDbResponse));
 }
 
 namespace {
@@ -427,6 +445,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     ATBarHistoryValue_descriptor_, &ATBarHistoryValue::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATBarHistoryDbResponse_descriptor_, &ATBarHistoryDbResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATQuoteDbResponse_descriptor_, &ATQuoteDbResponse::default_instance());
 }
 
 }  // namespace
@@ -464,6 +484,8 @@ void protobuf_ShutdownFile_messages_2eproto() {
   delete ATBarHistoryValue_reflection_;
   delete ATBarHistoryDbResponse::default_instance_;
   delete ATBarHistoryDbResponse_reflection_;
+  delete ATQuoteDbResponse::default_instance_;
+  delete ATQuoteDbResponse_reflection_;
 }
 
 void protobuf_AddDesc_messages_2eproto() {
@@ -553,7 +575,8 @@ void protobuf_AddDesc_messages_2eproto() {
     "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
     "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
     "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
-    "rHistoryValue", 3213);
+    "rHistoryValue\"2\n\021ATQuoteDbResponse\022\035\n\025AT"
+    "QuoteDbResponseType\030\001 \002(\005", 3265);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -572,6 +595,7 @@ void protobuf_AddDesc_messages_2eproto() {
   ATQuote::default_instance_ = new ATQuote();
   ATBarHistoryValue::default_instance_ = new ATBarHistoryValue();
   ATBarHistoryDbResponse::default_instance_ = new ATBarHistoryDbResponse();
+  ATQuoteDbResponse::default_instance_ = new ATQuoteDbResponse();
   ATLoginResponse::default_instance_->InitAsDefaultInstance();
   ATConstituentResponse::default_instance_->InitAsDefaultInstance();
   ATQuoteStreamResponse::default_instance_->InitAsDefaultInstance();
@@ -588,6 +612,7 @@ void protobuf_AddDesc_messages_2eproto() {
   ATQuote::default_instance_->InitAsDefaultInstance();
   ATBarHistoryValue::default_instance_->InitAsDefaultInstance();
   ATBarHistoryDbResponse::default_instance_->InitAsDefaultInstance();
+  ATQuoteDbResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_messages_2eproto);
 }
 
@@ -7297,6 +7322,229 @@ void ATBarHistoryDbResponse::Swap(ATBarHistoryDbResponse* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ATBarHistoryDbResponse_descriptor_;
   metadata.reflection = ATBarHistoryDbResponse_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATQuoteDbResponse::kATQuoteDbResponseTypeFieldNumber;
+#endif  // !_MSC_VER
+
+ATQuoteDbResponse::ATQuoteDbResponse()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATQuoteDbResponse)
+}
+
+void ATQuoteDbResponse::InitAsDefaultInstance() {
+}
+
+ATQuoteDbResponse::ATQuoteDbResponse(const ATQuoteDbResponse& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATQuoteDbResponse)
+}
+
+void ATQuoteDbResponse::SharedCtor() {
+  _cached_size_ = 0;
+  atquotedbresponsetype_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATQuoteDbResponse::~ATQuoteDbResponse() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATQuoteDbResponse)
+  SharedDtor();
+}
+
+void ATQuoteDbResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void ATQuoteDbResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATQuoteDbResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteDbResponse_descriptor_;
+}
+
+const ATQuoteDbResponse& ATQuoteDbResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATQuoteDbResponse* ATQuoteDbResponse::default_instance_ = NULL;
+
+ATQuoteDbResponse* ATQuoteDbResponse::New() const {
+  return new ATQuoteDbResponse;
+}
+
+void ATQuoteDbResponse::Clear() {
+  atquotedbresponsetype_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATQuoteDbResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATQuoteDbResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 ATQuoteDbResponseType = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &atquotedbresponsetype_)));
+          set_has_atquotedbresponsetype();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATQuoteDbResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATQuoteDbResponse)
+  return false;
+#undef DO_
+}
+
+void ATQuoteDbResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATQuoteDbResponse)
+  // required int32 ATQuoteDbResponseType = 1;
+  if (has_atquotedbresponsetype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->atquotedbresponsetype(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATQuoteDbResponse)
+}
+
+::google::protobuf::uint8* ATQuoteDbResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATQuoteDbResponse)
+  // required int32 ATQuoteDbResponseType = 1;
+  if (has_atquotedbresponsetype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->atquotedbresponsetype(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATQuoteDbResponse)
+  return target;
+}
+
+int ATQuoteDbResponse::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required int32 ATQuoteDbResponseType = 1;
+    if (has_atquotedbresponsetype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->atquotedbresponsetype());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATQuoteDbResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATQuoteDbResponse* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATQuoteDbResponse*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATQuoteDbResponse::MergeFrom(const ATQuoteDbResponse& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_atquotedbresponsetype()) {
+      set_atquotedbresponsetype(from.atquotedbresponsetype());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATQuoteDbResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATQuoteDbResponse::CopyFrom(const ATQuoteDbResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATQuoteDbResponse::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void ATQuoteDbResponse::Swap(ATQuoteDbResponse* other) {
+  if (other != this) {
+    std::swap(atquotedbresponsetype_, other->atquotedbresponsetype_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATQuoteDbResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATQuoteDbResponse_descriptor_;
+  metadata.reflection = ATQuoteDbResponse_reflection_;
   return metadata;
 }
 

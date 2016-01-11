@@ -8,8 +8,6 @@ if debug_exists # prefer debug
 else
   {NodeActiveTick} = require(release_path)
 
-console.log NodeActiveTick
-
 async = require 'async'
 _ = require 'underscore'
 ProtoBuf = require 'protobufjs'
@@ -39,6 +37,7 @@ class ActiveTick extends EventEmitter
       @ATQuoteStreamTradeUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamTradeUpdate"
       @ATQuoteStreamQuoteUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamQuoteUpdate"
       @ATBarHistoryDbResponse = @messages_builder.build "NodeActiveTickProto.ATBarHistoryDbResponse"
+      @ATQuoteDbResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteDbResponse"
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
@@ -47,7 +46,7 @@ class ActiveTick extends EventEmitter
 
   quoteDBRequest: (symbol, requestCb) =>
     request_id = @api.quoteDbRequest symbol
-    @callbacks[request_id] = request if requestCb?
+    @callbacks[request_id] = requestCb if requestCb?
 
   beginQuoteStream: (symbols, ATStreamRequestTypeIndex, requestCb) =>
     if typeof symbols is 'object'
@@ -68,8 +67,6 @@ class ActiveTick extends EventEmitter
     @callbacks[request_id] = cb
   
   connect: (apiKey, username, password, cb) =>
-    console.log @api
-    console.log @api.connect
     request_id = @api.connect apiKey, username, password
     @callbacks[request_id] = cb
     
@@ -89,8 +86,8 @@ class ActiveTick extends EventEmitter
     else if msgType is 'ATQuoteStreamQuoteUpdate'
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
       @emit 'quote', msg
-    # else if msgType is 'ATQuoteDbResponse'
-      # msg = @ATQuoteDb
+    else if msgType is 'ATQuoteDbResponse'
+      msg = @ATQuoteDbResponse.decode msgData
     if (c = @callbacks[msgID])?
       c(msg)
 

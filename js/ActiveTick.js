@@ -19,8 +19,6 @@
     NodeActiveTick = require(release_path).NodeActiveTick;
   }
 
-  console.log(NodeActiveTick);
-
   async = require('async');
 
   _ = require('underscore');
@@ -79,7 +77,7 @@
       var request_id;
       request_id = this.api.quoteDbRequest(symbol);
       if (requestCb != null) {
-        return this.callbacks[request_id] = request;
+        return this.callbacks[request_id] = requestCb;
       }
     };
 
@@ -111,8 +109,6 @@
 
     ActiveTick.prototype.connect = function(apiKey, username, password, cb) {
       var request_id;
-      console.log(this.api);
-      console.log(this.api.connect);
       request_id = this.api.connect(apiKey, username, password);
       return this.callbacks[request_id] = cb;
     };

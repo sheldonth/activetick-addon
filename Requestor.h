@@ -29,4 +29,9 @@ private:
                                           LPATQUOTESTREAM_RESPONSE pResponse,
                                           uint32_t responseCount);
                                           
+  virtual void OnATQuoteDbResponse (  uint64_t origRequest,
+                                      ATQuoteDbResponseType responseType,
+                                      LPATQUOTEDB_RESPONSE pResponse,
+                                      uint32_t responseCount);
+
 };

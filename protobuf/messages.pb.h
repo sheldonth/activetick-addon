@@ -49,6 +49,7 @@ class ATPrice;
 class ATQuote;
 class ATBarHistoryValue;
 class ATBarHistoryDbResponse;
+class ATQuoteDbResponse;
 
 // ===================================================================
 
@@ -2112,6 +2113,85 @@ class ATBarHistoryDbResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ATBarHistoryDbResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteDbResponse : public ::google::protobuf::Message {
+ public:
+  ATQuoteDbResponse();
+  virtual ~ATQuoteDbResponse();
+
+  ATQuoteDbResponse(const ATQuoteDbResponse& from);
+
+  inline ATQuoteDbResponse& operator=(const ATQuoteDbResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteDbResponse& default_instance();
+
+  void Swap(ATQuoteDbResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteDbResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteDbResponse& from);
+  void MergeFrom(const ATQuoteDbResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 ATQuoteDbResponseType = 1;
+  inline bool has_atquotedbresponsetype() const;
+  inline void clear_atquotedbresponsetype();
+  static const int kATQuoteDbResponseTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 atquotedbresponsetype() const;
+  inline void set_atquotedbresponsetype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteDbResponse)
+ private:
+  inline void set_has_atquotedbresponsetype();
+  inline void clear_has_atquotedbresponsetype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 atquotedbresponsetype_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteDbResponse* default_instance_;
 };
 // ===================================================================
 
@@ -5395,6 +5475,34 @@ inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATBarHistory
 ATBarHistoryDbResponse::mutable_value() {
   // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATBarHistoryDbResponse.value)
   return &value_;
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteDbResponse
+
+// required int32 ATQuoteDbResponseType = 1;
+inline bool ATQuoteDbResponse::has_atquotedbresponsetype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteDbResponse::set_has_atquotedbresponsetype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteDbResponse::clear_has_atquotedbresponsetype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteDbResponse::clear_atquotedbresponsetype() {
+  atquotedbresponsetype_ = 0;
+  clear_has_atquotedbresponsetype();
+}
+inline ::google::protobuf::int32 ATQuoteDbResponse::atquotedbresponsetype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType)
+  return atquotedbresponsetype_;
+}
+inline void ATQuoteDbResponse::set_atquotedbresponsetype(::google::protobuf::int32 value) {
+  set_has_atquotedbresponsetype();
+  atquotedbresponsetype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType)
 }
 
 

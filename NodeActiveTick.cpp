@@ -197,16 +197,15 @@ NAN_METHOD(NodeActiveTick::Connect) {
 // )
 
 NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
-  // Isolate* isolate = Isolate::GetCurrent();
-  // if (isolate) {
-    // HandleScope scope(isolate);
-    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
-    Local<String> symbol_string = info[0]->ToString();
-    char cstr_symbol[symbol_string->Utf8Length()];
-    symbol_string->WriteUtf8(cstr_symbol);
-    ATSYMBOL s = Helper::StringToSymbol(std::string(cstr_symbol));
-    printf("Foo bar");
-  // }
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+  // Local<String> symbol_string = info[0]->ToString();
+  Nan::Utf8String ticker_string(info[0]->ToString());
+  std::string ticker = std::string(*ticker_string);
+  std::vector<ATSYMBOL> symbols = Helper::StringToSymbols(ticker);
+  std::vector<ATQuoteFieldType> fields;
+  fields.push_back(obj->enumConverter->toAtQuoteField("QuoteFieldSymbol"));
+  s_pInstance->m_hLastRequest = obj->requestor->SendATQuoteDbRequest(symbols.data(), symbols.size(), fields.data(), fields.size(), DEFAULT_REQUEST_TIMEOUT);
+  info.GetReturnValue().Set(Nan::New<Number>(s_pInstance->m_hLastRequest));
 }
 
 NAN_METHOD(NodeActiveTick::BarHistoryDbRequest) {

@@ -73,6 +73,9 @@
             console.log('quoteDBRequest callback');
             return console.log(quote);
           });
+          a.barHistoryDBRequest('FB', 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', function(result) {
+            return console.log('barhistory', result);
+          });
           return facebook = 'FB';
         });
       };

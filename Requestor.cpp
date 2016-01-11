@@ -8,6 +8,7 @@
 #include <Shared/ATServerAPIDefines.h>
 #include <ActiveTickServerAPI/ATQuoteStreamResponseParser.h>
 #include <ActiveTickServerAPI/ATBarHistoryDbResponseParser.h>
+#include <ActiveTickServerAPI/ATQuoteDbResponseParser.h>
 #include "NodeActiveTick.h"
 #include "protobuf/messages.pb.h"
 #include "import/atfeed-cppsdk/example/Helper.h"
@@ -22,10 +23,23 @@ Requestor::~Requestor() {
   
 }
 
+// ATQuoteDbResponseType responseType
+// QuoteDbResponseSuccess
+// QuoteDbResponseInvalidRequest
+// QuoteDbResponseDenied
+// QuoteDbResponseUnavailable
+void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
+                                      ATQuoteDbResponseType responseType,
+                                      LPATQUOTEDB_RESPONSE pResponse,
+                                      uint32_t responseCount ) {
+  ATQuoteDbResponseParser parser = ATQuoteDbResponseParser(pResponse, responseCount);
+  NodeActiveTickProto::ATQuoteDbResponse *quoteDbResponse = new NodeActiveTickProto::ATQuoteDbResponse();
+  quoteDbResponse->set_atquotedbresponsetype(ATQuoteDbResponseType);
+}
+
 void Requestor::OnATBarHistoryDbResponse (  uint64_t origRequest,
                                             ATBarHistoryResponseType responseType,
-                                            LPATBARHISTORY_RESPONSE pResponse)
-{
+                                            LPATBARHISTORY_RESPONSE pResponse) {
   ATBarHistoryDbResponseParser *parser = new ATBarHistoryDbResponseParser(pResponse);
   NodeActiveTickProto::ATBarHistoryDbResponse *dbResponse = new NodeActiveTickProto::ATBarHistoryDbResponse();
   if (parser->MoveToFirstRecord()) {
@@ -104,8 +118,7 @@ void Requestor::OnATConstituentListResponse(uint64_t origRequest, LPATSYMBOL pSy
 void Requestor::OnATQuoteStreamResponse (uint64_t origRequest,
                                         ATStreamResponseType responseType,
                                         LPATQUOTESTREAM_RESPONSE pResponse,
-                                        uint32_t responseCount)
-{ 
+                                        uint32_t responseCount) {
   NodeActiveTickProto::ATQuoteStreamResponse *msg = new NodeActiveTickProto::ATQuoteStreamResponse;
   ATQuoteStreamResponseParser parser = ATQuoteStreamResponseParser(pResponse);
   std::string response = ProtobufHelper::atresponsetype_string(responseType);

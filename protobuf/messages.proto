@@ -130,4 +130,8 @@ message ATBarHistoryDbResponse {
   repeated ATBarHistoryValue value = 1;
 }
 
+message ATQuoteDbResponse {
+  required int32 ATQuoteDbResponseType = 1;
+}
+
 
