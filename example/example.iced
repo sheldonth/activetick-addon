@@ -33,11 +33,10 @@ updateLogStatement = (tickers, lastTrades, lastQuotes) =>
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.api_key, config.username, config.password, defer(result)
-  a.quoteDBRequest 'FB', (quote) ->
+  a.quoteDBRequest 'AAPL', 'QuoteFieldSymbol,QuoteFieldOpenPrice,QuoteFieldPreviousClosePrice,QuoteFieldProfilePrimaryExchange', (quote) ->
     console.log 'quoteDBRequest callback'
     console.log quote
-  a.barHistoryDBRequest 'FB', 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', (result) ->
-    console.log 'barhistory', result
+    process.exit()
   # @last_trades = {}
   # @last_quotes = {}
   # a.on 'trade', (trade) =>

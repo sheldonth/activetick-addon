@@ -32,9 +32,31 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
                                       ATQuoteDbResponseType responseType,
                                       LPATQUOTEDB_RESPONSE pResponse,
                                       uint32_t responseCount ) {
-  ATQuoteDbResponseParser parser = ATQuoteDbResponseParser(pResponse, responseCount);
+  ATQuoteDbResponseParser *parser = new ATQuoteDbResponseParser(pResponse, responseCount);
   NodeActiveTickProto::ATQuoteDbResponse *quoteDbResponse = new NodeActiveTickProto::ATQuoteDbResponse();
-  quoteDbResponse->set_atquotedbresponsetype(ATQuoteDbResponseType);
+  if (NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType_IsValid(static_cast<int>(responseType))) // Sample of using native protobuf enums
+    quoteDbResponse->set_responsetype(NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType(static_cast<int>(responseType)));
+  if (parser->MoveToFirstResponse()) {
+    LPATSYMBOL currentSymbol = parser->GetSymbol();
+    ATSymbolStatus status = parser->GetSymbolStatus();
+    if (parser->MoveToFirstDataItem()) {
+      for (int32_t response_index = 0; response_index < parser->GetDataItemCount(); response_index++) {
+        ATQuoteFieldType fieldType = parser->GetDataItemQuoteFieldType();
+        parser->MoveToNextDataItem();
+      }
+    }
+  }
+  int bin_size = quoteDbResponse->ByteSize();
+  void *buffer = new char[bin_size];
+  quoteDbResponse->SerializeToArray(buffer, bin_size);
+  MessageStruct* m = new MessageStruct();
+  m->data_sz = bin_size;
+  m->c_str_data = buffer;
+  m->message_id = origRequest;
+  std::strcpy(m->messageType, "ATQuoteDbResponse");
+  (&NodeActiveTick::s_pInstance->handle)->data = m;
+  uv_async_send(&NodeActiveTick::s_pInstance->handle);
+  // delete parser;
 }
 
 void Requestor::OnATBarHistoryDbResponse (  uint64_t origRequest,

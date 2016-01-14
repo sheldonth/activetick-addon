@@ -202,8 +202,18 @@ NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
   Nan::Utf8String ticker_string(info[0]->ToString());
   std::string ticker = std::string(*ticker_string);
   std::vector<ATSYMBOL> symbols = Helper::StringToSymbols(ticker);
+  
+  Nan::Utf8String field_string(info[1]->ToString());
+  std::string field = std::string(*field_string);
   std::vector<ATQuoteFieldType> fields;
-  fields.push_back(obj->enumConverter->toAtQuoteField("QuoteFieldSymbol"));
+  std::size_t pos = 0;
+  std::size_t prevpos = 0;  
+  while((pos=field.find(",", pos)) != std::string::npos) {
+    std::string field = field.substr(prevpos, pos - prevpos);
+    fields.push_back(obj->enumConverter->toAtQuoteField(field));
+    ++pos;
+    prevpos = pos;              
+  }
   s_pInstance->m_hLastRequest = obj->requestor->SendATQuoteDbRequest(symbols.data(), symbols.size(), fields.data(), fields.size(), DEFAULT_REQUEST_TIMEOUT);
   info.GetReturnValue().Set(Nan::New<Number>(s_pInstance->m_hLastRequest));
 }

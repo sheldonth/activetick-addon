@@ -60,6 +60,7 @@
           _this.ATQuoteStreamTradeUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamTradeUpdate");
           _this.ATQuoteStreamQuoteUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamQuoteUpdate");
           _this.ATBarHistoryDbResponse = _this.messages_builder.build("NodeActiveTickProto.ATBarHistoryDbResponse");
+          _this.ATQuoteDbResponse = _this.messages_builder.build("NodeActiveTickProto.ATQuoteDbResponse");
           return readyCb();
         };
       })(this));
@@ -73,9 +74,9 @@
       }
     };
 
-    ActiveTick.prototype.quoteDBRequest = function(symbol, requestCb) {
+    ActiveTick.prototype.quoteDBRequest = function(symbol, fields, requestCb) {
       var request_id;
-      request_id = this.api.quoteDbRequest(symbol);
+      request_id = this.api.quoteDbRequest(symbol, fields);
       if (requestCb != null) {
         return this.callbacks[request_id] = requestCb;
       }
@@ -132,6 +133,8 @@
       } else if (msgType === 'ATQuoteStreamQuoteUpdate') {
         msg = this.ATQuoteStreamQuoteUpdate.decode(msgData);
         this.emit('quote', msg);
+      } else if (msgType === 'ATQuoteDbResponse') {
+        msg = this.ATQuoteDbResponse.decode(msgData);
       }
       if ((c = this.callbacks[msgID]) != null) {
         return c(msg);

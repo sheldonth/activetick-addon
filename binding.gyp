@@ -13,8 +13,8 @@
         './import/atfeed-cppsdk/include/',
         "<!(node -e \"require('nan')\")"
       ],
-      "cflags":  ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions -std=c++11 -Wno-c++11-extensions'],
-      "cflags_cc": ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions -std=c++11 -Wno-c++11-extensions'],
+      "cflags":  ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions -std=c++11 -Wno-c++11-extensions -headerpad_max_install_names'],
+      "cflags_cc": ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions -std=c++11 -Wno-c++11-extensions -headerpad_max_install_names'],
       'cflags!': [ '-fno-rtti' ],
       'cflags_cc!': [ '-fno-rtti' ],
       'conditions': [

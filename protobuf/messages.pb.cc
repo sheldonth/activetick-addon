@@ -68,9 +68,20 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ATBarHistoryDbResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATBarHistoryDbResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ATQuoteDbResponseSymbolFieldData_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATQuoteDbResponseSymbolFieldData_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* ATQuoteDbResponseData_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ATQuoteDbResponseData_reflection_ = NULL;
 const ::google::protobuf::Descriptor* ATQuoteDbResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ATQuoteDbResponse_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponse_ATQuoteDbResponseType_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* ATSymbolStatus_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* ATQuoteFieldType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -386,9 +397,47 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATBarHistoryDbResponse));
-  ATQuoteDbResponse_descriptor_ = file->message_type(16);
-  static const int ATQuoteDbResponse_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, atquotedbresponsetype_),
+  ATQuoteDbResponseSymbolFieldData_descriptor_ = file->message_type(16);
+  static const int ATQuoteDbResponseSymbolFieldData_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, fieldtype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, fieldstatus_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datatype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, data_),
+  };
+  ATQuoteDbResponseSymbolFieldData_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATQuoteDbResponseSymbolFieldData_descriptor_,
+      ATQuoteDbResponseSymbolFieldData::default_instance_,
+      ATQuoteDbResponseSymbolFieldData_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATQuoteDbResponseSymbolFieldData));
+  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor_ = ATQuoteDbResponseSymbolFieldData_descriptor_->enum_type(0);
+  ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor_ = ATQuoteDbResponseSymbolFieldData_descriptor_->enum_type(1);
+  ATQuoteDbResponseData_descriptor_ = file->message_type(17);
+  static const int ATQuoteDbResponseData_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseData, symbolstatus_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseData, symbol_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseData, symbolfielddata_),
+  };
+  ATQuoteDbResponseData_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ATQuoteDbResponseData_descriptor_,
+      ATQuoteDbResponseData::default_instance_,
+      ATQuoteDbResponseData_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseData, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseData, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ATQuoteDbResponseData));
+  ATQuoteDbResponse_descriptor_ = file->message_type(18);
+  static const int ATQuoteDbResponse_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, responsetype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, datums_),
   };
   ATQuoteDbResponse_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -401,6 +450,9 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATQuoteDbResponse));
+  ATQuoteDbResponse_ATQuoteDbResponseType_descriptor_ = ATQuoteDbResponse_descriptor_->enum_type(0);
+  ATSymbolStatus_descriptor_ = file->enum_type(0);
+  ATQuoteFieldType_descriptor_ = file->enum_type(1);
 }
 
 namespace {
@@ -446,6 +498,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATBarHistoryDbResponse_descriptor_, &ATBarHistoryDbResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATQuoteDbResponseSymbolFieldData_descriptor_, &ATQuoteDbResponseSymbolFieldData::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ATQuoteDbResponseData_descriptor_, &ATQuoteDbResponseData::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ATQuoteDbResponse_descriptor_, &ATQuoteDbResponse::default_instance());
 }
 
@@ -484,6 +540,10 @@ void protobuf_ShutdownFile_messages_2eproto() {
   delete ATBarHistoryValue_reflection_;
   delete ATBarHistoryDbResponse::default_instance_;
   delete ATBarHistoryDbResponse_reflection_;
+  delete ATQuoteDbResponseSymbolFieldData::default_instance_;
+  delete ATQuoteDbResponseSymbolFieldData_reflection_;
+  delete ATQuoteDbResponseData::default_instance_;
+  delete ATQuoteDbResponseData_reflection_;
   delete ATQuoteDbResponse::default_instance_;
   delete ATQuoteDbResponse_reflection_;
 }
@@ -575,8 +635,505 @@ void protobuf_AddDesc_messages_2eproto() {
     "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
     "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
     "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
-    "rHistoryValue\"2\n\021ATQuoteDbResponse\022\035\n\025AT"
-    "QuoteDbResponseType\030\001 \002(\005", 3265);
+    "rHistoryValue\"\341\004\n ATQuoteDbResponseSymbo"
+    "lFieldData\0228\n\tfieldType\030\001 \001(\0162%.NodeActi"
+    "veTickProto.ATQuoteFieldType\022X\n\013fieldSta"
+    "tus\030\002 \001(\0162C.NodeActiveTickProto.ATQuoteD"
+    "bResponseSymbolFieldData.ATFieldStatus\022R"
+    "\n\010dataType\030\003 \001(\0162@.NodeActiveTickProto.A"
+    "TQuoteDbResponseSymbolFieldData.ATDataTy"
+    "pe\022\014\n\004data\030\004 \001(\t\"q\n\rATFieldStatus\022\026\n\022Fie"
+    "ldStatusSuccess\020\001\022\026\n\022FieldStatusInvalid\020"
+    "\002\022\032\n\026FieldStatusUnavailable\020\003\022\024\n\020FieldSt"
+    "atusDenie\020\004\"\323\001\n\nATDataType\022\014\n\010DataByte\020\001"
+    "\022\021\n\rDataByteArray\020\002\022\022\n\016DataUInteger32\020\003\022"
+    "\022\n\016DataUInteger64\020\004\022\021\n\rDataInteger32\020\005\022\021"
+    "\n\rDataInteger64\020\006\022\r\n\tDataPrice\020\007\022\016\n\nData"
+    "String\020\010\022\025\n\021DataUnicodeString\020\t\022\020\n\014DataD"
+    "ateTime\020\n\022\016\n\nDataDouble\020\013\"\321\001\n\025ATQuoteDbR"
+    "esponseData\0229\n\014symbolStatus\030\001 \001(\0162#.Node"
+    "ActiveTickProto.ATSymbolStatus\022-\n\006symbol"
+    "\030\002 \001(\0132\035.NodeActiveTickProto.ATSymbol\022N\n"
+    "\017symbolFieldData\030\003 \003(\01325.NodeActiveTickP"
+    "roto.ATQuoteDbResponseSymbolFieldData\"\267\002"
+    "\n\021ATQuoteDbResponse\022R\n\014responseType\030\001 \001("
+    "\0162<.NodeActiveTickProto.ATQuoteDbRespons"
+    "e.ATQuoteDbResponseType\022:\n\006datums\030\002 \003(\0132"
+    "*.NodeActiveTickProto.ATQuoteDbResponseD"
+    "ata\"\221\001\n\025ATQuoteDbResponseType\022\032\n\026QuoteDb"
+    "ResponseSuccess\020\001\022!\n\035QuoteDbResponseInva"
+    "lidRequest\020\002\022\031\n\025QuoteDbResponseDenied\020\003\022"
+    "\036\n\032QuoteDbResponseUnavailable\020\004*}\n\016ATSym"
+    "bolStatus\022\027\n\023SymbolStatusSuccess\020\001\022\027\n\023Sy"
+    "mbolStatusInvalid\020\002\022\033\n\027SymbolStatusUnava"
+    "ilable\020\003\022\034\n\030SymbolStatusNoPermission\020\004*\347"
+    "\221\001\n\020ATQuoteFieldType\022\024\n\020QuoteFieldSymbol"
+    "\020\001\022\027\n\023QuoteFieldOpenPrice\020\002\022 \n\034QuoteFiel"
+    "dPreviousClosePrice\020\003\022\030\n\024QuoteFieldClose"
+    "Price\020\004\022\027\n\023QuoteFieldLastPrice\020\005\022\026\n\022Quot"
+    "eFieldBidPrice\020\006\022\026\n\022QuoteFieldAskPrice\020\007"
+    "\022\027\n\023QuoteFieldHighPrice\020\010\022\026\n\022QuoteFieldL"
+    "owPrice\020\t\022\032\n\026QuoteFieldDayHighPrice\020\n\022\031\n"
+    "\025QuoteFieldDayLowPrice\020\013\022 \n\034QuoteFieldPr"
+    "eMarketOpenPrice\020\014\022$\n QuoteFieldExtended"
+    "HoursLastPrice\020\r\022#\n\037QuoteFieldAfterMarke"
+    "tClosePrice\020\016\022\031\n\025QuoteFieldBidExchange\020\017"
+    "\022\031\n\025QuoteFieldAskExchange\020\020\022\032\n\026QuoteFiel"
+    "dLastExchange\020\021\022\033\n\027QuoteFieldLastConditi"
+    "on\020\022\022\034\n\030QuoteFieldQuoteCondition\020\023\022\037\n\033Qu"
+    "oteFieldLastTradeDateTime\020\024\022\037\n\033QuoteFiel"
+    "dLastQuoteDateTime\020\025\022\035\n\031QuoteFieldDayHig"
+    "hDateTime\020\026\022\034\n\030QuoteFieldDayLowDateTime\020"
+    "\027\022\026\n\022QuoteFieldLastSize\020\030\022\025\n\021QuoteFieldB"
+    "idSize\020\031\022\025\n\021QuoteFieldAskSize\020\032\022\024\n\020Quote"
+    "FieldVolume\020\033\022\035\n\031QuoteFieldPreMarketVolu"
+    "me\020\034\022\037\n\033QuoteFieldAfterMarketVolume\020\035\022\030\n"
+    "\024QuoteFieldTradeCount\020\036\022!\n\035QuoteFieldPre"
+    "MarketTradeCount\020\037\022#\n\037QuoteFieldAfterMar"
+    "ketTradeCount\020 \022\036\n\032QuoteFieldProfileShor"
+    "tName\020!\022$\n QuoteFieldProfilePrimaryExcha"
+    "nge\020\"\022\035\n\031QuoteFieldProfileLongName\020#\022\033\n\027"
+    "QuoteFieldProfileSector\020$\022\035\n\031QuoteFieldP"
+    "rofileIndustry\020%\022 \n\034QuoteFieldOptionOpen"
+    "Interest\020d\022\037\n\033QuoteFieldOptionStrikePric"
+    "e\020e\022>\n9QuoteFieldIncomeStatementBasicEPS"
+    "FromContinuingOperations\020\310\001\022@\n;QuoteFiel"
+    "dIncomeStatementBasicEPSFromDiscontinued"
+    "Operations\020\311\001\0229\n4QuoteFieldIncomeStateme"
+    "ntBasicEPSFromTotalOperations\020\312\001\022=\n8Quot"
+    "eFieldIncomeStatementBasicEPSFromExtraor"
+    "dinaryIncome\020\313\001\022E\n@QuoteFieldIncomeState"
+    "mentBasicEPSFromCumEffectOfAccountingCha"
+    "nge\020\314\001\0224\n/QuoteFieldIncomeStatementBasic"
+    "EPSFromOtherGains\020\315\001\022+\n&QuoteFieldIncome"
+    "StatementBasicEPSTotal\020\316\001\022>\n9QuoteFieldI"
+    "ncomeStatementBasicNormalizedNetIncomePe"
+    "rShare\020\317\001\022@\n;QuoteFieldIncomeStatementDi"
+    "lutedEPSFromContinuingOperations\020\320\001\022B\n=Q"
+    "uoteFieldIncomeStatementDilutedEPSFromDi"
+    "scontinuedOperations\020\321\001\022;\n6QuoteFieldInc"
+    "omeStatementDilutedEPSFromTotalOperation"
+    "s\020\322\001\022\?\n:QuoteFieldIncomeStatementDiluted"
+    "EPSFromExtraordinaryIncome\020\323\001\0226\n1QuoteFi"
+    "eldIncomeStatementDilutedEPSFromOtherGai"
+    "ns\020\324\001\022-\n(QuoteFieldIncomeStatementDilute"
+    "dEPSTotal\020\325\001\022@\n;QuoteFieldIncomeStatemen"
+    "tDilutedNormalizedNetIncomePerShare\020\326\001\0223"
+    "\n.QuoteFieldIncomeStatementDividendsPaid"
+    "PerShare\020\327\001\0227\n2QuoteFieldIncomeStatement"
+    "IncomeAcquiredInProcessRD\020\330\001\0221\n,QuoteFie"
+    "ldIncomeStatementOtherSpecialCharges\020\331\001\022"
+    ")\n$QuoteFieldIncomeStatementIncomeTaxes\020"
+    "\332\001\022.\n)QuoteFieldIncomeStatementMinorityI"
+    "nterest\020\333\001\022\?\n:QuoteFieldIncomeStatementN"
+    "etIncomeFromContinuingOperations\020\334\001\022A\n<Q"
+    "uoteFieldIncomeStatementNetIncomeFromDis"
+    "continuedOperations\020\335\001\022:\n5QuoteFieldInco"
+    "meStatementNetIncomeFromTotalOperations\020"
+    "\336\001\022;\n6QuoteFieldIncomeStatementIncomeFro"
+    "mTaxLossCarryforward\020\337\001\022.\n)QuoteFieldInc"
+    "omeStatementOtherGainsLosses\020\340\001\022,\n\'Quote"
+    "FieldIncomeStatementTotalNetIncome\020\341\001\022.\n"
+    ")QuoteFieldIncomeStatementNormalizedInco"
+    "me\020\342\001\0229\n4QuoteFieldIncomeStatementNetInc"
+    "omeAvailableForCommon\020\343\001\0220\n+QuoteFieldIn"
+    "comeStatementPreferredDividends\020\344\001\0226\n1Qu"
+    "oteFieldIncomeStatementStandardOperating"
+    "Revenue\020\345\001\0222\n-QuoteFieldIncomeStatementS"
+    "tandardTotalRevenue\020\346\001\0229\n4QuoteFieldInco"
+    "meStatementStandardAdjustmentToRevenue\020\347"
+    "\001\0221\n,QuoteFieldIncomeStatementStandardCo"
+    "stOfSales\020\350\001\022A\n<QuoteFieldIncomeStatemen"
+    "tStandardCostOfSalesWithDepreciation\020\351\001\022"
+    "1\n,QuoteFieldIncomeStatementStandardGros"
+    "sMargin\020\352\001\022:\n5QuoteFieldIncomeStatementS"
+    "tandardGrossOperatingProfit\020\353\001\022<\n7QuoteF"
+    "ieldIncomeStatementStandardResearchAndDe"
+    "velopment\020\354\001\022C\n>QuoteFieldIncomeStatemen"
+    "tStandardSellingGeneralAndAdminExpense\020\355"
+    "\001\0221\n,QuoteFieldIncomeStatementStandardAd"
+    "vertising\020\356\001\0225\n0QuoteFieldIncomeStatemen"
+    "tStandardOperatingProfit\020\357\001\022G\nBQuoteFiel"
+    "dIncomeStatementStandardOperatingProfitB"
+    "eforeDepreciation\020\360\001\0222\n-QuoteFieldIncome"
+    "StatementStandardDepreciation\020\361\001\022>\n9Quot"
+    "eFieldIncomeStatementStandardDepreciatio"
+    "nUnreconciled\020\362\001\0222\n-QuoteFieldIncomeStat"
+    "ementStandardAmortization\020\363\001\022\?\n:QuoteFie"
+    "ldIncomeStatementStandardAmortizationOfI"
+    "ntangibles\020\364\001\022F\nAQuoteFieldIncomeStateme"
+    "ntStandardOperatingIncomeAfterDepreciati"
+    "on\020\365\001\0224\n/QuoteFieldIncomeStatementStanda"
+    "rdInterestIncome\020\366\001\022@\n;QuoteFieldIncomeS"
+    "tatementStandardEarningsFromEquityIntere"
+    "st\020\367\001\0224\n/QuoteFieldIncomeStatementStanda"
+    "rdOtherIncomeNet\020\370\001\022@\n;QuoteFieldIncomeS"
+    "tatementStandardInterestRestructuringAnd"
+    "MA\020\371\001\022H\nCQuoteFieldIncomeStatementStanda"
+    "rdTotalIncomeAvailForInterestExpense\020\372\001\022"
+    "5\n0QuoteFieldIncomeStatementStandardInte"
+    "restExpense\020\373\001\0225\n0QuoteFieldIncomeStatem"
+    "entStandardIncomeBeforeTax\020\374\001\022J\nEQuoteFi"
+    "eldIncomeStatementStandardPreferredSecur"
+    "itiesOfSubsidiaryTrust\020\375\001\022A\n<QuoteFieldI"
+    "ncomeStatementStandardExtraordinaryIncom"
+    "eOrLosses\020\376\001\022H\nCQuoteFieldIncomeStatemen"
+    "tStandardIncomeFromCumEffectOfAccountCha"
+    "nge\020\377\001\0221\n,QuoteFieldIncomeStatementStand"
+    "ardExciseTaxes\020\200\002\022,\n\'QuoteFieldIncomeSta"
+    "tementFinancialLoans\020\201\002\022;\n6QuoteFieldInc"
+    "omeStatementFinancialInvestmentSecuritie"
+    "s\020\202\002\022;\n6QuoteFieldIncomeStatementFinanci"
+    "alLeaseFinancingIncome\020\203\002\022:\n5QuoteFieldI"
+    "ncomeStatementFinancialOtherInterestInco"
+    "me\020\204\002\022<\n7QuoteFieldIncomeStatementFinanc"
+    "ialFedFundsSoldPurchased\020\205\002\022>\n9QuoteFiel"
+    "dIncomeStatementFinancialInterestBearing"
+    "Deposits\020\206\002\0229\n4QuoteFieldIncomeStatement"
+    "FinancialLoansHeldForResale\020\207\002\022\?\n:QuoteF"
+    "ieldIncomeStatementFinancialTradingAccou"
+    "ntSecurities\020\210\002\0229\n4QuoteFieldIncomeState"
+    "mentFinancialTimeDepositsPlaced\020\211\002\022B\n=Qu"
+    "oteFieldIncomeStatementFinancialOtherMon"
+    "eyMarketInvestments\020\212\002\022B\n=QuoteFieldInco"
+    "meStatementFinancialTotalMoneyMarketInve"
+    "stments\020\213\002\022:\n5QuoteFieldIncomeStatementF"
+    "inancialTotalInterestIncome\020\214\002\022/\n*QuoteF"
+    "ieldIncomeStatementFinancialDeposits\020\215\002\022"
+    "\?\n:QuoteFieldIncomeStatementFinancialFed"
+    "FundsPurchasedSecSold\020\216\002\022B\n=QuoteFieldIn"
+    "comeStatementFinancialCapitalizedLeaseOb"
+    "ligations\020\217\002\022;\n6QuoteFieldIncomeStatemen"
+    "tFinancialOtherInterestExpense\020\220\002\022;\n6Quo"
+    "teFieldIncomeStatementFinancialTotalInte"
+    "restExpense\020\221\002\022\?\n:QuoteFieldIncomeStatem"
+    "entFinancialNetInterestIncomeExpense\020\222\002\022"
+    ";\n6QuoteFieldIncomeStatementFinancialPro"
+    "visionForLoanLoss\020\223\002\022=\n8QuoteFieldIncome"
+    "StatementFinancialTrustFeesByCommissions"
+    "\020\224\002\022E\n@QuoteFieldIncomeStatementFinancia"
+    "lServiceChargeOnDepositAccounts\020\225\002\022:\n5Qu"
+    "oteFieldIncomeStatementFinancialOtherSer"
+    "viceCharges\020\226\002\022;\n6QuoteFieldIncomeStatem"
+    "entFinancialSecurityTransactions\020\227\002\0225\n0Q"
+    "uoteFieldIncomeStatementFinancialPremium"
+    "sEarned\020\230\002\022>\n9QuoteFieldIncomeStatementF"
+    "inancialNetRealizedCapitalGains\020\231\002\022>\n9Qu"
+    "oteFieldIncomeStatementFinancialInvestme"
+    "ntBankingProfit\020\232\002\022=\n8QuoteFieldIncomeSt"
+    "atementFinancialOtherNonInterestIncome\020\233"
+    "\002\022=\n8QuoteFieldIncomeStatementFinancialT"
+    "otalNonInterestIncome\020\234\002\022B\n=QuoteFieldIn"
+    "comeStatementFinancialSalariesAndEmploye"
+    "eBenefits\020\235\002\022:\n5QuoteFieldIncomeStatemen"
+    "tFinancialNetOccupancyExpense\020\236\002\022\?\n:Quot"
+    "eFieldIncomeStatementFinancialPromotions"
+    "AndAdvertising\020\237\002\022>\n9QuoteFieldIncomeSta"
+    "tementFinancialPropLiabInsuranceClaims\020\240"
+    "\002\022=\n8QuoteFieldIncomeStatementFinancialP"
+    "olicyAcquisitionCosts\020\241\002\022<\n7QuoteFieldIn"
+    "comeStatementFinancialAmortDefPolicyAcqC"
+    "ost\020\242\002\022\?\n:QuoteFieldIncomeStatementFinan"
+    "cialCurrentAndFutureBenefits\020\243\002\022>\n9Quote"
+    "FieldIncomeStatementFinancialOtherNonInt"
+    "erestExpense\020\244\002\022>\n9QuoteFieldIncomeState"
+    "mentFinancialTotalNonInterestExpense\020\245\002\022"
+    "7\n2QuoteFieldIncomeStatementFinancialPre"
+    "miumTaxCredit\020\246\002\022\?\n:QuoteFieldIncomeStat"
+    "ementFinancialIncomeRestructuringAndMA\020\247"
+    "\002\022;\n6QuoteFieldIncomeStatementFinancialS"
+    "pecialIncomeCharges\020\250\002\022@\n;QuoteFieldInco"
+    "meStatementFinancialExtraordinaryIncomeL"
+    "osses\020\251\002\022C\n>QuoteFieldIncomeStatementFin"
+    "ancialIncomeFromCumEffectOfAcctChg\020\252\002\022\"\n"
+    "\035QuoteFieldIncomeStatementDate\020\253\002\0220\n+Quo"
+    "teFieldBalanceSheetsAssetsRestrictedCash"
+    "\020\364\003\0221\n,QuoteFieldBalanceSheetsAssetsOthe"
+    "rReceivable\020\365\003\022-\n(QuoteFieldBalanceSheet"
+    "sAssetsTotalAssets\020\366\003\0224\n/QuoteFieldBalan"
+    "ceSheetsLiabilitiesShortTermDebt\020\367\003\0223\n.Q"
+    "uoteFieldBalanceSheetsLiabilitiesLongTer"
+    "mDebt\020\370\003\022>\n9QuoteFieldBalanceSheetsLiabi"
+    "litiesCapitalLeaseObligations\020\371\003\0227\n2Quot"
+    "eFieldBalanceSheetsLiabilitiesMinorityIn"
+    "terest\020\372\003\0227\n2QuoteFieldBalanceSheetsLiab"
+    "ilitiesTotalLiabilities\020\373\003\022E\n@QuoteField"
+    "BalanceSheetsShareDataSharesOutstandingC"
+    "ommonClassOnly\020\374\003\0224\n/QuoteFieldBalanceSh"
+    "eetsShareDataPreferredShares\020\375\003\0228\n3Quote"
+    "FieldBalanceSheetsShareDataTotalOrdinary"
+    "Shares\020\376\003\022A\n<QuoteFieldBalanceSheetsShar"
+    "eDataTotalCommonSharesOutstanding\020\377\003\0223\n."
+    "QuoteFieldBalanceSheetsShareDataTreasury"
+    "Shares\020\200\004\0226\n1QuoteFieldBalanceSheetsEqui"
+    "tyPreferredStockEquity\020\201\004\0223\n.QuoteFieldB"
+    "alanceSheetsEquityCommonStockEquity\020\202\004\022+"
+    "\n&QuoteFieldBalanceSheetsEquityCommonPar"
+    "\020\203\004\0229\n4QuoteFieldBalanceSheetsEquityAddi"
+    "tionalPaidInCapital\020\204\004\022A\n<QuoteFieldBala"
+    "nceSheetsEquityCumulativeTranslationAdju"
+    "stment\020\205\004\0222\n-QuoteFieldBalanceSheetsEqui"
+    "tyRetainedEarnings\020\206\004\022/\n*QuoteFieldBalan"
+    "ceSheetsEquityTreasuryStock\020\207\004\0228\n3QuoteF"
+    "ieldBalanceSheetsEquityOtherEquityAdjust"
+    "ments\020\210\004\022-\n(QuoteFieldBalanceSheetsEquit"
+    "yTotalEquity\020\211\004\0225\n0QuoteFieldBalanceShee"
+    "tsEquityTotalCapitalization\020\212\004\022@\n;QuoteF"
+    "ieldBalanceSheetsEquityTotalLiabilitiesA"
+    "ndStockEquity\020\213\004\022-\n(QuoteFieldBalanceShe"
+    "etsNumberOfEmployees\020\214\004\0225\n0QuoteFieldBal"
+    "anceSheetsNumberOfPartTimeEmployees\020\215\004\022<"
+    "\n7QuoteFieldBalanceSheetsStandardAssetsC"
+    "ashAndEquivalents\020\216\004\022>\n9QuoteFieldBalanc"
+    "eSheetsStandardAssetsMarketableSecuritie"
+    "s\020\217\004\022<\n7QuoteFieldBalanceSheetsStandardA"
+    "ssetsAccountsReceivable\020\220\004\0229\n4QuoteField"
+    "BalanceSheetsStandardAssetsLoansReceivab"
+    "le\020\221\004\0225\n0QuoteFieldBalanceSheetsStandard"
+    "AssetsReceivables\020\222\004\0226\n1QuoteFieldBalanc"
+    "eSheetsStandardAssetsRawMaterials\020\223\004\0228\n3"
+    "QuoteFieldBalanceSheetsStandardAssetsWor"
+    "kInProgress\020\224\004\022=\n8QuoteFieldBalanceSheet"
+    "sStandardAssetsPurchasedComponents\020\225\004\0227\n"
+    "2QuoteFieldBalanceSheetsStandardAssetsFi"
+    "nishedGoods\020\226\004\022:\n5QuoteFieldBalanceSheet"
+    "sStandardAssetsOtherInventories\020\227\004\022B\n=Qu"
+    "oteFieldBalanceSheetsStandardAssetsInven"
+    "toriesAdjAllowances\020\230\004\0225\n0QuoteFieldBala"
+    "nceSheetsStandardAssetsInventories\020\231\004\0229\n"
+    "4QuoteFieldBalanceSheetsStandardAssetsPr"
+    "epaidExpenses\020\232\004\022D\n\?QuoteFieldBalanceShe"
+    "etsStandardAssetsCurrentDeferredIncomeTa"
+    "xes\020\233\004\022<\n7QuoteFieldBalanceSheetsStandar"
+    "dAssetsOtherCurrentAssets\020\234\004\022<\n7QuoteFie"
+    "ldBalanceSheetsStandardAssetsTotalCurren"
+    "tAssets\020\235\004\022:\n5QuoteFieldBalanceSheetsSta"
+    "ndardAssetsGrossFixedAssets\020\236\004\022M\nHQuoteF"
+    "ieldBalanceSheetsStandardAssetsAccumulat"
+    "edDepreciationAndDepletion\020\237\004\0228\n3QuoteFi"
+    "eldBalanceSheetsStandardAssetsNetFixedAs"
+    "sets\020\240\004\0225\n0QuoteFieldBalanceSheetsStanda"
+    "rdAssetsIntangibles\020\241\004\0226\n1QuoteFieldBala"
+    "nceSheetsStandardAssetsCostInExcess\020\242\004\022G"
+    "\nBQuoteFieldBalanceSheetsStandardAssetsN"
+    "onCurrentDeferredIncomeTaxes\020\243\004\022\?\n:Quote"
+    "FieldBalanceSheetsStandardAssetsOtherNon"
+    "CurrentAssets\020\244\004\022\?\n:QuoteFieldBalanceShe"
+    "etsStandardAssetsTotalNonCurrentAssets\020\245"
+    "\004\022>\n9QuoteFieldBalanceSheetsStandardLiab"
+    "ilitiesAccountsPayable\020\246\004\022;\n6QuoteFieldB"
+    "alanceSheetsStandardLiabilitiesNotesPaya"
+    "ble\020\247\004\022>\n9QuoteFieldBalanceSheetsStandar"
+    "dLiabilitiesAccruedExpenses\020\250\004\022A\n<QuoteF"
+    "ieldBalanceSheetsStandardLiabilitiesAccr"
+    "uedLiabilities\020\251\004\022\?\n:QuoteFieldBalanceSh"
+    "eetsStandardLiabilitiesDeferredRevenues\020"
+    "\252\004\022I\nDQuoteFieldBalanceSheetsStandardLia"
+    "bilitiesCurrentDeferredIncomeTaxes\020\253\004\022F\n"
+    "AQuoteFieldBalanceSheetsStandardLiabilit"
+    "iesOtherCurrentLiabilities\020\254\004\022F\nAQuoteFi"
+    "eldBalanceSheetsStandardLiabilitiesTotal"
+    "CurrentLiabilities\020\255\004\022B\n=QuoteFieldBalan"
+    "ceSheetsStandardLiabilitiesDeferredIncom"
+    "eTaxes\020\256\004\022I\nDQuoteFieldBalanceSheetsStan"
+    "dardLiabilitiesOtherNonCurrentLiabilitie"
+    "s\020\257\004\022S\nNQuoteFieldBalanceSheetsStandardL"
+    "iabilitiesPreferredSecuritiesOfSubsidiar"
+    "yTrust\020\260\004\022P\nKQuoteFieldBalanceSheetsStan"
+    "dardLiabilitiesPreferredEquityOutsideSto"
+    "ckEquity\020\261\004\022I\nDQuoteFieldBalanceSheetsSt"
+    "andardLiabilitiesTotalNonCurrentLiabilit"
+    "ies\020\262\004\022,\n\'QuoteFieldBalanceSheetsStandar"
+    "dCashFlow\020\263\004\0222\n-QuoteFieldBalanceSheetsS"
+    "tandardWorkingCapital\020\264\004\0220\n+QuoteFieldBa"
+    "lanceSheetsStandardFreeCashFlow\020\265\004\0223\n.Qu"
+    "oteFieldBalanceSheetsStandardInvestedCap"
+    "ital\020\266\004\022>\n9QuoteFieldBalanceSheetsFinanc"
+    "ialAssetsCashAndDueFromBanks\020\267\004\022J\nEQuote"
+    "FieldBalanceSheetsFinancialAssetsFedFund"
+    "sSoldSecuritiesPurchased\020\270\004\022I\nDQuoteFiel"
+    "dBalanceSheetsFinancialAssetsInterestBea"
+    "ringDepAtOtherBanks\020\271\004\022B\n=QuoteFieldBala"
+    "nceSheetsFinancialAssetsInvestmentSecuri"
+    "tiesNet\020\272\004\0220\n+QuoteFieldBalanceSheetsFin"
+    "ancialAssetsLoans\020\273\004\022;\n6QuoteFieldBalanc"
+    "eSheetsFinancialAssetsUnearnedPremiums\020\274"
+    "\004\022J\nEQuoteFieldBalanceSheetsFinancialAss"
+    "etsAllowanceForLoansAndLeaseLosses\020\275\004\0223\n"
+    ".QuoteFieldBalanceSheetsFinancialAssetsN"
+    "etLoans\020\276\004\022\?\n:QuoteFieldBalanceSheetsFin"
+    "ancialAssetsPremisesAndEquipment\020\277\004\022E\n@Q"
+    "uoteFieldBalanceSheetsFinancialAssetsDue"
+    "FromCustomersAcceptance\020\300\004\022C\n>QuoteField"
+    "BalanceSheetsFinancialAssetsTradingAccou"
+    "ntSecurities\020\301\004\022:\n5QuoteFieldBalanceShee"
+    "tsFinancialAssetsAccruedInterest\020\302\004\022B\n=Q"
+    "uoteFieldBalanceSheetsFinancialAssetsDef"
+    "erredAcquisitionCost\020\303\004\022B\n=QuoteFieldBal"
+    "anceSheetsFinancialAssetsAccruedInvestme"
+    "ntIncome\020\304\004\022B\n=QuoteFieldBalanceSheetsFi"
+    "nancialAssetsSeparateAccountBusiness\020\305\004\022"
+    "=\n8QuoteFieldBalanceSheetsFinancialAsset"
+    "sTimeDepositsPlaced\020\306\004\022;\n6QuoteFieldBala"
+    "nceSheetsFinancialAssetsIntangibleAssets"
+    "\020\307\004\0226\n1QuoteFieldBalanceSheetsFinancialA"
+    "ssetsOtherAssets\020\310\004\022J\nEQuoteFieldBalance"
+    "SheetsFinancialLiabilitiesNonInterestBea"
+    "ringDeposits\020\311\004\022G\nBQuoteFieldBalanceShee"
+    "tsFinancialLiabilitiesInterestBearingDep"
+    "osits\020\312\004\022@\n;QuoteFieldBalanceSheetsFinan"
+    "cialLiabilitiesOtherLiabilities\020\313\004\022L\nGQu"
+    "oteFieldBalanceSheetsFinancialLiabilitie"
+    "sBankersAcceptanceOutstanding\020\314\004\022O\nJQuot"
+    "eFieldBalanceSheetsFinancialLiabilitiesF"
+    "edFundsPurchasedSecuritiesSold\020\315\004\022<\n7Quo"
+    "teFieldBalanceSheetsFinancialLiabilities"
+    "AccruedTaxes\020\316\004\022G\nBQuoteFieldBalanceShee"
+    "tsFinancialLiabilitiesAccruedInterestPay"
+    "ables\020\317\004\022=\n8QuoteFieldBalanceSheetsFinan"
+    "cialLiabilitiesOtherPayables\020\320\004\022E\n@Quote"
+    "FieldBalanceSheetsFinancialLiabilitiesCl"
+    "aimsAndClaimExpense\020\321\004\022D\n\?QuoteFieldBala"
+    "nceSheetsFinancialLiabilitiesFuturePolic"
+    "yBenefits\020\322\004\022@\n;QuoteFieldBalanceSheetsF"
+    "inancialLiabilitiesUnearnedPremiums\020\323\004\022A"
+    "\n<QuoteFieldBalanceSheetsFinancialLiabil"
+    "itiesPolicyHolderFunds\020\324\004\022O\nJQuoteFieldB"
+    "alanceSheetsFinancialLiabilitiesParticip"
+    "atingPolicyholderEquity\020\325\004\022H\nCQuoteField"
+    "BalanceSheetsFinancialLiabilitiesSeparat"
+    "eAccountsBusiness\020\326\004\022E\n@QuoteFieldBalanc"
+    "eSheetsFinancialEquityForeignCurrencyAdj"
+    "ustments\020\327\004\022M\nHQuoteFieldBalanceSheetsFi"
+    "nancialEquityNetUnrealizedLossGainOnInve"
+    "stments\020\330\004\022Q\nLQuoteFieldBalanceSheetsFin"
+    "ancialEquityNetUnrealizedLossGainOnForei"
+    "gnCurrency\020\331\004\022F\nAQuoteFieldBalanceSheets"
+    "FinancialEquityNetOtherUnearnedLossesGai"
+    "ns\020\332\004\022 \n\033QuoteFieldBalanceSheetsDate\020\333\004\022"
+    "9\n4QuoteFieldCashFlowOperatingActivities"
+    "NetIncomeOrLoss\020\241\006\022=\n8QuoteFieldCashFlow"
+    "OperatingActivitiesDeferredIncomeTaxes\020\242"
+    "\006\022;\n6QuoteFieldCashFlowOperatingActiviti"
+    "esOtherNonCashItems\020\243\006\0226\n1QuoteFieldCash"
+    "FlowInvestingActivitiesAcquisitions\020\244\006\022B"
+    "\n=QuoteFieldCashFlowInvestingActivitiesO"
+    "therInvestingChangesNet\020\245\006\022H\nCQuoteField"
+    "CashFlowInvestingActivitiesNetCashFromIn"
+    "vestingActivities\020\246\006\022H\nCQuoteFieldCashFl"
+    "owFinancingActivitiesNetCashFromFinancin"
+    "gActivities\020\247\006\022E\n@QuoteFieldCashFlowFina"
+    "ncingActivitiesEffectOfExchangeRateChang"
+    "es\020\250\006\022A\n<QuoteFieldCashFlowFinancingActi"
+    "vitiesCashAtBeginningOfPeriod\020\251\006\022;\n6Quot"
+    "eFieldCashFlowFinancingActivitiesCashAtE"
+    "ndOfPeriod\020\252\006\022>\n9QuoteFieldCashFlowStand"
+    "ardOperatingActivitiesDepreciation\020\253\006\022>\n"
+    "9QuoteFieldCashFlowStandardOperatingActi"
+    "vitiesAmortization\020\254\006\022K\nFQuoteFieldCashF"
+    "lowStandardOperatingActivitiesAmortizati"
+    "onOfIntangibles\020\255\006\022H\nCQuoteFieldCashFlow"
+    "StandardOperatingActivitiesOperatingGain"
+    "sOrLosses\020\256\006\022L\nGQuoteFieldCashFlowStanda"
+    "rdOperatingActivitiesExtraordinaryGainsO"
+    "rLosses\020\257\006\022Q\nLQuoteFieldCashFlowStandard"
+    "OperatingActivitiesIncreaseOrDecreaseInR"
+    "eceivables\020\260\006\022Q\nLQuoteFieldCashFlowStand"
+    "ardOperatingActivitiesIncreaseOrDecrease"
+    "InInventories\020\261\006\022U\nPQuoteFieldCashFlowSt"
+    "andardOperatingActivitiesIncreaseOrDecre"
+    "aseInPrepaidExpenses\020\262\006\022X\nSQuoteFieldCas"
+    "hFlowStandardOperatingActivitiesIncrease"
+    "OrDecreaseInOtherCurrentAssets\020\263\006\022N\nIQuo"
+    "teFieldCashFlowStandardOperatingActiviti"
+    "esIncreaseOrDecreaseInPayables\020\264\006\022Z\nUQuo"
+    "teFieldCashFlowStandardOperatingActiviti"
+    "esIncreaseOrDecreaseInOtherCurrLiabiliti"
+    "es\020\265\006\022Y\nTQuoteFieldCashFlowStandardOpera"
+    "tingActivitiesIncreaseOrDecreaseInOtherW"
+    "orkingCapital\020\266\006\022Q\nLQuoteFieldCashFlowSt"
+    "andardOperatingActivitiesNetCashFromCont"
+    "inuingOperations\020\267\006\022S\nNQuoteFieldCashFlo"
+    "wStandardOperatingActivitiesNetCashFromD"
+    "iscontinuedOperations\020\270\006\022P\nKQuoteFieldCa"
+    "shFlowStandardOperatingActivitiesNetCash"
+    "FromOperatingActivities\020\271\006\022N\nIQuoteField"
+    "CashFlowStandardInvestingActivitiesSaleO"
+    "fPropertyPlantEquipment\020\272\006\022K\nFQuoteField"
+    "CashFlowStandardInvestingActivitiesSaleO"
+    "fLongTermInvestments\020\273\006\022L\nGQuoteFieldCas"
+    "hFlowStandardInvestingActivitiesSaleOfSh"
+    "ortTermInvestments\020\274\006\022R\nMQuoteFieldCashF"
+    "lowStandardInvestingActivitiesPurchaseOf"
+    "PropertyPlantEquipment\020\275\006\022O\nJQuoteFieldC"
+    "ashFlowStandardInvestingActivitiesPurcha"
+    "seOfLongTermInvestments\020\276\006\022P\nKQuoteField"
+    "CashFlowStandardInvestingActivitiesPurch"
+    "aseOfShortTermInvestments\020\277\006\022Q\nLQuoteFie"
+    "ldCashFlowStandardInvestingActivitiesCas"
+    "hFromDiscInvestingActivities\020\300\006\022@\n;Quote"
+    "FieldCashFlowStandardFinancingActivities"
+    "IssuanceOfDebt\020\301\006\022H\nCQuoteFieldCashFlowS"
+    "tandardFinancingActivitiesIssuanceOfCapi"
+    "talStock\020\302\006\022A\n<QuoteFieldCashFlowStandar"
+    "dFinancingActivitiesRepaymentOfDebt\020\303\006\022J"
+    "\nEQuoteFieldCashFlowStandardFinancingAct"
+    "ivitiesRepurchaseOfCapitalStock\020\304\006\022H\nCQu"
+    "oteFieldCashFlowStandardFinancingActivit"
+    "iesPaymentOfCashDividends\020\305\006\022J\nEQuoteFie"
+    "ldCashFlowStandardFinancingActivitiesOth"
+    "erFinancingChargesNet\020\306\006\022Q\nLQuoteFieldCa"
+    "shFlowStandardFinancingActivitiesCashFro"
+    "mDiscFinancingActivities\020\307\006\022S\nNQuoteFiel"
+    "dCashFlowStandardFinancingActivitiesNetC"
+    "hangeInCashAndCashEquivalents\020\310\006\022I\nDQuot"
+    "eFieldCashFlowFinancialOperatingActiviti"
+    "esProvisionForLoanLosses\020\311\006\022N\nIQuoteFiel"
+    "dCashFlowFinancialOperatingActivitiesDep"
+    "reciationandAmortization\020\312\006\022L\nGQuoteFiel"
+    "dCashFlowFinancialOperatingActivitiesCha"
+    "ngeInAssetsReceivables\020\313\006\022N\nIQuoteFieldC"
+    "ashFlowFinancialOperatingActivitiesChang"
+    "eInLiabilitiesPayables\020\314\006\022K\nFQuoteFieldC"
+    "ashFlowFinancialOperatingActivitiesInves"
+    "tmentSecuritiesGain\020\315\006\022L\nGQuoteFieldCash"
+    "FlowFinancialOperatingActivitiesNetPolic"
+    "yAcquisitionCosts\020\316\006\022J\nEQuoteFieldCashFl"
+    "owFinancialOperatingActivitiesRealizedIn"
+    "vestmentGains\020\317\006\022I\nDQuoteFieldCashFlowFi"
+    "nancialOperatingActivitiesNetPremiumsRec"
+    "eivables\020\320\006\022F\nAQuoteFieldCashFlowFinanci"
+    "alOperatingActivitiesChangeInIncomeTaxes"
+    "\020\321\006\022Q\nLQuoteFieldCashFlowFinancialOperat"
+    "ingActivitiesNetCashFromOperatingActivit"
+    "ies\020\322\006\022I\nDQuoteFieldCashFlowFinancialInv"
+    "estingActivitiesProceedsFromSaleMatInv\020\323"
+    "\006\022Q\nLQuoteFieldCashFlowFinancialInvestin"
+    "gActivitiesPurchaseOfInvestmentSecuritie"
+    "s\020\324\006\022J\nEQuoteFieldCashFlowFinancialInves"
+    "tingActivitiesNetIncreaseFedFundsSold\020\325\006"
+    "\022Q\nLQuoteFieldCashFlowFinancialInvesting"
+    "ActivitiesPurchaseOfPropertyAndEquipment"
+    "\020\326\006\022F\nAQuoteFieldCashFlowFinancialFinanc"
+    "ingActivitiesNetChangeInDeposits\020\327\006\022D\n\?Q"
+    "uoteFieldCashFlowFinancialFinancingActiv"
+    "itiesCashDividendsPaid\020\330\006\022J\nEQuoteFieldC"
+    "ashFlowFinancialFinancingActivitiesRepay"
+    "mentOfLongTermDebt\020\331\006\022H\nCQuoteFieldCashF"
+    "lowFinancialFinancingActivitiesChangeOfS"
+    "hortTermDebt\020\332\006\022I\nDQuoteFieldCashFlowFin"
+    "ancialFinancingActivitiesIssuanceOfLongT"
+    "ermDebt\020\333\006\022K\nFQuoteFieldCashFlowFinancia"
+    "lFinancingActivitiesIssuanceOfPreferredS"
+    "tock\020\334\006\022H\nCQuoteFieldCashFlowFinancialFi"
+    "nancingActivitiesIssuanceOfCommonStock\020\335"
+    "\006\022J\nEQuoteFieldCashFlowFinancialFinancin"
+    "gActivitiesPurchaseOfTreasuryStock\020\336\006\022K\n"
+    "FQuoteFieldCashFlowFinancialFinancingAct"
+    "ivitiesOtherFinancingActivities\020\337\006\022P\nKQu"
+    "oteFieldCashFlowFinancialFinancingActivi"
+    "tiesNetChangeInCashAndEquivalents\020\340\006\022\033\n\026"
+    "QuoteFieldCashFlowDate\020\341\006", 23145);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -595,6 +1152,8 @@ void protobuf_AddDesc_messages_2eproto() {
   ATQuote::default_instance_ = new ATQuote();
   ATBarHistoryValue::default_instance_ = new ATBarHistoryValue();
   ATBarHistoryDbResponse::default_instance_ = new ATBarHistoryDbResponse();
+  ATQuoteDbResponseSymbolFieldData::default_instance_ = new ATQuoteDbResponseSymbolFieldData();
+  ATQuoteDbResponseData::default_instance_ = new ATQuoteDbResponseData();
   ATQuoteDbResponse::default_instance_ = new ATQuoteDbResponse();
   ATLoginResponse::default_instance_->InitAsDefaultInstance();
   ATConstituentResponse::default_instance_->InitAsDefaultInstance();
@@ -612,6 +1171,8 @@ void protobuf_AddDesc_messages_2eproto() {
   ATQuote::default_instance_->InitAsDefaultInstance();
   ATBarHistoryValue::default_instance_->InitAsDefaultInstance();
   ATBarHistoryDbResponse::default_instance_->InitAsDefaultInstance();
+  ATQuoteDbResponseSymbolFieldData::default_instance_->InitAsDefaultInstance();
+  ATQuoteDbResponseData::default_instance_->InitAsDefaultInstance();
   ATQuoteDbResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_messages_2eproto);
 }
@@ -622,6 +1183,342 @@ struct StaticDescriptorInitializer_messages_2eproto {
     protobuf_AddDesc_messages_2eproto();
   }
 } static_descriptor_initializer_messages_2eproto_;
+const ::google::protobuf::EnumDescriptor* ATSymbolStatus_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATSymbolStatus_descriptor_;
+}
+bool ATSymbolStatus_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* ATQuoteFieldType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteFieldType_descriptor_;
+}
+bool ATQuoteFieldType_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+    case 26:
+    case 27:
+    case 28:
+    case 29:
+    case 30:
+    case 31:
+    case 32:
+    case 33:
+    case 34:
+    case 35:
+    case 36:
+    case 37:
+    case 100:
+    case 101:
+    case 200:
+    case 201:
+    case 202:
+    case 203:
+    case 204:
+    case 205:
+    case 206:
+    case 207:
+    case 208:
+    case 209:
+    case 210:
+    case 211:
+    case 212:
+    case 213:
+    case 214:
+    case 215:
+    case 216:
+    case 217:
+    case 218:
+    case 219:
+    case 220:
+    case 221:
+    case 222:
+    case 223:
+    case 224:
+    case 225:
+    case 226:
+    case 227:
+    case 228:
+    case 229:
+    case 230:
+    case 231:
+    case 232:
+    case 233:
+    case 234:
+    case 235:
+    case 236:
+    case 237:
+    case 238:
+    case 239:
+    case 240:
+    case 241:
+    case 242:
+    case 243:
+    case 244:
+    case 245:
+    case 246:
+    case 247:
+    case 248:
+    case 249:
+    case 250:
+    case 251:
+    case 252:
+    case 253:
+    case 254:
+    case 255:
+    case 256:
+    case 257:
+    case 258:
+    case 259:
+    case 260:
+    case 261:
+    case 262:
+    case 263:
+    case 264:
+    case 265:
+    case 266:
+    case 267:
+    case 268:
+    case 269:
+    case 270:
+    case 271:
+    case 272:
+    case 273:
+    case 274:
+    case 275:
+    case 276:
+    case 277:
+    case 278:
+    case 279:
+    case 280:
+    case 281:
+    case 282:
+    case 283:
+    case 284:
+    case 285:
+    case 286:
+    case 287:
+    case 288:
+    case 289:
+    case 290:
+    case 291:
+    case 292:
+    case 293:
+    case 294:
+    case 295:
+    case 296:
+    case 297:
+    case 298:
+    case 299:
+    case 500:
+    case 501:
+    case 502:
+    case 503:
+    case 504:
+    case 505:
+    case 506:
+    case 507:
+    case 508:
+    case 509:
+    case 510:
+    case 511:
+    case 512:
+    case 513:
+    case 514:
+    case 515:
+    case 516:
+    case 517:
+    case 518:
+    case 519:
+    case 520:
+    case 521:
+    case 522:
+    case 523:
+    case 524:
+    case 525:
+    case 526:
+    case 527:
+    case 528:
+    case 529:
+    case 530:
+    case 531:
+    case 532:
+    case 533:
+    case 534:
+    case 535:
+    case 536:
+    case 537:
+    case 538:
+    case 539:
+    case 540:
+    case 541:
+    case 542:
+    case 543:
+    case 544:
+    case 545:
+    case 546:
+    case 547:
+    case 548:
+    case 549:
+    case 550:
+    case 551:
+    case 552:
+    case 553:
+    case 554:
+    case 555:
+    case 556:
+    case 557:
+    case 558:
+    case 559:
+    case 560:
+    case 561:
+    case 562:
+    case 563:
+    case 564:
+    case 565:
+    case 566:
+    case 567:
+    case 568:
+    case 569:
+    case 570:
+    case 571:
+    case 572:
+    case 573:
+    case 574:
+    case 575:
+    case 576:
+    case 577:
+    case 578:
+    case 579:
+    case 580:
+    case 581:
+    case 582:
+    case 583:
+    case 584:
+    case 585:
+    case 586:
+    case 587:
+    case 588:
+    case 589:
+    case 590:
+    case 591:
+    case 592:
+    case 593:
+    case 594:
+    case 595:
+    case 596:
+    case 597:
+    case 598:
+    case 599:
+    case 600:
+    case 601:
+    case 602:
+    case 603:
+    case 801:
+    case 802:
+    case 803:
+    case 804:
+    case 805:
+    case 806:
+    case 807:
+    case 808:
+    case 809:
+    case 810:
+    case 811:
+    case 812:
+    case 813:
+    case 814:
+    case 815:
+    case 816:
+    case 817:
+    case 818:
+    case 819:
+    case 820:
+    case 821:
+    case 822:
+    case 823:
+    case 824:
+    case 825:
+    case 826:
+    case 827:
+    case 828:
+    case 829:
+    case 830:
+    case 831:
+    case 832:
+    case 833:
+    case 834:
+    case 835:
+    case 836:
+    case 837:
+    case 838:
+    case 839:
+    case 840:
+    case 841:
+    case 842:
+    case 843:
+    case 844:
+    case 845:
+    case 846:
+    case 847:
+    case 848:
+    case 849:
+    case 850:
+    case 851:
+    case 852:
+    case 853:
+    case 854:
+    case 855:
+    case 856:
+    case 857:
+    case 858:
+    case 859:
+    case 860:
+    case 861:
+    case 862:
+    case 863:
+    case 864:
+    case 865:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
@@ -7328,8 +8225,791 @@ void ATBarHistoryDbResponse::Swap(ATBarHistoryDbResponse* other) {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor_;
+}
+bool ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
 #ifndef _MSC_VER
-const int ATQuoteDbResponse::kATQuoteDbResponseTypeFieldNumber;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusSuccess;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusInvalid;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusUnavailable;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusDenie;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::ATFieldStatus_MIN;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::ATFieldStatus_MAX;
+const int ATQuoteDbResponseSymbolFieldData::ATFieldStatus_ARRAYSIZE;
+#endif  // _MSC_VER
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor_;
+}
+bool ATQuoteDbResponseSymbolFieldData_ATDataType_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataByte;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataByteArray;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataUInteger32;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataUInteger64;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataInteger32;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataInteger64;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataPrice;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataString;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataUnicodeString;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataDateTime;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::DataDouble;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::ATDataType_MIN;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::ATDataType_MAX;
+const int ATQuoteDbResponseSymbolFieldData::ATDataType_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int ATQuoteDbResponseSymbolFieldData::kFieldTypeFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kFieldStatusFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataTypeFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataFieldNumber;
+#endif  // !_MSC_VER
+
+ATQuoteDbResponseSymbolFieldData::ATQuoteDbResponseSymbolFieldData()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+}
+
+void ATQuoteDbResponseSymbolFieldData::InitAsDefaultInstance() {
+}
+
+ATQuoteDbResponseSymbolFieldData::ATQuoteDbResponseSymbolFieldData(const ATQuoteDbResponseSymbolFieldData& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+}
+
+void ATQuoteDbResponseSymbolFieldData::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  fieldtype_ = 1;
+  fieldstatus_ = 1;
+  datatype_ = 1;
+  data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATQuoteDbResponseSymbolFieldData::~ATQuoteDbResponseSymbolFieldData() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  SharedDtor();
+}
+
+void ATQuoteDbResponseSymbolFieldData::SharedDtor() {
+  if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete data_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void ATQuoteDbResponseSymbolFieldData::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATQuoteDbResponseSymbolFieldData::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteDbResponseSymbolFieldData_descriptor_;
+}
+
+const ATQuoteDbResponseSymbolFieldData& ATQuoteDbResponseSymbolFieldData::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATQuoteDbResponseSymbolFieldData* ATQuoteDbResponseSymbolFieldData::default_instance_ = NULL;
+
+ATQuoteDbResponseSymbolFieldData* ATQuoteDbResponseSymbolFieldData::New() const {
+  return new ATQuoteDbResponseSymbolFieldData;
+}
+
+void ATQuoteDbResponseSymbolFieldData::Clear() {
+  if (_has_bits_[0 / 32] & 15) {
+    fieldtype_ = 1;
+    fieldstatus_ = 1;
+    datatype_ = 1;
+    if (has_data()) {
+      if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        data_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATQuoteDbResponseSymbolFieldData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NodeActiveTickProto.ATQuoteFieldType fieldType = 1;
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NodeActiveTickProto::ATQuoteFieldType_IsValid(value)) {
+            set_fieldtype(static_cast< ::NodeActiveTickProto::ATQuoteFieldType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_fieldStatus;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus fieldStatus = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_fieldStatus:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(value)) {
+            set_fieldstatus(static_cast< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_dataType;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType dataType = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_dataType:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType_IsValid(value)) {
+            set_datatype(static_cast< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(3, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_data;
+        break;
+      }
+
+      // optional string data = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_data:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_data()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->data().data(), this->data().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "data");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  return false;
+#undef DO_
+}
+
+void ATQuoteDbResponseSymbolFieldData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  // optional .NodeActiveTickProto.ATQuoteFieldType fieldType = 1;
+  if (has_fieldtype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->fieldtype(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus fieldStatus = 2;
+  if (has_fieldstatus()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->fieldstatus(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType dataType = 3;
+  if (has_datatype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->datatype(), output);
+  }
+
+  // optional string data = 4;
+  if (has_data()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->data().data(), this->data().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "data");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->data(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+}
+
+::google::protobuf::uint8* ATQuoteDbResponseSymbolFieldData::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  // optional .NodeActiveTickProto.ATQuoteFieldType fieldType = 1;
+  if (has_fieldtype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->fieldtype(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus fieldStatus = 2;
+  if (has_fieldstatus()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->fieldstatus(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType dataType = 3;
+  if (has_datatype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      3, this->datatype(), target);
+  }
+
+  // optional string data = 4;
+  if (has_data()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->data().data(), this->data().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "data");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->data(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+  return target;
+}
+
+int ATQuoteDbResponseSymbolFieldData::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .NodeActiveTickProto.ATQuoteFieldType fieldType = 1;
+    if (has_fieldtype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->fieldtype());
+    }
+
+    // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus fieldStatus = 2;
+    if (has_fieldstatus()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->fieldstatus());
+    }
+
+    // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType dataType = 3;
+    if (has_datatype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->datatype());
+    }
+
+    // optional string data = 4;
+    if (has_data()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->data());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATQuoteDbResponseSymbolFieldData::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATQuoteDbResponseSymbolFieldData* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATQuoteDbResponseSymbolFieldData*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATQuoteDbResponseSymbolFieldData::MergeFrom(const ATQuoteDbResponseSymbolFieldData& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_fieldtype()) {
+      set_fieldtype(from.fieldtype());
+    }
+    if (from.has_fieldstatus()) {
+      set_fieldstatus(from.fieldstatus());
+    }
+    if (from.has_datatype()) {
+      set_datatype(from.datatype());
+    }
+    if (from.has_data()) {
+      set_data(from.data());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATQuoteDbResponseSymbolFieldData::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATQuoteDbResponseSymbolFieldData::CopyFrom(const ATQuoteDbResponseSymbolFieldData& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATQuoteDbResponseSymbolFieldData::IsInitialized() const {
+
+  return true;
+}
+
+void ATQuoteDbResponseSymbolFieldData::Swap(ATQuoteDbResponseSymbolFieldData* other) {
+  if (other != this) {
+    std::swap(fieldtype_, other->fieldtype_);
+    std::swap(fieldstatus_, other->fieldstatus_);
+    std::swap(datatype_, other->datatype_);
+    std::swap(data_, other->data_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATQuoteDbResponseSymbolFieldData::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATQuoteDbResponseSymbolFieldData_descriptor_;
+  metadata.reflection = ATQuoteDbResponseSymbolFieldData_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ATQuoteDbResponseData::kSymbolStatusFieldNumber;
+const int ATQuoteDbResponseData::kSymbolFieldNumber;
+const int ATQuoteDbResponseData::kSymbolFieldDataFieldNumber;
+#endif  // !_MSC_VER
+
+ATQuoteDbResponseData::ATQuoteDbResponseData()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NodeActiveTickProto.ATQuoteDbResponseData)
+}
+
+void ATQuoteDbResponseData::InitAsDefaultInstance() {
+  symbol_ = const_cast< ::NodeActiveTickProto::ATSymbol*>(&::NodeActiveTickProto::ATSymbol::default_instance());
+}
+
+ATQuoteDbResponseData::ATQuoteDbResponseData(const ATQuoteDbResponseData& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NodeActiveTickProto.ATQuoteDbResponseData)
+}
+
+void ATQuoteDbResponseData::SharedCtor() {
+  _cached_size_ = 0;
+  symbolstatus_ = 1;
+  symbol_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ATQuoteDbResponseData::~ATQuoteDbResponseData() {
+  // @@protoc_insertion_point(destructor:NodeActiveTickProto.ATQuoteDbResponseData)
+  SharedDtor();
+}
+
+void ATQuoteDbResponseData::SharedDtor() {
+  if (this != default_instance_) {
+    delete symbol_;
+  }
+}
+
+void ATQuoteDbResponseData::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ATQuoteDbResponseData::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteDbResponseData_descriptor_;
+}
+
+const ATQuoteDbResponseData& ATQuoteDbResponseData::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();
+  return *default_instance_;
+}
+
+ATQuoteDbResponseData* ATQuoteDbResponseData::default_instance_ = NULL;
+
+ATQuoteDbResponseData* ATQuoteDbResponseData::New() const {
+  return new ATQuoteDbResponseData;
+}
+
+void ATQuoteDbResponseData::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    symbolstatus_ = 1;
+    if (has_symbol()) {
+      if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+    }
+  }
+  symbolfielddata_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ATQuoteDbResponseData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NodeActiveTickProto.ATQuoteDbResponseData)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NodeActiveTickProto.ATSymbolStatus symbolStatus = 1;
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NodeActiveTickProto::ATSymbolStatus_IsValid(value)) {
+            set_symbolstatus(static_cast< ::NodeActiveTickProto::ATSymbolStatus >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_symbol;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATSymbol symbol = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_symbol:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_symbol()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_symbolFieldData;
+        break;
+      }
+
+      // repeated .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData symbolFieldData = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_symbolFieldData:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_symbolfielddata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_symbolFieldData;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NodeActiveTickProto.ATQuoteDbResponseData)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NodeActiveTickProto.ATQuoteDbResponseData)
+  return false;
+#undef DO_
+}
+
+void ATQuoteDbResponseData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATQuoteDbResponseData)
+  // optional .NodeActiveTickProto.ATSymbolStatus symbolStatus = 1;
+  if (has_symbolstatus()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->symbolstatus(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 2;
+  if (has_symbol()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->symbol(), output);
+  }
+
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData symbolFieldData = 3;
+  for (int i = 0; i < this->symbolfielddata_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->symbolfielddata(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NodeActiveTickProto.ATQuoteDbResponseData)
+}
+
+::google::protobuf::uint8* ATQuoteDbResponseData::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATQuoteDbResponseData)
+  // optional .NodeActiveTickProto.ATSymbolStatus symbolStatus = 1;
+  if (has_symbolstatus()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->symbolstatus(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 2;
+  if (has_symbol()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->symbol(), target);
+  }
+
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData symbolFieldData = 3;
+  for (int i = 0; i < this->symbolfielddata_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->symbolfielddata(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NodeActiveTickProto.ATQuoteDbResponseData)
+  return target;
+}
+
+int ATQuoteDbResponseData::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .NodeActiveTickProto.ATSymbolStatus symbolStatus = 1;
+    if (has_symbolstatus()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->symbolstatus());
+    }
+
+    // optional .NodeActiveTickProto.ATSymbol symbol = 2;
+    if (has_symbol()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->symbol());
+    }
+
+  }
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData symbolFieldData = 3;
+  total_size += 1 * this->symbolfielddata_size();
+  for (int i = 0; i < this->symbolfielddata_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->symbolfielddata(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ATQuoteDbResponseData::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ATQuoteDbResponseData* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ATQuoteDbResponseData*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ATQuoteDbResponseData::MergeFrom(const ATQuoteDbResponseData& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  symbolfielddata_.MergeFrom(from.symbolfielddata_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_symbolstatus()) {
+      set_symbolstatus(from.symbolstatus());
+    }
+    if (from.has_symbol()) {
+      mutable_symbol()->::NodeActiveTickProto::ATSymbol::MergeFrom(from.symbol());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ATQuoteDbResponseData::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ATQuoteDbResponseData::CopyFrom(const ATQuoteDbResponseData& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ATQuoteDbResponseData::IsInitialized() const {
+
+  return true;
+}
+
+void ATQuoteDbResponseData::Swap(ATQuoteDbResponseData* other) {
+  if (other != this) {
+    std::swap(symbolstatus_, other->symbolstatus_);
+    std::swap(symbol_, other->symbol_);
+    symbolfielddata_.Swap(&other->symbolfielddata_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ATQuoteDbResponseData::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ATQuoteDbResponseData_descriptor_;
+  metadata.reflection = ATQuoteDbResponseData_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponse_ATQuoteDbResponseType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ATQuoteDbResponse_ATQuoteDbResponseType_descriptor_;
+}
+bool ATQuoteDbResponse_ATQuoteDbResponseType_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::QuoteDbResponseSuccess;
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::QuoteDbResponseInvalidRequest;
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::QuoteDbResponseDenied;
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::QuoteDbResponseUnavailable;
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::ATQuoteDbResponseType_MIN;
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::ATQuoteDbResponseType_MAX;
+const int ATQuoteDbResponse::ATQuoteDbResponseType_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int ATQuoteDbResponse::kResponseTypeFieldNumber;
+const int ATQuoteDbResponse::kDatumsFieldNumber;
 #endif  // !_MSC_VER
 
 ATQuoteDbResponse::ATQuoteDbResponse()
@@ -7350,7 +9030,7 @@ ATQuoteDbResponse::ATQuoteDbResponse(const ATQuoteDbResponse& from)
 
 void ATQuoteDbResponse::SharedCtor() {
   _cached_size_ = 0;
-  atquotedbresponsetype_ = 0;
+  responsetype_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -7386,7 +9066,8 @@ ATQuoteDbResponse* ATQuoteDbResponse::New() const {
 }
 
 void ATQuoteDbResponse::Clear() {
-  atquotedbresponsetype_ = 0;
+  responsetype_ = 1;
+  datums_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -7401,16 +9082,35 @@ bool ATQuoteDbResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 ATQuoteDbResponseType = 1;
+      // optional .NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType responseType = 1;
       case 1: {
         if (tag == 8) {
+          int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &atquotedbresponsetype_)));
-          set_has_atquotedbresponsetype();
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType_IsValid(value)) {
+            set_responsetype(static_cast< ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(18)) goto parse_datums;
+        break;
+      }
+
+      // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_datums:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_datums()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_datums;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -7440,9 +9140,16 @@ failure:
 void ATQuoteDbResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:NodeActiveTickProto.ATQuoteDbResponse)
-  // required int32 ATQuoteDbResponseType = 1;
-  if (has_atquotedbresponsetype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->atquotedbresponsetype(), output);
+  // optional .NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType responseType = 1;
+  if (has_responsetype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->responsetype(), output);
+  }
+
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+  for (int i = 0; i < this->datums_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->datums(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -7455,9 +9162,17 @@ void ATQuoteDbResponse::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ATQuoteDbResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:NodeActiveTickProto.ATQuoteDbResponse)
-  // required int32 ATQuoteDbResponseType = 1;
-  if (has_atquotedbresponsetype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->atquotedbresponsetype(), target);
+  // optional .NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType responseType = 1;
+  if (has_responsetype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->responsetype(), target);
+  }
+
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+  for (int i = 0; i < this->datums_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->datums(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -7472,14 +9187,21 @@ int ATQuoteDbResponse::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 ATQuoteDbResponseType = 1;
-    if (has_atquotedbresponsetype()) {
+    // optional .NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType responseType = 1;
+    if (has_responsetype()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->atquotedbresponsetype());
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->responsetype());
     }
 
   }
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+  total_size += 1 * this->datums_size();
+  for (int i = 0; i < this->datums_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->datums(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -7505,9 +9227,10 @@ void ATQuoteDbResponse::MergeFrom(const ::google::protobuf::Message& from) {
 
 void ATQuoteDbResponse::MergeFrom(const ATQuoteDbResponse& from) {
   GOOGLE_CHECK_NE(&from, this);
+  datums_.MergeFrom(from.datums_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_atquotedbresponsetype()) {
-      set_atquotedbresponsetype(from.atquotedbresponsetype());
+    if (from.has_responsetype()) {
+      set_responsetype(from.responsetype());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -7526,14 +9249,14 @@ void ATQuoteDbResponse::CopyFrom(const ATQuoteDbResponse& from) {
 }
 
 bool ATQuoteDbResponse::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
 
 void ATQuoteDbResponse::Swap(ATQuoteDbResponse* other) {
   if (other != this) {
-    std::swap(atquotedbresponsetype_, other->atquotedbresponsetype_);
+    std::swap(responsetype_, other->responsetype_);
+    datums_.Swap(&other->datums_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

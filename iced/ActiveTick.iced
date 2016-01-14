@@ -44,8 +44,8 @@ class ActiveTick extends EventEmitter
     request_id = @api.barHistoryDbRequest symbol, barhistorytype, intradayminutecompression, startime, endtime
     @callbacks[request_id] = requestCb if requestCb?
 
-  quoteDBRequest: (symbol, requestCb) =>
-    request_id = @api.quoteDbRequest symbol
+  quoteDBRequest: (symbol, fields, requestCb) =>
+    request_id = @api.quoteDbRequest symbol, fields
     @callbacks[request_id] = requestCb if requestCb?
 
   beginQuoteStream: (symbols, ATStreamRequestTypeIndex, requestCb) =>

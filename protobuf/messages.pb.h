@@ -23,6 +23,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -49,8 +50,426 @@ class ATPrice;
 class ATQuote;
 class ATBarHistoryValue;
 class ATBarHistoryDbResponse;
+class ATQuoteDbResponseSymbolFieldData;
+class ATQuoteDbResponseData;
 class ATQuoteDbResponse;
 
+enum ATQuoteDbResponseSymbolFieldData_ATFieldStatus {
+  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess = 1,
+  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusInvalid = 2,
+  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusUnavailable = 3,
+  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenie = 4
+};
+bool ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(int value);
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MIN = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MAX = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenie;
+const int ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_ARRAYSIZE = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor();
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData_ATFieldStatus_Name(ATQuoteDbResponseSymbolFieldData_ATFieldStatus value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor(), value);
+}
+inline bool ATQuoteDbResponseSymbolFieldData_ATFieldStatus_Parse(
+    const ::std::string& name, ATQuoteDbResponseSymbolFieldData_ATFieldStatus* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATQuoteDbResponseSymbolFieldData_ATFieldStatus>(
+    ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor(), name, value);
+}
+enum ATQuoteDbResponseSymbolFieldData_ATDataType {
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataByte = 1,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataByteArray = 2,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataUInteger32 = 3,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataUInteger64 = 4,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataInteger32 = 5,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataInteger64 = 6,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataPrice = 7,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataString = 8,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataUnicodeString = 9,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataDateTime = 10,
+  ATQuoteDbResponseSymbolFieldData_ATDataType_DataDouble = 11
+};
+bool ATQuoteDbResponseSymbolFieldData_ATDataType_IsValid(int value);
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_MIN = ATQuoteDbResponseSymbolFieldData_ATDataType_DataByte;
+const ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_MAX = ATQuoteDbResponseSymbolFieldData_ATDataType_DataDouble;
+const int ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_ARRAYSIZE = ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor();
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData_ATDataType_Name(ATQuoteDbResponseSymbolFieldData_ATDataType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor(), value);
+}
+inline bool ATQuoteDbResponseSymbolFieldData_ATDataType_Parse(
+    const ::std::string& name, ATQuoteDbResponseSymbolFieldData_ATDataType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATQuoteDbResponseSymbolFieldData_ATDataType>(
+    ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor(), name, value);
+}
+enum ATQuoteDbResponse_ATQuoteDbResponseType {
+  ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseSuccess = 1,
+  ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseInvalidRequest = 2,
+  ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseDenied = 3,
+  ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseUnavailable = 4
+};
+bool ATQuoteDbResponse_ATQuoteDbResponseType_IsValid(int value);
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_MIN = ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseSuccess;
+const ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_MAX = ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseUnavailable;
+const int ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_ARRAYSIZE = ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATQuoteDbResponse_ATQuoteDbResponseType_descriptor();
+inline const ::std::string& ATQuoteDbResponse_ATQuoteDbResponseType_Name(ATQuoteDbResponse_ATQuoteDbResponseType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATQuoteDbResponse_ATQuoteDbResponseType_descriptor(), value);
+}
+inline bool ATQuoteDbResponse_ATQuoteDbResponseType_Parse(
+    const ::std::string& name, ATQuoteDbResponse_ATQuoteDbResponseType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATQuoteDbResponse_ATQuoteDbResponseType>(
+    ATQuoteDbResponse_ATQuoteDbResponseType_descriptor(), name, value);
+}
+enum ATSymbolStatus {
+  SymbolStatusSuccess = 1,
+  SymbolStatusInvalid = 2,
+  SymbolStatusUnavailable = 3,
+  SymbolStatusNoPermission = 4
+};
+bool ATSymbolStatus_IsValid(int value);
+const ATSymbolStatus ATSymbolStatus_MIN = SymbolStatusSuccess;
+const ATSymbolStatus ATSymbolStatus_MAX = SymbolStatusNoPermission;
+const int ATSymbolStatus_ARRAYSIZE = ATSymbolStatus_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATSymbolStatus_descriptor();
+inline const ::std::string& ATSymbolStatus_Name(ATSymbolStatus value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATSymbolStatus_descriptor(), value);
+}
+inline bool ATSymbolStatus_Parse(
+    const ::std::string& name, ATSymbolStatus* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATSymbolStatus>(
+    ATSymbolStatus_descriptor(), name, value);
+}
+enum ATQuoteFieldType {
+  QuoteFieldSymbol = 1,
+  QuoteFieldOpenPrice = 2,
+  QuoteFieldPreviousClosePrice = 3,
+  QuoteFieldClosePrice = 4,
+  QuoteFieldLastPrice = 5,
+  QuoteFieldBidPrice = 6,
+  QuoteFieldAskPrice = 7,
+  QuoteFieldHighPrice = 8,
+  QuoteFieldLowPrice = 9,
+  QuoteFieldDayHighPrice = 10,
+  QuoteFieldDayLowPrice = 11,
+  QuoteFieldPreMarketOpenPrice = 12,
+  QuoteFieldExtendedHoursLastPrice = 13,
+  QuoteFieldAfterMarketClosePrice = 14,
+  QuoteFieldBidExchange = 15,
+  QuoteFieldAskExchange = 16,
+  QuoteFieldLastExchange = 17,
+  QuoteFieldLastCondition = 18,
+  QuoteFieldQuoteCondition = 19,
+  QuoteFieldLastTradeDateTime = 20,
+  QuoteFieldLastQuoteDateTime = 21,
+  QuoteFieldDayHighDateTime = 22,
+  QuoteFieldDayLowDateTime = 23,
+  QuoteFieldLastSize = 24,
+  QuoteFieldBidSize = 25,
+  QuoteFieldAskSize = 26,
+  QuoteFieldVolume = 27,
+  QuoteFieldPreMarketVolume = 28,
+  QuoteFieldAfterMarketVolume = 29,
+  QuoteFieldTradeCount = 30,
+  QuoteFieldPreMarketTradeCount = 31,
+  QuoteFieldAfterMarketTradeCount = 32,
+  QuoteFieldProfileShortName = 33,
+  QuoteFieldProfilePrimaryExchange = 34,
+  QuoteFieldProfileLongName = 35,
+  QuoteFieldProfileSector = 36,
+  QuoteFieldProfileIndustry = 37,
+  QuoteFieldOptionOpenInterest = 100,
+  QuoteFieldOptionStrikePrice = 101,
+  QuoteFieldIncomeStatementBasicEPSFromContinuingOperations = 200,
+  QuoteFieldIncomeStatementBasicEPSFromDiscontinuedOperations = 201,
+  QuoteFieldIncomeStatementBasicEPSFromTotalOperations = 202,
+  QuoteFieldIncomeStatementBasicEPSFromExtraordinaryIncome = 203,
+  QuoteFieldIncomeStatementBasicEPSFromCumEffectOfAccountingChange = 204,
+  QuoteFieldIncomeStatementBasicEPSFromOtherGains = 205,
+  QuoteFieldIncomeStatementBasicEPSTotal = 206,
+  QuoteFieldIncomeStatementBasicNormalizedNetIncomePerShare = 207,
+  QuoteFieldIncomeStatementDilutedEPSFromContinuingOperations = 208,
+  QuoteFieldIncomeStatementDilutedEPSFromDiscontinuedOperations = 209,
+  QuoteFieldIncomeStatementDilutedEPSFromTotalOperations = 210,
+  QuoteFieldIncomeStatementDilutedEPSFromExtraordinaryIncome = 211,
+  QuoteFieldIncomeStatementDilutedEPSFromOtherGains = 212,
+  QuoteFieldIncomeStatementDilutedEPSTotal = 213,
+  QuoteFieldIncomeStatementDilutedNormalizedNetIncomePerShare = 214,
+  QuoteFieldIncomeStatementDividendsPaidPerShare = 215,
+  QuoteFieldIncomeStatementIncomeAcquiredInProcessRD = 216,
+  QuoteFieldIncomeStatementOtherSpecialCharges = 217,
+  QuoteFieldIncomeStatementIncomeTaxes = 218,
+  QuoteFieldIncomeStatementMinorityInterest = 219,
+  QuoteFieldIncomeStatementNetIncomeFromContinuingOperations = 220,
+  QuoteFieldIncomeStatementNetIncomeFromDiscontinuedOperations = 221,
+  QuoteFieldIncomeStatementNetIncomeFromTotalOperations = 222,
+  QuoteFieldIncomeStatementIncomeFromTaxLossCarryforward = 223,
+  QuoteFieldIncomeStatementOtherGainsLosses = 224,
+  QuoteFieldIncomeStatementTotalNetIncome = 225,
+  QuoteFieldIncomeStatementNormalizedIncome = 226,
+  QuoteFieldIncomeStatementNetIncomeAvailableForCommon = 227,
+  QuoteFieldIncomeStatementPreferredDividends = 228,
+  QuoteFieldIncomeStatementStandardOperatingRevenue = 229,
+  QuoteFieldIncomeStatementStandardTotalRevenue = 230,
+  QuoteFieldIncomeStatementStandardAdjustmentToRevenue = 231,
+  QuoteFieldIncomeStatementStandardCostOfSales = 232,
+  QuoteFieldIncomeStatementStandardCostOfSalesWithDepreciation = 233,
+  QuoteFieldIncomeStatementStandardGrossMargin = 234,
+  QuoteFieldIncomeStatementStandardGrossOperatingProfit = 235,
+  QuoteFieldIncomeStatementStandardResearchAndDevelopment = 236,
+  QuoteFieldIncomeStatementStandardSellingGeneralAndAdminExpense = 237,
+  QuoteFieldIncomeStatementStandardAdvertising = 238,
+  QuoteFieldIncomeStatementStandardOperatingProfit = 239,
+  QuoteFieldIncomeStatementStandardOperatingProfitBeforeDepreciation = 240,
+  QuoteFieldIncomeStatementStandardDepreciation = 241,
+  QuoteFieldIncomeStatementStandardDepreciationUnreconciled = 242,
+  QuoteFieldIncomeStatementStandardAmortization = 243,
+  QuoteFieldIncomeStatementStandardAmortizationOfIntangibles = 244,
+  QuoteFieldIncomeStatementStandardOperatingIncomeAfterDepreciation = 245,
+  QuoteFieldIncomeStatementStandardInterestIncome = 246,
+  QuoteFieldIncomeStatementStandardEarningsFromEquityInterest = 247,
+  QuoteFieldIncomeStatementStandardOtherIncomeNet = 248,
+  QuoteFieldIncomeStatementStandardInterestRestructuringAndMA = 249,
+  QuoteFieldIncomeStatementStandardTotalIncomeAvailForInterestExpense = 250,
+  QuoteFieldIncomeStatementStandardInterestExpense = 251,
+  QuoteFieldIncomeStatementStandardIncomeBeforeTax = 252,
+  QuoteFieldIncomeStatementStandardPreferredSecuritiesOfSubsidiaryTrust = 253,
+  QuoteFieldIncomeStatementStandardExtraordinaryIncomeOrLosses = 254,
+  QuoteFieldIncomeStatementStandardIncomeFromCumEffectOfAccountChange = 255,
+  QuoteFieldIncomeStatementStandardExciseTaxes = 256,
+  QuoteFieldIncomeStatementFinancialLoans = 257,
+  QuoteFieldIncomeStatementFinancialInvestmentSecurities = 258,
+  QuoteFieldIncomeStatementFinancialLeaseFinancingIncome = 259,
+  QuoteFieldIncomeStatementFinancialOtherInterestIncome = 260,
+  QuoteFieldIncomeStatementFinancialFedFundsSoldPurchased = 261,
+  QuoteFieldIncomeStatementFinancialInterestBearingDeposits = 262,
+  QuoteFieldIncomeStatementFinancialLoansHeldForResale = 263,
+  QuoteFieldIncomeStatementFinancialTradingAccountSecurities = 264,
+  QuoteFieldIncomeStatementFinancialTimeDepositsPlaced = 265,
+  QuoteFieldIncomeStatementFinancialOtherMoneyMarketInvestments = 266,
+  QuoteFieldIncomeStatementFinancialTotalMoneyMarketInvestments = 267,
+  QuoteFieldIncomeStatementFinancialTotalInterestIncome = 268,
+  QuoteFieldIncomeStatementFinancialDeposits = 269,
+  QuoteFieldIncomeStatementFinancialFedFundsPurchasedSecSold = 270,
+  QuoteFieldIncomeStatementFinancialCapitalizedLeaseObligations = 271,
+  QuoteFieldIncomeStatementFinancialOtherInterestExpense = 272,
+  QuoteFieldIncomeStatementFinancialTotalInterestExpense = 273,
+  QuoteFieldIncomeStatementFinancialNetInterestIncomeExpense = 274,
+  QuoteFieldIncomeStatementFinancialProvisionForLoanLoss = 275,
+  QuoteFieldIncomeStatementFinancialTrustFeesByCommissions = 276,
+  QuoteFieldIncomeStatementFinancialServiceChargeOnDepositAccounts = 277,
+  QuoteFieldIncomeStatementFinancialOtherServiceCharges = 278,
+  QuoteFieldIncomeStatementFinancialSecurityTransactions = 279,
+  QuoteFieldIncomeStatementFinancialPremiumsEarned = 280,
+  QuoteFieldIncomeStatementFinancialNetRealizedCapitalGains = 281,
+  QuoteFieldIncomeStatementFinancialInvestmentBankingProfit = 282,
+  QuoteFieldIncomeStatementFinancialOtherNonInterestIncome = 283,
+  QuoteFieldIncomeStatementFinancialTotalNonInterestIncome = 284,
+  QuoteFieldIncomeStatementFinancialSalariesAndEmployeeBenefits = 285,
+  QuoteFieldIncomeStatementFinancialNetOccupancyExpense = 286,
+  QuoteFieldIncomeStatementFinancialPromotionsAndAdvertising = 287,
+  QuoteFieldIncomeStatementFinancialPropLiabInsuranceClaims = 288,
+  QuoteFieldIncomeStatementFinancialPolicyAcquisitionCosts = 289,
+  QuoteFieldIncomeStatementFinancialAmortDefPolicyAcqCost = 290,
+  QuoteFieldIncomeStatementFinancialCurrentAndFutureBenefits = 291,
+  QuoteFieldIncomeStatementFinancialOtherNonInterestExpense = 292,
+  QuoteFieldIncomeStatementFinancialTotalNonInterestExpense = 293,
+  QuoteFieldIncomeStatementFinancialPremiumTaxCredit = 294,
+  QuoteFieldIncomeStatementFinancialIncomeRestructuringAndMA = 295,
+  QuoteFieldIncomeStatementFinancialSpecialIncomeCharges = 296,
+  QuoteFieldIncomeStatementFinancialExtraordinaryIncomeLosses = 297,
+  QuoteFieldIncomeStatementFinancialIncomeFromCumEffectOfAcctChg = 298,
+  QuoteFieldIncomeStatementDate = 299,
+  QuoteFieldBalanceSheetsAssetsRestrictedCash = 500,
+  QuoteFieldBalanceSheetsAssetsOtherReceivable = 501,
+  QuoteFieldBalanceSheetsAssetsTotalAssets = 502,
+  QuoteFieldBalanceSheetsLiabilitiesShortTermDebt = 503,
+  QuoteFieldBalanceSheetsLiabilitiesLongTermDebt = 504,
+  QuoteFieldBalanceSheetsLiabilitiesCapitalLeaseObligations = 505,
+  QuoteFieldBalanceSheetsLiabilitiesMinorityInterest = 506,
+  QuoteFieldBalanceSheetsLiabilitiesTotalLiabilities = 507,
+  QuoteFieldBalanceSheetsShareDataSharesOutstandingCommonClassOnly = 508,
+  QuoteFieldBalanceSheetsShareDataPreferredShares = 509,
+  QuoteFieldBalanceSheetsShareDataTotalOrdinaryShares = 510,
+  QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding = 511,
+  QuoteFieldBalanceSheetsShareDataTreasuryShares = 512,
+  QuoteFieldBalanceSheetsEquityPreferredStockEquity = 513,
+  QuoteFieldBalanceSheetsEquityCommonStockEquity = 514,
+  QuoteFieldBalanceSheetsEquityCommonPar = 515,
+  QuoteFieldBalanceSheetsEquityAdditionalPaidInCapital = 516,
+  QuoteFieldBalanceSheetsEquityCumulativeTranslationAdjustment = 517,
+  QuoteFieldBalanceSheetsEquityRetainedEarnings = 518,
+  QuoteFieldBalanceSheetsEquityTreasuryStock = 519,
+  QuoteFieldBalanceSheetsEquityOtherEquityAdjustments = 520,
+  QuoteFieldBalanceSheetsEquityTotalEquity = 521,
+  QuoteFieldBalanceSheetsEquityTotalCapitalization = 522,
+  QuoteFieldBalanceSheetsEquityTotalLiabilitiesAndStockEquity = 523,
+  QuoteFieldBalanceSheetsNumberOfEmployees = 524,
+  QuoteFieldBalanceSheetsNumberOfPartTimeEmployees = 525,
+  QuoteFieldBalanceSheetsStandardAssetsCashAndEquivalents = 526,
+  QuoteFieldBalanceSheetsStandardAssetsMarketableSecurities = 527,
+  QuoteFieldBalanceSheetsStandardAssetsAccountsReceivable = 528,
+  QuoteFieldBalanceSheetsStandardAssetsLoansReceivable = 529,
+  QuoteFieldBalanceSheetsStandardAssetsReceivables = 530,
+  QuoteFieldBalanceSheetsStandardAssetsRawMaterials = 531,
+  QuoteFieldBalanceSheetsStandardAssetsWorkInProgress = 532,
+  QuoteFieldBalanceSheetsStandardAssetsPurchasedComponents = 533,
+  QuoteFieldBalanceSheetsStandardAssetsFinishedGoods = 534,
+  QuoteFieldBalanceSheetsStandardAssetsOtherInventories = 535,
+  QuoteFieldBalanceSheetsStandardAssetsInventoriesAdjAllowances = 536,
+  QuoteFieldBalanceSheetsStandardAssetsInventories = 537,
+  QuoteFieldBalanceSheetsStandardAssetsPrepaidExpenses = 538,
+  QuoteFieldBalanceSheetsStandardAssetsCurrentDeferredIncomeTaxes = 539,
+  QuoteFieldBalanceSheetsStandardAssetsOtherCurrentAssets = 540,
+  QuoteFieldBalanceSheetsStandardAssetsTotalCurrentAssets = 541,
+  QuoteFieldBalanceSheetsStandardAssetsGrossFixedAssets = 542,
+  QuoteFieldBalanceSheetsStandardAssetsAccumulatedDepreciationAndDepletion = 543,
+  QuoteFieldBalanceSheetsStandardAssetsNetFixedAssets = 544,
+  QuoteFieldBalanceSheetsStandardAssetsIntangibles = 545,
+  QuoteFieldBalanceSheetsStandardAssetsCostInExcess = 546,
+  QuoteFieldBalanceSheetsStandardAssetsNonCurrentDeferredIncomeTaxes = 547,
+  QuoteFieldBalanceSheetsStandardAssetsOtherNonCurrentAssets = 548,
+  QuoteFieldBalanceSheetsStandardAssetsTotalNonCurrentAssets = 549,
+  QuoteFieldBalanceSheetsStandardLiabilitiesAccountsPayable = 550,
+  QuoteFieldBalanceSheetsStandardLiabilitiesNotesPayable = 551,
+  QuoteFieldBalanceSheetsStandardLiabilitiesAccruedExpenses = 552,
+  QuoteFieldBalanceSheetsStandardLiabilitiesAccruedLiabilities = 553,
+  QuoteFieldBalanceSheetsStandardLiabilitiesDeferredRevenues = 554,
+  QuoteFieldBalanceSheetsStandardLiabilitiesCurrentDeferredIncomeTaxes = 555,
+  QuoteFieldBalanceSheetsStandardLiabilitiesOtherCurrentLiabilities = 556,
+  QuoteFieldBalanceSheetsStandardLiabilitiesTotalCurrentLiabilities = 557,
+  QuoteFieldBalanceSheetsStandardLiabilitiesDeferredIncomeTaxes = 558,
+  QuoteFieldBalanceSheetsStandardLiabilitiesOtherNonCurrentLiabilities = 559,
+  QuoteFieldBalanceSheetsStandardLiabilitiesPreferredSecuritiesOfSubsidiaryTrust = 560,
+  QuoteFieldBalanceSheetsStandardLiabilitiesPreferredEquityOutsideStockEquity = 561,
+  QuoteFieldBalanceSheetsStandardLiabilitiesTotalNonCurrentLiabilities = 562,
+  QuoteFieldBalanceSheetsStandardCashFlow = 563,
+  QuoteFieldBalanceSheetsStandardWorkingCapital = 564,
+  QuoteFieldBalanceSheetsStandardFreeCashFlow = 565,
+  QuoteFieldBalanceSheetsStandardInvestedCapital = 566,
+  QuoteFieldBalanceSheetsFinancialAssetsCashAndDueFromBanks = 567,
+  QuoteFieldBalanceSheetsFinancialAssetsFedFundsSoldSecuritiesPurchased = 568,
+  QuoteFieldBalanceSheetsFinancialAssetsInterestBearingDepAtOtherBanks = 569,
+  QuoteFieldBalanceSheetsFinancialAssetsInvestmentSecuritiesNet = 570,
+  QuoteFieldBalanceSheetsFinancialAssetsLoans = 571,
+  QuoteFieldBalanceSheetsFinancialAssetsUnearnedPremiums = 572,
+  QuoteFieldBalanceSheetsFinancialAssetsAllowanceForLoansAndLeaseLosses = 573,
+  QuoteFieldBalanceSheetsFinancialAssetsNetLoans = 574,
+  QuoteFieldBalanceSheetsFinancialAssetsPremisesAndEquipment = 575,
+  QuoteFieldBalanceSheetsFinancialAssetsDueFromCustomersAcceptance = 576,
+  QuoteFieldBalanceSheetsFinancialAssetsTradingAccountSecurities = 577,
+  QuoteFieldBalanceSheetsFinancialAssetsAccruedInterest = 578,
+  QuoteFieldBalanceSheetsFinancialAssetsDeferredAcquisitionCost = 579,
+  QuoteFieldBalanceSheetsFinancialAssetsAccruedInvestmentIncome = 580,
+  QuoteFieldBalanceSheetsFinancialAssetsSeparateAccountBusiness = 581,
+  QuoteFieldBalanceSheetsFinancialAssetsTimeDepositsPlaced = 582,
+  QuoteFieldBalanceSheetsFinancialAssetsIntangibleAssets = 583,
+  QuoteFieldBalanceSheetsFinancialAssetsOtherAssets = 584,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesNonInterestBearingDeposits = 585,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesInterestBearingDeposits = 586,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesOtherLiabilities = 587,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesBankersAcceptanceOutstanding = 588,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesFedFundsPurchasedSecuritiesSold = 589,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesAccruedTaxes = 590,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesAccruedInterestPayables = 591,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesOtherPayables = 592,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesClaimsAndClaimExpense = 593,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesFuturePolicyBenefits = 594,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesUnearnedPremiums = 595,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesPolicyHolderFunds = 596,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesParticipatingPolicyholderEquity = 597,
+  QuoteFieldBalanceSheetsFinancialLiabilitiesSeparateAccountsBusiness = 598,
+  QuoteFieldBalanceSheetsFinancialEquityForeignCurrencyAdjustments = 599,
+  QuoteFieldBalanceSheetsFinancialEquityNetUnrealizedLossGainOnInvestments = 600,
+  QuoteFieldBalanceSheetsFinancialEquityNetUnrealizedLossGainOnForeignCurrency = 601,
+  QuoteFieldBalanceSheetsFinancialEquityNetOtherUnearnedLossesGains = 602,
+  QuoteFieldBalanceSheetsDate = 603,
+  QuoteFieldCashFlowOperatingActivitiesNetIncomeOrLoss = 801,
+  QuoteFieldCashFlowOperatingActivitiesDeferredIncomeTaxes = 802,
+  QuoteFieldCashFlowOperatingActivitiesOtherNonCashItems = 803,
+  QuoteFieldCashFlowInvestingActivitiesAcquisitions = 804,
+  QuoteFieldCashFlowInvestingActivitiesOtherInvestingChangesNet = 805,
+  QuoteFieldCashFlowInvestingActivitiesNetCashFromInvestingActivities = 806,
+  QuoteFieldCashFlowFinancingActivitiesNetCashFromFinancingActivities = 807,
+  QuoteFieldCashFlowFinancingActivitiesEffectOfExchangeRateChanges = 808,
+  QuoteFieldCashFlowFinancingActivitiesCashAtBeginningOfPeriod = 809,
+  QuoteFieldCashFlowFinancingActivitiesCashAtEndOfPeriod = 810,
+  QuoteFieldCashFlowStandardOperatingActivitiesDepreciation = 811,
+  QuoteFieldCashFlowStandardOperatingActivitiesAmortization = 812,
+  QuoteFieldCashFlowStandardOperatingActivitiesAmortizationOfIntangibles = 813,
+  QuoteFieldCashFlowStandardOperatingActivitiesOperatingGainsOrLosses = 814,
+  QuoteFieldCashFlowStandardOperatingActivitiesExtraordinaryGainsOrLosses = 815,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInReceivables = 816,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInInventories = 817,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInPrepaidExpenses = 818,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInOtherCurrentAssets = 819,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInPayables = 820,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInOtherCurrLiabilities = 821,
+  QuoteFieldCashFlowStandardOperatingActivitiesIncreaseOrDecreaseInOtherWorkingCapital = 822,
+  QuoteFieldCashFlowStandardOperatingActivitiesNetCashFromContinuingOperations = 823,
+  QuoteFieldCashFlowStandardOperatingActivitiesNetCashFromDiscontinuedOperations = 824,
+  QuoteFieldCashFlowStandardOperatingActivitiesNetCashFromOperatingActivities = 825,
+  QuoteFieldCashFlowStandardInvestingActivitiesSaleOfPropertyPlantEquipment = 826,
+  QuoteFieldCashFlowStandardInvestingActivitiesSaleOfLongTermInvestments = 827,
+  QuoteFieldCashFlowStandardInvestingActivitiesSaleOfShortTermInvestments = 828,
+  QuoteFieldCashFlowStandardInvestingActivitiesPurchaseOfPropertyPlantEquipment = 829,
+  QuoteFieldCashFlowStandardInvestingActivitiesPurchaseOfLongTermInvestments = 830,
+  QuoteFieldCashFlowStandardInvestingActivitiesPurchaseOfShortTermInvestments = 831,
+  QuoteFieldCashFlowStandardInvestingActivitiesCashFromDiscInvestingActivities = 832,
+  QuoteFieldCashFlowStandardFinancingActivitiesIssuanceOfDebt = 833,
+  QuoteFieldCashFlowStandardFinancingActivitiesIssuanceOfCapitalStock = 834,
+  QuoteFieldCashFlowStandardFinancingActivitiesRepaymentOfDebt = 835,
+  QuoteFieldCashFlowStandardFinancingActivitiesRepurchaseOfCapitalStock = 836,
+  QuoteFieldCashFlowStandardFinancingActivitiesPaymentOfCashDividends = 837,
+  QuoteFieldCashFlowStandardFinancingActivitiesOtherFinancingChargesNet = 838,
+  QuoteFieldCashFlowStandardFinancingActivitiesCashFromDiscFinancingActivities = 839,
+  QuoteFieldCashFlowStandardFinancingActivitiesNetChangeInCashAndCashEquivalents = 840,
+  QuoteFieldCashFlowFinancialOperatingActivitiesProvisionForLoanLosses = 841,
+  QuoteFieldCashFlowFinancialOperatingActivitiesDepreciationandAmortization = 842,
+  QuoteFieldCashFlowFinancialOperatingActivitiesChangeInAssetsReceivables = 843,
+  QuoteFieldCashFlowFinancialOperatingActivitiesChangeInLiabilitiesPayables = 844,
+  QuoteFieldCashFlowFinancialOperatingActivitiesInvestmentSecuritiesGain = 845,
+  QuoteFieldCashFlowFinancialOperatingActivitiesNetPolicyAcquisitionCosts = 846,
+  QuoteFieldCashFlowFinancialOperatingActivitiesRealizedInvestmentGains = 847,
+  QuoteFieldCashFlowFinancialOperatingActivitiesNetPremiumsReceivables = 848,
+  QuoteFieldCashFlowFinancialOperatingActivitiesChangeInIncomeTaxes = 849,
+  QuoteFieldCashFlowFinancialOperatingActivitiesNetCashFromOperatingActivities = 850,
+  QuoteFieldCashFlowFinancialInvestingActivitiesProceedsFromSaleMatInv = 851,
+  QuoteFieldCashFlowFinancialInvestingActivitiesPurchaseOfInvestmentSecurities = 852,
+  QuoteFieldCashFlowFinancialInvestingActivitiesNetIncreaseFedFundsSold = 853,
+  QuoteFieldCashFlowFinancialInvestingActivitiesPurchaseOfPropertyAndEquipment = 854,
+  QuoteFieldCashFlowFinancialFinancingActivitiesNetChangeInDeposits = 855,
+  QuoteFieldCashFlowFinancialFinancingActivitiesCashDividendsPaid = 856,
+  QuoteFieldCashFlowFinancialFinancingActivitiesRepaymentOfLongTermDebt = 857,
+  QuoteFieldCashFlowFinancialFinancingActivitiesChangeOfShortTermDebt = 858,
+  QuoteFieldCashFlowFinancialFinancingActivitiesIssuanceOfLongTermDebt = 859,
+  QuoteFieldCashFlowFinancialFinancingActivitiesIssuanceOfPreferredStock = 860,
+  QuoteFieldCashFlowFinancialFinancingActivitiesIssuanceOfCommonStock = 861,
+  QuoteFieldCashFlowFinancialFinancingActivitiesPurchaseOfTreasuryStock = 862,
+  QuoteFieldCashFlowFinancialFinancingActivitiesOtherFinancingActivities = 863,
+  QuoteFieldCashFlowFinancialFinancingActivitiesNetChangeInCashAndEquivalents = 864,
+  QuoteFieldCashFlowDate = 865
+};
+bool ATQuoteFieldType_IsValid(int value);
+const ATQuoteFieldType ATQuoteFieldType_MIN = QuoteFieldSymbol;
+const ATQuoteFieldType ATQuoteFieldType_MAX = QuoteFieldCashFlowDate;
+const int ATQuoteFieldType_ARRAYSIZE = ATQuoteFieldType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATQuoteFieldType_descriptor();
+inline const ::std::string& ATQuoteFieldType_Name(ATQuoteFieldType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATQuoteFieldType_descriptor(), value);
+}
+inline bool ATQuoteFieldType_Parse(
+    const ::std::string& name, ATQuoteFieldType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATQuoteFieldType>(
+    ATQuoteFieldType_descriptor(), name, value);
+}
 // ===================================================================
 
 class ATLoginResponse : public ::google::protobuf::Message {
@@ -2116,6 +2535,283 @@ class ATBarHistoryDbResponse : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class ATQuoteDbResponseSymbolFieldData : public ::google::protobuf::Message {
+ public:
+  ATQuoteDbResponseSymbolFieldData();
+  virtual ~ATQuoteDbResponseSymbolFieldData();
+
+  ATQuoteDbResponseSymbolFieldData(const ATQuoteDbResponseSymbolFieldData& from);
+
+  inline ATQuoteDbResponseSymbolFieldData& operator=(const ATQuoteDbResponseSymbolFieldData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteDbResponseSymbolFieldData& default_instance();
+
+  void Swap(ATQuoteDbResponseSymbolFieldData* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteDbResponseSymbolFieldData* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteDbResponseSymbolFieldData& from);
+  void MergeFrom(const ATQuoteDbResponseSymbolFieldData& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATFieldStatus;
+  static const ATFieldStatus FieldStatusSuccess = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess;
+  static const ATFieldStatus FieldStatusInvalid = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusInvalid;
+  static const ATFieldStatus FieldStatusUnavailable = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusUnavailable;
+  static const ATFieldStatus FieldStatusDenie = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenie;
+  static inline bool ATFieldStatus_IsValid(int value) {
+    return ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(value);
+  }
+  static const ATFieldStatus ATFieldStatus_MIN =
+    ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MIN;
+  static const ATFieldStatus ATFieldStatus_MAX =
+    ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MAX;
+  static const int ATFieldStatus_ARRAYSIZE =
+    ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  ATFieldStatus_descriptor() {
+    return ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor();
+  }
+  static inline const ::std::string& ATFieldStatus_Name(ATFieldStatus value) {
+    return ATQuoteDbResponseSymbolFieldData_ATFieldStatus_Name(value);
+  }
+  static inline bool ATFieldStatus_Parse(const ::std::string& name,
+      ATFieldStatus* value) {
+    return ATQuoteDbResponseSymbolFieldData_ATFieldStatus_Parse(name, value);
+  }
+
+  typedef ATQuoteDbResponseSymbolFieldData_ATDataType ATDataType;
+  static const ATDataType DataByte = ATQuoteDbResponseSymbolFieldData_ATDataType_DataByte;
+  static const ATDataType DataByteArray = ATQuoteDbResponseSymbolFieldData_ATDataType_DataByteArray;
+  static const ATDataType DataUInteger32 = ATQuoteDbResponseSymbolFieldData_ATDataType_DataUInteger32;
+  static const ATDataType DataUInteger64 = ATQuoteDbResponseSymbolFieldData_ATDataType_DataUInteger64;
+  static const ATDataType DataInteger32 = ATQuoteDbResponseSymbolFieldData_ATDataType_DataInteger32;
+  static const ATDataType DataInteger64 = ATQuoteDbResponseSymbolFieldData_ATDataType_DataInteger64;
+  static const ATDataType DataPrice = ATQuoteDbResponseSymbolFieldData_ATDataType_DataPrice;
+  static const ATDataType DataString = ATQuoteDbResponseSymbolFieldData_ATDataType_DataString;
+  static const ATDataType DataUnicodeString = ATQuoteDbResponseSymbolFieldData_ATDataType_DataUnicodeString;
+  static const ATDataType DataDateTime = ATQuoteDbResponseSymbolFieldData_ATDataType_DataDateTime;
+  static const ATDataType DataDouble = ATQuoteDbResponseSymbolFieldData_ATDataType_DataDouble;
+  static inline bool ATDataType_IsValid(int value) {
+    return ATQuoteDbResponseSymbolFieldData_ATDataType_IsValid(value);
+  }
+  static const ATDataType ATDataType_MIN =
+    ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_MIN;
+  static const ATDataType ATDataType_MAX =
+    ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_MAX;
+  static const int ATDataType_ARRAYSIZE =
+    ATQuoteDbResponseSymbolFieldData_ATDataType_ATDataType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  ATDataType_descriptor() {
+    return ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor();
+  }
+  static inline const ::std::string& ATDataType_Name(ATDataType value) {
+    return ATQuoteDbResponseSymbolFieldData_ATDataType_Name(value);
+  }
+  static inline bool ATDataType_Parse(const ::std::string& name,
+      ATDataType* value) {
+    return ATQuoteDbResponseSymbolFieldData_ATDataType_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATQuoteFieldType fieldType = 1;
+  inline bool has_fieldtype() const;
+  inline void clear_fieldtype();
+  static const int kFieldTypeFieldNumber = 1;
+  inline ::NodeActiveTickProto::ATQuoteFieldType fieldtype() const;
+  inline void set_fieldtype(::NodeActiveTickProto::ATQuoteFieldType value);
+
+  // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus fieldStatus = 2;
+  inline bool has_fieldstatus() const;
+  inline void clear_fieldstatus();
+  static const int kFieldStatusFieldNumber = 2;
+  inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus fieldstatus() const;
+  inline void set_fieldstatus(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus value);
+
+  // optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType dataType = 3;
+  inline bool has_datatype() const;
+  inline void clear_datatype();
+  static const int kDataTypeFieldNumber = 3;
+  inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType datatype() const;
+  inline void set_datatype(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType value);
+
+  // optional string data = 4;
+  inline bool has_data() const;
+  inline void clear_data();
+  static const int kDataFieldNumber = 4;
+  inline const ::std::string& data() const;
+  inline void set_data(const ::std::string& value);
+  inline void set_data(const char* value);
+  inline void set_data(const char* value, size_t size);
+  inline ::std::string* mutable_data();
+  inline ::std::string* release_data();
+  inline void set_allocated_data(::std::string* data);
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
+ private:
+  inline void set_has_fieldtype();
+  inline void clear_has_fieldtype();
+  inline void set_has_fieldstatus();
+  inline void clear_has_fieldstatus();
+  inline void set_has_datatype();
+  inline void clear_has_datatype();
+  inline void set_has_data();
+  inline void clear_has_data();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  int fieldtype_;
+  int fieldstatus_;
+  ::std::string* data_;
+  int datatype_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteDbResponseSymbolFieldData* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ATQuoteDbResponseData : public ::google::protobuf::Message {
+ public:
+  ATQuoteDbResponseData();
+  virtual ~ATQuoteDbResponseData();
+
+  ATQuoteDbResponseData(const ATQuoteDbResponseData& from);
+
+  inline ATQuoteDbResponseData& operator=(const ATQuoteDbResponseData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ATQuoteDbResponseData& default_instance();
+
+  void Swap(ATQuoteDbResponseData* other);
+
+  // implements Message ----------------------------------------------
+
+  ATQuoteDbResponseData* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ATQuoteDbResponseData& from);
+  void MergeFrom(const ATQuoteDbResponseData& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NodeActiveTickProto.ATSymbolStatus symbolStatus = 1;
+  inline bool has_symbolstatus() const;
+  inline void clear_symbolstatus();
+  static const int kSymbolStatusFieldNumber = 1;
+  inline ::NodeActiveTickProto::ATSymbolStatus symbolstatus() const;
+  inline void set_symbolstatus(::NodeActiveTickProto::ATSymbolStatus value);
+
+  // optional .NodeActiveTickProto.ATSymbol symbol = 2;
+  inline bool has_symbol() const;
+  inline void clear_symbol();
+  static const int kSymbolFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATSymbol& symbol() const;
+  inline ::NodeActiveTickProto::ATSymbol* mutable_symbol();
+  inline ::NodeActiveTickProto::ATSymbol* release_symbol();
+  inline void set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol);
+
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData symbolFieldData = 3;
+  inline int symbolfielddata_size() const;
+  inline void clear_symbolfielddata();
+  static const int kSymbolFieldDataFieldNumber = 3;
+  inline const ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData& symbolfielddata(int index) const;
+  inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData* mutable_symbolfielddata(int index);
+  inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData* add_symbolfielddata();
+  inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData >&
+      symbolfielddata() const;
+  inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData >*
+      mutable_symbolfielddata();
+
+  // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteDbResponseData)
+ private:
+  inline void set_has_symbolstatus();
+  inline void clear_has_symbolstatus();
+  inline void set_has_symbol();
+  inline void clear_has_symbol();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::NodeActiveTickProto::ATSymbol* symbol_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData > symbolfielddata_;
+  int symbolstatus_;
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+
+  void InitAsDefaultInstance();
+  static ATQuoteDbResponseData* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class ATQuoteDbResponse : public ::google::protobuf::Message {
  public:
   ATQuoteDbResponse();
@@ -2167,25 +2863,64 @@ class ATQuoteDbResponse : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponseType;
+  static const ATQuoteDbResponseType QuoteDbResponseSuccess = ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseSuccess;
+  static const ATQuoteDbResponseType QuoteDbResponseInvalidRequest = ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseInvalidRequest;
+  static const ATQuoteDbResponseType QuoteDbResponseDenied = ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseDenied;
+  static const ATQuoteDbResponseType QuoteDbResponseUnavailable = ATQuoteDbResponse_ATQuoteDbResponseType_QuoteDbResponseUnavailable;
+  static inline bool ATQuoteDbResponseType_IsValid(int value) {
+    return ATQuoteDbResponse_ATQuoteDbResponseType_IsValid(value);
+  }
+  static const ATQuoteDbResponseType ATQuoteDbResponseType_MIN =
+    ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_MIN;
+  static const ATQuoteDbResponseType ATQuoteDbResponseType_MAX =
+    ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_MAX;
+  static const int ATQuoteDbResponseType_ARRAYSIZE =
+    ATQuoteDbResponse_ATQuoteDbResponseType_ATQuoteDbResponseType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  ATQuoteDbResponseType_descriptor() {
+    return ATQuoteDbResponse_ATQuoteDbResponseType_descriptor();
+  }
+  static inline const ::std::string& ATQuoteDbResponseType_Name(ATQuoteDbResponseType value) {
+    return ATQuoteDbResponse_ATQuoteDbResponseType_Name(value);
+  }
+  static inline bool ATQuoteDbResponseType_Parse(const ::std::string& name,
+      ATQuoteDbResponseType* value) {
+    return ATQuoteDbResponse_ATQuoteDbResponseType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
-  // required int32 ATQuoteDbResponseType = 1;
-  inline bool has_atquotedbresponsetype() const;
-  inline void clear_atquotedbresponsetype();
-  static const int kATQuoteDbResponseTypeFieldNumber = 1;
-  inline ::google::protobuf::int32 atquotedbresponsetype() const;
-  inline void set_atquotedbresponsetype(::google::protobuf::int32 value);
+  // optional .NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType responseType = 1;
+  inline bool has_responsetype() const;
+  inline void clear_responsetype();
+  static const int kResponseTypeFieldNumber = 1;
+  inline ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType responsetype() const;
+  inline void set_responsetype(::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType value);
+
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+  inline int datums_size() const;
+  inline void clear_datums();
+  static const int kDatumsFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATQuoteDbResponseData& datums(int index) const;
+  inline ::NodeActiveTickProto::ATQuoteDbResponseData* mutable_datums(int index);
+  inline ::NodeActiveTickProto::ATQuoteDbResponseData* add_datums();
+  inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >&
+      datums() const;
+  inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >*
+      mutable_datums();
 
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteDbResponse)
  private:
-  inline void set_has_atquotedbresponsetype();
-  inline void clear_has_atquotedbresponsetype();
+  inline void set_has_responsetype();
+  inline void clear_has_responsetype();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int32 atquotedbresponsetype_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData > datums_;
+  int responsetype_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
@@ -5479,30 +6214,316 @@ ATBarHistoryDbResponse::mutable_value() {
 
 // -------------------------------------------------------------------
 
-// ATQuoteDbResponse
+// ATQuoteDbResponseSymbolFieldData
 
-// required int32 ATQuoteDbResponseType = 1;
-inline bool ATQuoteDbResponse::has_atquotedbresponsetype() const {
+// optional .NodeActiveTickProto.ATQuoteFieldType fieldType = 1;
+inline bool ATQuoteDbResponseSymbolFieldData::has_fieldtype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ATQuoteDbResponse::set_has_atquotedbresponsetype() {
+inline void ATQuoteDbResponseSymbolFieldData::set_has_fieldtype() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ATQuoteDbResponse::clear_has_atquotedbresponsetype() {
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_fieldtype() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ATQuoteDbResponse::clear_atquotedbresponsetype() {
-  atquotedbresponsetype_ = 0;
-  clear_has_atquotedbresponsetype();
+inline void ATQuoteDbResponseSymbolFieldData::clear_fieldtype() {
+  fieldtype_ = 1;
+  clear_has_fieldtype();
 }
-inline ::google::protobuf::int32 ATQuoteDbResponse::atquotedbresponsetype() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType)
-  return atquotedbresponsetype_;
+inline ::NodeActiveTickProto::ATQuoteFieldType ATQuoteDbResponseSymbolFieldData::fieldtype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.fieldType)
+  return static_cast< ::NodeActiveTickProto::ATQuoteFieldType >(fieldtype_);
 }
-inline void ATQuoteDbResponse::set_atquotedbresponsetype(::google::protobuf::int32 value) {
-  set_has_atquotedbresponsetype();
-  atquotedbresponsetype_ = value;
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType)
+inline void ATQuoteDbResponseSymbolFieldData::set_fieldtype(::NodeActiveTickProto::ATQuoteFieldType value) {
+  assert(::NodeActiveTickProto::ATQuoteFieldType_IsValid(value));
+  set_has_fieldtype();
+  fieldtype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.fieldType)
+}
+
+// optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus fieldStatus = 2;
+inline bool ATQuoteDbResponseSymbolFieldData::has_fieldstatus() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_fieldstatus() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_fieldstatus() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_fieldstatus() {
+  fieldstatus_ = 1;
+  clear_has_fieldstatus();
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::fieldstatus() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.fieldStatus)
+  return static_cast< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus >(fieldstatus_);
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_fieldstatus(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus value) {
+  assert(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(value));
+  set_has_fieldstatus();
+  fieldstatus_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.fieldStatus)
+}
+
+// optional .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType dataType = 3;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datatype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datatype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datatype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datatype() {
+  datatype_ = 1;
+  clear_has_datatype();
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType ATQuoteDbResponseSymbolFieldData::datatype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.dataType)
+  return static_cast< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType >(datatype_);
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datatype(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType value) {
+  assert(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType_IsValid(value));
+  set_has_datatype();
+  datatype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.dataType)
+}
+
+// optional string data = 4;
+inline bool ATQuoteDbResponseSymbolFieldData::has_data() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_data() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_data() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_data() {
+  if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    data_->clear();
+  }
+  clear_has_data();
+}
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData::data() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+  return *data_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_data(const ::std::string& value) {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    data_ = new ::std::string;
+  }
+  data_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_data(const char* value) {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    data_ = new ::std::string;
+  }
+  data_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_data(const char* value, size_t size) {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    data_ = new ::std::string;
+  }
+  data_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::mutable_data() {
+  set_has_data();
+  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    data_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+  return data_;
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::release_data() {
+  clear_has_data();
+  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = data_;
+    data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_data(::std::string* data) {
+  if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete data_;
+  }
+  if (data) {
+    set_has_data();
+    data_ = data;
+  } else {
+    clear_has_data();
+    data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteDbResponseData
+
+// optional .NodeActiveTickProto.ATSymbolStatus symbolStatus = 1;
+inline bool ATQuoteDbResponseData::has_symbolstatus() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteDbResponseData::set_has_symbolstatus() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteDbResponseData::clear_has_symbolstatus() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteDbResponseData::clear_symbolstatus() {
+  symbolstatus_ = 1;
+  clear_has_symbolstatus();
+}
+inline ::NodeActiveTickProto::ATSymbolStatus ATQuoteDbResponseData::symbolstatus() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseData.symbolStatus)
+  return static_cast< ::NodeActiveTickProto::ATSymbolStatus >(symbolstatus_);
+}
+inline void ATQuoteDbResponseData::set_symbolstatus(::NodeActiveTickProto::ATSymbolStatus value) {
+  assert(::NodeActiveTickProto::ATSymbolStatus_IsValid(value));
+  set_has_symbolstatus();
+  symbolstatus_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseData.symbolStatus)
+}
+
+// optional .NodeActiveTickProto.ATSymbol symbol = 2;
+inline bool ATQuoteDbResponseData::has_symbol() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ATQuoteDbResponseData::set_has_symbol() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ATQuoteDbResponseData::clear_has_symbol() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ATQuoteDbResponseData::clear_symbol() {
+  if (symbol_ != NULL) symbol_->::NodeActiveTickProto::ATSymbol::Clear();
+  clear_has_symbol();
+}
+inline const ::NodeActiveTickProto::ATSymbol& ATQuoteDbResponseData::symbol() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseData.symbol)
+  return symbol_ != NULL ? *symbol_ : *default_instance_->symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteDbResponseData::mutable_symbol() {
+  set_has_symbol();
+  if (symbol_ == NULL) symbol_ = new ::NodeActiveTickProto::ATSymbol;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseData.symbol)
+  return symbol_;
+}
+inline ::NodeActiveTickProto::ATSymbol* ATQuoteDbResponseData::release_symbol() {
+  clear_has_symbol();
+  ::NodeActiveTickProto::ATSymbol* temp = symbol_;
+  symbol_ = NULL;
+  return temp;
+}
+inline void ATQuoteDbResponseData::set_allocated_symbol(::NodeActiveTickProto::ATSymbol* symbol) {
+  delete symbol_;
+  symbol_ = symbol;
+  if (symbol) {
+    set_has_symbol();
+  } else {
+    clear_has_symbol();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseData.symbol)
+}
+
+// repeated .NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData symbolFieldData = 3;
+inline int ATQuoteDbResponseData::symbolfielddata_size() const {
+  return symbolfielddata_.size();
+}
+inline void ATQuoteDbResponseData::clear_symbolfielddata() {
+  symbolfielddata_.Clear();
+}
+inline const ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData& ATQuoteDbResponseData::symbolfielddata(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseData.symbolFieldData)
+  return symbolfielddata_.Get(index);
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData* ATQuoteDbResponseData::mutable_symbolfielddata(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseData.symbolFieldData)
+  return symbolfielddata_.Mutable(index);
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData* ATQuoteDbResponseData::add_symbolfielddata() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATQuoteDbResponseData.symbolFieldData)
+  return symbolfielddata_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData >&
+ATQuoteDbResponseData::symbolfielddata() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATQuoteDbResponseData.symbolFieldData)
+  return symbolfielddata_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData >*
+ATQuoteDbResponseData::mutable_symbolfielddata() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATQuoteDbResponseData.symbolFieldData)
+  return &symbolfielddata_;
+}
+
+// -------------------------------------------------------------------
+
+// ATQuoteDbResponse
+
+// optional .NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType responseType = 1;
+inline bool ATQuoteDbResponse::has_responsetype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ATQuoteDbResponse::set_has_responsetype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ATQuoteDbResponse::clear_has_responsetype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ATQuoteDbResponse::clear_responsetype() {
+  responsetype_ = 1;
+  clear_has_responsetype();
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType ATQuoteDbResponse::responsetype() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponse.responseType)
+  return static_cast< ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType >(responsetype_);
+}
+inline void ATQuoteDbResponse::set_responsetype(::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType value) {
+  assert(::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType_IsValid(value));
+  set_has_responsetype();
+  responsetype_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponse.responseType)
+}
+
+// repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+inline int ATQuoteDbResponse::datums_size() const {
+  return datums_.size();
+}
+inline void ATQuoteDbResponse::clear_datums() {
+  datums_.Clear();
+}
+inline const ::NodeActiveTickProto::ATQuoteDbResponseData& ATQuoteDbResponse::datums(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponse.datums)
+  return datums_.Get(index);
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponseData* ATQuoteDbResponse::mutable_datums(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponse.datums)
+  return datums_.Mutable(index);
+}
+inline ::NodeActiveTickProto::ATQuoteDbResponseData* ATQuoteDbResponse::add_datums() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATQuoteDbResponse.datums)
+  return datums_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >&
+ATQuoteDbResponse::datums() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATQuoteDbResponse.datums)
+  return datums_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >*
+ATQuoteDbResponse::mutable_datums() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATQuoteDbResponse.datums)
+  return &datums_;
 }
 
 
@@ -5514,6 +6535,31 @@ inline void ATQuoteDbResponse::set_atquotedbresponsetype(::google::protobuf::int
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus>() {
+  return ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType>() {
+  return ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType>() {
+  return ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATSymbolStatus> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATSymbolStatus>() {
+  return ::NodeActiveTickProto::ATSymbolStatus_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATQuoteFieldType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATQuoteFieldType>() {
+  return ::NodeActiveTickProto::ATQuoteFieldType_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

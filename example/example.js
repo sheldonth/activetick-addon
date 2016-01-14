@@ -69,12 +69,10 @@
           }));
           __iced_deferrals._fulfill();
         })(function() {
-          a.quoteDBRequest('AAPL', function(quote) {
+          a.quoteDBRequest('AAPL', 'QuoteFieldSymbol,QuoteFieldOpenPrice,QuoteFieldPreviousClosePrice,QuoteFieldProfilePrimaryExchange', function(quote) {
             console.log('quoteDBRequest callback');
-            return console.log(quote);
-          });
-          a.barHistoryDBRequest('FB', 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', function(result) {
-            return console.log('barhistory', result);
+            console.log(quote);
+            return process.exit();
           });
           return facebook = 'FB';
         });
