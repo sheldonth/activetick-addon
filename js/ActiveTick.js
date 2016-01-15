@@ -135,6 +135,15 @@
         this.emit('quote', msg);
       } else if (msgType === 'ATQuoteDbResponse') {
         msg = this.ATQuoteDbResponse.decode(msgData);
+        this.ATQuoteFieldTypes = this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
+        this.ATFieldStatus = this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus');
+        this.ATDataType = this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType');
+        console.log(_.invert(this.ATDataType)[msg.datum[0].symbolFieldData[0].dataType]);
+        console.log(_.invert(this.ATFieldStatus)[msg.datum[0].symbolFieldData[0].fieldStatus]);
+        console.log(_.invert(this.ATQuoteFieldTypes)[msg.datum[0].symbolFieldData[0].fieldType]);
+        console.log(msg.datum[0].symbolFieldData[0].data);
+        console.log(msg.datum[0].symbolFieldData[0].data.buffer.length);
+        console.log(msg.datum[0].symbolFieldData[0].data.buffer.readDoubleLE(2));
       }
       if ((c = this.callbacks[msgID]) != null) {
         return c(msg);

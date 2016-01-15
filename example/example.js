@@ -69,8 +69,7 @@
           }));
           __iced_deferrals._fulfill();
         })(function() {
-          a.quoteDBRequest('AAPL', 'QuoteFieldSymbol,QuoteFieldOpenPrice,QuoteFieldPreviousClosePrice,QuoteFieldProfilePrimaryExchange', function(quote) {
-            console.log('quoteDBRequest callback');
+          a.quoteDBRequest('BGMD', 'QuoteFieldSymbol,QuoteFieldIncomeStatementStandardExciseTaxes', function(quote) {
             console.log(quote);
             return process.exit();
           });

@@ -37,12 +37,24 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
   if (NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType_IsValid(static_cast<int>(responseType))) // Sample of using native protobuf enums
     quoteDbResponse->set_responsetype(NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType(static_cast<int>(responseType)));
   if (parser->MoveToFirstResponse()) {
-    LPATSYMBOL currentSymbol = parser->GetSymbol();
-    ATSymbolStatus status = parser->GetSymbolStatus();
     if (parser->MoveToFirstDataItem()) {
-      for (int32_t response_index = 0; response_index < parser->GetDataItemCount(); response_index++) {
-        ATQuoteFieldType fieldType = parser->GetDataItemQuoteFieldType();
-        parser->MoveToNextDataItem();
+      for (int32_t response_index = 0; response_index < parser->GetSymbolCount(); response_index++) {
+        NodeActiveTickProto::ATQuoteDbResponseData* responseData = quoteDbResponse->add_datum();
+        LPATSYMBOL currentSymbol = parser->GetSymbol();
+        NodeActiveTickProto::ATSymbol* sym = new NodeActiveTickProto::ATSymbol();
+        ProtobufHelper::atsymbol_insert(currentSymbol, sym);
+        responseData->set_allocated_symbol(sym);
+        ATSymbolStatus symbolStatus = parser->GetSymbolStatus();
+        responseData->set_symbolstatus(NodeActiveTickProto::ATSymbolStatus(symbolStatus));
+        for (int32_t data_index = 0; data_index < parser->GetDataItemCount(); data_index++) {
+          NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData* fieldData = responseData->add_symbolfielddata();
+          fieldData->set_fieldtype(NodeActiveTickProto::ATQuoteFieldType(parser->GetDataItemQuoteFieldType())); // could be wrong
+          fieldData->set_fieldstatus(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATFieldStatus(parser->GetDataItemFieldStatus()));
+          fieldData->set_datatype(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATDataType(parser->GetDataItemDataType()));
+          fieldData->set_data((const char *)parser->GetDataItemData());
+          parser->MoveToNextDataItem();
+        }
+        parser->MoveToNextResponse();
       }
     }
   }

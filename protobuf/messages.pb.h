@@ -58,11 +58,11 @@ enum ATQuoteDbResponseSymbolFieldData_ATFieldStatus {
   ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess = 1,
   ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusInvalid = 2,
   ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusUnavailable = 3,
-  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenie = 4
+  ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenied = 4
 };
 bool ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(int value);
 const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MIN = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess;
-const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MAX = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenie;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MAX = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenied;
 const int ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_ARRAYSIZE = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_ATFieldStatus_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ATQuoteDbResponseSymbolFieldData_ATFieldStatus_descriptor();
@@ -2590,7 +2590,7 @@ class ATQuoteDbResponseSymbolFieldData : public ::google::protobuf::Message {
   static const ATFieldStatus FieldStatusSuccess = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess;
   static const ATFieldStatus FieldStatusInvalid = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusInvalid;
   static const ATFieldStatus FieldStatusUnavailable = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusUnavailable;
-  static const ATFieldStatus FieldStatusDenie = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenie;
+  static const ATFieldStatus FieldStatusDenied = ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusDenied;
   static inline bool ATFieldStatus_IsValid(int value) {
     return ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(value);
   }
@@ -2668,14 +2668,14 @@ class ATQuoteDbResponseSymbolFieldData : public ::google::protobuf::Message {
   inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType datatype() const;
   inline void set_datatype(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType value);
 
-  // optional string data = 4;
+  // optional bytes data = 4;
   inline bool has_data() const;
   inline void clear_data();
   static const int kDataFieldNumber = 4;
   inline const ::std::string& data() const;
   inline void set_data(const ::std::string& value);
   inline void set_data(const char* value);
-  inline void set_data(const char* value, size_t size);
+  inline void set_data(const void* value, size_t size);
   inline ::std::string* mutable_data();
   inline ::std::string* release_data();
   inline void set_allocated_data(::std::string* data);
@@ -2898,17 +2898,17 @@ class ATQuoteDbResponse : public ::google::protobuf::Message {
   inline ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType responsetype() const;
   inline void set_responsetype(::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType value);
 
-  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
-  inline int datums_size() const;
-  inline void clear_datums();
-  static const int kDatumsFieldNumber = 2;
-  inline const ::NodeActiveTickProto::ATQuoteDbResponseData& datums(int index) const;
-  inline ::NodeActiveTickProto::ATQuoteDbResponseData* mutable_datums(int index);
-  inline ::NodeActiveTickProto::ATQuoteDbResponseData* add_datums();
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datum = 2;
+  inline int datum_size() const;
+  inline void clear_datum();
+  static const int kDatumFieldNumber = 2;
+  inline const ::NodeActiveTickProto::ATQuoteDbResponseData& datum(int index) const;
+  inline ::NodeActiveTickProto::ATQuoteDbResponseData* mutable_datum(int index);
+  inline ::NodeActiveTickProto::ATQuoteDbResponseData* add_datum();
   inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >&
-      datums() const;
+      datum() const;
   inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >*
-      mutable_datums();
+      mutable_datum();
 
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteDbResponse)
  private:
@@ -2919,7 +2919,7 @@ class ATQuoteDbResponse : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData > datums_;
+  ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData > datum_;
   int responsetype_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
@@ -6291,7 +6291,7 @@ inline void ATQuoteDbResponseSymbolFieldData::set_datatype(::NodeActiveTickProto
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.dataType)
 }
 
-// optional string data = 4;
+// optional bytes data = 4;
 inline bool ATQuoteDbResponseSymbolFieldData::has_data() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -6327,7 +6327,7 @@ inline void ATQuoteDbResponseSymbolFieldData::set_data(const char* value) {
   data_->assign(value);
   // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
 }
-inline void ATQuoteDbResponseSymbolFieldData::set_data(const char* value, size_t size) {
+inline void ATQuoteDbResponseSymbolFieldData::set_data(const void* value, size_t size) {
   set_has_data();
   if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     data_ = new ::std::string;
@@ -6496,34 +6496,34 @@ inline void ATQuoteDbResponse::set_responsetype(::NodeActiveTickProto::ATQuoteDb
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponse.responseType)
 }
 
-// repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
-inline int ATQuoteDbResponse::datums_size() const {
-  return datums_.size();
+// repeated .NodeActiveTickProto.ATQuoteDbResponseData datum = 2;
+inline int ATQuoteDbResponse::datum_size() const {
+  return datum_.size();
 }
-inline void ATQuoteDbResponse::clear_datums() {
-  datums_.Clear();
+inline void ATQuoteDbResponse::clear_datum() {
+  datum_.Clear();
 }
-inline const ::NodeActiveTickProto::ATQuoteDbResponseData& ATQuoteDbResponse::datums(int index) const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponse.datums)
-  return datums_.Get(index);
+inline const ::NodeActiveTickProto::ATQuoteDbResponseData& ATQuoteDbResponse::datum(int index) const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponse.datum)
+  return datum_.Get(index);
 }
-inline ::NodeActiveTickProto::ATQuoteDbResponseData* ATQuoteDbResponse::mutable_datums(int index) {
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponse.datums)
-  return datums_.Mutable(index);
+inline ::NodeActiveTickProto::ATQuoteDbResponseData* ATQuoteDbResponse::mutable_datum(int index) {
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponse.datum)
+  return datum_.Mutable(index);
 }
-inline ::NodeActiveTickProto::ATQuoteDbResponseData* ATQuoteDbResponse::add_datums() {
-  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATQuoteDbResponse.datums)
-  return datums_.Add();
+inline ::NodeActiveTickProto::ATQuoteDbResponseData* ATQuoteDbResponse::add_datum() {
+  // @@protoc_insertion_point(field_add:NodeActiveTickProto.ATQuoteDbResponse.datum)
+  return datum_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >&
-ATQuoteDbResponse::datums() const {
-  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATQuoteDbResponse.datums)
-  return datums_;
+ATQuoteDbResponse::datum() const {
+  // @@protoc_insertion_point(field_list:NodeActiveTickProto.ATQuoteDbResponse.datum)
+  return datum_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::NodeActiveTickProto::ATQuoteDbResponseData >*
-ATQuoteDbResponse::mutable_datums() {
-  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATQuoteDbResponse.datums)
-  return &datums_;
+ATQuoteDbResponse::mutable_datum() {
+  // @@protoc_insertion_point(field_mutable_list:NodeActiveTickProto.ATQuoteDbResponse.datum)
+  return &datum_;
 }
 
 

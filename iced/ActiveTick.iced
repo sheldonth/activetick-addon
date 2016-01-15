@@ -88,6 +88,17 @@ class ActiveTick extends EventEmitter
       @emit 'quote', msg
     else if msgType is 'ATQuoteDbResponse'
       msg = @ATQuoteDbResponse.decode msgData
+      @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
+      @ATFieldStatus = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus'
+      @ATDataType = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType'
+      console.log _.invert(@ATDataType)[msg.datum[0].symbolFieldData[0].dataType]
+      console.log _.invert(@ATFieldStatus)[msg.datum[0].symbolFieldData[0].fieldStatus]
+      console.log _.invert(@ATQuoteFieldTypes)[msg.datum[0].symbolFieldData[0].fieldType] # store the _.invert of the enums for lookups.
+      # console.log msg.datum[0].symbolFieldData[0].data.toString 'utf8'
+      console.log msg.datum[0].symbolFieldData[0].data
+      console.log msg.datum[0].symbolFieldData[0].data.buffer.length
+      # console.log msg.datum[0].symbolFieldData[0].data.buffer.readUInt32LE(0)
+      console.log msg.datum[0].symbolFieldData[0].data.buffer.readDoubleLE(2)
     if (c = @callbacks[msgID])?
       c(msg)
 

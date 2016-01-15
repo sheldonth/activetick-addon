@@ -437,7 +437,7 @@ void protobuf_AssignDesc_messages_2eproto() {
   ATQuoteDbResponse_descriptor_ = file->message_type(18);
   static const int ATQuoteDbResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, responsetype_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, datums_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponse, datum_),
   };
   ATQuoteDbResponse_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -635,30 +635,30 @@ void protobuf_AddDesc_messages_2eproto() {
     "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
     "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
     "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
-    "rHistoryValue\"\341\004\n ATQuoteDbResponseSymbo"
+    "rHistoryValue\"\342\004\n ATQuoteDbResponseSymbo"
     "lFieldData\0228\n\tfieldType\030\001 \001(\0162%.NodeActi"
     "veTickProto.ATQuoteFieldType\022X\n\013fieldSta"
     "tus\030\002 \001(\0162C.NodeActiveTickProto.ATQuoteD"
     "bResponseSymbolFieldData.ATFieldStatus\022R"
     "\n\010dataType\030\003 \001(\0162@.NodeActiveTickProto.A"
     "TQuoteDbResponseSymbolFieldData.ATDataTy"
-    "pe\022\014\n\004data\030\004 \001(\t\"q\n\rATFieldStatus\022\026\n\022Fie"
+    "pe\022\014\n\004data\030\004 \001(\014\"r\n\rATFieldStatus\022\026\n\022Fie"
     "ldStatusSuccess\020\001\022\026\n\022FieldStatusInvalid\020"
-    "\002\022\032\n\026FieldStatusUnavailable\020\003\022\024\n\020FieldSt"
-    "atusDenie\020\004\"\323\001\n\nATDataType\022\014\n\010DataByte\020\001"
-    "\022\021\n\rDataByteArray\020\002\022\022\n\016DataUInteger32\020\003\022"
-    "\022\n\016DataUInteger64\020\004\022\021\n\rDataInteger32\020\005\022\021"
-    "\n\rDataInteger64\020\006\022\r\n\tDataPrice\020\007\022\016\n\nData"
-    "String\020\010\022\025\n\021DataUnicodeString\020\t\022\020\n\014DataD"
-    "ateTime\020\n\022\016\n\nDataDouble\020\013\"\321\001\n\025ATQuoteDbR"
-    "esponseData\0229\n\014symbolStatus\030\001 \001(\0162#.Node"
-    "ActiveTickProto.ATSymbolStatus\022-\n\006symbol"
-    "\030\002 \001(\0132\035.NodeActiveTickProto.ATSymbol\022N\n"
-    "\017symbolFieldData\030\003 \003(\01325.NodeActiveTickP"
-    "roto.ATQuoteDbResponseSymbolFieldData\"\267\002"
-    "\n\021ATQuoteDbResponse\022R\n\014responseType\030\001 \001("
-    "\0162<.NodeActiveTickProto.ATQuoteDbRespons"
-    "e.ATQuoteDbResponseType\022:\n\006datums\030\002 \003(\0132"
+    "\002\022\032\n\026FieldStatusUnavailable\020\003\022\025\n\021FieldSt"
+    "atusDenied\020\004\"\323\001\n\nATDataType\022\014\n\010DataByte\020"
+    "\001\022\021\n\rDataByteArray\020\002\022\022\n\016DataUInteger32\020\003"
+    "\022\022\n\016DataUInteger64\020\004\022\021\n\rDataInteger32\020\005\022"
+    "\021\n\rDataInteger64\020\006\022\r\n\tDataPrice\020\007\022\016\n\nDat"
+    "aString\020\010\022\025\n\021DataUnicodeString\020\t\022\020\n\014Data"
+    "DateTime\020\n\022\016\n\nDataDouble\020\013\"\321\001\n\025ATQuoteDb"
+    "ResponseData\0229\n\014symbolStatus\030\001 \001(\0162#.Nod"
+    "eActiveTickProto.ATSymbolStatus\022-\n\006symbo"
+    "l\030\002 \001(\0132\035.NodeActiveTickProto.ATSymbol\022N"
+    "\n\017symbolFieldData\030\003 \003(\01325.NodeActiveTick"
+    "Proto.ATQuoteDbResponseSymbolFieldData\"\266"
+    "\002\n\021ATQuoteDbResponse\022R\n\014responseType\030\001 \001"
+    "(\0162<.NodeActiveTickProto.ATQuoteDbRespon"
+    "se.ATQuoteDbResponseType\0229\n\005datum\030\002 \003(\0132"
     "*.NodeActiveTickProto.ATQuoteDbResponseD"
     "ata\"\221\001\n\025ATQuoteDbResponseType\022\032\n\026QuoteDb"
     "ResponseSuccess\020\001\022!\n\035QuoteDbResponseInva"
@@ -8245,7 +8245,7 @@ bool ATQuoteDbResponseSymbolFieldData_ATFieldStatus_IsValid(int value) {
 const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusSuccess;
 const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusInvalid;
 const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusUnavailable;
-const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusDenie;
+const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::FieldStatusDenied;
 const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::ATFieldStatus_MIN;
 const ATQuoteDbResponseSymbolFieldData_ATFieldStatus ATQuoteDbResponseSymbolFieldData::ATFieldStatus_MAX;
 const int ATQuoteDbResponseSymbolFieldData::ATFieldStatus_ARRAYSIZE;
@@ -8440,16 +8440,12 @@ bool ATQuoteDbResponseSymbolFieldData::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string data = 4;
+      // optional bytes data = 4;
       case 4: {
         if (tag == 34) {
          parse_data:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_data()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->data().data(), this->data().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "data");
         } else {
           goto handle_unusual;
         }
@@ -8500,13 +8496,9 @@ void ATQuoteDbResponseSymbolFieldData::SerializeWithCachedSizes(
       3, this->datatype(), output);
   }
 
-  // optional string data = 4;
+  // optional bytes data = 4;
   if (has_data()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->data().data(), this->data().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "data");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       4, this->data(), output);
   }
 
@@ -8538,14 +8530,10 @@ void ATQuoteDbResponseSymbolFieldData::SerializeWithCachedSizes(
       3, this->datatype(), target);
   }
 
-  // optional string data = 4;
+  // optional bytes data = 4;
   if (has_data()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->data().data(), this->data().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "data");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         4, this->data(), target);
   }
 
@@ -8579,10 +8567,10 @@ int ATQuoteDbResponseSymbolFieldData::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->datatype());
     }
 
-    // optional string data = 4;
+    // optional bytes data = 4;
     if (has_data()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
           this->data());
     }
 
@@ -9009,7 +8997,7 @@ const int ATQuoteDbResponse::ATQuoteDbResponseType_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int ATQuoteDbResponse::kResponseTypeFieldNumber;
-const int ATQuoteDbResponse::kDatumsFieldNumber;
+const int ATQuoteDbResponse::kDatumFieldNumber;
 #endif  // !_MSC_VER
 
 ATQuoteDbResponse::ATQuoteDbResponse()
@@ -9067,7 +9055,7 @@ ATQuoteDbResponse* ATQuoteDbResponse::New() const {
 
 void ATQuoteDbResponse::Clear() {
   responsetype_ = 1;
-  datums_.Clear();
+  datum_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -9097,20 +9085,20 @@ bool ATQuoteDbResponse::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_datums;
+        if (input->ExpectTag(18)) goto parse_datum;
         break;
       }
 
-      // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
+      // repeated .NodeActiveTickProto.ATQuoteDbResponseData datum = 2;
       case 2: {
         if (tag == 18) {
-         parse_datums:
+         parse_datum:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_datums()));
+                input, add_datum()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_datums;
+        if (input->ExpectTag(18)) goto parse_datum;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -9146,10 +9134,10 @@ void ATQuoteDbResponse::SerializeWithCachedSizes(
       1, this->responsetype(), output);
   }
 
-  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
-  for (int i = 0; i < this->datums_size(); i++) {
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datum = 2;
+  for (int i = 0; i < this->datum_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->datums(i), output);
+      2, this->datum(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -9168,11 +9156,11 @@ void ATQuoteDbResponse::SerializeWithCachedSizes(
       1, this->responsetype(), target);
   }
 
-  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
-  for (int i = 0; i < this->datums_size(); i++) {
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datum = 2;
+  for (int i = 0; i < this->datum_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->datums(i), target);
+        2, this->datum(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -9194,12 +9182,12 @@ int ATQuoteDbResponse::ByteSize() const {
     }
 
   }
-  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datums = 2;
-  total_size += 1 * this->datums_size();
-  for (int i = 0; i < this->datums_size(); i++) {
+  // repeated .NodeActiveTickProto.ATQuoteDbResponseData datum = 2;
+  total_size += 1 * this->datum_size();
+  for (int i = 0; i < this->datum_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->datums(i));
+        this->datum(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -9227,7 +9215,7 @@ void ATQuoteDbResponse::MergeFrom(const ::google::protobuf::Message& from) {
 
 void ATQuoteDbResponse::MergeFrom(const ATQuoteDbResponse& from) {
   GOOGLE_CHECK_NE(&from, this);
-  datums_.MergeFrom(from.datums_);
+  datum_.MergeFrom(from.datum_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_responsetype()) {
       set_responsetype(from.responsetype());
@@ -9256,7 +9244,7 @@ bool ATQuoteDbResponse::IsInitialized() const {
 void ATQuoteDbResponse::Swap(ATQuoteDbResponse* other) {
   if (other != this) {
     std::swap(responsetype_, other->responsetype_);
-    datums_.Swap(&other->datums_);
+    datum_.Swap(&other->datum_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

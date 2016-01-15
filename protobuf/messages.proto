@@ -144,7 +144,7 @@ message ATQuoteDbResponseSymbolFieldData {
     FieldStatusSuccess = 1;
     FieldStatusInvalid = 2;
     FieldStatusUnavailable = 3;
-    FieldStatusDenie = 4;
+    FieldStatusDenied = 4;
   }
   optional ATFieldStatus fieldStatus = 2;
   enum ATDataType
@@ -162,7 +162,7 @@ message ATQuoteDbResponseSymbolFieldData {
     DataDouble = 11;
   }
   optional ATDataType dataType = 3;
-  optional string data = 4;
+  optional bytes data = 4;
 }
 
 message ATQuoteDbResponseData {
@@ -179,7 +179,7 @@ message ATQuoteDbResponse {
     QuoteDbResponseUnavailable = 4;
   };
   optional ATQuoteDbResponseType responseType = 1;
-  repeated ATQuoteDbResponseData datums = 2; 
+  repeated ATQuoteDbResponseData datum = 2; 
 }
 
 enum ATQuoteFieldType
