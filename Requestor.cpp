@@ -47,8 +47,9 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
           fieldData->set_datatype(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATDataType(parser.GetDataItemDataType()));
           switch (parser.GetDataItemDataType()) {
             case DataByte: {
-              char a = *(char*)parser.GetDataItemData();
-              fieldData->set_databytepb(&a);
+              char data[512] = {0};
+              sprintf(data, "%c", *(char*)parser.GetDataItemData());
+              fieldData->set_databytepb(data);
             }
             break;
             case DataByteArray: {

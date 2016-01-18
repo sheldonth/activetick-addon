@@ -69,7 +69,7 @@
           }));
           __iced_deferrals._fulfill();
         })(function() {
-          a.quoteDBRequest('BGMD,AAPL,NFLX,MSFT', 'QuoteFieldSymbol,QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding,QuoteFieldIncomeStatementBasicEPSFromContinuingOperations,QuoteFieldBidExchange,QuoteFieldLastPrice,QuoteFieldBidPrice', function(quote) {
+          a.quoteDBRequest('AAPL,NFLX,MSFT', 'QuoteFieldSymbol,QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding,QuoteFieldIncomeStatementBasicEPSFromContinuingOperations,QuoteFieldBidExchange,QuoteFieldLastPrice,QuoteFieldBidPrice', function(quote) {
             console.log(quote);
             return process.exit();
           });
