@@ -23,44 +23,106 @@ Requestor::~Requestor() {
   
 }
 
-// ATQuoteDbResponseType responseType
-// QuoteDbResponseSuccess
-// QuoteDbResponseInvalidRequest
-// QuoteDbResponseDenied
-// QuoteDbResponseUnavailable
 void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
                                       ATQuoteDbResponseType responseType,
                                       LPATQUOTEDB_RESPONSE pResponse,
                                       uint32_t responseCount ) {
-  ATQuoteDbResponseParser *parser = new ATQuoteDbResponseParser(pResponse, responseCount);
-  NodeActiveTickProto::ATQuoteDbResponse *quoteDbResponse = new NodeActiveTickProto::ATQuoteDbResponse();
+  ATQuoteDbResponseParser parser(pResponse, responseCount);
+  NodeActiveTickProto::ATQuoteDbResponse quoteDbResponse; // = new NodeActiveTickProto::ATQuoteDbResponse();
   if (NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType_IsValid(static_cast<int>(responseType))) // Sample of using native protobuf enums
-    quoteDbResponse->set_responsetype(NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType(static_cast<int>(responseType)));
-  if (parser->MoveToFirstResponse()) {
-    if (parser->MoveToFirstDataItem()) {
-      for (int32_t response_index = 0; response_index < parser->GetSymbolCount(); response_index++) {
-        NodeActiveTickProto::ATQuoteDbResponseData* responseData = quoteDbResponse->add_datum();
-        LPATSYMBOL currentSymbol = parser->GetSymbol();
-        NodeActiveTickProto::ATSymbol* sym = new NodeActiveTickProto::ATSymbol();
-        ProtobufHelper::atsymbol_insert(currentSymbol, sym);
-        responseData->set_allocated_symbol(sym);
-        ATSymbolStatus symbolStatus = parser->GetSymbolStatus();
+    quoteDbResponse.set_responsetype(NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType(static_cast<int>(responseType)));
+  if (parser.MoveToFirstResponse()) {
+    if (parser.MoveToFirstDataItem()) {
+      for (int32_t response_index = 0; response_index < parser.GetSymbolCount(); response_index++) {
+        NodeActiveTickProto::ATQuoteDbResponseData* responseData = quoteDbResponse.add_datum();
+        ATSYMBOL currentSymbol = parser.GetSymbol()[0];
+        NodeActiveTickProto::ATSymbol* sym = responseData->mutable_symbol();
+        ProtobufHelper::atsymbol_insert(& currentSymbol, sym);        
+        ATSymbolStatus symbolStatus = parser.GetSymbolStatus();
         responseData->set_symbolstatus(NodeActiveTickProto::ATSymbolStatus(symbolStatus));
-        for (int32_t data_index = 0; data_index < parser->GetDataItemCount(); data_index++) {
+        for (int32_t data_index = 0; data_index < parser.GetDataItemCount(); data_index++) {
           NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData* fieldData = responseData->add_symbolfielddata();
-          fieldData->set_fieldtype(NodeActiveTickProto::ATQuoteFieldType(parser->GetDataItemQuoteFieldType())); // could be wrong
-          fieldData->set_fieldstatus(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATFieldStatus(parser->GetDataItemFieldStatus()));
-          fieldData->set_datatype(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATDataType(parser->GetDataItemDataType()));
-          fieldData->set_data((const char *)parser->GetDataItemData());
-          parser->MoveToNextDataItem();
+          fieldData->set_fieldtype(NodeActiveTickProto::ATQuoteFieldType(parser.GetDataItemQuoteFieldType())); // could be wrong
+          fieldData->set_fieldstatus(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATFieldStatus(parser.GetDataItemFieldStatus()));
+          fieldData->set_datatype(NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData::ATDataType(parser.GetDataItemDataType()));
+          switch (parser.GetDataItemDataType()) {
+            case DataByte: {
+              // TODO
+            }
+            break;
+            case DataByteArray: {
+              // TODO
+            }
+            break;
+            case DataUInteger32: {
+              uint32_t val = *(uint32_t)parser.GetDataItemData();
+              fieldData->set_datauinteger32pb(val);
+            }
+            break;
+            case DataUInteger64: {
+              uint64_t val = *(uint64_t*)parser.GetDataItemData();
+              fieldData->set_datauinteger64pb(val);
+            }
+            break;
+            case DataInteger32: {
+              int32_t val = *(int32_t*)parser.GetDataItemData();
+              fieldData->set_datainteger32pb(val);
+            }
+            break;
+            case DataInteger64: {
+              int64_t val = *(int64_t*)parser.GetDataItemData();
+              fieldData->set_datainteger64pb(val);
+            }
+            break;
+            case DataPrice: {
+              NodeActiveTickProto::ATPrice* pricePB = fieldData->mutable_datapricepb();
+              ATPRICE price = *(LPATPRICE)parser.GetDataItemData();
+              ProtobufHelper::atprice_insert(&price, pricePB);
+            }
+            break;
+            case DataString: {
+              char* pString = (char*)parser.GetDataItemData();
+              std::string s(pString);
+              fieldData->set_datastringpb(s);
+            }
+            break;
+            case DataUnicodeString: {
+              wchar16_t* pString = (wchar16_t*)parser.GetDataItemData();
+              std::string s = Helper::ConvertString(pString, Helper::StringLength(pString));
+              fieldData->set_dataunicodestringpb(s);
+            }
+            break;
+            case DataDateTime: {
+              ATTIME pst = *(LPATTIME)parser.GetDataItemData();
+              NodeActiveTickProto::ATTime* tpb = fieldData->mutable_datadatetimepb();
+              ProtobufHelper::attime_insert(&pst, tpb);
+            }
+            break;
+            case DataDouble: {
+              // TO DO; Current solution does not work
+              // char data[512] = {0};
+              const void* r = parser.GetDataItemData();
+              int s = sizeof(r);
+              double d = -1; // negative one is sentinel value
+              memcpy(&d, r, s);
+              // sprintf(data, "%f", *(double*)parser.GetDataItemData());
+              // const void * q = parser.GetDataItemData();
+              // double a = static_cast<const char* const>(parser->GetDataItemData());
+              // double d = *(double*);
+              fieldData->set_datadoublepb(d);
+            }
+            break;
+          }
+          // const char* const ptr = static_cast<const char* const>(parser->GetDataItemData());
+          parser.MoveToNextDataItem();
         }
-        parser->MoveToNextResponse();
+        parser.MoveToNextResponse();
       }
     }
   }
-  int bin_size = quoteDbResponse->ByteSize();
+  int bin_size = quoteDbResponse.ByteSize();
   void *buffer = new char[bin_size];
-  quoteDbResponse->SerializeToArray(buffer, bin_size);
+  quoteDbResponse.SerializeToArray(buffer, bin_size);
   MessageStruct* m = new MessageStruct();
   m->data_sz = bin_size;
   m->c_str_data = buffer;

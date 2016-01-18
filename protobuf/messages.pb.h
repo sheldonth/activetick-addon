@@ -2668,17 +2668,106 @@ class ATQuoteDbResponseSymbolFieldData : public ::google::protobuf::Message {
   inline ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType datatype() const;
   inline void set_datatype(::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATDataType value);
 
-  // optional bytes data = 4;
-  inline bool has_data() const;
-  inline void clear_data();
-  static const int kDataFieldNumber = 4;
-  inline const ::std::string& data() const;
-  inline void set_data(const ::std::string& value);
-  inline void set_data(const char* value);
-  inline void set_data(const void* value, size_t size);
-  inline ::std::string* mutable_data();
-  inline ::std::string* release_data();
-  inline void set_allocated_data(::std::string* data);
+  // optional bytes DataBytePB = 4;
+  inline bool has_databytepb() const;
+  inline void clear_databytepb();
+  static const int kDataBytePBFieldNumber = 4;
+  inline const ::std::string& databytepb() const;
+  inline void set_databytepb(const ::std::string& value);
+  inline void set_databytepb(const char* value);
+  inline void set_databytepb(const void* value, size_t size);
+  inline ::std::string* mutable_databytepb();
+  inline ::std::string* release_databytepb();
+  inline void set_allocated_databytepb(::std::string* databytepb);
+
+  // optional bytes DataByteArrayPB = 5;
+  inline bool has_databytearraypb() const;
+  inline void clear_databytearraypb();
+  static const int kDataByteArrayPBFieldNumber = 5;
+  inline const ::std::string& databytearraypb() const;
+  inline void set_databytearraypb(const ::std::string& value);
+  inline void set_databytearraypb(const char* value);
+  inline void set_databytearraypb(const void* value, size_t size);
+  inline ::std::string* mutable_databytearraypb();
+  inline ::std::string* release_databytearraypb();
+  inline void set_allocated_databytearraypb(::std::string* databytearraypb);
+
+  // optional uint32 DataUInteger32PB = 6;
+  inline bool has_datauinteger32pb() const;
+  inline void clear_datauinteger32pb();
+  static const int kDataUInteger32PBFieldNumber = 6;
+  inline ::google::protobuf::uint32 datauinteger32pb() const;
+  inline void set_datauinteger32pb(::google::protobuf::uint32 value);
+
+  // optional uint64 DataUInteger64PB = 7;
+  inline bool has_datauinteger64pb() const;
+  inline void clear_datauinteger64pb();
+  static const int kDataUInteger64PBFieldNumber = 7;
+  inline ::google::protobuf::uint64 datauinteger64pb() const;
+  inline void set_datauinteger64pb(::google::protobuf::uint64 value);
+
+  // optional int32 DataInteger32PB = 8;
+  inline bool has_datainteger32pb() const;
+  inline void clear_datainteger32pb();
+  static const int kDataInteger32PBFieldNumber = 8;
+  inline ::google::protobuf::int32 datainteger32pb() const;
+  inline void set_datainteger32pb(::google::protobuf::int32 value);
+
+  // optional int64 DataInteger64PB = 9;
+  inline bool has_datainteger64pb() const;
+  inline void clear_datainteger64pb();
+  static const int kDataInteger64PBFieldNumber = 9;
+  inline ::google::protobuf::int64 datainteger64pb() const;
+  inline void set_datainteger64pb(::google::protobuf::int64 value);
+
+  // optional .NodeActiveTickProto.ATPrice DataPricePB = 10;
+  inline bool has_datapricepb() const;
+  inline void clear_datapricepb();
+  static const int kDataPricePBFieldNumber = 10;
+  inline const ::NodeActiveTickProto::ATPrice& datapricepb() const;
+  inline ::NodeActiveTickProto::ATPrice* mutable_datapricepb();
+  inline ::NodeActiveTickProto::ATPrice* release_datapricepb();
+  inline void set_allocated_datapricepb(::NodeActiveTickProto::ATPrice* datapricepb);
+
+  // optional string DataStringPB = 11;
+  inline bool has_datastringpb() const;
+  inline void clear_datastringpb();
+  static const int kDataStringPBFieldNumber = 11;
+  inline const ::std::string& datastringpb() const;
+  inline void set_datastringpb(const ::std::string& value);
+  inline void set_datastringpb(const char* value);
+  inline void set_datastringpb(const char* value, size_t size);
+  inline ::std::string* mutable_datastringpb();
+  inline ::std::string* release_datastringpb();
+  inline void set_allocated_datastringpb(::std::string* datastringpb);
+
+  // optional string DataUnicodeStringPB = 12;
+  inline bool has_dataunicodestringpb() const;
+  inline void clear_dataunicodestringpb();
+  static const int kDataUnicodeStringPBFieldNumber = 12;
+  inline const ::std::string& dataunicodestringpb() const;
+  inline void set_dataunicodestringpb(const ::std::string& value);
+  inline void set_dataunicodestringpb(const char* value);
+  inline void set_dataunicodestringpb(const char* value, size_t size);
+  inline ::std::string* mutable_dataunicodestringpb();
+  inline ::std::string* release_dataunicodestringpb();
+  inline void set_allocated_dataunicodestringpb(::std::string* dataunicodestringpb);
+
+  // optional .NodeActiveTickProto.ATTime DataDateTimePB = 13;
+  inline bool has_datadatetimepb() const;
+  inline void clear_datadatetimepb();
+  static const int kDataDateTimePBFieldNumber = 13;
+  inline const ::NodeActiveTickProto::ATTime& datadatetimepb() const;
+  inline ::NodeActiveTickProto::ATTime* mutable_datadatetimepb();
+  inline ::NodeActiveTickProto::ATTime* release_datadatetimepb();
+  inline void set_allocated_datadatetimepb(::NodeActiveTickProto::ATTime* datadatetimepb);
+
+  // optional double DataDoublePB = 14;
+  inline bool has_datadoublepb() const;
+  inline void clear_datadoublepb();
+  static const int kDataDoublePBFieldNumber = 14;
+  inline double datadoublepb() const;
+  inline void set_datadoublepb(double value);
 
   // @@protoc_insertion_point(class_scope:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData)
  private:
@@ -2688,8 +2777,28 @@ class ATQuoteDbResponseSymbolFieldData : public ::google::protobuf::Message {
   inline void clear_has_fieldstatus();
   inline void set_has_datatype();
   inline void clear_has_datatype();
-  inline void set_has_data();
-  inline void clear_has_data();
+  inline void set_has_databytepb();
+  inline void clear_has_databytepb();
+  inline void set_has_databytearraypb();
+  inline void clear_has_databytearraypb();
+  inline void set_has_datauinteger32pb();
+  inline void clear_has_datauinteger32pb();
+  inline void set_has_datauinteger64pb();
+  inline void clear_has_datauinteger64pb();
+  inline void set_has_datainteger32pb();
+  inline void clear_has_datainteger32pb();
+  inline void set_has_datainteger64pb();
+  inline void clear_has_datainteger64pb();
+  inline void set_has_datapricepb();
+  inline void clear_has_datapricepb();
+  inline void set_has_datastringpb();
+  inline void clear_has_datastringpb();
+  inline void set_has_dataunicodestringpb();
+  inline void clear_has_dataunicodestringpb();
+  inline void set_has_datadatetimepb();
+  inline void clear_has_datadatetimepb();
+  inline void set_has_datadoublepb();
+  inline void clear_has_datadoublepb();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2697,8 +2806,18 @@ class ATQuoteDbResponseSymbolFieldData : public ::google::protobuf::Message {
   mutable int _cached_size_;
   int fieldtype_;
   int fieldstatus_;
-  ::std::string* data_;
+  ::std::string* databytepb_;
   int datatype_;
+  ::google::protobuf::uint32 datauinteger32pb_;
+  ::std::string* databytearraypb_;
+  ::google::protobuf::uint64 datauinteger64pb_;
+  ::google::protobuf::int64 datainteger64pb_;
+  ::NodeActiveTickProto::ATPrice* datapricepb_;
+  ::std::string* datastringpb_;
+  ::std::string* dataunicodestringpb_;
+  ::NodeActiveTickProto::ATTime* datadatetimepb_;
+  double datadoublepb_;
+  ::google::protobuf::int32 datainteger32pb_;
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
   friend void protobuf_ShutdownFile_messages_2eproto();
@@ -6291,80 +6410,510 @@ inline void ATQuoteDbResponseSymbolFieldData::set_datatype(::NodeActiveTickProto
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.dataType)
 }
 
-// optional bytes data = 4;
-inline bool ATQuoteDbResponseSymbolFieldData::has_data() const {
+// optional bytes DataBytePB = 4;
+inline bool ATQuoteDbResponseSymbolFieldData::has_databytepb() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void ATQuoteDbResponseSymbolFieldData::set_has_data() {
+inline void ATQuoteDbResponseSymbolFieldData::set_has_databytepb() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void ATQuoteDbResponseSymbolFieldData::clear_has_data() {
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_databytepb() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void ATQuoteDbResponseSymbolFieldData::clear_data() {
-  if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    data_->clear();
+inline void ATQuoteDbResponseSymbolFieldData::clear_databytepb() {
+  if (databytepb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytepb_->clear();
   }
-  clear_has_data();
+  clear_has_databytepb();
 }
-inline const ::std::string& ATQuoteDbResponseSymbolFieldData::data() const {
-  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
-  return *data_;
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData::databytepb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataBytePB)
+  return *databytepb_;
 }
-inline void ATQuoteDbResponseSymbolFieldData::set_data(const ::std::string& value) {
-  set_has_data();
-  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    data_ = new ::std::string;
+inline void ATQuoteDbResponseSymbolFieldData::set_databytepb(const ::std::string& value) {
+  set_has_databytepb();
+  if (databytepb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytepb_ = new ::std::string;
   }
-  data_->assign(value);
-  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+  databytepb_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataBytePB)
 }
-inline void ATQuoteDbResponseSymbolFieldData::set_data(const char* value) {
-  set_has_data();
-  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    data_ = new ::std::string;
+inline void ATQuoteDbResponseSymbolFieldData::set_databytepb(const char* value) {
+  set_has_databytepb();
+  if (databytepb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytepb_ = new ::std::string;
   }
-  data_->assign(value);
-  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+  databytepb_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataBytePB)
 }
-inline void ATQuoteDbResponseSymbolFieldData::set_data(const void* value, size_t size) {
-  set_has_data();
-  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    data_ = new ::std::string;
+inline void ATQuoteDbResponseSymbolFieldData::set_databytepb(const void* value, size_t size) {
+  set_has_databytepb();
+  if (databytepb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytepb_ = new ::std::string;
   }
-  data_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+  databytepb_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataBytePB)
 }
-inline ::std::string* ATQuoteDbResponseSymbolFieldData::mutable_data() {
-  set_has_data();
-  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    data_ = new ::std::string;
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::mutable_databytepb() {
+  set_has_databytepb();
+  if (databytepb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytepb_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
-  return data_;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataBytePB)
+  return databytepb_;
 }
-inline ::std::string* ATQuoteDbResponseSymbolFieldData::release_data() {
-  clear_has_data();
-  if (data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::release_databytepb() {
+  clear_has_databytepb();
+  if (databytepb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = data_;
-    data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = databytepb_;
+    databytepb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ATQuoteDbResponseSymbolFieldData::set_allocated_data(::std::string* data) {
-  if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete data_;
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_databytepb(::std::string* databytepb) {
+  if (databytepb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete databytepb_;
   }
-  if (data) {
-    set_has_data();
-    data_ = data;
+  if (databytepb) {
+    set_has_databytepb();
+    databytepb_ = databytepb;
   } else {
-    clear_has_data();
-    data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_databytepb();
+    databytepb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.data)
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataBytePB)
+}
+
+// optional bytes DataByteArrayPB = 5;
+inline bool ATQuoteDbResponseSymbolFieldData::has_databytearraypb() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_databytearraypb() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_databytearraypb() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_databytearraypb() {
+  if (databytearraypb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytearraypb_->clear();
+  }
+  clear_has_databytearraypb();
+}
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData::databytearraypb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataByteArrayPB)
+  return *databytearraypb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_databytearraypb(const ::std::string& value) {
+  set_has_databytearraypb();
+  if (databytearraypb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytearraypb_ = new ::std::string;
+  }
+  databytearraypb_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataByteArrayPB)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_databytearraypb(const char* value) {
+  set_has_databytearraypb();
+  if (databytearraypb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytearraypb_ = new ::std::string;
+  }
+  databytearraypb_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataByteArrayPB)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_databytearraypb(const void* value, size_t size) {
+  set_has_databytearraypb();
+  if (databytearraypb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytearraypb_ = new ::std::string;
+  }
+  databytearraypb_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataByteArrayPB)
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::mutable_databytearraypb() {
+  set_has_databytearraypb();
+  if (databytearraypb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    databytearraypb_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataByteArrayPB)
+  return databytearraypb_;
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::release_databytearraypb() {
+  clear_has_databytearraypb();
+  if (databytearraypb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = databytearraypb_;
+    databytearraypb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_databytearraypb(::std::string* databytearraypb) {
+  if (databytearraypb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete databytearraypb_;
+  }
+  if (databytearraypb) {
+    set_has_databytearraypb();
+    databytearraypb_ = databytearraypb;
+  } else {
+    clear_has_databytearraypb();
+    databytearraypb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataByteArrayPB)
+}
+
+// optional uint32 DataUInteger32PB = 6;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datauinteger32pb() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datauinteger32pb() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datauinteger32pb() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datauinteger32pb() {
+  datauinteger32pb_ = 0u;
+  clear_has_datauinteger32pb();
+}
+inline ::google::protobuf::uint32 ATQuoteDbResponseSymbolFieldData::datauinteger32pb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUInteger32PB)
+  return datauinteger32pb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datauinteger32pb(::google::protobuf::uint32 value) {
+  set_has_datauinteger32pb();
+  datauinteger32pb_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUInteger32PB)
+}
+
+// optional uint64 DataUInteger64PB = 7;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datauinteger64pb() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datauinteger64pb() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datauinteger64pb() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datauinteger64pb() {
+  datauinteger64pb_ = GOOGLE_ULONGLONG(0);
+  clear_has_datauinteger64pb();
+}
+inline ::google::protobuf::uint64 ATQuoteDbResponseSymbolFieldData::datauinteger64pb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUInteger64PB)
+  return datauinteger64pb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datauinteger64pb(::google::protobuf::uint64 value) {
+  set_has_datauinteger64pb();
+  datauinteger64pb_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUInteger64PB)
+}
+
+// optional int32 DataInteger32PB = 8;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datainteger32pb() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datainteger32pb() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datainteger32pb() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datainteger32pb() {
+  datainteger32pb_ = 0;
+  clear_has_datainteger32pb();
+}
+inline ::google::protobuf::int32 ATQuoteDbResponseSymbolFieldData::datainteger32pb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataInteger32PB)
+  return datainteger32pb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datainteger32pb(::google::protobuf::int32 value) {
+  set_has_datainteger32pb();
+  datainteger32pb_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataInteger32PB)
+}
+
+// optional int64 DataInteger64PB = 9;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datainteger64pb() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datainteger64pb() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datainteger64pb() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datainteger64pb() {
+  datainteger64pb_ = GOOGLE_LONGLONG(0);
+  clear_has_datainteger64pb();
+}
+inline ::google::protobuf::int64 ATQuoteDbResponseSymbolFieldData::datainteger64pb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataInteger64PB)
+  return datainteger64pb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datainteger64pb(::google::protobuf::int64 value) {
+  set_has_datainteger64pb();
+  datainteger64pb_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataInteger64PB)
+}
+
+// optional .NodeActiveTickProto.ATPrice DataPricePB = 10;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datapricepb() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datapricepb() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datapricepb() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datapricepb() {
+  if (datapricepb_ != NULL) datapricepb_->::NodeActiveTickProto::ATPrice::Clear();
+  clear_has_datapricepb();
+}
+inline const ::NodeActiveTickProto::ATPrice& ATQuoteDbResponseSymbolFieldData::datapricepb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataPricePB)
+  return datapricepb_ != NULL ? *datapricepb_ : *default_instance_->datapricepb_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteDbResponseSymbolFieldData::mutable_datapricepb() {
+  set_has_datapricepb();
+  if (datapricepb_ == NULL) datapricepb_ = new ::NodeActiveTickProto::ATPrice;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataPricePB)
+  return datapricepb_;
+}
+inline ::NodeActiveTickProto::ATPrice* ATQuoteDbResponseSymbolFieldData::release_datapricepb() {
+  clear_has_datapricepb();
+  ::NodeActiveTickProto::ATPrice* temp = datapricepb_;
+  datapricepb_ = NULL;
+  return temp;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_datapricepb(::NodeActiveTickProto::ATPrice* datapricepb) {
+  delete datapricepb_;
+  datapricepb_ = datapricepb;
+  if (datapricepb) {
+    set_has_datapricepb();
+  } else {
+    clear_has_datapricepb();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataPricePB)
+}
+
+// optional string DataStringPB = 11;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datastringpb() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datastringpb() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datastringpb() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datastringpb() {
+  if (datastringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datastringpb_->clear();
+  }
+  clear_has_datastringpb();
+}
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData::datastringpb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataStringPB)
+  return *datastringpb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datastringpb(const ::std::string& value) {
+  set_has_datastringpb();
+  if (datastringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datastringpb_ = new ::std::string;
+  }
+  datastringpb_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataStringPB)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datastringpb(const char* value) {
+  set_has_datastringpb();
+  if (datastringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datastringpb_ = new ::std::string;
+  }
+  datastringpb_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataStringPB)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datastringpb(const char* value, size_t size) {
+  set_has_datastringpb();
+  if (datastringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datastringpb_ = new ::std::string;
+  }
+  datastringpb_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataStringPB)
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::mutable_datastringpb() {
+  set_has_datastringpb();
+  if (datastringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datastringpb_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataStringPB)
+  return datastringpb_;
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::release_datastringpb() {
+  clear_has_datastringpb();
+  if (datastringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = datastringpb_;
+    datastringpb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_datastringpb(::std::string* datastringpb) {
+  if (datastringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete datastringpb_;
+  }
+  if (datastringpb) {
+    set_has_datastringpb();
+    datastringpb_ = datastringpb;
+  } else {
+    clear_has_datastringpb();
+    datastringpb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataStringPB)
+}
+
+// optional string DataUnicodeStringPB = 12;
+inline bool ATQuoteDbResponseSymbolFieldData::has_dataunicodestringpb() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_dataunicodestringpb() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_dataunicodestringpb() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_dataunicodestringpb() {
+  if (dataunicodestringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dataunicodestringpb_->clear();
+  }
+  clear_has_dataunicodestringpb();
+}
+inline const ::std::string& ATQuoteDbResponseSymbolFieldData::dataunicodestringpb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUnicodeStringPB)
+  return *dataunicodestringpb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_dataunicodestringpb(const ::std::string& value) {
+  set_has_dataunicodestringpb();
+  if (dataunicodestringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dataunicodestringpb_ = new ::std::string;
+  }
+  dataunicodestringpb_->assign(value);
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUnicodeStringPB)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_dataunicodestringpb(const char* value) {
+  set_has_dataunicodestringpb();
+  if (dataunicodestringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dataunicodestringpb_ = new ::std::string;
+  }
+  dataunicodestringpb_->assign(value);
+  // @@protoc_insertion_point(field_set_char:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUnicodeStringPB)
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_dataunicodestringpb(const char* value, size_t size) {
+  set_has_dataunicodestringpb();
+  if (dataunicodestringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dataunicodestringpb_ = new ::std::string;
+  }
+  dataunicodestringpb_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUnicodeStringPB)
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::mutable_dataunicodestringpb() {
+  set_has_dataunicodestringpb();
+  if (dataunicodestringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dataunicodestringpb_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUnicodeStringPB)
+  return dataunicodestringpb_;
+}
+inline ::std::string* ATQuoteDbResponseSymbolFieldData::release_dataunicodestringpb() {
+  clear_has_dataunicodestringpb();
+  if (dataunicodestringpb_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = dataunicodestringpb_;
+    dataunicodestringpb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_dataunicodestringpb(::std::string* dataunicodestringpb) {
+  if (dataunicodestringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete dataunicodestringpb_;
+  }
+  if (dataunicodestringpb) {
+    set_has_dataunicodestringpb();
+    dataunicodestringpb_ = dataunicodestringpb;
+  } else {
+    clear_has_dataunicodestringpb();
+    dataunicodestringpb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataUnicodeStringPB)
+}
+
+// optional .NodeActiveTickProto.ATTime DataDateTimePB = 13;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datadatetimepb() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datadatetimepb() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datadatetimepb() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datadatetimepb() {
+  if (datadatetimepb_ != NULL) datadatetimepb_->::NodeActiveTickProto::ATTime::Clear();
+  clear_has_datadatetimepb();
+}
+inline const ::NodeActiveTickProto::ATTime& ATQuoteDbResponseSymbolFieldData::datadatetimepb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataDateTimePB)
+  return datadatetimepb_ != NULL ? *datadatetimepb_ : *default_instance_->datadatetimepb_;
+}
+inline ::NodeActiveTickProto::ATTime* ATQuoteDbResponseSymbolFieldData::mutable_datadatetimepb() {
+  set_has_datadatetimepb();
+  if (datadatetimepb_ == NULL) datadatetimepb_ = new ::NodeActiveTickProto::ATTime;
+  // @@protoc_insertion_point(field_mutable:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataDateTimePB)
+  return datadatetimepb_;
+}
+inline ::NodeActiveTickProto::ATTime* ATQuoteDbResponseSymbolFieldData::release_datadatetimepb() {
+  clear_has_datadatetimepb();
+  ::NodeActiveTickProto::ATTime* temp = datadatetimepb_;
+  datadatetimepb_ = NULL;
+  return temp;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_allocated_datadatetimepb(::NodeActiveTickProto::ATTime* datadatetimepb) {
+  delete datadatetimepb_;
+  datadatetimepb_ = datadatetimepb;
+  if (datadatetimepb) {
+    set_has_datadatetimepb();
+  } else {
+    clear_has_datadatetimepb();
+  }
+  // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataDateTimePB)
+}
+
+// optional double DataDoublePB = 14;
+inline bool ATQuoteDbResponseSymbolFieldData::has_datadoublepb() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_has_datadoublepb() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_has_datadoublepb() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void ATQuoteDbResponseSymbolFieldData::clear_datadoublepb() {
+  datadoublepb_ = 0;
+  clear_has_datadoublepb();
+}
+inline double ATQuoteDbResponseSymbolFieldData::datadoublepb() const {
+  // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataDoublePB)
+  return datadoublepb_;
+}
+inline void ATQuoteDbResponseSymbolFieldData::set_datadoublepb(double value) {
+  set_has_datadoublepb();
+  datadoublepb_ = value;
+  // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.DataDoublePB)
 }
 
 // -------------------------------------------------------------------

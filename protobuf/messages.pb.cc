@@ -398,11 +398,21 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ATBarHistoryDbResponse));
   ATQuoteDbResponseSymbolFieldData_descriptor_ = file->message_type(16);
-  static const int ATQuoteDbResponseSymbolFieldData_offsets_[4] = {
+  static const int ATQuoteDbResponseSymbolFieldData_offsets_[14] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, fieldtype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, fieldstatus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datatype_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, data_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, databytepb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, databytearraypb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datauinteger32pb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datauinteger64pb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datainteger32pb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datainteger64pb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datapricepb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datastringpb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, dataunicodestringpb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datadatetimepb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ATQuoteDbResponseSymbolFieldData, datadoublepb_),
   };
   ATQuoteDbResponseSymbolFieldData_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -635,505 +645,513 @@ void protobuf_AddDesc_messages_2eproto() {
     "\007 \001(\0132\035.NodeActiveTickProto.ATSymbol\022\016\n\006"
     "status\030\010 \001(\t\"O\n\026ATBarHistoryDbResponse\0225"
     "\n\005value\030\001 \003(\0132&.NodeActiveTickProto.ATBa"
-    "rHistoryValue\"\342\004\n ATQuoteDbResponseSymbo"
+    "rHistoryValue\"\230\007\n ATQuoteDbResponseSymbo"
     "lFieldData\0228\n\tfieldType\030\001 \001(\0162%.NodeActi"
     "veTickProto.ATQuoteFieldType\022X\n\013fieldSta"
     "tus\030\002 \001(\0162C.NodeActiveTickProto.ATQuoteD"
     "bResponseSymbolFieldData.ATFieldStatus\022R"
     "\n\010dataType\030\003 \001(\0162@.NodeActiveTickProto.A"
     "TQuoteDbResponseSymbolFieldData.ATDataTy"
-    "pe\022\014\n\004data\030\004 \001(\014\"r\n\rATFieldStatus\022\026\n\022Fie"
-    "ldStatusSuccess\020\001\022\026\n\022FieldStatusInvalid\020"
-    "\002\022\032\n\026FieldStatusUnavailable\020\003\022\025\n\021FieldSt"
-    "atusDenied\020\004\"\323\001\n\nATDataType\022\014\n\010DataByte\020"
-    "\001\022\021\n\rDataByteArray\020\002\022\022\n\016DataUInteger32\020\003"
-    "\022\022\n\016DataUInteger64\020\004\022\021\n\rDataInteger32\020\005\022"
-    "\021\n\rDataInteger64\020\006\022\r\n\tDataPrice\020\007\022\016\n\nDat"
-    "aString\020\010\022\025\n\021DataUnicodeString\020\t\022\020\n\014Data"
-    "DateTime\020\n\022\016\n\nDataDouble\020\013\"\321\001\n\025ATQuoteDb"
-    "ResponseData\0229\n\014symbolStatus\030\001 \001(\0162#.Nod"
-    "eActiveTickProto.ATSymbolStatus\022-\n\006symbo"
-    "l\030\002 \001(\0132\035.NodeActiveTickProto.ATSymbol\022N"
-    "\n\017symbolFieldData\030\003 \003(\01325.NodeActiveTick"
-    "Proto.ATQuoteDbResponseSymbolFieldData\"\266"
-    "\002\n\021ATQuoteDbResponse\022R\n\014responseType\030\001 \001"
-    "(\0162<.NodeActiveTickProto.ATQuoteDbRespon"
-    "se.ATQuoteDbResponseType\0229\n\005datum\030\002 \003(\0132"
-    "*.NodeActiveTickProto.ATQuoteDbResponseD"
-    "ata\"\221\001\n\025ATQuoteDbResponseType\022\032\n\026QuoteDb"
-    "ResponseSuccess\020\001\022!\n\035QuoteDbResponseInva"
-    "lidRequest\020\002\022\031\n\025QuoteDbResponseDenied\020\003\022"
-    "\036\n\032QuoteDbResponseUnavailable\020\004*}\n\016ATSym"
-    "bolStatus\022\027\n\023SymbolStatusSuccess\020\001\022\027\n\023Sy"
-    "mbolStatusInvalid\020\002\022\033\n\027SymbolStatusUnava"
-    "ilable\020\003\022\034\n\030SymbolStatusNoPermission\020\004*\347"
-    "\221\001\n\020ATQuoteFieldType\022\024\n\020QuoteFieldSymbol"
-    "\020\001\022\027\n\023QuoteFieldOpenPrice\020\002\022 \n\034QuoteFiel"
-    "dPreviousClosePrice\020\003\022\030\n\024QuoteFieldClose"
-    "Price\020\004\022\027\n\023QuoteFieldLastPrice\020\005\022\026\n\022Quot"
-    "eFieldBidPrice\020\006\022\026\n\022QuoteFieldAskPrice\020\007"
-    "\022\027\n\023QuoteFieldHighPrice\020\010\022\026\n\022QuoteFieldL"
-    "owPrice\020\t\022\032\n\026QuoteFieldDayHighPrice\020\n\022\031\n"
-    "\025QuoteFieldDayLowPrice\020\013\022 \n\034QuoteFieldPr"
-    "eMarketOpenPrice\020\014\022$\n QuoteFieldExtended"
-    "HoursLastPrice\020\r\022#\n\037QuoteFieldAfterMarke"
-    "tClosePrice\020\016\022\031\n\025QuoteFieldBidExchange\020\017"
-    "\022\031\n\025QuoteFieldAskExchange\020\020\022\032\n\026QuoteFiel"
-    "dLastExchange\020\021\022\033\n\027QuoteFieldLastConditi"
-    "on\020\022\022\034\n\030QuoteFieldQuoteCondition\020\023\022\037\n\033Qu"
-    "oteFieldLastTradeDateTime\020\024\022\037\n\033QuoteFiel"
-    "dLastQuoteDateTime\020\025\022\035\n\031QuoteFieldDayHig"
-    "hDateTime\020\026\022\034\n\030QuoteFieldDayLowDateTime\020"
-    "\027\022\026\n\022QuoteFieldLastSize\020\030\022\025\n\021QuoteFieldB"
-    "idSize\020\031\022\025\n\021QuoteFieldAskSize\020\032\022\024\n\020Quote"
-    "FieldVolume\020\033\022\035\n\031QuoteFieldPreMarketVolu"
-    "me\020\034\022\037\n\033QuoteFieldAfterMarketVolume\020\035\022\030\n"
-    "\024QuoteFieldTradeCount\020\036\022!\n\035QuoteFieldPre"
-    "MarketTradeCount\020\037\022#\n\037QuoteFieldAfterMar"
-    "ketTradeCount\020 \022\036\n\032QuoteFieldProfileShor"
-    "tName\020!\022$\n QuoteFieldProfilePrimaryExcha"
-    "nge\020\"\022\035\n\031QuoteFieldProfileLongName\020#\022\033\n\027"
-    "QuoteFieldProfileSector\020$\022\035\n\031QuoteFieldP"
-    "rofileIndustry\020%\022 \n\034QuoteFieldOptionOpen"
-    "Interest\020d\022\037\n\033QuoteFieldOptionStrikePric"
-    "e\020e\022>\n9QuoteFieldIncomeStatementBasicEPS"
-    "FromContinuingOperations\020\310\001\022@\n;QuoteFiel"
-    "dIncomeStatementBasicEPSFromDiscontinued"
-    "Operations\020\311\001\0229\n4QuoteFieldIncomeStateme"
-    "ntBasicEPSFromTotalOperations\020\312\001\022=\n8Quot"
-    "eFieldIncomeStatementBasicEPSFromExtraor"
-    "dinaryIncome\020\313\001\022E\n@QuoteFieldIncomeState"
-    "mentBasicEPSFromCumEffectOfAccountingCha"
-    "nge\020\314\001\0224\n/QuoteFieldIncomeStatementBasic"
-    "EPSFromOtherGains\020\315\001\022+\n&QuoteFieldIncome"
-    "StatementBasicEPSTotal\020\316\001\022>\n9QuoteFieldI"
-    "ncomeStatementBasicNormalizedNetIncomePe"
-    "rShare\020\317\001\022@\n;QuoteFieldIncomeStatementDi"
-    "lutedEPSFromContinuingOperations\020\320\001\022B\n=Q"
-    "uoteFieldIncomeStatementDilutedEPSFromDi"
-    "scontinuedOperations\020\321\001\022;\n6QuoteFieldInc"
-    "omeStatementDilutedEPSFromTotalOperation"
-    "s\020\322\001\022\?\n:QuoteFieldIncomeStatementDiluted"
-    "EPSFromExtraordinaryIncome\020\323\001\0226\n1QuoteFi"
-    "eldIncomeStatementDilutedEPSFromOtherGai"
-    "ns\020\324\001\022-\n(QuoteFieldIncomeStatementDilute"
-    "dEPSTotal\020\325\001\022@\n;QuoteFieldIncomeStatemen"
-    "tDilutedNormalizedNetIncomePerShare\020\326\001\0223"
-    "\n.QuoteFieldIncomeStatementDividendsPaid"
-    "PerShare\020\327\001\0227\n2QuoteFieldIncomeStatement"
-    "IncomeAcquiredInProcessRD\020\330\001\0221\n,QuoteFie"
-    "ldIncomeStatementOtherSpecialCharges\020\331\001\022"
-    ")\n$QuoteFieldIncomeStatementIncomeTaxes\020"
-    "\332\001\022.\n)QuoteFieldIncomeStatementMinorityI"
-    "nterest\020\333\001\022\?\n:QuoteFieldIncomeStatementN"
-    "etIncomeFromContinuingOperations\020\334\001\022A\n<Q"
-    "uoteFieldIncomeStatementNetIncomeFromDis"
-    "continuedOperations\020\335\001\022:\n5QuoteFieldInco"
-    "meStatementNetIncomeFromTotalOperations\020"
-    "\336\001\022;\n6QuoteFieldIncomeStatementIncomeFro"
-    "mTaxLossCarryforward\020\337\001\022.\n)QuoteFieldInc"
-    "omeStatementOtherGainsLosses\020\340\001\022,\n\'Quote"
-    "FieldIncomeStatementTotalNetIncome\020\341\001\022.\n"
-    ")QuoteFieldIncomeStatementNormalizedInco"
-    "me\020\342\001\0229\n4QuoteFieldIncomeStatementNetInc"
-    "omeAvailableForCommon\020\343\001\0220\n+QuoteFieldIn"
-    "comeStatementPreferredDividends\020\344\001\0226\n1Qu"
-    "oteFieldIncomeStatementStandardOperating"
-    "Revenue\020\345\001\0222\n-QuoteFieldIncomeStatementS"
-    "tandardTotalRevenue\020\346\001\0229\n4QuoteFieldInco"
-    "meStatementStandardAdjustmentToRevenue\020\347"
-    "\001\0221\n,QuoteFieldIncomeStatementStandardCo"
-    "stOfSales\020\350\001\022A\n<QuoteFieldIncomeStatemen"
-    "tStandardCostOfSalesWithDepreciation\020\351\001\022"
-    "1\n,QuoteFieldIncomeStatementStandardGros"
-    "sMargin\020\352\001\022:\n5QuoteFieldIncomeStatementS"
-    "tandardGrossOperatingProfit\020\353\001\022<\n7QuoteF"
-    "ieldIncomeStatementStandardResearchAndDe"
-    "velopment\020\354\001\022C\n>QuoteFieldIncomeStatemen"
-    "tStandardSellingGeneralAndAdminExpense\020\355"
-    "\001\0221\n,QuoteFieldIncomeStatementStandardAd"
-    "vertising\020\356\001\0225\n0QuoteFieldIncomeStatemen"
-    "tStandardOperatingProfit\020\357\001\022G\nBQuoteFiel"
-    "dIncomeStatementStandardOperatingProfitB"
-    "eforeDepreciation\020\360\001\0222\n-QuoteFieldIncome"
-    "StatementStandardDepreciation\020\361\001\022>\n9Quot"
-    "eFieldIncomeStatementStandardDepreciatio"
-    "nUnreconciled\020\362\001\0222\n-QuoteFieldIncomeStat"
-    "ementStandardAmortization\020\363\001\022\?\n:QuoteFie"
-    "ldIncomeStatementStandardAmortizationOfI"
-    "ntangibles\020\364\001\022F\nAQuoteFieldIncomeStateme"
-    "ntStandardOperatingIncomeAfterDepreciati"
-    "on\020\365\001\0224\n/QuoteFieldIncomeStatementStanda"
-    "rdInterestIncome\020\366\001\022@\n;QuoteFieldIncomeS"
-    "tatementStandardEarningsFromEquityIntere"
-    "st\020\367\001\0224\n/QuoteFieldIncomeStatementStanda"
-    "rdOtherIncomeNet\020\370\001\022@\n;QuoteFieldIncomeS"
-    "tatementStandardInterestRestructuringAnd"
-    "MA\020\371\001\022H\nCQuoteFieldIncomeStatementStanda"
-    "rdTotalIncomeAvailForInterestExpense\020\372\001\022"
-    "5\n0QuoteFieldIncomeStatementStandardInte"
-    "restExpense\020\373\001\0225\n0QuoteFieldIncomeStatem"
-    "entStandardIncomeBeforeTax\020\374\001\022J\nEQuoteFi"
-    "eldIncomeStatementStandardPreferredSecur"
-    "itiesOfSubsidiaryTrust\020\375\001\022A\n<QuoteFieldI"
-    "ncomeStatementStandardExtraordinaryIncom"
-    "eOrLosses\020\376\001\022H\nCQuoteFieldIncomeStatemen"
-    "tStandardIncomeFromCumEffectOfAccountCha"
-    "nge\020\377\001\0221\n,QuoteFieldIncomeStatementStand"
-    "ardExciseTaxes\020\200\002\022,\n\'QuoteFieldIncomeSta"
-    "tementFinancialLoans\020\201\002\022;\n6QuoteFieldInc"
-    "omeStatementFinancialInvestmentSecuritie"
-    "s\020\202\002\022;\n6QuoteFieldIncomeStatementFinanci"
-    "alLeaseFinancingIncome\020\203\002\022:\n5QuoteFieldI"
-    "ncomeStatementFinancialOtherInterestInco"
-    "me\020\204\002\022<\n7QuoteFieldIncomeStatementFinanc"
-    "ialFedFundsSoldPurchased\020\205\002\022>\n9QuoteFiel"
-    "dIncomeStatementFinancialInterestBearing"
-    "Deposits\020\206\002\0229\n4QuoteFieldIncomeStatement"
-    "FinancialLoansHeldForResale\020\207\002\022\?\n:QuoteF"
-    "ieldIncomeStatementFinancialTradingAccou"
-    "ntSecurities\020\210\002\0229\n4QuoteFieldIncomeState"
-    "mentFinancialTimeDepositsPlaced\020\211\002\022B\n=Qu"
-    "oteFieldIncomeStatementFinancialOtherMon"
-    "eyMarketInvestments\020\212\002\022B\n=QuoteFieldInco"
-    "meStatementFinancialTotalMoneyMarketInve"
-    "stments\020\213\002\022:\n5QuoteFieldIncomeStatementF"
-    "inancialTotalInterestIncome\020\214\002\022/\n*QuoteF"
-    "ieldIncomeStatementFinancialDeposits\020\215\002\022"
-    "\?\n:QuoteFieldIncomeStatementFinancialFed"
-    "FundsPurchasedSecSold\020\216\002\022B\n=QuoteFieldIn"
-    "comeStatementFinancialCapitalizedLeaseOb"
-    "ligations\020\217\002\022;\n6QuoteFieldIncomeStatemen"
-    "tFinancialOtherInterestExpense\020\220\002\022;\n6Quo"
-    "teFieldIncomeStatementFinancialTotalInte"
-    "restExpense\020\221\002\022\?\n:QuoteFieldIncomeStatem"
-    "entFinancialNetInterestIncomeExpense\020\222\002\022"
-    ";\n6QuoteFieldIncomeStatementFinancialPro"
-    "visionForLoanLoss\020\223\002\022=\n8QuoteFieldIncome"
-    "StatementFinancialTrustFeesByCommissions"
-    "\020\224\002\022E\n@QuoteFieldIncomeStatementFinancia"
-    "lServiceChargeOnDepositAccounts\020\225\002\022:\n5Qu"
-    "oteFieldIncomeStatementFinancialOtherSer"
-    "viceCharges\020\226\002\022;\n6QuoteFieldIncomeStatem"
-    "entFinancialSecurityTransactions\020\227\002\0225\n0Q"
-    "uoteFieldIncomeStatementFinancialPremium"
-    "sEarned\020\230\002\022>\n9QuoteFieldIncomeStatementF"
-    "inancialNetRealizedCapitalGains\020\231\002\022>\n9Qu"
-    "oteFieldIncomeStatementFinancialInvestme"
-    "ntBankingProfit\020\232\002\022=\n8QuoteFieldIncomeSt"
-    "atementFinancialOtherNonInterestIncome\020\233"
-    "\002\022=\n8QuoteFieldIncomeStatementFinancialT"
-    "otalNonInterestIncome\020\234\002\022B\n=QuoteFieldIn"
-    "comeStatementFinancialSalariesAndEmploye"
-    "eBenefits\020\235\002\022:\n5QuoteFieldIncomeStatemen"
-    "tFinancialNetOccupancyExpense\020\236\002\022\?\n:Quot"
-    "eFieldIncomeStatementFinancialPromotions"
-    "AndAdvertising\020\237\002\022>\n9QuoteFieldIncomeSta"
-    "tementFinancialPropLiabInsuranceClaims\020\240"
-    "\002\022=\n8QuoteFieldIncomeStatementFinancialP"
-    "olicyAcquisitionCosts\020\241\002\022<\n7QuoteFieldIn"
-    "comeStatementFinancialAmortDefPolicyAcqC"
-    "ost\020\242\002\022\?\n:QuoteFieldIncomeStatementFinan"
-    "cialCurrentAndFutureBenefits\020\243\002\022>\n9Quote"
-    "FieldIncomeStatementFinancialOtherNonInt"
-    "erestExpense\020\244\002\022>\n9QuoteFieldIncomeState"
-    "mentFinancialTotalNonInterestExpense\020\245\002\022"
-    "7\n2QuoteFieldIncomeStatementFinancialPre"
-    "miumTaxCredit\020\246\002\022\?\n:QuoteFieldIncomeStat"
-    "ementFinancialIncomeRestructuringAndMA\020\247"
-    "\002\022;\n6QuoteFieldIncomeStatementFinancialS"
-    "pecialIncomeCharges\020\250\002\022@\n;QuoteFieldInco"
-    "meStatementFinancialExtraordinaryIncomeL"
-    "osses\020\251\002\022C\n>QuoteFieldIncomeStatementFin"
-    "ancialIncomeFromCumEffectOfAcctChg\020\252\002\022\"\n"
-    "\035QuoteFieldIncomeStatementDate\020\253\002\0220\n+Quo"
-    "teFieldBalanceSheetsAssetsRestrictedCash"
-    "\020\364\003\0221\n,QuoteFieldBalanceSheetsAssetsOthe"
-    "rReceivable\020\365\003\022-\n(QuoteFieldBalanceSheet"
-    "sAssetsTotalAssets\020\366\003\0224\n/QuoteFieldBalan"
-    "ceSheetsLiabilitiesShortTermDebt\020\367\003\0223\n.Q"
-    "uoteFieldBalanceSheetsLiabilitiesLongTer"
-    "mDebt\020\370\003\022>\n9QuoteFieldBalanceSheetsLiabi"
-    "litiesCapitalLeaseObligations\020\371\003\0227\n2Quot"
-    "eFieldBalanceSheetsLiabilitiesMinorityIn"
-    "terest\020\372\003\0227\n2QuoteFieldBalanceSheetsLiab"
-    "ilitiesTotalLiabilities\020\373\003\022E\n@QuoteField"
-    "BalanceSheetsShareDataSharesOutstandingC"
-    "ommonClassOnly\020\374\003\0224\n/QuoteFieldBalanceSh"
-    "eetsShareDataPreferredShares\020\375\003\0228\n3Quote"
-    "FieldBalanceSheetsShareDataTotalOrdinary"
-    "Shares\020\376\003\022A\n<QuoteFieldBalanceSheetsShar"
-    "eDataTotalCommonSharesOutstanding\020\377\003\0223\n."
-    "QuoteFieldBalanceSheetsShareDataTreasury"
-    "Shares\020\200\004\0226\n1QuoteFieldBalanceSheetsEqui"
-    "tyPreferredStockEquity\020\201\004\0223\n.QuoteFieldB"
-    "alanceSheetsEquityCommonStockEquity\020\202\004\022+"
-    "\n&QuoteFieldBalanceSheetsEquityCommonPar"
-    "\020\203\004\0229\n4QuoteFieldBalanceSheetsEquityAddi"
-    "tionalPaidInCapital\020\204\004\022A\n<QuoteFieldBala"
-    "nceSheetsEquityCumulativeTranslationAdju"
-    "stment\020\205\004\0222\n-QuoteFieldBalanceSheetsEqui"
-    "tyRetainedEarnings\020\206\004\022/\n*QuoteFieldBalan"
-    "ceSheetsEquityTreasuryStock\020\207\004\0228\n3QuoteF"
-    "ieldBalanceSheetsEquityOtherEquityAdjust"
-    "ments\020\210\004\022-\n(QuoteFieldBalanceSheetsEquit"
-    "yTotalEquity\020\211\004\0225\n0QuoteFieldBalanceShee"
-    "tsEquityTotalCapitalization\020\212\004\022@\n;QuoteF"
-    "ieldBalanceSheetsEquityTotalLiabilitiesA"
-    "ndStockEquity\020\213\004\022-\n(QuoteFieldBalanceShe"
-    "etsNumberOfEmployees\020\214\004\0225\n0QuoteFieldBal"
-    "anceSheetsNumberOfPartTimeEmployees\020\215\004\022<"
-    "\n7QuoteFieldBalanceSheetsStandardAssetsC"
-    "ashAndEquivalents\020\216\004\022>\n9QuoteFieldBalanc"
-    "eSheetsStandardAssetsMarketableSecuritie"
-    "s\020\217\004\022<\n7QuoteFieldBalanceSheetsStandardA"
-    "ssetsAccountsReceivable\020\220\004\0229\n4QuoteField"
-    "BalanceSheetsStandardAssetsLoansReceivab"
-    "le\020\221\004\0225\n0QuoteFieldBalanceSheetsStandard"
-    "AssetsReceivables\020\222\004\0226\n1QuoteFieldBalanc"
-    "eSheetsStandardAssetsRawMaterials\020\223\004\0228\n3"
-    "QuoteFieldBalanceSheetsStandardAssetsWor"
-    "kInProgress\020\224\004\022=\n8QuoteFieldBalanceSheet"
-    "sStandardAssetsPurchasedComponents\020\225\004\0227\n"
-    "2QuoteFieldBalanceSheetsStandardAssetsFi"
-    "nishedGoods\020\226\004\022:\n5QuoteFieldBalanceSheet"
-    "sStandardAssetsOtherInventories\020\227\004\022B\n=Qu"
-    "oteFieldBalanceSheetsStandardAssetsInven"
-    "toriesAdjAllowances\020\230\004\0225\n0QuoteFieldBala"
-    "nceSheetsStandardAssetsInventories\020\231\004\0229\n"
-    "4QuoteFieldBalanceSheetsStandardAssetsPr"
-    "epaidExpenses\020\232\004\022D\n\?QuoteFieldBalanceShe"
-    "etsStandardAssetsCurrentDeferredIncomeTa"
-    "xes\020\233\004\022<\n7QuoteFieldBalanceSheetsStandar"
-    "dAssetsOtherCurrentAssets\020\234\004\022<\n7QuoteFie"
-    "ldBalanceSheetsStandardAssetsTotalCurren"
-    "tAssets\020\235\004\022:\n5QuoteFieldBalanceSheetsSta"
-    "ndardAssetsGrossFixedAssets\020\236\004\022M\nHQuoteF"
-    "ieldBalanceSheetsStandardAssetsAccumulat"
-    "edDepreciationAndDepletion\020\237\004\0228\n3QuoteFi"
-    "eldBalanceSheetsStandardAssetsNetFixedAs"
-    "sets\020\240\004\0225\n0QuoteFieldBalanceSheetsStanda"
-    "rdAssetsIntangibles\020\241\004\0226\n1QuoteFieldBala"
-    "nceSheetsStandardAssetsCostInExcess\020\242\004\022G"
-    "\nBQuoteFieldBalanceSheetsStandardAssetsN"
-    "onCurrentDeferredIncomeTaxes\020\243\004\022\?\n:Quote"
-    "FieldBalanceSheetsStandardAssetsOtherNon"
-    "CurrentAssets\020\244\004\022\?\n:QuoteFieldBalanceShe"
-    "etsStandardAssetsTotalNonCurrentAssets\020\245"
-    "\004\022>\n9QuoteFieldBalanceSheetsStandardLiab"
-    "ilitiesAccountsPayable\020\246\004\022;\n6QuoteFieldB"
-    "alanceSheetsStandardLiabilitiesNotesPaya"
-    "ble\020\247\004\022>\n9QuoteFieldBalanceSheetsStandar"
-    "dLiabilitiesAccruedExpenses\020\250\004\022A\n<QuoteF"
-    "ieldBalanceSheetsStandardLiabilitiesAccr"
-    "uedLiabilities\020\251\004\022\?\n:QuoteFieldBalanceSh"
-    "eetsStandardLiabilitiesDeferredRevenues\020"
-    "\252\004\022I\nDQuoteFieldBalanceSheetsStandardLia"
-    "bilitiesCurrentDeferredIncomeTaxes\020\253\004\022F\n"
-    "AQuoteFieldBalanceSheetsStandardLiabilit"
-    "iesOtherCurrentLiabilities\020\254\004\022F\nAQuoteFi"
-    "eldBalanceSheetsStandardLiabilitiesTotal"
-    "CurrentLiabilities\020\255\004\022B\n=QuoteFieldBalan"
-    "ceSheetsStandardLiabilitiesDeferredIncom"
-    "eTaxes\020\256\004\022I\nDQuoteFieldBalanceSheetsStan"
-    "dardLiabilitiesOtherNonCurrentLiabilitie"
-    "s\020\257\004\022S\nNQuoteFieldBalanceSheetsStandardL"
-    "iabilitiesPreferredSecuritiesOfSubsidiar"
-    "yTrust\020\260\004\022P\nKQuoteFieldBalanceSheetsStan"
-    "dardLiabilitiesPreferredEquityOutsideSto"
-    "ckEquity\020\261\004\022I\nDQuoteFieldBalanceSheetsSt"
-    "andardLiabilitiesTotalNonCurrentLiabilit"
-    "ies\020\262\004\022,\n\'QuoteFieldBalanceSheetsStandar"
-    "dCashFlow\020\263\004\0222\n-QuoteFieldBalanceSheetsS"
-    "tandardWorkingCapital\020\264\004\0220\n+QuoteFieldBa"
-    "lanceSheetsStandardFreeCashFlow\020\265\004\0223\n.Qu"
-    "oteFieldBalanceSheetsStandardInvestedCap"
-    "ital\020\266\004\022>\n9QuoteFieldBalanceSheetsFinanc"
-    "ialAssetsCashAndDueFromBanks\020\267\004\022J\nEQuote"
-    "FieldBalanceSheetsFinancialAssetsFedFund"
-    "sSoldSecuritiesPurchased\020\270\004\022I\nDQuoteFiel"
-    "dBalanceSheetsFinancialAssetsInterestBea"
-    "ringDepAtOtherBanks\020\271\004\022B\n=QuoteFieldBala"
-    "nceSheetsFinancialAssetsInvestmentSecuri"
-    "tiesNet\020\272\004\0220\n+QuoteFieldBalanceSheetsFin"
-    "ancialAssetsLoans\020\273\004\022;\n6QuoteFieldBalanc"
-    "eSheetsFinancialAssetsUnearnedPremiums\020\274"
-    "\004\022J\nEQuoteFieldBalanceSheetsFinancialAss"
-    "etsAllowanceForLoansAndLeaseLosses\020\275\004\0223\n"
-    ".QuoteFieldBalanceSheetsFinancialAssetsN"
-    "etLoans\020\276\004\022\?\n:QuoteFieldBalanceSheetsFin"
-    "ancialAssetsPremisesAndEquipment\020\277\004\022E\n@Q"
-    "uoteFieldBalanceSheetsFinancialAssetsDue"
-    "FromCustomersAcceptance\020\300\004\022C\n>QuoteField"
-    "BalanceSheetsFinancialAssetsTradingAccou"
-    "ntSecurities\020\301\004\022:\n5QuoteFieldBalanceShee"
-    "tsFinancialAssetsAccruedInterest\020\302\004\022B\n=Q"
-    "uoteFieldBalanceSheetsFinancialAssetsDef"
-    "erredAcquisitionCost\020\303\004\022B\n=QuoteFieldBal"
-    "anceSheetsFinancialAssetsAccruedInvestme"
-    "ntIncome\020\304\004\022B\n=QuoteFieldBalanceSheetsFi"
-    "nancialAssetsSeparateAccountBusiness\020\305\004\022"
-    "=\n8QuoteFieldBalanceSheetsFinancialAsset"
-    "sTimeDepositsPlaced\020\306\004\022;\n6QuoteFieldBala"
-    "nceSheetsFinancialAssetsIntangibleAssets"
-    "\020\307\004\0226\n1QuoteFieldBalanceSheetsFinancialA"
-    "ssetsOtherAssets\020\310\004\022J\nEQuoteFieldBalance"
-    "SheetsFinancialLiabilitiesNonInterestBea"
-    "ringDeposits\020\311\004\022G\nBQuoteFieldBalanceShee"
-    "tsFinancialLiabilitiesInterestBearingDep"
-    "osits\020\312\004\022@\n;QuoteFieldBalanceSheetsFinan"
-    "cialLiabilitiesOtherLiabilities\020\313\004\022L\nGQu"
-    "oteFieldBalanceSheetsFinancialLiabilitie"
-    "sBankersAcceptanceOutstanding\020\314\004\022O\nJQuot"
-    "eFieldBalanceSheetsFinancialLiabilitiesF"
-    "edFundsPurchasedSecuritiesSold\020\315\004\022<\n7Quo"
-    "teFieldBalanceSheetsFinancialLiabilities"
-    "AccruedTaxes\020\316\004\022G\nBQuoteFieldBalanceShee"
-    "tsFinancialLiabilitiesAccruedInterestPay"
-    "ables\020\317\004\022=\n8QuoteFieldBalanceSheetsFinan"
-    "cialLiabilitiesOtherPayables\020\320\004\022E\n@Quote"
-    "FieldBalanceSheetsFinancialLiabilitiesCl"
-    "aimsAndClaimExpense\020\321\004\022D\n\?QuoteFieldBala"
-    "nceSheetsFinancialLiabilitiesFuturePolic"
-    "yBenefits\020\322\004\022@\n;QuoteFieldBalanceSheetsF"
-    "inancialLiabilitiesUnearnedPremiums\020\323\004\022A"
-    "\n<QuoteFieldBalanceSheetsFinancialLiabil"
-    "itiesPolicyHolderFunds\020\324\004\022O\nJQuoteFieldB"
-    "alanceSheetsFinancialLiabilitiesParticip"
-    "atingPolicyholderEquity\020\325\004\022H\nCQuoteField"
-    "BalanceSheetsFinancialLiabilitiesSeparat"
-    "eAccountsBusiness\020\326\004\022E\n@QuoteFieldBalanc"
-    "eSheetsFinancialEquityForeignCurrencyAdj"
-    "ustments\020\327\004\022M\nHQuoteFieldBalanceSheetsFi"
-    "nancialEquityNetUnrealizedLossGainOnInve"
-    "stments\020\330\004\022Q\nLQuoteFieldBalanceSheetsFin"
-    "ancialEquityNetUnrealizedLossGainOnForei"
-    "gnCurrency\020\331\004\022F\nAQuoteFieldBalanceSheets"
-    "FinancialEquityNetOtherUnearnedLossesGai"
-    "ns\020\332\004\022 \n\033QuoteFieldBalanceSheetsDate\020\333\004\022"
-    "9\n4QuoteFieldCashFlowOperatingActivities"
-    "NetIncomeOrLoss\020\241\006\022=\n8QuoteFieldCashFlow"
-    "OperatingActivitiesDeferredIncomeTaxes\020\242"
-    "\006\022;\n6QuoteFieldCashFlowOperatingActiviti"
-    "esOtherNonCashItems\020\243\006\0226\n1QuoteFieldCash"
-    "FlowInvestingActivitiesAcquisitions\020\244\006\022B"
-    "\n=QuoteFieldCashFlowInvestingActivitiesO"
-    "therInvestingChangesNet\020\245\006\022H\nCQuoteField"
-    "CashFlowInvestingActivitiesNetCashFromIn"
-    "vestingActivities\020\246\006\022H\nCQuoteFieldCashFl"
-    "owFinancingActivitiesNetCashFromFinancin"
-    "gActivities\020\247\006\022E\n@QuoteFieldCashFlowFina"
-    "ncingActivitiesEffectOfExchangeRateChang"
-    "es\020\250\006\022A\n<QuoteFieldCashFlowFinancingActi"
-    "vitiesCashAtBeginningOfPeriod\020\251\006\022;\n6Quot"
-    "eFieldCashFlowFinancingActivitiesCashAtE"
-    "ndOfPeriod\020\252\006\022>\n9QuoteFieldCashFlowStand"
-    "ardOperatingActivitiesDepreciation\020\253\006\022>\n"
-    "9QuoteFieldCashFlowStandardOperatingActi"
-    "vitiesAmortization\020\254\006\022K\nFQuoteFieldCashF"
-    "lowStandardOperatingActivitiesAmortizati"
-    "onOfIntangibles\020\255\006\022H\nCQuoteFieldCashFlow"
-    "StandardOperatingActivitiesOperatingGain"
-    "sOrLosses\020\256\006\022L\nGQuoteFieldCashFlowStanda"
-    "rdOperatingActivitiesExtraordinaryGainsO"
-    "rLosses\020\257\006\022Q\nLQuoteFieldCashFlowStandard"
-    "OperatingActivitiesIncreaseOrDecreaseInR"
-    "eceivables\020\260\006\022Q\nLQuoteFieldCashFlowStand"
+    "pe\022\022\n\nDataBytePB\030\004 \001(\014\022\027\n\017DataByteArrayP"
+    "B\030\005 \001(\014\022\030\n\020DataUInteger32PB\030\006 \001(\r\022\030\n\020Dat"
+    "aUInteger64PB\030\007 \001(\004\022\027\n\017DataInteger32PB\030\010"
+    " \001(\005\022\027\n\017DataInteger64PB\030\t \001(\003\0221\n\013DataPri"
+    "cePB\030\n \001(\0132\034.NodeActiveTickProto.ATPrice"
+    "\022\024\n\014DataStringPB\030\013 \001(\t\022\033\n\023DataUnicodeStr"
+    "ingPB\030\014 \001(\t\0223\n\016DataDateTimePB\030\r \001(\0132\033.No"
+    "deActiveTickProto.ATTime\022\024\n\014DataDoublePB"
+    "\030\016 \001(\001\"r\n\rATFieldStatus\022\026\n\022FieldStatusSu"
+    "ccess\020\001\022\026\n\022FieldStatusInvalid\020\002\022\032\n\026Field"
+    "StatusUnavailable\020\003\022\025\n\021FieldStatusDenied"
+    "\020\004\"\323\001\n\nATDataType\022\014\n\010DataByte\020\001\022\021\n\rDataB"
+    "yteArray\020\002\022\022\n\016DataUInteger32\020\003\022\022\n\016DataUI"
+    "nteger64\020\004\022\021\n\rDataInteger32\020\005\022\021\n\rDataInt"
+    "eger64\020\006\022\r\n\tDataPrice\020\007\022\016\n\nDataString\020\010\022"
+    "\025\n\021DataUnicodeString\020\t\022\020\n\014DataDateTime\020\n"
+    "\022\016\n\nDataDouble\020\013\"\321\001\n\025ATQuoteDbResponseDa"
+    "ta\0229\n\014symbolStatus\030\001 \001(\0162#.NodeActiveTic"
+    "kProto.ATSymbolStatus\022-\n\006symbol\030\002 \001(\0132\035."
+    "NodeActiveTickProto.ATSymbol\022N\n\017symbolFi"
+    "eldData\030\003 \003(\01325.NodeActiveTickProto.ATQu"
+    "oteDbResponseSymbolFieldData\"\266\002\n\021ATQuote"
+    "DbResponse\022R\n\014responseType\030\001 \001(\0162<.NodeA"
+    "ctiveTickProto.ATQuoteDbResponse.ATQuote"
+    "DbResponseType\0229\n\005datum\030\002 \003(\0132*.NodeActi"
+    "veTickProto.ATQuoteDbResponseData\"\221\001\n\025AT"
+    "QuoteDbResponseType\022\032\n\026QuoteDbResponseSu"
+    "ccess\020\001\022!\n\035QuoteDbResponseInvalidRequest"
+    "\020\002\022\031\n\025QuoteDbResponseDenied\020\003\022\036\n\032QuoteDb"
+    "ResponseUnavailable\020\004*}\n\016ATSymbolStatus\022"
+    "\027\n\023SymbolStatusSuccess\020\001\022\027\n\023SymbolStatus"
+    "Invalid\020\002\022\033\n\027SymbolStatusUnavailable\020\003\022\034"
+    "\n\030SymbolStatusNoPermission\020\004*\347\221\001\n\020ATQuot"
+    "eFieldType\022\024\n\020QuoteFieldSymbol\020\001\022\027\n\023Quot"
+    "eFieldOpenPrice\020\002\022 \n\034QuoteFieldPreviousC"
+    "losePrice\020\003\022\030\n\024QuoteFieldClosePrice\020\004\022\027\n"
+    "\023QuoteFieldLastPrice\020\005\022\026\n\022QuoteFieldBidP"
+    "rice\020\006\022\026\n\022QuoteFieldAskPrice\020\007\022\027\n\023QuoteF"
+    "ieldHighPrice\020\010\022\026\n\022QuoteFieldLowPrice\020\t\022"
+    "\032\n\026QuoteFieldDayHighPrice\020\n\022\031\n\025QuoteFiel"
+    "dDayLowPrice\020\013\022 \n\034QuoteFieldPreMarketOpe"
+    "nPrice\020\014\022$\n QuoteFieldExtendedHoursLastP"
+    "rice\020\r\022#\n\037QuoteFieldAfterMarketClosePric"
+    "e\020\016\022\031\n\025QuoteFieldBidExchange\020\017\022\031\n\025QuoteF"
+    "ieldAskExchange\020\020\022\032\n\026QuoteFieldLastExcha"
+    "nge\020\021\022\033\n\027QuoteFieldLastCondition\020\022\022\034\n\030Qu"
+    "oteFieldQuoteCondition\020\023\022\037\n\033QuoteFieldLa"
+    "stTradeDateTime\020\024\022\037\n\033QuoteFieldLastQuote"
+    "DateTime\020\025\022\035\n\031QuoteFieldDayHighDateTime\020"
+    "\026\022\034\n\030QuoteFieldDayLowDateTime\020\027\022\026\n\022Quote"
+    "FieldLastSize\020\030\022\025\n\021QuoteFieldBidSize\020\031\022\025"
+    "\n\021QuoteFieldAskSize\020\032\022\024\n\020QuoteFieldVolum"
+    "e\020\033\022\035\n\031QuoteFieldPreMarketVolume\020\034\022\037\n\033Qu"
+    "oteFieldAfterMarketVolume\020\035\022\030\n\024QuoteFiel"
+    "dTradeCount\020\036\022!\n\035QuoteFieldPreMarketTrad"
+    "eCount\020\037\022#\n\037QuoteFieldAfterMarketTradeCo"
+    "unt\020 \022\036\n\032QuoteFieldProfileShortName\020!\022$\n"
+    " QuoteFieldProfilePrimaryExchange\020\"\022\035\n\031Q"
+    "uoteFieldProfileLongName\020#\022\033\n\027QuoteField"
+    "ProfileSector\020$\022\035\n\031QuoteFieldProfileIndu"
+    "stry\020%\022 \n\034QuoteFieldOptionOpenInterest\020d"
+    "\022\037\n\033QuoteFieldOptionStrikePrice\020e\022>\n9Quo"
+    "teFieldIncomeStatementBasicEPSFromContin"
+    "uingOperations\020\310\001\022@\n;QuoteFieldIncomeSta"
+    "tementBasicEPSFromDiscontinuedOperations"
+    "\020\311\001\0229\n4QuoteFieldIncomeStatementBasicEPS"
+    "FromTotalOperations\020\312\001\022=\n8QuoteFieldInco"
+    "meStatementBasicEPSFromExtraordinaryInco"
+    "me\020\313\001\022E\n@QuoteFieldIncomeStatementBasicE"
+    "PSFromCumEffectOfAccountingChange\020\314\001\0224\n/"
+    "QuoteFieldIncomeStatementBasicEPSFromOth"
+    "erGains\020\315\001\022+\n&QuoteFieldIncomeStatementB"
+    "asicEPSTotal\020\316\001\022>\n9QuoteFieldIncomeState"
+    "mentBasicNormalizedNetIncomePerShare\020\317\001\022"
+    "@\n;QuoteFieldIncomeStatementDilutedEPSFr"
+    "omContinuingOperations\020\320\001\022B\n=QuoteFieldI"
+    "ncomeStatementDilutedEPSFromDiscontinued"
+    "Operations\020\321\001\022;\n6QuoteFieldIncomeStateme"
+    "ntDilutedEPSFromTotalOperations\020\322\001\022\?\n:Qu"
+    "oteFieldIncomeStatementDilutedEPSFromExt"
+    "raordinaryIncome\020\323\001\0226\n1QuoteFieldIncomeS"
+    "tatementDilutedEPSFromOtherGains\020\324\001\022-\n(Q"
+    "uoteFieldIncomeStatementDilutedEPSTotal\020"
+    "\325\001\022@\n;QuoteFieldIncomeStatementDilutedNo"
+    "rmalizedNetIncomePerShare\020\326\001\0223\n.QuoteFie"
+    "ldIncomeStatementDividendsPaidPerShare\020\327"
+    "\001\0227\n2QuoteFieldIncomeStatementIncomeAcqu"
+    "iredInProcessRD\020\330\001\0221\n,QuoteFieldIncomeSt"
+    "atementOtherSpecialCharges\020\331\001\022)\n$QuoteFi"
+    "eldIncomeStatementIncomeTaxes\020\332\001\022.\n)Quot"
+    "eFieldIncomeStatementMinorityInterest\020\333\001"
+    "\022\?\n:QuoteFieldIncomeStatementNetIncomeFr"
+    "omContinuingOperations\020\334\001\022A\n<QuoteFieldI"
+    "ncomeStatementNetIncomeFromDiscontinuedO"
+    "perations\020\335\001\022:\n5QuoteFieldIncomeStatemen"
+    "tNetIncomeFromTotalOperations\020\336\001\022;\n6Quot"
+    "eFieldIncomeStatementIncomeFromTaxLossCa"
+    "rryforward\020\337\001\022.\n)QuoteFieldIncomeStateme"
+    "ntOtherGainsLosses\020\340\001\022,\n\'QuoteFieldIncom"
+    "eStatementTotalNetIncome\020\341\001\022.\n)QuoteFiel"
+    "dIncomeStatementNormalizedIncome\020\342\001\0229\n4Q"
+    "uoteFieldIncomeStatementNetIncomeAvailab"
+    "leForCommon\020\343\001\0220\n+QuoteFieldIncomeStatem"
+    "entPreferredDividends\020\344\001\0226\n1QuoteFieldIn"
+    "comeStatementStandardOperatingRevenue\020\345\001"
+    "\0222\n-QuoteFieldIncomeStatementStandardTot"
+    "alRevenue\020\346\001\0229\n4QuoteFieldIncomeStatemen"
+    "tStandardAdjustmentToRevenue\020\347\001\0221\n,Quote"
+    "FieldIncomeStatementStandardCostOfSales\020"
+    "\350\001\022A\n<QuoteFieldIncomeStatementStandardC"
+    "ostOfSalesWithDepreciation\020\351\001\0221\n,QuoteFi"
+    "eldIncomeStatementStandardGrossMargin\020\352\001"
+    "\022:\n5QuoteFieldIncomeStatementStandardGro"
+    "ssOperatingProfit\020\353\001\022<\n7QuoteFieldIncome"
+    "StatementStandardResearchAndDevelopment\020"
+    "\354\001\022C\n>QuoteFieldIncomeStatementStandardS"
+    "ellingGeneralAndAdminExpense\020\355\001\0221\n,Quote"
+    "FieldIncomeStatementStandardAdvertising\020"
+    "\356\001\0225\n0QuoteFieldIncomeStatementStandardO"
+    "peratingProfit\020\357\001\022G\nBQuoteFieldIncomeSta"
+    "tementStandardOperatingProfitBeforeDepre"
+    "ciation\020\360\001\0222\n-QuoteFieldIncomeStatementS"
+    "tandardDepreciation\020\361\001\022>\n9QuoteFieldInco"
+    "meStatementStandardDepreciationUnreconci"
+    "led\020\362\001\0222\n-QuoteFieldIncomeStatementStand"
+    "ardAmortization\020\363\001\022\?\n:QuoteFieldIncomeSt"
+    "atementStandardAmortizationOfIntangibles"
+    "\020\364\001\022F\nAQuoteFieldIncomeStatementStandard"
+    "OperatingIncomeAfterDepreciation\020\365\001\0224\n/Q"
+    "uoteFieldIncomeStatementStandardInterest"
+    "Income\020\366\001\022@\n;QuoteFieldIncomeStatementSt"
+    "andardEarningsFromEquityInterest\020\367\001\0224\n/Q"
+    "uoteFieldIncomeStatementStandardOtherInc"
+    "omeNet\020\370\001\022@\n;QuoteFieldIncomeStatementSt"
+    "andardInterestRestructuringAndMA\020\371\001\022H\nCQ"
+    "uoteFieldIncomeStatementStandardTotalInc"
+    "omeAvailForInterestExpense\020\372\001\0225\n0QuoteFi"
+    "eldIncomeStatementStandardInterestExpens"
+    "e\020\373\001\0225\n0QuoteFieldIncomeStatementStandar"
+    "dIncomeBeforeTax\020\374\001\022J\nEQuoteFieldIncomeS"
+    "tatementStandardPreferredSecuritiesOfSub"
+    "sidiaryTrust\020\375\001\022A\n<QuoteFieldIncomeState"
+    "mentStandardExtraordinaryIncomeOrLosses\020"
+    "\376\001\022H\nCQuoteFieldIncomeStatementStandardI"
+    "ncomeFromCumEffectOfAccountChange\020\377\001\0221\n,"
+    "QuoteFieldIncomeStatementStandardExciseT"
+    "axes\020\200\002\022,\n\'QuoteFieldIncomeStatementFina"
+    "ncialLoans\020\201\002\022;\n6QuoteFieldIncomeStateme"
+    "ntFinancialInvestmentSecurities\020\202\002\022;\n6Qu"
+    "oteFieldIncomeStatementFinancialLeaseFin"
+    "ancingIncome\020\203\002\022:\n5QuoteFieldIncomeState"
+    "mentFinancialOtherInterestIncome\020\204\002\022<\n7Q"
+    "uoteFieldIncomeStatementFinancialFedFund"
+    "sSoldPurchased\020\205\002\022>\n9QuoteFieldIncomeSta"
+    "tementFinancialInterestBearingDeposits\020\206"
+    "\002\0229\n4QuoteFieldIncomeStatementFinancialL"
+    "oansHeldForResale\020\207\002\022\?\n:QuoteFieldIncome"
+    "StatementFinancialTradingAccountSecuriti"
+    "es\020\210\002\0229\n4QuoteFieldIncomeStatementFinanc"
+    "ialTimeDepositsPlaced\020\211\002\022B\n=QuoteFieldIn"
+    "comeStatementFinancialOtherMoneyMarketIn"
+    "vestments\020\212\002\022B\n=QuoteFieldIncomeStatemen"
+    "tFinancialTotalMoneyMarketInvestments\020\213\002"
+    "\022:\n5QuoteFieldIncomeStatementFinancialTo"
+    "talInterestIncome\020\214\002\022/\n*QuoteFieldIncome"
+    "StatementFinancialDeposits\020\215\002\022\?\n:QuoteFi"
+    "eldIncomeStatementFinancialFedFundsPurch"
+    "asedSecSold\020\216\002\022B\n=QuoteFieldIncomeStatem"
+    "entFinancialCapitalizedLeaseObligations\020"
+    "\217\002\022;\n6QuoteFieldIncomeStatementFinancial"
+    "OtherInterestExpense\020\220\002\022;\n6QuoteFieldInc"
+    "omeStatementFinancialTotalInterestExpens"
+    "e\020\221\002\022\?\n:QuoteFieldIncomeStatementFinanci"
+    "alNetInterestIncomeExpense\020\222\002\022;\n6QuoteFi"
+    "eldIncomeStatementFinancialProvisionForL"
+    "oanLoss\020\223\002\022=\n8QuoteFieldIncomeStatementF"
+    "inancialTrustFeesByCommissions\020\224\002\022E\n@Quo"
+    "teFieldIncomeStatementFinancialServiceCh"
+    "argeOnDepositAccounts\020\225\002\022:\n5QuoteFieldIn"
+    "comeStatementFinancialOtherServiceCharge"
+    "s\020\226\002\022;\n6QuoteFieldIncomeStatementFinanci"
+    "alSecurityTransactions\020\227\002\0225\n0QuoteFieldI"
+    "ncomeStatementFinancialPremiumsEarned\020\230\002"
+    "\022>\n9QuoteFieldIncomeStatementFinancialNe"
+    "tRealizedCapitalGains\020\231\002\022>\n9QuoteFieldIn"
+    "comeStatementFinancialInvestmentBankingP"
+    "rofit\020\232\002\022=\n8QuoteFieldIncomeStatementFin"
+    "ancialOtherNonInterestIncome\020\233\002\022=\n8Quote"
+    "FieldIncomeStatementFinancialTotalNonInt"
+    "erestIncome\020\234\002\022B\n=QuoteFieldIncomeStatem"
+    "entFinancialSalariesAndEmployeeBenefits\020"
+    "\235\002\022:\n5QuoteFieldIncomeStatementFinancial"
+    "NetOccupancyExpense\020\236\002\022\?\n:QuoteFieldInco"
+    "meStatementFinancialPromotionsAndAdverti"
+    "sing\020\237\002\022>\n9QuoteFieldIncomeStatementFina"
+    "ncialPropLiabInsuranceClaims\020\240\002\022=\n8Quote"
+    "FieldIncomeStatementFinancialPolicyAcqui"
+    "sitionCosts\020\241\002\022<\n7QuoteFieldIncomeStatem"
+    "entFinancialAmortDefPolicyAcqCost\020\242\002\022\?\n:"
+    "QuoteFieldIncomeStatementFinancialCurren"
+    "tAndFutureBenefits\020\243\002\022>\n9QuoteFieldIncom"
+    "eStatementFinancialOtherNonInterestExpen"
+    "se\020\244\002\022>\n9QuoteFieldIncomeStatementFinanc"
+    "ialTotalNonInterestExpense\020\245\002\0227\n2QuoteFi"
+    "eldIncomeStatementFinancialPremiumTaxCre"
+    "dit\020\246\002\022\?\n:QuoteFieldIncomeStatementFinan"
+    "cialIncomeRestructuringAndMA\020\247\002\022;\n6Quote"
+    "FieldIncomeStatementFinancialSpecialInco"
+    "meCharges\020\250\002\022@\n;QuoteFieldIncomeStatemen"
+    "tFinancialExtraordinaryIncomeLosses\020\251\002\022C"
+    "\n>QuoteFieldIncomeStatementFinancialInco"
+    "meFromCumEffectOfAcctChg\020\252\002\022\"\n\035QuoteFiel"
+    "dIncomeStatementDate\020\253\002\0220\n+QuoteFieldBal"
+    "anceSheetsAssetsRestrictedCash\020\364\003\0221\n,Quo"
+    "teFieldBalanceSheetsAssetsOtherReceivabl"
+    "e\020\365\003\022-\n(QuoteFieldBalanceSheetsAssetsTot"
+    "alAssets\020\366\003\0224\n/QuoteFieldBalanceSheetsLi"
+    "abilitiesShortTermDebt\020\367\003\0223\n.QuoteFieldB"
+    "alanceSheetsLiabilitiesLongTermDebt\020\370\003\022>"
+    "\n9QuoteFieldBalanceSheetsLiabilitiesCapi"
+    "talLeaseObligations\020\371\003\0227\n2QuoteFieldBala"
+    "nceSheetsLiabilitiesMinorityInterest\020\372\003\022"
+    "7\n2QuoteFieldBalanceSheetsLiabilitiesTot"
+    "alLiabilities\020\373\003\022E\n@QuoteFieldBalanceShe"
+    "etsShareDataSharesOutstandingCommonClass"
+    "Only\020\374\003\0224\n/QuoteFieldBalanceSheetsShareD"
+    "ataPreferredShares\020\375\003\0228\n3QuoteFieldBalan"
+    "ceSheetsShareDataTotalOrdinaryShares\020\376\003\022"
+    "A\n<QuoteFieldBalanceSheetsShareDataTotal"
+    "CommonSharesOutstanding\020\377\003\0223\n.QuoteField"
+    "BalanceSheetsShareDataTreasuryShares\020\200\004\022"
+    "6\n1QuoteFieldBalanceSheetsEquityPreferre"
+    "dStockEquity\020\201\004\0223\n.QuoteFieldBalanceShee"
+    "tsEquityCommonStockEquity\020\202\004\022+\n&QuoteFie"
+    "ldBalanceSheetsEquityCommonPar\020\203\004\0229\n4Quo"
+    "teFieldBalanceSheetsEquityAdditionalPaid"
+    "InCapital\020\204\004\022A\n<QuoteFieldBalanceSheetsE"
+    "quityCumulativeTranslationAdjustment\020\205\004\022"
+    "2\n-QuoteFieldBalanceSheetsEquityRetained"
+    "Earnings\020\206\004\022/\n*QuoteFieldBalanceSheetsEq"
+    "uityTreasuryStock\020\207\004\0228\n3QuoteFieldBalanc"
+    "eSheetsEquityOtherEquityAdjustments\020\210\004\022-"
+    "\n(QuoteFieldBalanceSheetsEquityTotalEqui"
+    "ty\020\211\004\0225\n0QuoteFieldBalanceSheetsEquityTo"
+    "talCapitalization\020\212\004\022@\n;QuoteFieldBalanc"
+    "eSheetsEquityTotalLiabilitiesAndStockEqu"
+    "ity\020\213\004\022-\n(QuoteFieldBalanceSheetsNumberO"
+    "fEmployees\020\214\004\0225\n0QuoteFieldBalanceSheets"
+    "NumberOfPartTimeEmployees\020\215\004\022<\n7QuoteFie"
+    "ldBalanceSheetsStandardAssetsCashAndEqui"
+    "valents\020\216\004\022>\n9QuoteFieldBalanceSheetsSta"
+    "ndardAssetsMarketableSecurities\020\217\004\022<\n7Qu"
+    "oteFieldBalanceSheetsStandardAssetsAccou"
+    "ntsReceivable\020\220\004\0229\n4QuoteFieldBalanceShe"
+    "etsStandardAssetsLoansReceivable\020\221\004\0225\n0Q"
+    "uoteFieldBalanceSheetsStandardAssetsRece"
+    "ivables\020\222\004\0226\n1QuoteFieldBalanceSheetsSta"
+    "ndardAssetsRawMaterials\020\223\004\0228\n3QuoteField"
+    "BalanceSheetsStandardAssetsWorkInProgres"
+    "s\020\224\004\022=\n8QuoteFieldBalanceSheetsStandardA"
+    "ssetsPurchasedComponents\020\225\004\0227\n2QuoteFiel"
+    "dBalanceSheetsStandardAssetsFinishedGood"
+    "s\020\226\004\022:\n5QuoteFieldBalanceSheetsStandardA"
+    "ssetsOtherInventories\020\227\004\022B\n=QuoteFieldBa"
+    "lanceSheetsStandardAssetsInventoriesAdjA"
+    "llowances\020\230\004\0225\n0QuoteFieldBalanceSheetsS"
+    "tandardAssetsInventories\020\231\004\0229\n4QuoteFiel"
+    "dBalanceSheetsStandardAssetsPrepaidExpen"
+    "ses\020\232\004\022D\n\?QuoteFieldBalanceSheetsStandar"
+    "dAssetsCurrentDeferredIncomeTaxes\020\233\004\022<\n7"
+    "QuoteFieldBalanceSheetsStandardAssetsOth"
+    "erCurrentAssets\020\234\004\022<\n7QuoteFieldBalanceS"
+    "heetsStandardAssetsTotalCurrentAssets\020\235\004"
+    "\022:\n5QuoteFieldBalanceSheetsStandardAsset"
+    "sGrossFixedAssets\020\236\004\022M\nHQuoteFieldBalanc"
+    "eSheetsStandardAssetsAccumulatedDeprecia"
+    "tionAndDepletion\020\237\004\0228\n3QuoteFieldBalance"
+    "SheetsStandardAssetsNetFixedAssets\020\240\004\0225\n"
+    "0QuoteFieldBalanceSheetsStandardAssetsIn"
+    "tangibles\020\241\004\0226\n1QuoteFieldBalanceSheetsS"
+    "tandardAssetsCostInExcess\020\242\004\022G\nBQuoteFie"
+    "ldBalanceSheetsStandardAssetsNonCurrentD"
+    "eferredIncomeTaxes\020\243\004\022\?\n:QuoteFieldBalan"
+    "ceSheetsStandardAssetsOtherNonCurrentAss"
+    "ets\020\244\004\022\?\n:QuoteFieldBalanceSheetsStandar"
+    "dAssetsTotalNonCurrentAssets\020\245\004\022>\n9Quote"
+    "FieldBalanceSheetsStandardLiabilitiesAcc"
+    "ountsPayable\020\246\004\022;\n6QuoteFieldBalanceShee"
+    "tsStandardLiabilitiesNotesPayable\020\247\004\022>\n9"
+    "QuoteFieldBalanceSheetsStandardLiabiliti"
+    "esAccruedExpenses\020\250\004\022A\n<QuoteFieldBalanc"
+    "eSheetsStandardLiabilitiesAccruedLiabili"
+    "ties\020\251\004\022\?\n:QuoteFieldBalanceSheetsStanda"
+    "rdLiabilitiesDeferredRevenues\020\252\004\022I\nDQuot"
+    "eFieldBalanceSheetsStandardLiabilitiesCu"
+    "rrentDeferredIncomeTaxes\020\253\004\022F\nAQuoteFiel"
+    "dBalanceSheetsStandardLiabilitiesOtherCu"
+    "rrentLiabilities\020\254\004\022F\nAQuoteFieldBalance"
+    "SheetsStandardLiabilitiesTotalCurrentLia"
+    "bilities\020\255\004\022B\n=QuoteFieldBalanceSheetsSt"
+    "andardLiabilitiesDeferredIncomeTaxes\020\256\004\022"
+    "I\nDQuoteFieldBalanceSheetsStandardLiabil"
+    "itiesOtherNonCurrentLiabilities\020\257\004\022S\nNQu"
+    "oteFieldBalanceSheetsStandardLiabilities"
+    "PreferredSecuritiesOfSubsidiaryTrust\020\260\004\022"
+    "P\nKQuoteFieldBalanceSheetsStandardLiabil"
+    "itiesPreferredEquityOutsideStockEquity\020\261"
+    "\004\022I\nDQuoteFieldBalanceSheetsStandardLiab"
+    "ilitiesTotalNonCurrentLiabilities\020\262\004\022,\n\'"
+    "QuoteFieldBalanceSheetsStandardCashFlow\020"
+    "\263\004\0222\n-QuoteFieldBalanceSheetsStandardWor"
+    "kingCapital\020\264\004\0220\n+QuoteFieldBalanceSheet"
+    "sStandardFreeCashFlow\020\265\004\0223\n.QuoteFieldBa"
+    "lanceSheetsStandardInvestedCapital\020\266\004\022>\n"
+    "9QuoteFieldBalanceSheetsFinancialAssetsC"
+    "ashAndDueFromBanks\020\267\004\022J\nEQuoteFieldBalan"
+    "ceSheetsFinancialAssetsFedFundsSoldSecur"
+    "itiesPurchased\020\270\004\022I\nDQuoteFieldBalanceSh"
+    "eetsFinancialAssetsInterestBearingDepAtO"
+    "therBanks\020\271\004\022B\n=QuoteFieldBalanceSheetsF"
+    "inancialAssetsInvestmentSecuritiesNet\020\272\004"
+    "\0220\n+QuoteFieldBalanceSheetsFinancialAsse"
+    "tsLoans\020\273\004\022;\n6QuoteFieldBalanceSheetsFin"
+    "ancialAssetsUnearnedPremiums\020\274\004\022J\nEQuote"
+    "FieldBalanceSheetsFinancialAssetsAllowan"
+    "ceForLoansAndLeaseLosses\020\275\004\0223\n.QuoteFiel"
+    "dBalanceSheetsFinancialAssetsNetLoans\020\276\004"
+    "\022\?\n:QuoteFieldBalanceSheetsFinancialAsse"
+    "tsPremisesAndEquipment\020\277\004\022E\n@QuoteFieldB"
+    "alanceSheetsFinancialAssetsDueFromCustom"
+    "ersAcceptance\020\300\004\022C\n>QuoteFieldBalanceShe"
+    "etsFinancialAssetsTradingAccountSecuriti"
+    "es\020\301\004\022:\n5QuoteFieldBalanceSheetsFinancia"
+    "lAssetsAccruedInterest\020\302\004\022B\n=QuoteFieldB"
+    "alanceSheetsFinancialAssetsDeferredAcqui"
+    "sitionCost\020\303\004\022B\n=QuoteFieldBalanceSheets"
+    "FinancialAssetsAccruedInvestmentIncome\020\304"
+    "\004\022B\n=QuoteFieldBalanceSheetsFinancialAss"
+    "etsSeparateAccountBusiness\020\305\004\022=\n8QuoteFi"
+    "eldBalanceSheetsFinancialAssetsTimeDepos"
+    "itsPlaced\020\306\004\022;\n6QuoteFieldBalanceSheetsF"
+    "inancialAssetsIntangibleAssets\020\307\004\0226\n1Quo"
+    "teFieldBalanceSheetsFinancialAssetsOther"
+    "Assets\020\310\004\022J\nEQuoteFieldBalanceSheetsFina"
+    "ncialLiabilitiesNonInterestBearingDeposi"
+    "ts\020\311\004\022G\nBQuoteFieldBalanceSheetsFinancia"
+    "lLiabilitiesInterestBearingDeposits\020\312\004\022@"
+    "\n;QuoteFieldBalanceSheetsFinancialLiabil"
+    "itiesOtherLiabilities\020\313\004\022L\nGQuoteFieldBa"
+    "lanceSheetsFinancialLiabilitiesBankersAc"
+    "ceptanceOutstanding\020\314\004\022O\nJQuoteFieldBala"
+    "nceSheetsFinancialLiabilitiesFedFundsPur"
+    "chasedSecuritiesSold\020\315\004\022<\n7QuoteFieldBal"
+    "anceSheetsFinancialLiabilitiesAccruedTax"
+    "es\020\316\004\022G\nBQuoteFieldBalanceSheetsFinancia"
+    "lLiabilitiesAccruedInterestPayables\020\317\004\022="
+    "\n8QuoteFieldBalanceSheetsFinancialLiabil"
+    "itiesOtherPayables\020\320\004\022E\n@QuoteFieldBalan"
+    "ceSheetsFinancialLiabilitiesClaimsAndCla"
+    "imExpense\020\321\004\022D\n\?QuoteFieldBalanceSheetsF"
+    "inancialLiabilitiesFuturePolicyBenefits\020"
+    "\322\004\022@\n;QuoteFieldBalanceSheetsFinancialLi"
+    "abilitiesUnearnedPremiums\020\323\004\022A\n<QuoteFie"
+    "ldBalanceSheetsFinancialLiabilitiesPolic"
+    "yHolderFunds\020\324\004\022O\nJQuoteFieldBalanceShee"
+    "tsFinancialLiabilitiesParticipatingPolic"
+    "yholderEquity\020\325\004\022H\nCQuoteFieldBalanceShe"
+    "etsFinancialLiabilitiesSeparateAccountsB"
+    "usiness\020\326\004\022E\n@QuoteFieldBalanceSheetsFin"
+    "ancialEquityForeignCurrencyAdjustments\020\327"
+    "\004\022M\nHQuoteFieldBalanceSheetsFinancialEqu"
+    "ityNetUnrealizedLossGainOnInvestments\020\330\004"
+    "\022Q\nLQuoteFieldBalanceSheetsFinancialEqui"
+    "tyNetUnrealizedLossGainOnForeignCurrency"
+    "\020\331\004\022F\nAQuoteFieldBalanceSheetsFinancialE"
+    "quityNetOtherUnearnedLossesGains\020\332\004\022 \n\033Q"
+    "uoteFieldBalanceSheetsDate\020\333\004\0229\n4QuoteFi"
+    "eldCashFlowOperatingActivitiesNetIncomeO"
+    "rLoss\020\241\006\022=\n8QuoteFieldCashFlowOperatingA"
+    "ctivitiesDeferredIncomeTaxes\020\242\006\022;\n6Quote"
+    "FieldCashFlowOperatingActivitiesOtherNon"
+    "CashItems\020\243\006\0226\n1QuoteFieldCashFlowInvest"
+    "ingActivitiesAcquisitions\020\244\006\022B\n=QuoteFie"
+    "ldCashFlowInvestingActivitiesOtherInvest"
+    "ingChangesNet\020\245\006\022H\nCQuoteFieldCashFlowIn"
+    "vestingActivitiesNetCashFromInvestingAct"
+    "ivities\020\246\006\022H\nCQuoteFieldCashFlowFinancin"
+    "gActivitiesNetCashFromFinancingActivitie"
+    "s\020\247\006\022E\n@QuoteFieldCashFlowFinancingActiv"
+    "itiesEffectOfExchangeRateChanges\020\250\006\022A\n<Q"
+    "uoteFieldCashFlowFinancingActivitiesCash"
+    "AtBeginningOfPeriod\020\251\006\022;\n6QuoteFieldCash"
+    "FlowFinancingActivitiesCashAtEndOfPeriod"
+    "\020\252\006\022>\n9QuoteFieldCashFlowStandardOperati"
+    "ngActivitiesDepreciation\020\253\006\022>\n9QuoteFiel"
+    "dCashFlowStandardOperatingActivitiesAmor"
+    "tization\020\254\006\022K\nFQuoteFieldCashFlowStandar"
+    "dOperatingActivitiesAmortizationOfIntang"
+    "ibles\020\255\006\022H\nCQuoteFieldCashFlowStandardOp"
+    "eratingActivitiesOperatingGainsOrLosses\020"
+    "\256\006\022L\nGQuoteFieldCashFlowStandardOperatin"
+    "gActivitiesExtraordinaryGainsOrLosses\020\257\006"
+    "\022Q\nLQuoteFieldCashFlowStandardOperatingA"
+    "ctivitiesIncreaseOrDecreaseInReceivables"
+    "\020\260\006\022Q\nLQuoteFieldCashFlowStandardOperati"
+    "ngActivitiesIncreaseOrDecreaseInInventor"
+    "ies\020\261\006\022U\nPQuoteFieldCashFlowStandardOper"
+    "atingActivitiesIncreaseOrDecreaseInPrepa"
+    "idExpenses\020\262\006\022X\nSQuoteFieldCashFlowStand"
     "ardOperatingActivitiesIncreaseOrDecrease"
-    "InInventories\020\261\006\022U\nPQuoteFieldCashFlowSt"
-    "andardOperatingActivitiesIncreaseOrDecre"
-    "aseInPrepaidExpenses\020\262\006\022X\nSQuoteFieldCas"
+    "InOtherCurrentAssets\020\263\006\022N\nIQuoteFieldCas"
     "hFlowStandardOperatingActivitiesIncrease"
-    "OrDecreaseInOtherCurrentAssets\020\263\006\022N\nIQuo"
-    "teFieldCashFlowStandardOperatingActiviti"
-    "esIncreaseOrDecreaseInPayables\020\264\006\022Z\nUQuo"
-    "teFieldCashFlowStandardOperatingActiviti"
-    "esIncreaseOrDecreaseInOtherCurrLiabiliti"
-    "es\020\265\006\022Y\nTQuoteFieldCashFlowStandardOpera"
-    "tingActivitiesIncreaseOrDecreaseInOtherW"
-    "orkingCapital\020\266\006\022Q\nLQuoteFieldCashFlowSt"
-    "andardOperatingActivitiesNetCashFromCont"
-    "inuingOperations\020\267\006\022S\nNQuoteFieldCashFlo"
-    "wStandardOperatingActivitiesNetCashFromD"
-    "iscontinuedOperations\020\270\006\022P\nKQuoteFieldCa"
-    "shFlowStandardOperatingActivitiesNetCash"
-    "FromOperatingActivities\020\271\006\022N\nIQuoteField"
-    "CashFlowStandardInvestingActivitiesSaleO"
-    "fPropertyPlantEquipment\020\272\006\022K\nFQuoteField"
-    "CashFlowStandardInvestingActivitiesSaleO"
-    "fLongTermInvestments\020\273\006\022L\nGQuoteFieldCas"
-    "hFlowStandardInvestingActivitiesSaleOfSh"
-    "ortTermInvestments\020\274\006\022R\nMQuoteFieldCashF"
-    "lowStandardInvestingActivitiesPurchaseOf"
-    "PropertyPlantEquipment\020\275\006\022O\nJQuoteFieldC"
-    "ashFlowStandardInvestingActivitiesPurcha"
-    "seOfLongTermInvestments\020\276\006\022P\nKQuoteField"
-    "CashFlowStandardInvestingActivitiesPurch"
-    "aseOfShortTermInvestments\020\277\006\022Q\nLQuoteFie"
-    "ldCashFlowStandardInvestingActivitiesCas"
-    "hFromDiscInvestingActivities\020\300\006\022@\n;Quote"
-    "FieldCashFlowStandardFinancingActivities"
-    "IssuanceOfDebt\020\301\006\022H\nCQuoteFieldCashFlowS"
-    "tandardFinancingActivitiesIssuanceOfCapi"
-    "talStock\020\302\006\022A\n<QuoteFieldCashFlowStandar"
-    "dFinancingActivitiesRepaymentOfDebt\020\303\006\022J"
-    "\nEQuoteFieldCashFlowStandardFinancingAct"
-    "ivitiesRepurchaseOfCapitalStock\020\304\006\022H\nCQu"
-    "oteFieldCashFlowStandardFinancingActivit"
-    "iesPaymentOfCashDividends\020\305\006\022J\nEQuoteFie"
-    "ldCashFlowStandardFinancingActivitiesOth"
-    "erFinancingChargesNet\020\306\006\022Q\nLQuoteFieldCa"
-    "shFlowStandardFinancingActivitiesCashFro"
-    "mDiscFinancingActivities\020\307\006\022S\nNQuoteFiel"
-    "dCashFlowStandardFinancingActivitiesNetC"
-    "hangeInCashAndCashEquivalents\020\310\006\022I\nDQuot"
-    "eFieldCashFlowFinancialOperatingActiviti"
-    "esProvisionForLoanLosses\020\311\006\022N\nIQuoteFiel"
-    "dCashFlowFinancialOperatingActivitiesDep"
-    "reciationandAmortization\020\312\006\022L\nGQuoteFiel"
-    "dCashFlowFinancialOperatingActivitiesCha"
-    "ngeInAssetsReceivables\020\313\006\022N\nIQuoteFieldC"
-    "ashFlowFinancialOperatingActivitiesChang"
-    "eInLiabilitiesPayables\020\314\006\022K\nFQuoteFieldC"
-    "ashFlowFinancialOperatingActivitiesInves"
-    "tmentSecuritiesGain\020\315\006\022L\nGQuoteFieldCash"
-    "FlowFinancialOperatingActivitiesNetPolic"
-    "yAcquisitionCosts\020\316\006\022J\nEQuoteFieldCashFl"
-    "owFinancialOperatingActivitiesRealizedIn"
-    "vestmentGains\020\317\006\022I\nDQuoteFieldCashFlowFi"
-    "nancialOperatingActivitiesNetPremiumsRec"
-    "eivables\020\320\006\022F\nAQuoteFieldCashFlowFinanci"
-    "alOperatingActivitiesChangeInIncomeTaxes"
-    "\020\321\006\022Q\nLQuoteFieldCashFlowFinancialOperat"
-    "ingActivitiesNetCashFromOperatingActivit"
-    "ies\020\322\006\022I\nDQuoteFieldCashFlowFinancialInv"
-    "estingActivitiesProceedsFromSaleMatInv\020\323"
-    "\006\022Q\nLQuoteFieldCashFlowFinancialInvestin"
-    "gActivitiesPurchaseOfInvestmentSecuritie"
-    "s\020\324\006\022J\nEQuoteFieldCashFlowFinancialInves"
-    "tingActivitiesNetIncreaseFedFundsSold\020\325\006"
-    "\022Q\nLQuoteFieldCashFlowFinancialInvesting"
-    "ActivitiesPurchaseOfPropertyAndEquipment"
-    "\020\326\006\022F\nAQuoteFieldCashFlowFinancialFinanc"
-    "ingActivitiesNetChangeInDeposits\020\327\006\022D\n\?Q"
-    "uoteFieldCashFlowFinancialFinancingActiv"
-    "itiesCashDividendsPaid\020\330\006\022J\nEQuoteFieldC"
-    "ashFlowFinancialFinancingActivitiesRepay"
-    "mentOfLongTermDebt\020\331\006\022H\nCQuoteFieldCashF"
-    "lowFinancialFinancingActivitiesChangeOfS"
-    "hortTermDebt\020\332\006\022I\nDQuoteFieldCashFlowFin"
-    "ancialFinancingActivitiesIssuanceOfLongT"
-    "ermDebt\020\333\006\022K\nFQuoteFieldCashFlowFinancia"
-    "lFinancingActivitiesIssuanceOfPreferredS"
-    "tock\020\334\006\022H\nCQuoteFieldCashFlowFinancialFi"
-    "nancingActivitiesIssuanceOfCommonStock\020\335"
-    "\006\022J\nEQuoteFieldCashFlowFinancialFinancin"
-    "gActivitiesPurchaseOfTreasuryStock\020\336\006\022K\n"
-    "FQuoteFieldCashFlowFinancialFinancingAct"
-    "ivitiesOtherFinancingActivities\020\337\006\022P\nKQu"
-    "oteFieldCashFlowFinancialFinancingActivi"
-    "tiesNetChangeInCashAndEquivalents\020\340\006\022\033\n\026"
-    "QuoteFieldCashFlowDate\020\341\006", 23145);
+    "OrDecreaseInPayables\020\264\006\022Z\nUQuoteFieldCas"
+    "hFlowStandardOperatingActivitiesIncrease"
+    "OrDecreaseInOtherCurrLiabilities\020\265\006\022Y\nTQ"
+    "uoteFieldCashFlowStandardOperatingActivi"
+    "tiesIncreaseOrDecreaseInOtherWorkingCapi"
+    "tal\020\266\006\022Q\nLQuoteFieldCashFlowStandardOper"
+    "atingActivitiesNetCashFromContinuingOper"
+    "ations\020\267\006\022S\nNQuoteFieldCashFlowStandardO"
+    "peratingActivitiesNetCashFromDiscontinue"
+    "dOperations\020\270\006\022P\nKQuoteFieldCashFlowStan"
+    "dardOperatingActivitiesNetCashFromOperat"
+    "ingActivities\020\271\006\022N\nIQuoteFieldCashFlowSt"
+    "andardInvestingActivitiesSaleOfPropertyP"
+    "lantEquipment\020\272\006\022K\nFQuoteFieldCashFlowSt"
+    "andardInvestingActivitiesSaleOfLongTermI"
+    "nvestments\020\273\006\022L\nGQuoteFieldCashFlowStand"
+    "ardInvestingActivitiesSaleOfShortTermInv"
+    "estments\020\274\006\022R\nMQuoteFieldCashFlowStandar"
+    "dInvestingActivitiesPurchaseOfPropertyPl"
+    "antEquipment\020\275\006\022O\nJQuoteFieldCashFlowSta"
+    "ndardInvestingActivitiesPurchaseOfLongTe"
+    "rmInvestments\020\276\006\022P\nKQuoteFieldCashFlowSt"
+    "andardInvestingActivitiesPurchaseOfShort"
+    "TermInvestments\020\277\006\022Q\nLQuoteFieldCashFlow"
+    "StandardInvestingActivitiesCashFromDiscI"
+    "nvestingActivities\020\300\006\022@\n;QuoteFieldCashF"
+    "lowStandardFinancingActivitiesIssuanceOf"
+    "Debt\020\301\006\022H\nCQuoteFieldCashFlowStandardFin"
+    "ancingActivitiesIssuanceOfCapitalStock\020\302"
+    "\006\022A\n<QuoteFieldCashFlowStandardFinancing"
+    "ActivitiesRepaymentOfDebt\020\303\006\022J\nEQuoteFie"
+    "ldCashFlowStandardFinancingActivitiesRep"
+    "urchaseOfCapitalStock\020\304\006\022H\nCQuoteFieldCa"
+    "shFlowStandardFinancingActivitiesPayment"
+    "OfCashDividends\020\305\006\022J\nEQuoteFieldCashFlow"
+    "StandardFinancingActivitiesOtherFinancin"
+    "gChargesNet\020\306\006\022Q\nLQuoteFieldCashFlowStan"
+    "dardFinancingActivitiesCashFromDiscFinan"
+    "cingActivities\020\307\006\022S\nNQuoteFieldCashFlowS"
+    "tandardFinancingActivitiesNetChangeInCas"
+    "hAndCashEquivalents\020\310\006\022I\nDQuoteFieldCash"
+    "FlowFinancialOperatingActivitiesProvisio"
+    "nForLoanLosses\020\311\006\022N\nIQuoteFieldCashFlowF"
+    "inancialOperatingActivitiesDepreciationa"
+    "ndAmortization\020\312\006\022L\nGQuoteFieldCashFlowF"
+    "inancialOperatingActivitiesChangeInAsset"
+    "sReceivables\020\313\006\022N\nIQuoteFieldCashFlowFin"
+    "ancialOperatingActivitiesChangeInLiabili"
+    "tiesPayables\020\314\006\022K\nFQuoteFieldCashFlowFin"
+    "ancialOperatingActivitiesInvestmentSecur"
+    "itiesGain\020\315\006\022L\nGQuoteFieldCashFlowFinanc"
+    "ialOperatingActivitiesNetPolicyAcquisiti"
+    "onCosts\020\316\006\022J\nEQuoteFieldCashFlowFinancia"
+    "lOperatingActivitiesRealizedInvestmentGa"
+    "ins\020\317\006\022I\nDQuoteFieldCashFlowFinancialOpe"
+    "ratingActivitiesNetPremiumsReceivables\020\320"
+    "\006\022F\nAQuoteFieldCashFlowFinancialOperatin"
+    "gActivitiesChangeInIncomeTaxes\020\321\006\022Q\nLQuo"
+    "teFieldCashFlowFinancialOperatingActivit"
+    "iesNetCashFromOperatingActivities\020\322\006\022I\nD"
+    "QuoteFieldCashFlowFinancialInvestingActi"
+    "vitiesProceedsFromSaleMatInv\020\323\006\022Q\nLQuote"
+    "FieldCashFlowFinancialInvestingActivitie"
+    "sPurchaseOfInvestmentSecurities\020\324\006\022J\nEQu"
+    "oteFieldCashFlowFinancialInvestingActivi"
+    "tiesNetIncreaseFedFundsSold\020\325\006\022Q\nLQuoteF"
+    "ieldCashFlowFinancialInvestingActivities"
+    "PurchaseOfPropertyAndEquipment\020\326\006\022F\nAQuo"
+    "teFieldCashFlowFinancialFinancingActivit"
+    "iesNetChangeInDeposits\020\327\006\022D\n\?QuoteFieldC"
+    "ashFlowFinancialFinancingActivitiesCashD"
+    "ividendsPaid\020\330\006\022J\nEQuoteFieldCashFlowFin"
+    "ancialFinancingActivitiesRepaymentOfLong"
+    "TermDebt\020\331\006\022H\nCQuoteFieldCashFlowFinanci"
+    "alFinancingActivitiesChangeOfShortTermDe"
+    "bt\020\332\006\022I\nDQuoteFieldCashFlowFinancialFina"
+    "ncingActivitiesIssuanceOfLongTermDebt\020\333\006"
+    "\022K\nFQuoteFieldCashFlowFinancialFinancing"
+    "ActivitiesIssuanceOfPreferredStock\020\334\006\022H\n"
+    "CQuoteFieldCashFlowFinancialFinancingAct"
+    "ivitiesIssuanceOfCommonStock\020\335\006\022J\nEQuote"
+    "FieldCashFlowFinancialFinancingActivitie"
+    "sPurchaseOfTreasuryStock\020\336\006\022K\nFQuoteFiel"
+    "dCashFlowFinancialFinancingActivitiesOth"
+    "erFinancingActivities\020\337\006\022P\nKQuoteFieldCa"
+    "shFlowFinancialFinancingActivitiesNetCha"
+    "ngeInCashAndEquivalents\020\340\006\022\033\n\026QuoteField"
+    "CashFlowDate\020\341\006", 23455);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   ATLoginResponse::default_instance_ = new ATLoginResponse();
@@ -8293,7 +8311,17 @@ const int ATQuoteDbResponseSymbolFieldData::ATDataType_ARRAYSIZE;
 const int ATQuoteDbResponseSymbolFieldData::kFieldTypeFieldNumber;
 const int ATQuoteDbResponseSymbolFieldData::kFieldStatusFieldNumber;
 const int ATQuoteDbResponseSymbolFieldData::kDataTypeFieldNumber;
-const int ATQuoteDbResponseSymbolFieldData::kDataFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataBytePBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataByteArrayPBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataUInteger32PBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataUInteger64PBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataInteger32PBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataInteger64PBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataPricePBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataStringPBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataUnicodeStringPBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataDateTimePBFieldNumber;
+const int ATQuoteDbResponseSymbolFieldData::kDataDoublePBFieldNumber;
 #endif  // !_MSC_VER
 
 ATQuoteDbResponseSymbolFieldData::ATQuoteDbResponseSymbolFieldData()
@@ -8303,6 +8331,8 @@ ATQuoteDbResponseSymbolFieldData::ATQuoteDbResponseSymbolFieldData()
 }
 
 void ATQuoteDbResponseSymbolFieldData::InitAsDefaultInstance() {
+  datapricepb_ = const_cast< ::NodeActiveTickProto::ATPrice*>(&::NodeActiveTickProto::ATPrice::default_instance());
+  datadatetimepb_ = const_cast< ::NodeActiveTickProto::ATTime*>(&::NodeActiveTickProto::ATTime::default_instance());
 }
 
 ATQuoteDbResponseSymbolFieldData::ATQuoteDbResponseSymbolFieldData(const ATQuoteDbResponseSymbolFieldData& from)
@@ -8318,7 +8348,17 @@ void ATQuoteDbResponseSymbolFieldData::SharedCtor() {
   fieldtype_ = 1;
   fieldstatus_ = 1;
   datatype_ = 1;
-  data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  databytepb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  databytearraypb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  datauinteger32pb_ = 0u;
+  datauinteger64pb_ = GOOGLE_ULONGLONG(0);
+  datainteger32pb_ = 0;
+  datainteger64pb_ = GOOGLE_LONGLONG(0);
+  datapricepb_ = NULL;
+  datastringpb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  dataunicodestringpb_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  datadatetimepb_ = NULL;
+  datadoublepb_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -8328,10 +8368,21 @@ ATQuoteDbResponseSymbolFieldData::~ATQuoteDbResponseSymbolFieldData() {
 }
 
 void ATQuoteDbResponseSymbolFieldData::SharedDtor() {
-  if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete data_;
+  if (databytepb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete databytepb_;
+  }
+  if (databytearraypb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete databytearraypb_;
+  }
+  if (datastringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete datastringpb_;
+  }
+  if (dataunicodestringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete dataunicodestringpb_;
   }
   if (this != default_instance_) {
+    delete datapricepb_;
+    delete datadatetimepb_;
   }
 }
 
@@ -8357,15 +8408,43 @@ ATQuoteDbResponseSymbolFieldData* ATQuoteDbResponseSymbolFieldData::New() const 
 }
 
 void ATQuoteDbResponseSymbolFieldData::Clear() {
-  if (_has_bits_[0 / 32] & 15) {
+  if (_has_bits_[0 / 32] & 255) {
     fieldtype_ = 1;
     fieldstatus_ = 1;
     datatype_ = 1;
-    if (has_data()) {
-      if (data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        data_->clear();
+    if (has_databytepb()) {
+      if (databytepb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        databytepb_->clear();
       }
     }
+    if (has_databytearraypb()) {
+      if (databytearraypb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        databytearraypb_->clear();
+      }
+    }
+    datauinteger32pb_ = 0u;
+    datauinteger64pb_ = GOOGLE_ULONGLONG(0);
+    datainteger32pb_ = 0;
+  }
+  if (_has_bits_[8 / 32] & 16128) {
+    datainteger64pb_ = GOOGLE_LONGLONG(0);
+    if (has_datapricepb()) {
+      if (datapricepb_ != NULL) datapricepb_->::NodeActiveTickProto::ATPrice::Clear();
+    }
+    if (has_datastringpb()) {
+      if (datastringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        datastringpb_->clear();
+      }
+    }
+    if (has_dataunicodestringpb()) {
+      if (dataunicodestringpb_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        dataunicodestringpb_->clear();
+      }
+    }
+    if (has_datadatetimepb()) {
+      if (datadatetimepb_ != NULL) datadatetimepb_->::NodeActiveTickProto::ATTime::Clear();
+    }
+    datadoublepb_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -8436,16 +8515,164 @@ bool ATQuoteDbResponseSymbolFieldData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_data;
+        if (input->ExpectTag(34)) goto parse_DataBytePB;
         break;
       }
 
-      // optional bytes data = 4;
+      // optional bytes DataBytePB = 4;
       case 4: {
         if (tag == 34) {
-         parse_data:
+         parse_DataBytePB:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_data()));
+                input, this->mutable_databytepb()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_DataByteArrayPB;
+        break;
+      }
+
+      // optional bytes DataByteArrayPB = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_DataByteArrayPB:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_databytearraypb()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(48)) goto parse_DataUInteger32PB;
+        break;
+      }
+
+      // optional uint32 DataUInteger32PB = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_DataUInteger32PB:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &datauinteger32pb_)));
+          set_has_datauinteger32pb();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_DataUInteger64PB;
+        break;
+      }
+
+      // optional uint64 DataUInteger64PB = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_DataUInteger64PB:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &datauinteger64pb_)));
+          set_has_datauinteger64pb();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(64)) goto parse_DataInteger32PB;
+        break;
+      }
+
+      // optional int32 DataInteger32PB = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_DataInteger32PB:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &datainteger32pb_)));
+          set_has_datainteger32pb();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(72)) goto parse_DataInteger64PB;
+        break;
+      }
+
+      // optional int64 DataInteger64PB = 9;
+      case 9: {
+        if (tag == 72) {
+         parse_DataInteger64PB:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &datainteger64pb_)));
+          set_has_datainteger64pb();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(82)) goto parse_DataPricePB;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATPrice DataPricePB = 10;
+      case 10: {
+        if (tag == 82) {
+         parse_DataPricePB:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_datapricepb()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(90)) goto parse_DataStringPB;
+        break;
+      }
+
+      // optional string DataStringPB = 11;
+      case 11: {
+        if (tag == 90) {
+         parse_DataStringPB:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_datastringpb()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->datastringpb().data(), this->datastringpb().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "datastringpb");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(98)) goto parse_DataUnicodeStringPB;
+        break;
+      }
+
+      // optional string DataUnicodeStringPB = 12;
+      case 12: {
+        if (tag == 98) {
+         parse_DataUnicodeStringPB:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_dataunicodestringpb()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->dataunicodestringpb().data(), this->dataunicodestringpb().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "dataunicodestringpb");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(106)) goto parse_DataDateTimePB;
+        break;
+      }
+
+      // optional .NodeActiveTickProto.ATTime DataDateTimePB = 13;
+      case 13: {
+        if (tag == 106) {
+         parse_DataDateTimePB:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_datadatetimepb()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(113)) goto parse_DataDoublePB;
+        break;
+      }
+
+      // optional double DataDoublePB = 14;
+      case 14: {
+        if (tag == 113) {
+         parse_DataDoublePB:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &datadoublepb_)));
+          set_has_datadoublepb();
         } else {
           goto handle_unusual;
         }
@@ -8496,10 +8723,73 @@ void ATQuoteDbResponseSymbolFieldData::SerializeWithCachedSizes(
       3, this->datatype(), output);
   }
 
-  // optional bytes data = 4;
-  if (has_data()) {
+  // optional bytes DataBytePB = 4;
+  if (has_databytepb()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      4, this->data(), output);
+      4, this->databytepb(), output);
+  }
+
+  // optional bytes DataByteArrayPB = 5;
+  if (has_databytearraypb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      5, this->databytearraypb(), output);
+  }
+
+  // optional uint32 DataUInteger32PB = 6;
+  if (has_datauinteger32pb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->datauinteger32pb(), output);
+  }
+
+  // optional uint64 DataUInteger64PB = 7;
+  if (has_datauinteger64pb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(7, this->datauinteger64pb(), output);
+  }
+
+  // optional int32 DataInteger32PB = 8;
+  if (has_datainteger32pb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->datainteger32pb(), output);
+  }
+
+  // optional int64 DataInteger64PB = 9;
+  if (has_datainteger64pb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(9, this->datainteger64pb(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice DataPricePB = 10;
+  if (has_datapricepb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, this->datapricepb(), output);
+  }
+
+  // optional string DataStringPB = 11;
+  if (has_datastringpb()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->datastringpb().data(), this->datastringpb().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "datastringpb");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      11, this->datastringpb(), output);
+  }
+
+  // optional string DataUnicodeStringPB = 12;
+  if (has_dataunicodestringpb()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->dataunicodestringpb().data(), this->dataunicodestringpb().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "dataunicodestringpb");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      12, this->dataunicodestringpb(), output);
+  }
+
+  // optional .NodeActiveTickProto.ATTime DataDateTimePB = 13;
+  if (has_datadatetimepb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      13, this->datadatetimepb(), output);
+  }
+
+  // optional double DataDoublePB = 14;
+  if (has_datadoublepb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(14, this->datadoublepb(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -8530,11 +8820,79 @@ void ATQuoteDbResponseSymbolFieldData::SerializeWithCachedSizes(
       3, this->datatype(), target);
   }
 
-  // optional bytes data = 4;
-  if (has_data()) {
+  // optional bytes DataBytePB = 4;
+  if (has_databytepb()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        4, this->data(), target);
+        4, this->databytepb(), target);
+  }
+
+  // optional bytes DataByteArrayPB = 5;
+  if (has_databytearraypb()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        5, this->databytearraypb(), target);
+  }
+
+  // optional uint32 DataUInteger32PB = 6;
+  if (has_datauinteger32pb()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->datauinteger32pb(), target);
+  }
+
+  // optional uint64 DataUInteger64PB = 7;
+  if (has_datauinteger64pb()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(7, this->datauinteger64pb(), target);
+  }
+
+  // optional int32 DataInteger32PB = 8;
+  if (has_datainteger32pb()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->datainteger32pb(), target);
+  }
+
+  // optional int64 DataInteger64PB = 9;
+  if (has_datainteger64pb()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(9, this->datainteger64pb(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATPrice DataPricePB = 10;
+  if (has_datapricepb()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, this->datapricepb(), target);
+  }
+
+  // optional string DataStringPB = 11;
+  if (has_datastringpb()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->datastringpb().data(), this->datastringpb().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "datastringpb");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        11, this->datastringpb(), target);
+  }
+
+  // optional string DataUnicodeStringPB = 12;
+  if (has_dataunicodestringpb()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->dataunicodestringpb().data(), this->dataunicodestringpb().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "dataunicodestringpb");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        12, this->dataunicodestringpb(), target);
+  }
+
+  // optional .NodeActiveTickProto.ATTime DataDateTimePB = 13;
+  if (has_datadatetimepb()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        13, this->datadatetimepb(), target);
+  }
+
+  // optional double DataDoublePB = 14;
+  if (has_datadoublepb()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(14, this->datadoublepb(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -8567,11 +8925,81 @@ int ATQuoteDbResponseSymbolFieldData::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->datatype());
     }
 
-    // optional bytes data = 4;
-    if (has_data()) {
+    // optional bytes DataBytePB = 4;
+    if (has_databytepb()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->data());
+          this->databytepb());
+    }
+
+    // optional bytes DataByteArrayPB = 5;
+    if (has_databytearraypb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->databytearraypb());
+    }
+
+    // optional uint32 DataUInteger32PB = 6;
+    if (has_datauinteger32pb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->datauinteger32pb());
+    }
+
+    // optional uint64 DataUInteger64PB = 7;
+    if (has_datauinteger64pb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->datauinteger64pb());
+    }
+
+    // optional int32 DataInteger32PB = 8;
+    if (has_datainteger32pb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->datainteger32pb());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional int64 DataInteger64PB = 9;
+    if (has_datainteger64pb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->datainteger64pb());
+    }
+
+    // optional .NodeActiveTickProto.ATPrice DataPricePB = 10;
+    if (has_datapricepb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->datapricepb());
+    }
+
+    // optional string DataStringPB = 11;
+    if (has_datastringpb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->datastringpb());
+    }
+
+    // optional string DataUnicodeStringPB = 12;
+    if (has_dataunicodestringpb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->dataunicodestringpb());
+    }
+
+    // optional .NodeActiveTickProto.ATTime DataDateTimePB = 13;
+    if (has_datadatetimepb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->datadatetimepb());
+    }
+
+    // optional double DataDoublePB = 14;
+    if (has_datadoublepb()) {
+      total_size += 1 + 8;
     }
 
   }
@@ -8610,8 +9038,40 @@ void ATQuoteDbResponseSymbolFieldData::MergeFrom(const ATQuoteDbResponseSymbolFi
     if (from.has_datatype()) {
       set_datatype(from.datatype());
     }
-    if (from.has_data()) {
-      set_data(from.data());
+    if (from.has_databytepb()) {
+      set_databytepb(from.databytepb());
+    }
+    if (from.has_databytearraypb()) {
+      set_databytearraypb(from.databytearraypb());
+    }
+    if (from.has_datauinteger32pb()) {
+      set_datauinteger32pb(from.datauinteger32pb());
+    }
+    if (from.has_datauinteger64pb()) {
+      set_datauinteger64pb(from.datauinteger64pb());
+    }
+    if (from.has_datainteger32pb()) {
+      set_datainteger32pb(from.datainteger32pb());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_datainteger64pb()) {
+      set_datainteger64pb(from.datainteger64pb());
+    }
+    if (from.has_datapricepb()) {
+      mutable_datapricepb()->::NodeActiveTickProto::ATPrice::MergeFrom(from.datapricepb());
+    }
+    if (from.has_datastringpb()) {
+      set_datastringpb(from.datastringpb());
+    }
+    if (from.has_dataunicodestringpb()) {
+      set_dataunicodestringpb(from.dataunicodestringpb());
+    }
+    if (from.has_datadatetimepb()) {
+      mutable_datadatetimepb()->::NodeActiveTickProto::ATTime::MergeFrom(from.datadatetimepb());
+    }
+    if (from.has_datadoublepb()) {
+      set_datadoublepb(from.datadoublepb());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -8631,6 +9091,9 @@ void ATQuoteDbResponseSymbolFieldData::CopyFrom(const ATQuoteDbResponseSymbolFie
 
 bool ATQuoteDbResponseSymbolFieldData::IsInitialized() const {
 
+  if (has_datapricepb()) {
+    if (!this->datapricepb().IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -8639,7 +9102,17 @@ void ATQuoteDbResponseSymbolFieldData::Swap(ATQuoteDbResponseSymbolFieldData* ot
     std::swap(fieldtype_, other->fieldtype_);
     std::swap(fieldstatus_, other->fieldstatus_);
     std::swap(datatype_, other->datatype_);
-    std::swap(data_, other->data_);
+    std::swap(databytepb_, other->databytepb_);
+    std::swap(databytearraypb_, other->databytearraypb_);
+    std::swap(datauinteger32pb_, other->datauinteger32pb_);
+    std::swap(datauinteger64pb_, other->datauinteger64pb_);
+    std::swap(datainteger32pb_, other->datainteger32pb_);
+    std::swap(datainteger64pb_, other->datainteger64pb_);
+    std::swap(datapricepb_, other->datapricepb_);
+    std::swap(datastringpb_, other->datastringpb_);
+    std::swap(dataunicodestringpb_, other->dataunicodestringpb_);
+    std::swap(datadatetimepb_, other->datadatetimepb_);
+    std::swap(datadoublepb_, other->datadoublepb_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -8945,6 +9418,7 @@ void ATQuoteDbResponseData::CopyFrom(const ATQuoteDbResponseData& from) {
 
 bool ATQuoteDbResponseData::IsInitialized() const {
 
+  if (!::google::protobuf::internal::AllAreInitialized(this->symbolfielddata())) return false;
   return true;
 }
 
@@ -9238,6 +9712,7 @@ void ATQuoteDbResponse::CopyFrom(const ATQuoteDbResponse& from) {
 
 bool ATQuoteDbResponse::IsInitialized() const {
 
+  if (!::google::protobuf::internal::AllAreInitialized(this->datum())) return false;
   return true;
 }
 

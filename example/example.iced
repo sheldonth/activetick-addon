@@ -33,7 +33,7 @@ updateLogStatement = (tickers, lastTrades, lastQuotes) =>
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.api_key, config.username, config.password, defer(result)
-  a.quoteDBRequest 'BGMD', 'QuoteFieldSymbol,QuoteFieldIncomeStatementStandardExciseTaxes', (quote) ->
+  a.quoteDBRequest 'BGMD,AAPL,NFLX,MSFT', 'QuoteFieldSymbol,QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding,QuoteFieldIncomeStatementBasicEPSFromContinuingOperations,QuoteFieldBidExchange,QuoteFieldLastPrice,QuoteFieldBidPrice', (quote) ->
     console.log quote
     process.exit()
   # @last_trades = {}

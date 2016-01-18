@@ -91,14 +91,19 @@ class ActiveTick extends EventEmitter
       @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
       @ATFieldStatus = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus'
       @ATDataType = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType'
-      console.log _.invert(@ATDataType)[msg.datum[0].symbolFieldData[0].dataType]
-      console.log _.invert(@ATFieldStatus)[msg.datum[0].symbolFieldData[0].fieldStatus]
-      console.log _.invert(@ATQuoteFieldTypes)[msg.datum[0].symbolFieldData[0].fieldType] # store the _.invert of the enums for lookups.
-      # console.log msg.datum[0].symbolFieldData[0].data.toString 'utf8'
-      console.log msg.datum[0].symbolFieldData[0].data
-      console.log msg.datum[0].symbolFieldData[0].data.buffer.length
-      # console.log msg.datum[0].symbolFieldData[0].data.buffer.readUInt32LE(0)
-      console.log msg.datum[0].symbolFieldData[0].data.buffer.readDoubleLE(2)
+      @ATQuoteDbResponseType = _.invert @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'
+      msg.responseType = @ATQuoteDbResponseType[msg.responseType]
+      for f in msg.datum
+        console.log f.symbol.symbol
+        for g in f.symbolFieldData
+          console.log _.invert(@ATQuoteFieldTypes)[g.fieldType] # store the _.invert of the enums for lookups.
+          console.log _.invert(@ATDataType)[g.dataType]
+          if _.invert(@ATDataType)[g.dataType] is 'DataPrice'
+            console.log g.DataPricePB
+          if _.invert(@ATDataType)[g.dataType] is 'DataDouble'
+            console.log g.DataDoublePB
+
+              
     if (c = @callbacks[msgID])?
       c(msg)
 
