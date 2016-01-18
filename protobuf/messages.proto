@@ -10,16 +10,23 @@ message ATConstituentResponse {
   repeated ATSymbol symbols = 1;
 }
 
+enum ATStreamResponseType
+{
+  StreamResponseSuccess = 1;
+  StreamResponseInvalidRequest = 2;
+  StreamResponseDenied = 3;
+}
+
 message ATQuoteStreamResponse {
-  optional string quoteStreamResponseType = 1;
+  optional ATStreamResponseType responseType = 1;
   optional int32 quoteResponseCount = 2;
   repeated ATQuoteStreamResponseItem quoteStreamItems = 3;
 }
 
 message ATQuoteStreamResponseItem {
-  optional string responseType = 1;
+  optional ATStreamResponseType responseType = 1;
   optional ATSymbol symbol = 2;
-  optional string symbolStatus = 3;
+  optional ATSymbolStatus symbolStatus = 3;
 }
 
 message ATTime {
@@ -123,7 +130,7 @@ message ATBarHistoryValue {
   optional int64 volume = 5;
   optional ATTime time = 6;
   optional ATSymbol symbol = 7;
-  optional string status = 8;
+  optional ATSymbolStatus status = 8;
 }
 
 message ATBarHistoryDbResponse {
@@ -163,8 +170,8 @@ message ATQuoteDbResponseSymbolFieldData {
   }
   optional ATDataType dataType = 3;
   
-  optional bytes DataBytePB = 4;
-  optional bytes DataByteArrayPB = 5;
+  optional string DataBytePB = 4;
+  optional string DataByteArrayPB = 5;
   optional uint32 DataUInteger32PB = 6;
   optional uint64 DataUInteger64PB = 7;
   optional int32 DataInteger32PB = 8;

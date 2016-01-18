@@ -246,16 +246,16 @@ public:
     return response;
   }
   
-  static std::string atresponsetype_string(ATStreamResponseType responseType) {
-    std::string response;
-    switch(responseType) {
-      case StreamResponseSuccess: response = "StreamResponseSuccess"; break;
-      case StreamResponseInvalidRequest: response = "StreamResponseInvalidRequest"; break;
-      case StreamResponseDenied: response = "StreamResponseDenied"; break;
-      default: response = "Default Error"; break;
-    }
-    return response;
-  }
+  // static std::string atresponsetype_string(ATStreamResponseType responseType) {
+  //   std::string response;
+  //   switch(responseType) {
+  //     case StreamResponseSuccess: response = "StreamResponseSuccess"; break;
+  //     case StreamResponseInvalidRequest: response = "StreamResponseInvalidRequest"; break;
+  //     case StreamResponseDenied: response = "StreamResponseDenied"; break;
+  //     default: response = "Default Error"; break;
+  //   }
+  //   return response;
+  // }
   
   static std::string atsymbolstatus_string(ATSymbolStatus symbolStatus) {
     std::string response;
