@@ -102,17 +102,9 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
             }
             break;
             case DataDouble: {
-              // TO DO; Current solution does not work
-              // char data[512] = {0};
-              const void* r = parser.GetDataItemData();
-              int s = sizeof(r);
-              double d = -1; // negative one is sentinel value
-              memcpy(&d, r, s);
-              // sprintf(data, "%f", *(double*)parser.GetDataItemData());
-              // const void * q = parser.GetDataItemData();
-              // double a = static_cast<const char* const>(parser->GetDataItemData());
-              // double d = *(double*);
-              fieldData->set_datadoublepb(d);
+              const void* ptr = parser.GetDataItemData();
+              double dest = *(const double*)ptr;
+              fieldData->set_datadoublepb(dest);
             }
             break;
           }
