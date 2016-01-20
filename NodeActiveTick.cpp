@@ -174,28 +174,6 @@ NAN_METHOD(NodeActiveTick::Connect) {
   info.GetReturnValue().Set(Number::New(isolate, 1));
 }
 
-// (  const ATSYMBOL &  symbol,
-// ATBarHistoryType   barHistoryType: BarHistoryIntraday 	BarHistoryDaily 	BarHistoryWeekly
-// uint8_t  intradayMinuteCompression,
-// const ATTIME &   beginDateTime,
-// const ATTIME &   endDateTime,
-// uint32_t   timeout 
-// )
-// (  const ATSYMBOL &  symbol,
-// ATBarHistoryType   barHistoryType,
-// uint8_t  intradayMinuteCompression,
-// uint32_t   recordsWanted,
-// uint32_t   timeout 
-// )
-// (  const ATSYMBOL &  symbol,
-// ATBarHistoryType   barHistoryType,
-// uint8_t  intradayMinuteCompression,
-// const ATTIME &   beginDateTime,
-// uint32_t   recordsWanted,
-// ATCursorType   cursorType,
-// uint32_t   timeout 
-// )
-
 NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
   // Local<String> symbol_string = info[0]->ToString();
