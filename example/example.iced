@@ -33,9 +33,10 @@ updateLogStatement = (tickers, lastTrades, lastQuotes) =>
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.api_key, config.username, config.password, defer(result)
-  a.quoteDBRequest 'AAPL,NFLX,MSFT', 'QuoteFieldSymbol,QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding,QuoteFieldIncomeStatementBasicEPSFromContinuingOperations,QuoteFieldBidExchange,QuoteFieldLastPrice,QuoteFieldBidPrice', (quote) ->
+  a.quoteDBRequest 'AAPL,NFLX,MSFT', 'QuoteFieldIncomeStatementBasicEPSFromContinuingOperations', (quote) ->
     console.log quote
     process.exit()
+    # 'QuoteFieldSymbol,QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding,QuoteFieldIncomeStatementBasicEPSFromContinuingOperations,QuoteFieldBidExchange,QuoteFieldLastPrice,QuoteFieldBidPrice'
   # @last_trades = {}
   # @last_quotes = {}
   # a.on 'trade', (trade) =>

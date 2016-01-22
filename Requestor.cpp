@@ -102,9 +102,12 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
             }
             break;
             case DataDouble: {
-              const void* ptr = parser.GetDataItemData();
-              double dest = *(const double*)ptr;
-              fieldData->set_datadoublepb(dest);
+              // double src = 50.50;
+              // const void* ptr = (const void*)&src;
+              // const void* ptrA = (const void*)parser.GetDataItemData();
+              // double dest = *(const double*)ptr;
+              double destA = *(const double*)parser.GetDataItemData();
+              fieldData->set_datadoublepb(destA);
             }
             break;
           }
