@@ -1,8 +1,8 @@
-ATExchangeType = { 
+ATExchangeTypes = { 
   ExchangeAMEX :'A',
   ExchangeNasdaqOmxBx : 'B',
   ExchangeNationalStockExchange : 'C',
-  ExchangeFinraAdf : 'D', 
+  ExchangeFinraAdf : 'D',
   ExchangeCQS : 'E',
   ExchangeForex : 'F',
   ExchangeInternationalSecuritiesExchange : 'I',
@@ -10,25 +10,40 @@ ATExchangeType = {
   ExchangeEdgxExchange : 'K',
   ExchangeChicagoStockExchange : 'M',
   ExchangeNyseEuronext : 'N',
-  ExchangeNyseArcaExchange : 'P', 
-  ExchangeNasdaqOmx : 'Q', 
+  ExchangeNyseArcaExchange : 'P',
+  ExchangeNasdaqOmx : 'Q',
   ExchangeCTS : 'S',
   ExchangeCTANasdaqOMX : 'T',
-  ExchangeOTCBB : 'U', 
+  ExchangeOTCBB : 'U',
   ExchangeNNOTC : 'u',
   ExchangeChicagoBoardOptionsExchange : 'W',
   ExchangeNasdaqOmxPhlx : 'X',
-  ExchangeBatsYExchange : 'Y', 
-  ExchangeBatsExchange : 'Z', 
+  ExchangeBatsYExchange : 'Y',
+  ExchangeBatsExchange : 'Z',
   ExchangeCanadaToronto : 'T',
   ExchangeCanadaVenture : 'V',
-  ExchangeOpra : 'O', 
+  ExchangeOpra : 'O',
   ExchangeOptionBoston : 'B',
   ExchangeOptionCboe : 'C',
   ExchangeOptionNyseArca : 'N',
-  ExchangeOptionC2 : 'W', 
+  ExchangeOptionC2 : 'W',
   ExchangeOptionNasdaqOmxBx : 'T',
-  ExchangeComposite : ' ' 
+  ExchangeComposite : ' '
+}
+
+ATSymbolTypes = { 
+  SymbolStock : 'S',
+  SymbolIndex : 'I',
+  SymbolStockOption : 'O',
+  SymbolBond : 'B', 
+  SymbolMutualFund : 'M',
+  SymbolTopMarketMovers : 'T',
+  SymbolCurrency : 'C' 
+}
+
+ATOptionTypes = { 
+  OptionTypeCall : 'C',
+  OptionTypePut : 'P'
 }
 
 ATCountryTypes = {
@@ -52,10 +67,10 @@ ATStreamRequestTypes = [
   'StreamRequestUnsubscribeTradesOnly'
 ]
 
-ATBarHistoryType = [
+ATBarHistoryTypes = [
   'BarHistoryIntraday',
   'BarHistoryDaily',
   'BarHistoryWeekly'
 ]
 
-module.exports = {ATConstituentRequestTypes, ATStreamRequestTypes, ATBarHistoryType, ATExchangeType, ATCountryTypes}
+module.exports = {ATConstituentRequestTypes, ATStreamRequestTypes, ATBarHistoryTypes, ATExchangeTypes, ATCountryTypes, ATSymbolTypes, ATOptionTypes}
