@@ -18,7 +18,7 @@ public:
     std::string str_symbol_long = Helper::ConvertString(s->symbol, ATSymbolMaxLength);
     std::string str_symbol_short = std::string(str_symbol_long.c_str());
     symbol->set_symbol(str_symbol_short);
-    symbol->set_symboltype(s->symbolType);
+    symbol->set_symboltype(NodeActiveTickProto::ATSymbol::ATSymbolType(s->symbolType));
     symbol->set_exchangetype(s->exchangeType);
     symbol->set_countrytype(s->countryType);
   }

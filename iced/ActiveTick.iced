@@ -38,6 +38,13 @@ class ActiveTick extends EventEmitter
       @ATQuoteStreamQuoteUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamQuoteUpdate"
       @ATBarHistoryDbResponse = @messages_builder.build "NodeActiveTickProto.ATBarHistoryDbResponse"
       @ATQuoteDbResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteDbResponse"
+      
+      # enums
+      @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
+      @ATFieldStatus = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus'
+      @ATDataType = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType'
+      @ATQuoteDbResponseType = _.invert @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'
+      
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
@@ -87,23 +94,7 @@ class ActiveTick extends EventEmitter
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
       @emit 'quote', msg
     else if msgType is 'ATQuoteDbResponse'
-      msg = @ATQuoteDbResponse.decode msgData
-      @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
-      @ATFieldStatus = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus'
-      @ATDataType = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType'
-      @ATQuoteDbResponseType = _.invert @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'
-      msg.responseType = @ATQuoteDbResponseType[msg.responseType]
-      for f in msg.datum
-        console.log f.symbol.symbol
-        for g in f.symbolFieldData
-          console.log _.invert(@ATQuoteFieldTypes)[g.fieldType] # store the _.invert of the enums for lookups.
-          console.log _.invert(@ATDataType)[g.dataType]
-          if _.invert(@ATDataType)[g.dataType] is 'DataPrice'
-            console.log g.DataPricePB
-          if _.invert(@ATDataType)[g.dataType] is 'DataDouble'
-            console.log g.DataDoublePB
-
-              
+      msg = @ATQuoteDbResponse.decode msgData      
     if (c = @callbacks[msgID])?
       c(msg)
 

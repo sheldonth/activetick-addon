@@ -54,6 +54,30 @@ class ATQuoteDbResponseSymbolFieldData;
 class ATQuoteDbResponseData;
 class ATQuoteDbResponse;
 
+enum ATSymbol_ATSymbolType {
+  ATSymbol_ATSymbolType_SymbolStock = 1,
+  ATSymbol_ATSymbolType_SymbolIndex = 2,
+  ATSymbol_ATSymbolType_SymbolStockOption = 3,
+  ATSymbol_ATSymbolType_SymbolBond = 4,
+  ATSymbol_ATSymbolType_SymbolMutualFund = 5,
+  ATSymbol_ATSymbolType_SymbolTopMarketMovers = 6,
+  ATSymbol_ATSymbolType_SymbolCurrency = 7
+};
+bool ATSymbol_ATSymbolType_IsValid(int value);
+const ATSymbol_ATSymbolType ATSymbol_ATSymbolType_ATSymbolType_MIN = ATSymbol_ATSymbolType_SymbolStock;
+const ATSymbol_ATSymbolType ATSymbol_ATSymbolType_ATSymbolType_MAX = ATSymbol_ATSymbolType_SymbolCurrency;
+const int ATSymbol_ATSymbolType_ATSymbolType_ARRAYSIZE = ATSymbol_ATSymbolType_ATSymbolType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATSymbol_ATSymbolType_descriptor();
+inline const ::std::string& ATSymbol_ATSymbolType_Name(ATSymbol_ATSymbolType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATSymbol_ATSymbolType_descriptor(), value);
+}
+inline bool ATSymbol_ATSymbolType_Parse(
+    const ::std::string& name, ATSymbol_ATSymbolType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATSymbol_ATSymbolType>(
+    ATSymbol_ATSymbolType_descriptor(), name, value);
+}
 enum ATQuoteDbResponseSymbolFieldData_ATFieldStatus {
   ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusSuccess = 1,
   ATQuoteDbResponseSymbolFieldData_ATFieldStatus_FieldStatusInvalid = 2,
@@ -1973,6 +1997,35 @@ class ATSymbol : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef ATSymbol_ATSymbolType ATSymbolType;
+  static const ATSymbolType SymbolStock = ATSymbol_ATSymbolType_SymbolStock;
+  static const ATSymbolType SymbolIndex = ATSymbol_ATSymbolType_SymbolIndex;
+  static const ATSymbolType SymbolStockOption = ATSymbol_ATSymbolType_SymbolStockOption;
+  static const ATSymbolType SymbolBond = ATSymbol_ATSymbolType_SymbolBond;
+  static const ATSymbolType SymbolMutualFund = ATSymbol_ATSymbolType_SymbolMutualFund;
+  static const ATSymbolType SymbolTopMarketMovers = ATSymbol_ATSymbolType_SymbolTopMarketMovers;
+  static const ATSymbolType SymbolCurrency = ATSymbol_ATSymbolType_SymbolCurrency;
+  static inline bool ATSymbolType_IsValid(int value) {
+    return ATSymbol_ATSymbolType_IsValid(value);
+  }
+  static const ATSymbolType ATSymbolType_MIN =
+    ATSymbol_ATSymbolType_ATSymbolType_MIN;
+  static const ATSymbolType ATSymbolType_MAX =
+    ATSymbol_ATSymbolType_ATSymbolType_MAX;
+  static const int ATSymbolType_ARRAYSIZE =
+    ATSymbol_ATSymbolType_ATSymbolType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  ATSymbolType_descriptor() {
+    return ATSymbol_ATSymbolType_descriptor();
+  }
+  static inline const ::std::string& ATSymbolType_Name(ATSymbolType value) {
+    return ATSymbol_ATSymbolType_Name(value);
+  }
+  static inline bool ATSymbolType_Parse(const ::std::string& name,
+      ATSymbolType* value) {
+    return ATSymbol_ATSymbolType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   // optional string symbol = 1;
@@ -1987,12 +2040,12 @@ class ATSymbol : public ::google::protobuf::Message {
   inline ::std::string* release_symbol();
   inline void set_allocated_symbol(::std::string* symbol);
 
-  // optional int32 symbolType = 2;
+  // optional .NodeActiveTickProto.ATSymbol.ATSymbolType symbolType = 2;
   inline bool has_symboltype() const;
   inline void clear_symboltype();
   static const int kSymbolTypeFieldNumber = 2;
-  inline ::google::protobuf::int32 symboltype() const;
-  inline void set_symboltype(::google::protobuf::int32 value);
+  inline ::NodeActiveTickProto::ATSymbol_ATSymbolType symboltype() const;
+  inline void set_symboltype(::NodeActiveTickProto::ATSymbol_ATSymbolType value);
 
   // optional int32 exchangeType = 3;
   inline bool has_exchangetype() const;
@@ -2024,7 +2077,7 @@ class ATSymbol : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* symbol_;
-  ::google::protobuf::int32 symboltype_;
+  int symboltype_;
   ::google::protobuf::int32 exchangetype_;
   ::google::protobuf::int32 countrytype_;
   friend void  protobuf_AddDesc_messages_2eproto();
@@ -5382,7 +5435,7 @@ inline void ATSymbol::set_allocated_symbol(::std::string* symbol) {
   // @@protoc_insertion_point(field_set_allocated:NodeActiveTickProto.ATSymbol.symbol)
 }
 
-// optional int32 symbolType = 2;
+// optional .NodeActiveTickProto.ATSymbol.ATSymbolType symbolType = 2;
 inline bool ATSymbol::has_symboltype() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -5393,14 +5446,15 @@ inline void ATSymbol::clear_has_symboltype() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void ATSymbol::clear_symboltype() {
-  symboltype_ = 0;
+  symboltype_ = 1;
   clear_has_symboltype();
 }
-inline ::google::protobuf::int32 ATSymbol::symboltype() const {
+inline ::NodeActiveTickProto::ATSymbol_ATSymbolType ATSymbol::symboltype() const {
   // @@protoc_insertion_point(field_get:NodeActiveTickProto.ATSymbol.symbolType)
-  return symboltype_;
+  return static_cast< ::NodeActiveTickProto::ATSymbol_ATSymbolType >(symboltype_);
 }
-inline void ATSymbol::set_symboltype(::google::protobuf::int32 value) {
+inline void ATSymbol::set_symboltype(::NodeActiveTickProto::ATSymbol_ATSymbolType value) {
+  assert(::NodeActiveTickProto::ATSymbol_ATSymbolType_IsValid(value));
   set_has_symboltype();
   symboltype_ = value;
   // @@protoc_insertion_point(field_set:NodeActiveTickProto.ATSymbol.symbolType)
@@ -6880,6 +6934,11 @@ ATQuoteDbResponse::mutable_datum() {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATSymbol_ATSymbolType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATSymbol_ATSymbolType>() {
+  return ::NodeActiveTickProto::ATSymbol_ATSymbolType_descriptor();
+}
 template <> struct is_proto_enum< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATQuoteDbResponseSymbolFieldData_ATFieldStatus>() {

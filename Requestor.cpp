@@ -84,8 +84,10 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
             }
             break;
             case DataString: {
+              char data[512] = {0};
               char* pString = (char*)parser.GetDataItemData();
-              std::string s(pString);
+              strncpy(data, pString, sizeof(data) - 1);
+              std::string s(data);
               fieldData->set_datastringpb(s);
             }
             break;

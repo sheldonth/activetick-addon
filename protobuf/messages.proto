@@ -100,7 +100,17 @@ message ATMarketMoversItem {
 
 message ATSymbol {
   optional string symbol = 1;
-  optional int32 symbolType = 2;
+  enum ATSymbolType
+  {
+    SymbolStock = 1;
+    SymbolIndex = 2;
+    SymbolStockOption = 3;
+    SymbolBond = 4;
+    SymbolMutualFund = 5;
+    SymbolTopMarketMovers = 6;
+    SymbolCurrency = 7;
+  }
+  optional ATSymbolType symbolType = 2;
   optional int32 exchangeType = 3;
   optional int32 countryType = 4;
 }

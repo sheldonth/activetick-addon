@@ -61,6 +61,10 @@
           _this.ATQuoteStreamQuoteUpdate = _this.messages_builder.build("NodeActiveTickProto.ATQuoteStreamQuoteUpdate");
           _this.ATBarHistoryDbResponse = _this.messages_builder.build("NodeActiveTickProto.ATBarHistoryDbResponse");
           _this.ATQuoteDbResponse = _this.messages_builder.build("NodeActiveTickProto.ATQuoteDbResponse");
+          _this.ATQuoteFieldTypes = _this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
+          _this.ATFieldStatus = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus');
+          _this.ATDataType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType');
+          _this.ATQuoteDbResponseType = _.invert(_this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'));
           return readyCb();
         };
       })(this));
@@ -115,7 +119,7 @@
     };
 
     ActiveTick.prototype.handleProtoMsg = function(msgType, msgID, msgData) {
-      var c, f, g, msg, _i, _j, _len, _len1, _ref1, _ref2;
+      var c, msg;
       if (msgType === 'ATLoginResponse') {
         msg = this.ATLoginResponse.decode(msgData);
         if (msg.loginResponseString !== 'Success') {
@@ -135,28 +139,6 @@
         this.emit('quote', msg);
       } else if (msgType === 'ATQuoteDbResponse') {
         msg = this.ATQuoteDbResponse.decode(msgData);
-        this.ATQuoteFieldTypes = this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
-        this.ATFieldStatus = this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus');
-        this.ATDataType = this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType');
-        this.ATQuoteDbResponseType = _.invert(this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'));
-        msg.responseType = this.ATQuoteDbResponseType[msg.responseType];
-        _ref1 = msg.datum;
-        for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-          f = _ref1[_i];
-          console.log(f.symbol.symbol);
-          _ref2 = f.symbolFieldData;
-          for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
-            g = _ref2[_j];
-            console.log(_.invert(this.ATQuoteFieldTypes)[g.fieldType]);
-            console.log(_.invert(this.ATDataType)[g.dataType]);
-            if (_.invert(this.ATDataType)[g.dataType] === 'DataPrice') {
-              console.log(g.DataPricePB);
-            }
-            if (_.invert(this.ATDataType)[g.dataType] === 'DataDouble') {
-              console.log(g.DataDoublePB);
-            }
-          }
-        }
       }
       if ((c = this.callbacks[msgID]) != null) {
         return c(msg);
