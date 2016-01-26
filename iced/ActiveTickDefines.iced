@@ -1,3 +1,5 @@
+_ = require 'underscore'
+
 ATExchangeTypes = { 
   ExchangeAMEX :'A',
   ExchangeNasdaqOmxBx : 'B',
@@ -31,6 +33,13 @@ ATExchangeTypes = {
   ExchangeComposite : ' '
 }
 
+ATExchangeTypes_i = _.invert(ATExchangeTypes)
+
+exchange_type_for_char = (char) ->
+  exchangeKey = String.fromCharCode(char)
+  exchange = ATExchangeTypes_i[exchangeKey]
+  return exchange
+
 ATSymbolTypes = { 
   SymbolStock : 'S',
   SymbolIndex : 'I',
@@ -41,16 +50,37 @@ ATSymbolTypes = {
   SymbolCurrency : 'C' 
 }
 
+ATSymbolTypes_i = _.invert(ATSymbolTypes)
+
+symbol_type_for_char = (char) ->
+  symbolKey = String.fromCharCode(char)
+  symbol = ATSymbolTypes_i[symbolKey]
+  return symbol
+
 ATOptionTypes = { 
   OptionTypeCall : 'C',
   OptionTypePut : 'P'
 }
+
+ATOptionTypes_i = _.invert(ATOptionTypes)
+
+option_type_for_char = (char) ->
+  optionKey = String.toCharCode(char)
+  option = ATOptionTypes_i[optionKey]
+  return option
 
 ATCountryTypes = {
   CountryInternational : 'I',
   CountryUnitedStates : 'U',
   CountryCanada : 'C'
 }
+
+ATCountryTypes_i = _.invert(ATCountryTypes)
+
+country_type_for_char = (char) ->
+  countryKey = String.toCharCode(char)
+  country = ATCountryTypes_i[countryKey]
+  return country
 
 ATConstituentRequestTypes = [
   'ATConstituentListIndex',
@@ -73,4 +103,18 @@ ATBarHistoryTypes = [
   'BarHistoryWeekly'
 ]
 
-module.exports = {ATConstituentRequestTypes, ATStreamRequestTypes, ATBarHistoryTypes, ATExchangeTypes, ATCountryTypes, ATSymbolTypes, ATOptionTypes}
+module.exports = {
+  ATConstituentRequestTypes,
+  ATStreamRequestTypes,
+  ATBarHistoryTypes,
+  ATExchangeTypes,
+  ATCountryTypes,
+  ATSymbolTypes,
+  ATOptionTypes,
+  exchange_type_for_char,
+  country_type_for_char,
+  option_type_for_char,
+  symbol_type_for_char
+}
+        
+        
