@@ -36,7 +36,7 @@ ATExchangeTypes = {
 ATExchangeTypes_i = _.invert(ATExchangeTypes)
 
 exchange_type_for_char = (char) ->
-  exchangeKey = String.fromCharCode(char)
+  exchangeKey = new Buffer([char]).toString 'utf8'
   exchange = ATExchangeTypes_i[exchangeKey]
   return exchange
 
@@ -53,7 +53,7 @@ ATSymbolTypes = {
 ATSymbolTypes_i = _.invert(ATSymbolTypes)
 
 symbol_type_for_char = (char) ->
-  symbolKey = String.fromCharCode(char)
+  symbolKey = new Buffer([char]).toString 'utf8'
   symbol = ATSymbolTypes_i[symbolKey]
   return symbol
 
@@ -65,7 +65,7 @@ ATOptionTypes = {
 ATOptionTypes_i = _.invert(ATOptionTypes)
 
 option_type_for_char = (char) ->
-  optionKey = String.toCharCode(char)
+  optionKey = new Buffer([char]).toString 'utf8'
   option = ATOptionTypes_i[optionKey]
   return option
 
@@ -78,7 +78,7 @@ ATCountryTypes = {
 ATCountryTypes_i = _.invert(ATCountryTypes)
 
 country_type_for_char = (char) ->
-  countryKey = String.toCharCode(char)
+  countryKey = new Buffer([char]).toString 'utf8'
   country = ATCountryTypes_i[countryKey]
   return country
 
