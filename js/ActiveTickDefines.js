@@ -41,7 +41,7 @@
 
   exchange_type_for_char = function(char) {
     var exchange, exchangeKey;
-    exchangeKey = String.fromCharCode(char);
+    exchangeKey = new Buffer([char]).toString('utf8');
     exchange = ATExchangeTypes_i[exchangeKey];
     return exchange;
   };
@@ -60,7 +60,7 @@
 
   symbol_type_for_char = function(char) {
     var symbol, symbolKey;
-    symbolKey = String.fromCharCode(char);
+    symbolKey = new Buffer([char]).toString('utf8');
     symbol = ATSymbolTypes_i[symbolKey];
     return symbol;
   };
@@ -74,7 +74,7 @@
 
   option_type_for_char = function(char) {
     var option, optionKey;
-    optionKey = String.toCharCode(char);
+    optionKey = new Buffer([char]).toString('utf8');
     option = ATOptionTypes_i[optionKey];
     return option;
   };
@@ -89,7 +89,7 @@
 
   country_type_for_char = function(char) {
     var country, countryKey;
-    countryKey = String.toCharCode(char);
+    countryKey = new Buffer([char]).toString('utf8');
     country = ATCountryTypes_i[countryKey];
     return country;
   };
