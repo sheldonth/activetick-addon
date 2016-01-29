@@ -45,6 +45,7 @@ class ActiveTick extends EventEmitter
       @ATDataType = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType'
       @ATQuoteDbResponseType = _.invert @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'
       @ATSymbolStatus = @messages_builder.build 'NodeActiveTickProto.ATSymbolStatus'
+      @ATQuoteFieldType = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>

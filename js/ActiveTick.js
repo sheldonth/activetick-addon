@@ -66,6 +66,7 @@
           _this.ATDataType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType');
           _this.ATQuoteDbResponseType = _.invert(_this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'));
           _this.ATSymbolStatus = _this.messages_builder.build('NodeActiveTickProto.ATSymbolStatus');
+          _this.ATQuoteFieldType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
           return readyCb();
         };
       })(this));
