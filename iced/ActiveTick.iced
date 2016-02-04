@@ -14,10 +14,6 @@ ProtoBuf = require 'protobufjs'
 path = require 'path'
 EventEmitter = require 'events'
 
-{ATConstituentRequestTypes,
-ATStreamRequestTypes,
-ATBarHistoryType} = require './ActiveTickDefines'
-
 noisy = yes
 
 standard_timeout = 3000
@@ -95,7 +91,7 @@ class ActiveTick extends EventEmitter
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
       @emit 'quote', msg
     else if msgType is 'ATQuoteDbResponse'
-      msg = @ATQuoteDbResponse.decode msgData      
+      msg = @ATQuoteDbResponse.decode msgData
     if (c = @callbacks[msgID])?
       c(msg)
 

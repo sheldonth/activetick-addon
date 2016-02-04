@@ -1,5 +1,8 @@
 _ = require 'underscore'
 
+# Enums defined in here that the particular problem they aren't integer sequenced
+# they use char underlying types, and as such require definition on the javascript side
+
 ATExchangeTypes = { 
   ExchangeAMEX :'A',
   ExchangeNasdaqOmxBx : 'B',
@@ -82,31 +85,7 @@ country_type_for_char = (char) ->
   country = ATCountryTypes_i[countryKey]
   return country
 
-ATConstituentRequestTypes = [
-  'ATConstituentListIndex',
-  'ATConstituentListSector',
-  'ATConstituentListOptionChain'
-]
-
-ATStreamRequestTypes = [
-  'StreamRequestSubscribe',
-  'StreamRequestUnsubscribe',
-  'StreamRequestSubscribeQuotesOnly',
-  'StreamRequestUnsubscribeQuotesOnly',
-  'StreamRequestSubscribeTradesOnly',
-  'StreamRequestUnsubscribeTradesOnly'
-]
-
-ATBarHistoryTypes = [
-  'BarHistoryIntraday',
-  'BarHistoryDaily',
-  'BarHistoryWeekly'
-]
-
 module.exports = {
-  ATConstituentRequestTypes,
-  ATStreamRequestTypes,
-  ATBarHistoryTypes,
   ATExchangeTypes,
   ATCountryTypes,
   ATSymbolTypes,

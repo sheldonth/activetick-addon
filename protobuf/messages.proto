@@ -6,6 +6,30 @@ message ATLoginResponse {
   required string loginResponseString = 2;
 }
 
+enum ATConstituentRequestTypes
+{
+  ATConstituentListIndex = 1;
+  ATConstituentListSector = 2;
+  ATConstituentListOptionChain = 3;
+}
+
+enum ATStreamRequestTypes
+{
+  StreamRequestSubscribe = 1;
+  StreamRequestUnsubscribe = 2;
+  StreamRequestSubscribeQuotesOnly = 3;
+  StreamRequestUnsubscribeQuotesOnly = 4;
+  StreamRequestSubscribeTradesOnly = 5;
+  StreamRequestUnsubscribeTradesOnly = 6;
+}
+
+enum ATBarHistoryTypes
+{
+  BarHistoryIntraday = 1;
+  BarHistoryDaily = 2;
+  BarHistoryWeekly = 3;
+}
+
 message ATConstituentResponse {
   repeated ATSymbol symbols = 1;
 }

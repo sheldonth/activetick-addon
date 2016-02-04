@@ -124,6 +124,69 @@ inline bool ATQuoteDbResponse_ATQuoteDbResponseType_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<ATQuoteDbResponse_ATQuoteDbResponseType>(
     ATQuoteDbResponse_ATQuoteDbResponseType_descriptor(), name, value);
 }
+enum ATConstituentRequestTypes {
+  ATConstituentListIndex = 1,
+  ATConstituentListSector = 2,
+  ATConstituentListOptionChain = 3
+};
+bool ATConstituentRequestTypes_IsValid(int value);
+const ATConstituentRequestTypes ATConstituentRequestTypes_MIN = ATConstituentListIndex;
+const ATConstituentRequestTypes ATConstituentRequestTypes_MAX = ATConstituentListOptionChain;
+const int ATConstituentRequestTypes_ARRAYSIZE = ATConstituentRequestTypes_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATConstituentRequestTypes_descriptor();
+inline const ::std::string& ATConstituentRequestTypes_Name(ATConstituentRequestTypes value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATConstituentRequestTypes_descriptor(), value);
+}
+inline bool ATConstituentRequestTypes_Parse(
+    const ::std::string& name, ATConstituentRequestTypes* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATConstituentRequestTypes>(
+    ATConstituentRequestTypes_descriptor(), name, value);
+}
+enum ATStreamRequestTypes {
+  StreamRequestSubscribe = 1,
+  StreamRequestUnsubscribe = 2,
+  StreamRequestSubscribeQuotesOnly = 3,
+  StreamRequestUnsubscribeQuotesOnly = 4,
+  StreamRequestSubscribeTradesOnly = 5,
+  StreamRequestUnsubscribeTradesOnly = 6
+};
+bool ATStreamRequestTypes_IsValid(int value);
+const ATStreamRequestTypes ATStreamRequestTypes_MIN = StreamRequestSubscribe;
+const ATStreamRequestTypes ATStreamRequestTypes_MAX = StreamRequestUnsubscribeTradesOnly;
+const int ATStreamRequestTypes_ARRAYSIZE = ATStreamRequestTypes_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATStreamRequestTypes_descriptor();
+inline const ::std::string& ATStreamRequestTypes_Name(ATStreamRequestTypes value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATStreamRequestTypes_descriptor(), value);
+}
+inline bool ATStreamRequestTypes_Parse(
+    const ::std::string& name, ATStreamRequestTypes* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATStreamRequestTypes>(
+    ATStreamRequestTypes_descriptor(), name, value);
+}
+enum ATBarHistoryTypes {
+  BarHistoryIntraday = 1,
+  BarHistoryDaily = 2,
+  BarHistoryWeekly = 3
+};
+bool ATBarHistoryTypes_IsValid(int value);
+const ATBarHistoryTypes ATBarHistoryTypes_MIN = BarHistoryIntraday;
+const ATBarHistoryTypes ATBarHistoryTypes_MAX = BarHistoryWeekly;
+const int ATBarHistoryTypes_ARRAYSIZE = ATBarHistoryTypes_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ATBarHistoryTypes_descriptor();
+inline const ::std::string& ATBarHistoryTypes_Name(ATBarHistoryTypes value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ATBarHistoryTypes_descriptor(), value);
+}
+inline bool ATBarHistoryTypes_Parse(
+    const ::std::string& name, ATBarHistoryTypes* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ATBarHistoryTypes>(
+    ATBarHistoryTypes_descriptor(), name, value);
+}
 enum ATStreamResponseType {
   StreamResponseSuccess = 1,
   StreamResponseInvalidRequest = 2,
@@ -6894,6 +6957,21 @@ template <> struct is_proto_enum< ::NodeActiveTickProto::ATQuoteDbResponse_ATQuo
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType>() {
   return ::NodeActiveTickProto::ATQuoteDbResponse_ATQuoteDbResponseType_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATConstituentRequestTypes> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATConstituentRequestTypes>() {
+  return ::NodeActiveTickProto::ATConstituentRequestTypes_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATStreamRequestTypes> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATStreamRequestTypes>() {
+  return ::NodeActiveTickProto::ATStreamRequestTypes_descriptor();
+}
+template <> struct is_proto_enum< ::NodeActiveTickProto::ATBarHistoryTypes> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NodeActiveTickProto::ATBarHistoryTypes>() {
+  return ::NodeActiveTickProto::ATBarHistoryTypes_descriptor();
 }
 template <> struct is_proto_enum< ::NodeActiveTickProto::ATStreamResponseType> : ::google::protobuf::internal::true_type {};
 template <>
