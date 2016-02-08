@@ -1,11 +1,10 @@
-## Node.js Bindings for C++ activetick.com SDK
+## Node.js Bindings for activetick.com C++ SDK
 
-- Uses protocol buffers internally between C++ and javascript
-- Node.js portion is written in IcedCoffeeScript
-- Requires Node 0.12.7 - OS X or Ubuntu Linux (almost Node-NaN ready)
+- Uses protocol buffers internally between C++ and Javascript
+- Node.js portion is written in IcedCoffeeScript in `/iced` compiled js in `/js` 
+- Requires Node 0.12.7 - OS X or Ubuntu Linux (almost version independent w/ Node-NaN)
 
-
-### Usage OSX
+### Usage OS X
 - brew install protobuf pkg-config
 
 ### Usage Ubuntu
