@@ -1,7 +1,7 @@
 _ = require 'underscore'
 
-# Enums defined in here that the particular problem they aren't integer sequenced
-# they use char underlying types, and as such require definition on the javascript side
+# Enums defined in here that the particular problem they don't have integer underlying values
+# Instead they use char(s), and as such it (seems) easiest to define them javascript side.
 
 ATExchangeTypes = { 
   ExchangeAMEX :'A',
@@ -27,13 +27,19 @@ ATExchangeTypes = {
   ExchangeBatsExchange : 'Z',
   ExchangeCanadaToronto : 'T',
   ExchangeCanadaVenture : 'V',
+  ExchangeComposite : ' '
+}
+
+# Required deviation from sdk because of multiple enum types share the same underlying char
+# if quote.option exchange = ATOptionExchangeTypes[i] else ATExchangeTypes[i]
+ATOptionExchangeTypes = { 
   ExchangeOpra : 'O',
   ExchangeOptionBoston : 'B',
   ExchangeOptionCboe : 'C',
   ExchangeOptionNyseArca : 'N',
   ExchangeOptionC2 : 'W',
   ExchangeOptionNasdaqOmxBx : 'T',
-  ExchangeComposite : ' '
+  ExchangeComposite : ' ' # TODO: options probably have a composite exchange type?
 }
 
 ATExchangeTypes_i = _.invert(ATExchangeTypes)

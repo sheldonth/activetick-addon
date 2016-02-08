@@ -39,7 +39,7 @@
     function ActiveTick(readyCb) {
       this.handleProtoMsg = __bind(this.handleProtoMsg, this);
       this.connect = __bind(this.connect, this);
-      this.beginQuoteStream = __bind(this.beginQuoteStream, this);
+      this.quoteStreamRequest = __bind(this.quoteStreamRequest, this);
       this.quoteDBRequest = __bind(this.quoteDBRequest, this);
       this.barHistoryDBRequest = __bind(this.barHistoryDBRequest, this);
       ProtoBuf.loadProtoFile(path.join(__dirname, "../protobuf", "messages.proto"), (function(_this) {
@@ -65,6 +65,7 @@
           _this.ATQuoteDbResponseType = _.invert(_this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'));
           _this.ATSymbolStatus = _this.messages_builder.build('NodeActiveTickProto.ATSymbolStatus');
           _this.ATQuoteFieldType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
+          _this.ATStreamRequestTypes = _this.messages_builder.build('NodeActiveTickProto.ATStreamRequestTypes');
           return readyCb();
         };
       })(this));
@@ -86,7 +87,7 @@
       }
     };
 
-    ActiveTick.prototype.beginQuoteStream = function(symbols, ATStreamRequestTypeIndex, requestCb) {
+    ActiveTick.prototype.quoteStreamRequest = function(symbols, request_type, requestCb) {
       var request_id, symbolCount, symbolParam;
       if (typeof symbols === 'object') {
         if (symbols.length === 1) {
@@ -100,7 +101,7 @@
         symbolParam = symbols;
         symbolCount = 1;
       }
-      request_id = this.api.beginQuoteStream(symbolParam, symbolCount, ATStreamRequestTypeIndex);
+      request_id = this.api.quoteStreamRequest(symbolParam, symbolCount, request_type);
       if (requestCb != null) {
         return this.callbacks[request_id] = requestCb;
       }

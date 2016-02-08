@@ -45,7 +45,7 @@ NAN_MODULE_INIT(NodeActiveTick::Init) {
     Nan::SetPrototypeMethod(tpl, "fireCallback", FireCallback);
     Nan::SetPrototypeMethod(tpl, "connect", Connect);
     Nan::SetPrototypeMethod(tpl, "listRequest", ListRequest);
-    Nan::SetPrototypeMethod(tpl, "beginQuoteStream", BeginQuoteStream);
+    Nan::SetPrototypeMethod(tpl, "quoteStreamRequest", QuoteStreamRequest);
     Nan::SetPrototypeMethod(tpl, "barHistoryDbRequest", BarHistoryDbRequest);
     Nan::SetPrototypeMethod(tpl, "quoteDbRequest", QuoteDbRequest);
     
@@ -245,29 +245,18 @@ NAN_METHOD(NodeActiveTick::ListRequest) {
   }
 }
 
-NAN_METHOD(NodeActiveTick::BeginQuoteStream) {
-  Isolate* isolate = Isolate::GetCurrent();
-  uint64_t quote_stream_request;
-  if (isolate) {
-      HandleScope scope(isolate);
-      NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
-      Local<String> str_symbols = (info[0]->ToString());
-      char cstr_symbols[str_symbols->Utf8Length()];
-      str_symbols->WriteUtf8(cstr_symbols);
-      std::string symbols = std::string(cstr_symbols);
-      std::vector<ATSYMBOL> v_symbols = Helper::StringToSymbols(symbols);
-      uint32_t symbol_count = info[1]->Uint32Value();      
-      Local<String> str_request_type = (info[2]->ToString());
-      char cstr_request_type[str_request_type->Utf8Length()];
-      str_request_type->WriteUtf8(cstr_request_type);
-      std::string request_type = std::string(cstr_request_type);
-      ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(request_type);
-      quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
-    }
-  else {
-    quote_stream_request = 0;
-  }
-  info.GetReturnValue().Set(Number::New(isolate, quote_stream_request));
+NAN_METHOD(NodeActiveTick::QuoteStreamRequest) {
+  uint64_t quote_stream_request = 0;
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+  Nan::Utf8String symbols(info[0]->ToString());
+  std::string str_symbols = std::string(*symbols);
+  std::vector<ATSYMBOL> v_symbols = Helper::StringToSymbols(str_symbols);
+  uint32_t symbol_count = info[1]->Uint32Value();      
+  Nan::Utf8String request_type(info[2]->ToString());
+  std::string str_request_type = std::string(*request_type);
+  ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(str_request_type);
+  quote_stream_request = obj->requestor->SendATQuoteStreamRequest(v_symbols.data(), symbol_count, requestType, DEFAULT_REQUEST_TIMEOUT);
+  info.GetReturnValue().Set(Nan::New<Number>(quote_stream_request));
 }
 
 

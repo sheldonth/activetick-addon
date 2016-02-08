@@ -54,7 +54,7 @@ private:
     static NAN_METHOD(FireCallback);
     static NAN_METHOD(Connect);
     static NAN_METHOD(ListRequest);
-    static NAN_METHOD(BeginQuoteStream);
+    static NAN_METHOD(QuoteStreamRequest);
     static NAN_METHOD(BarHistoryDbRequest);
     static NAN_METHOD(QuoteDbRequest);
     // AT Callbacks

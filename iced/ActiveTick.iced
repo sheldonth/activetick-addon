@@ -42,6 +42,7 @@ class ActiveTick extends EventEmitter
       @ATQuoteDbResponseType = _.invert @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse.ATQuoteDbResponseType'
       @ATSymbolStatus = @messages_builder.build 'NodeActiveTickProto.ATSymbolStatus'
       @ATQuoteFieldType = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
+      @ATStreamRequestTypes = @messages_builder.build 'NodeActiveTickProto.ATStreamRequestTypes'
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
@@ -52,7 +53,7 @@ class ActiveTick extends EventEmitter
     request_id = @api.quoteDbRequest symbol, fields
     @callbacks[request_id] = requestCb if requestCb?
 
-  beginQuoteStream: (symbols, ATStreamRequestTypeIndex, requestCb) =>
+  quoteStreamRequest: (symbols, request_type, requestCb) =>
     if typeof symbols is 'object'
       if symbols.length is 1
         symbolParam = symbols[0]
@@ -63,7 +64,7 @@ class ActiveTick extends EventEmitter
     else if typeof symbols is 'string'
       symbolParam = symbols
       symbolCount = 1
-    request_id = @api.beginQuoteStream symbolParam, symbolCount, ATStreamRequestTypeIndex
+    request_id = @api.quoteStreamRequest symbolParam, symbolCount, request_type
     @callbacks[request_id] = requestCb if requestCb?
     
   listRequest: (listType, key, cb) ->
