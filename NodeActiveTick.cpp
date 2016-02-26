@@ -226,23 +226,16 @@ NAN_METHOD(NodeActiveTick::BarHistoryDbRequest) {
 }
 
 NAN_METHOD(NodeActiveTick::ListRequest) {
-  Isolate* isolate = Isolate::GetCurrent();
-  if (isolate) {
-    HandleScope scope(isolate);
-    NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
-    Local<String> list_type = info[0]->ToString();
-    Local<String> symbol = info[1]->ToString();
-    char cstr_list_type[list_type->Utf8Length()];
-    char cstr_symbol[symbol->Utf8Length()];
-    list_type->WriteUtf8(cstr_list_type);
-    symbol->WriteUtf8(cstr_symbol);
-    wchar16_t wchar_symbol[50];
-    Helper::ConvertString(cstr_symbol, wchar_symbol, sizeof(wchar_symbol));
-    std::string str_list_type = std::string(cstr_list_type);
-    ATConstituentListType type = obj->enumConverter->toAtConstituentList(str_list_type);
-    s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
-    info.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
-  }
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+  Nan::Utf8String list_type(info[0]->ToString());
+  std::string str_list_type = std::string(*list_type);
+  Nan::Utf8String symbol(info[1]->ToString());
+  std::string str_symbol = std::string(*symbol);
+  wchar16_t wchar_symbol[50];
+  Helper::ConvertString(str_symbol.c_str(), wchar_symbol, sizeof(wchar_symbol));    
+  ATConstituentListType type = obj->enumConverter->toAtConstituentList(str_list_type);
+  s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
+  info.GetReturnValue().Set(Nan::New<Number>(s_pInstance->m_hLastRequest));
 }
 
 NAN_METHOD(NodeActiveTick::QuoteStreamRequest) {

@@ -26,14 +26,14 @@ class ActiveTick extends EventEmitter
       @callbacks = {}
       @stream_callbacks = {}
       @messages_builder = builder
-      @ATLoginResponse = @messages_builder.build "NodeActiveTickProto.ATLoginResponse"
-      @ATConstituentResponse = @messages_builder.build "NodeActiveTickProto.ATConstituentResponse"
-      @ATQuote = @messages_builder.build "NodeActiveTickProto.ATQuote"
-      @ATQuoteStreamResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamResponse"
-      @ATQuoteStreamTradeUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamTradeUpdate"
-      @ATQuoteStreamQuoteUpdate = @messages_builder.build "NodeActiveTickProto.ATQuoteStreamQuoteUpdate"
-      @ATBarHistoryDbResponse = @messages_builder.build "NodeActiveTickProto.ATBarHistoryDbResponse"
-      @ATQuoteDbResponse = @messages_builder.build "NodeActiveTickProto.ATQuoteDbResponse"
+      @ATLoginResponse = @messages_builder.build 'NodeActiveTickProto.ATLoginResponse'
+      @ATConstituentResponse = @messages_builder.build 'NodeActiveTickProto.ATConstituentResponse'
+      @ATQuote = @messages_builder.build 'NodeActiveTickProto.ATQuote'
+      @ATQuoteStreamResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamResponse'
+      @ATQuoteStreamTradeUpdate = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamTradeUpdate'
+      @ATQuoteStreamQuoteUpdate = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamQuoteUpdate'
+      @ATBarHistoryDbResponse = @messages_builder.build 'NodeActiveTickProto.ATBarHistoryDbResponse'
+      @ATQuoteDbResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse'
       
       # enums
       @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
@@ -67,6 +67,9 @@ class ActiveTick extends EventEmitter
     request_id = @api.quoteStreamRequest symbolParam, symbolCount, request_type
     @callbacks[request_id] = requestCb if requestCb?
     
+  # "ATConstituentListIndex"
+  # "ATConstituentListSector"
+  # "ATConstituentListOptionChain"
   listRequest: (listType, key, cb) ->
     request_id = @api.listRequest listType, key
     @callbacks[request_id] = cb
