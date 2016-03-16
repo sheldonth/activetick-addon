@@ -40,6 +40,8 @@
       this.handleProtoMsg = __bind(this.handleProtoMsg, this);
       this.connect = __bind(this.connect, this);
       this.quoteStreamRequest = __bind(this.quoteStreamRequest, this);
+      this.unsubscribe = __bind(this.unsubscribe, this);
+      this.subscribe = __bind(this.subscribe, this);
       this.quoteDBRequest = __bind(this.quoteDBRequest, this);
       this.barHistoryDBRequest = __bind(this.barHistoryDBRequest, this);
       ProtoBuf.loadProtoFile(path.join(__dirname, "../protobuf", "messages.proto"), (function(_this) {
@@ -59,6 +61,7 @@
           _this.ATQuoteStreamQuoteUpdate = _this.messages_builder.build('NodeActiveTickProto.ATQuoteStreamQuoteUpdate');
           _this.ATBarHistoryDbResponse = _this.messages_builder.build('NodeActiveTickProto.ATBarHistoryDbResponse');
           _this.ATQuoteDbResponse = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse');
+          _this.ATSymbol = _this.messages_builder.build('NodeActiveTickProto.ATSymbol');
           _this.ATQuoteFieldTypes = _this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
           _this.ATFieldStatus = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus');
           _this.ATDataType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType');
@@ -66,6 +69,7 @@
           _this.ATSymbolStatus = _this.messages_builder.build('NodeActiveTickProto.ATSymbolStatus');
           _this.ATQuoteFieldType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
           _this.ATStreamRequestTypes = _this.messages_builder.build('NodeActiveTickProto.ATStreamRequestTypes');
+          _this.stream_symbols = {};
           return readyCb();
         };
       })(this));
@@ -87,23 +91,72 @@
       }
     };
 
-    ActiveTick.prototype.quoteStreamRequest = function(symbols, request_type, requestCb) {
-      var request_id, symbolCount, symbolParam;
-      if (typeof symbols === 'object') {
-        if (symbols.length === 1) {
-          symbolParam = symbols[0];
-          symbolCount = 1;
-        } else {
-          symbolParam = symbols.join(',');
-          symbolCount = symbols.length;
-        }
-      } else if (typeof symbols === 'string') {
-        symbolParam = symbols;
-        symbolCount = 1;
+    ActiveTick.prototype.subscribe = function(symbol, cb) {
+      if (symbol == null) {
+        return;
       }
-      request_id = this.api.quoteStreamRequest(symbolParam, symbolCount, request_type);
-      if (requestCb != null) {
-        return this.callbacks[request_id] = requestCb;
+      if (this.stream_symbols[symbol] == null) {
+        this.stream_symbols[symbol] = 0;
+      }
+      if (this.stream_symbols[symbol] === 0) {
+        return this.quoteStreamRequest(symbol, 'StreamRequestSubscribe', (function(_this) {
+          return function(msg) {
+            console.log(msg);
+            _this.stream_symbols[symbol] += 1;
+            return cb(true);
+          };
+        })(this));
+      } else if (this.stream_symbols[symbol] > 0) {
+        this.stream_symbols[symbol] += 1;
+        return cb(true);
+      }
+    };
+
+    ActiveTick.prototype.unsubscribe = function(symbol, cb) {
+      if (symbol == null) {
+        return;
+      }
+      if (this.stream_symbols[symbol] === 0 || (this.stream_symbols[symbol] == null)) {
+        return console.error("Unsubscribe sent for symbol we aren't subscribed to " + symbol);
+      } else {
+        this.stream_symbols[symbol] -= 1;
+        if (this.stream_symbols[symbol] <= 0) {
+          return this.quoteStreamRequest(symbol, 'StreamRequestUnsubscribe', (function(_this) {
+            return function(msg) {
+              console.log(msg);
+              return cb(true);
+            };
+          })(this));
+        } else {
+          return cb(true);
+        }
+      }
+    };
+
+    ActiveTick.prototype.quoteStreamRequest = function(symbol, reqAction, requestCb) {
+      var q, r, request_id, symbolCount, symbolParam;
+      if (typeof symbol === 'object') {
+        console.log('object');
+        q = new this.ATSymbol;
+        q.symbol = symbol.symbol.toString('utf8');
+        q.symbolType = symbol.symbolType;
+        q.exchangeType = symbol.exchangeType;
+        q.countryType = symbol.countryType;
+        r = q.encode();
+        request_id = this.api.quoteStreamRequestForSymbolData(r.buffer, r.buffer.length, reqAction);
+        if (requestCb != null) {
+          return this.callbacks[request_id] = requestCb;
+        }
+      } else if (typeof symbol === 'string') {
+        console.log('string');
+        symbolParam = symbol;
+        symbolCount = 1;
+        request_id = this.api.quoteStreamRequest(symbolParam, symbolCount, reqAction);
+        if (requestCb != null) {
+          return this.callbacks[request_id] = requestCb;
+        }
+      } else {
+        return console.error('Bad request parameter type quoteStreamRequest');
       }
     };
 
@@ -134,9 +187,11 @@
         msg = this.ATBarHistoryDbResponse.decode(msgData);
       } else if (msgType === 'ATQuoteStreamTradeUpdate') {
         msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
+        console.log('trade');
         this.emit('trade', msg);
       } else if (msgType === 'ATQuoteStreamQuoteUpdate') {
         msg = this.ATQuoteStreamQuoteUpdate.decode(msgData);
+        console.log('quote');
         this.emit('quote', msg);
       } else if (msgType === 'ATQuoteDbResponse') {
         msg = this.ATQuoteDbResponse.decode(msgData);

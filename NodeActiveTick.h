@@ -57,6 +57,7 @@ private:
     static NAN_METHOD(QuoteStreamRequest);
     static NAN_METHOD(BarHistoryDbRequest);
     static NAN_METHOD(QuoteDbRequest);
+    static NAN_METHOD(QuoteStreamRequestForSymbolData);
     // AT Callbacks
     static void ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate);
     static void ATSessionStatusChangeCallback(

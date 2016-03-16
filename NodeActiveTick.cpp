@@ -48,6 +48,7 @@ NAN_MODULE_INIT(NodeActiveTick::Init) {
     Nan::SetPrototypeMethod(tpl, "quoteStreamRequest", QuoteStreamRequest);
     Nan::SetPrototypeMethod(tpl, "barHistoryDbRequest", BarHistoryDbRequest);
     Nan::SetPrototypeMethod(tpl, "quoteDbRequest", QuoteDbRequest);
+    Nan::SetPrototypeMethod(tpl, "quoteStreamRequestForSymbolData", QuoteStreamRequestForSymbolData);
     
     // constructor.Reset(isolate, tpl->GetFunction());
     constructor().Reset(Nan::GetFunction(tpl).ToLocalChecked());
@@ -236,6 +237,34 @@ NAN_METHOD(NodeActiveTick::ListRequest) {
   ATConstituentListType type = obj->enumConverter->toAtConstituentList(str_list_type);
   s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
   info.GetReturnValue().Set(Nan::New<Number>(s_pInstance->m_hLastRequest));
+}
+
+NAN_METHOD(NodeActiveTick::QuoteStreamRequestForSymbolData) {
+  uint64_t quote_stream_request = 0;
+  NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
+  // void* buf = (void*) node::Buffer::Data(info[0]->ToObject());
+  // Nan::Utf8String p_data(info[2]->ToString());
+  // std::string data_string = std::string(*p_data);
+  char* buf = node::Buffer::Data(info[0]->ToObject());
+
+  unsigned int size = info[1]->Uint32Value();
+  Nan::Utf8String request_type(info[2]->ToString());
+  std::string str_request_type = std::string(*request_type);
+
+  ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(str_request_type);  
+  NodeActiveTickProto::ATSymbol s = NodeActiveTickProto::ATSymbol();
+
+  s.ParseFromArray(buf, size);
+  ATSYMBOL atSymbol;
+  // atSymbol.symbol = s.symbol();
+  Helper::ConvertString(s.symbol().c_str(), atSymbol.symbol, ATSymbolMaxLength);
+  atSymbol.symbolType = s.symboltype();
+  atSymbol.exchangeType = s.exchangetype();
+  atSymbol.countryType = s.countrytype();
+  std::vector<ATSYMBOL> out;
+  out.push_back(atSymbol);
+  quote_stream_request = obj->requestor->SendATQuoteStreamRequest(out.data(), 1, requestType, DEFAULT_REQUEST_TIMEOUT);
+  info.GetReturnValue().Set(Nan::New<Number>(quote_stream_request));
 }
 
 NAN_METHOD(NodeActiveTick::QuoteStreamRequest) {

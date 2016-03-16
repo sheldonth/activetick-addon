@@ -34,6 +34,7 @@ class ActiveTick extends EventEmitter
       @ATQuoteStreamQuoteUpdate = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamQuoteUpdate'
       @ATBarHistoryDbResponse = @messages_builder.build 'NodeActiveTickProto.ATBarHistoryDbResponse'
       @ATQuoteDbResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse'
+      @ATSymbol = @messages_builder.build 'NodeActiveTickProto.ATSymbol'
       
       # enums
       @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
@@ -43,6 +44,9 @@ class ActiveTick extends EventEmitter
       @ATSymbolStatus = @messages_builder.build 'NodeActiveTickProto.ATSymbolStatus'
       @ATQuoteFieldType = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
       @ATStreamRequestTypes = @messages_builder.build 'NodeActiveTickProto.ATStreamRequestTypes'
+      
+      
+      @stream_symbols = {}
       readyCb()
 
   barHistoryDBRequest: (symbol, barhistorytype, intradayminutecompression, startime, endtime, requestCb) =>
@@ -53,20 +57,53 @@ class ActiveTick extends EventEmitter
     request_id = @api.quoteDbRequest symbol, fields
     @callbacks[request_id] = requestCb if requestCb?
 
-  quoteStreamRequest: (symbols, request_type, requestCb) =>
-    if typeof symbols is 'object'
-      if symbols.length is 1
-        symbolParam = symbols[0]
-        symbolCount = 1
-      else
-        symbolParam = symbols.join ','
-        symbolCount = symbols.length
-    else if typeof symbols is 'string'
-      symbolParam = symbols
-      symbolCount = 1
-    request_id = @api.quoteStreamRequest symbolParam, symbolCount, request_type
-    @callbacks[request_id] = requestCb if requestCb?
+  # subscribe/unsubscribe prevent duplicating server requests if many clients subscribe to similar symbols
+  subscribe: (symbol, cb) =>
+    return if not symbol?
+    @stream_symbols[symbol] = 0 if not @stream_symbols[symbol]?
+    if @stream_symbols[symbol] is 0
+      @quoteStreamRequest symbol, 'StreamRequestSubscribe', (msg) =>
+        console.log msg
+        @stream_symbols[symbol] += 1
+        cb yes
+    else if @stream_symbols[symbol] > 0 # we're already getting this quote stream
+      @stream_symbols[symbol] += 1
+      cb yes
     
+  unsubscribe: (symbol, cb) =>
+    return if not symbol?
+    if @stream_symbols[symbol] is 0 or not @stream_symbols[symbol]?
+      return console.error "Unsubscribe sent for symbol we aren't subscribed to #{symbol}"
+    else
+      @stream_symbols[symbol] -= 1
+      if @stream_symbols[symbol] <= 0
+        @quoteStreamRequest symbol, 'StreamRequestUnsubscribe', (msg) =>
+          console.log msg
+          cb yes
+      else
+        cb yes
+        
+  quoteStreamRequest: (symbol, reqAction, requestCb) =>
+    # reqAction = 'StreamRequestSubscribe' # determined
+    if typeof symbol is 'object'
+      console.log 'object'
+      q = new @ATSymbol
+      q.symbol = symbol.symbol.toString('utf8')
+      q.symbolType = symbol.symbolType
+      q.exchangeType = symbol.exchangeType
+      q.countryType = symbol.countryType
+      r = q.encode()
+      request_id = @api.quoteStreamRequestForSymbolData r.buffer, r.buffer.length, reqAction
+      @callbacks[request_id] = requestCb if requestCb?
+    else if typeof symbol is 'string'
+      console.log 'string'
+      symbolParam = symbol
+      symbolCount = 1
+      request_id = @api.quoteStreamRequest symbolParam, symbolCount, reqAction
+      @callbacks[request_id] = requestCb if requestCb?
+    else
+      console.error 'Bad request parameter type quoteStreamRequest'
+  
   # "ATConstituentListIndex"
   # "ATConstituentListSector"
   # "ATConstituentListOptionChain"
@@ -90,9 +127,11 @@ class ActiveTick extends EventEmitter
       msg = @ATBarHistoryDbResponse.decode msgData
     else if msgType is 'ATQuoteStreamTradeUpdate'
       msg = @ATQuoteStreamTradeUpdate.decode msgData
+      console.log 'trade'
       @emit 'trade', msg
     else if msgType is 'ATQuoteStreamQuoteUpdate'
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
+      console.log 'quote'
       @emit 'quote', msg
     else if msgType is 'ATQuoteDbResponse'
       msg = @ATQuoteDbResponse.decode msgData
