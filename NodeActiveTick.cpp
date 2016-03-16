@@ -242,21 +242,15 @@ NAN_METHOD(NodeActiveTick::ListRequest) {
 NAN_METHOD(NodeActiveTick::QuoteStreamRequestForSymbolData) {
   uint64_t quote_stream_request = 0;
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
-  // void* buf = (void*) node::Buffer::Data(info[0]->ToObject());
-  // Nan::Utf8String p_data(info[2]->ToString());
-  // std::string data_string = std::string(*p_data);
   char* buf = node::Buffer::Data(info[0]->ToObject());
-
   unsigned int size = info[1]->Uint32Value();
   Nan::Utf8String request_type(info[2]->ToString());
   std::string str_request_type = std::string(*request_type);
-
   ATStreamRequestType requestType = obj->enumConverter->toAtStreamRequest(str_request_type);  
   NodeActiveTickProto::ATSymbol s = NodeActiveTickProto::ATSymbol();
-
   s.ParseFromArray(buf, size);
   ATSYMBOL atSymbol;
-  // atSymbol.symbol = s.symbol();
+	memset(&atSymbol, 0, sizeof(atSymbol));
   Helper::ConvertString(s.symbol().c_str(), atSymbol.symbol, ATSymbolMaxLength);
   atSymbol.symbolType = s.symboltype();
   atSymbol.exchangeType = s.exchangetype();
