@@ -45,7 +45,6 @@ class ActiveTick extends EventEmitter
       @ATQuoteFieldType = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
       @ATStreamRequestTypes = @messages_builder.build 'NodeActiveTickProto.ATStreamRequestTypes'
       
-      
       @stream_symbols = {}
       readyCb()
 
@@ -60,33 +59,36 @@ class ActiveTick extends EventEmitter
   # subscribe/unsubscribe prevent duplicating server requests if many clients subscribe to similar symbols
   subscribe: (symbol, cb) =>
     return if not symbol?
-    @stream_symbols[symbol] = 0 if not @stream_symbols[symbol]?
-    if @stream_symbols[symbol] is 0
+    streamKey = symbol.symbol if typeof symbol is 'object'
+    streamKey = symbol if typeof symbol is 'string'
+    @stream_symbols[streamKey] = 0 if not @stream_symbols[streamKey]?
+    if @stream_symbols[streamKey] is 0
       @quoteStreamRequest symbol, 'StreamRequestSubscribe', (msg) =>
-        console.log msg
-        @stream_symbols[symbol] += 1
+        # TODO check payload body for failure
+        @stream_symbols[streamKey] += 1
         cb yes
-    else if @stream_symbols[symbol] > 0 # we're already getting this quote stream
-      @stream_symbols[symbol] += 1
+    else if @stream_symbols[streamKey] > 0 # we're already getting this quote stream
+      @stream_symbols[streamKey] += 1
       cb yes
     
   unsubscribe: (symbol, cb) =>
     return if not symbol?
-    if @stream_symbols[symbol] is 0 or not @stream_symbols[symbol]?
-      return console.error "Unsubscribe sent for symbol we aren't subscribed to #{symbol}"
+    streamKey = symbol.symbol if typeof symbol is 'object'
+    streamKey = symbol if typeof symbol is 'string'
+    if @stream_symbols[streamKey] is 0 or not @stream_symbols[streamKey]?
+      return console.error "Unsubscribe sent for symbol we aren't subscribed to #{streamKey}"
     else
-      @stream_symbols[symbol] -= 1
-      if @stream_symbols[symbol] <= 0
+      console.log 'Decrementing ' + @stream_symbols[streamKey]
+      @stream_symbols[streamKey] = @stream_symbols[streamKey] - 1
+      console.log 'now ' + @stream_symbols[streamKey]
+      if @stream_symbols[streamKey] <= 0
         @quoteStreamRequest symbol, 'StreamRequestUnsubscribe', (msg) =>
-          console.log msg
           cb yes
       else
         cb yes
         
   quoteStreamRequest: (symbol, reqAction, requestCb) =>
-    # reqAction = 'StreamRequestSubscribe' # determined
     if typeof symbol is 'object'
-      console.log 'object'
       q = new @ATSymbol
       q.symbol = symbol.symbol.toString('utf8')
       q.symbolType = symbol.symbolType
@@ -96,7 +98,6 @@ class ActiveTick extends EventEmitter
       request_id = @api.quoteStreamRequestForSymbolData r.buffer, r.buffer.length, reqAction
       @callbacks[request_id] = requestCb if requestCb?
     else if typeof symbol is 'string'
-      console.log 'string'
       symbolParam = symbol
       symbolCount = 1
       request_id = @api.quoteStreamRequest symbolParam, symbolCount, reqAction

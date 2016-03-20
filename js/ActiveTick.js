@@ -92,38 +92,52 @@
     };
 
     ActiveTick.prototype.subscribe = function(symbol, cb) {
+      var streamKey;
       if (symbol == null) {
         return;
       }
-      if (this.stream_symbols[symbol] == null) {
-        this.stream_symbols[symbol] = 0;
+      if (typeof symbol === 'object') {
+        streamKey = symbol.symbol;
       }
-      if (this.stream_symbols[symbol] === 0) {
+      if (typeof symbol === 'string') {
+        streamKey = symbol;
+      }
+      if (this.stream_symbols[streamKey] == null) {
+        this.stream_symbols[streamKey] = 0;
+      }
+      if (this.stream_symbols[streamKey] === 0) {
         return this.quoteStreamRequest(symbol, 'StreamRequestSubscribe', (function(_this) {
           return function(msg) {
-            console.log(msg);
-            _this.stream_symbols[symbol] += 1;
+            _this.stream_symbols[streamKey] += 1;
             return cb(true);
           };
         })(this));
-      } else if (this.stream_symbols[symbol] > 0) {
-        this.stream_symbols[symbol] += 1;
+      } else if (this.stream_symbols[streamKey] > 0) {
+        this.stream_symbols[streamKey] += 1;
         return cb(true);
       }
     };
 
     ActiveTick.prototype.unsubscribe = function(symbol, cb) {
+      var streamKey;
       if (symbol == null) {
         return;
       }
-      if (this.stream_symbols[symbol] === 0 || (this.stream_symbols[symbol] == null)) {
-        return console.error("Unsubscribe sent for symbol we aren't subscribed to " + symbol);
+      if (typeof symbol === 'object') {
+        streamKey = symbol.symbol;
+      }
+      if (typeof symbol === 'string') {
+        streamKey = symbol;
+      }
+      if (this.stream_symbols[streamKey] === 0 || (this.stream_symbols[streamKey] == null)) {
+        return console.error("Unsubscribe sent for symbol we aren't subscribed to " + streamKey);
       } else {
-        this.stream_symbols[symbol] -= 1;
-        if (this.stream_symbols[symbol] <= 0) {
+        console.log('Decrementing ' + this.stream_symbols[streamKey]);
+        this.stream_symbols[streamKey] = this.stream_symbols[streamKey] - 1;
+        console.log('now ' + this.stream_symbols[streamKey]);
+        if (this.stream_symbols[streamKey] <= 0) {
           return this.quoteStreamRequest(symbol, 'StreamRequestUnsubscribe', (function(_this) {
             return function(msg) {
-              console.log(msg);
               return cb(true);
             };
           })(this));
@@ -136,7 +150,6 @@
     ActiveTick.prototype.quoteStreamRequest = function(symbol, reqAction, requestCb) {
       var q, r, request_id, symbolCount, symbolParam;
       if (typeof symbol === 'object') {
-        console.log('object');
         q = new this.ATSymbol;
         q.symbol = symbol.symbol.toString('utf8');
         q.symbolType = symbol.symbolType;
@@ -148,7 +161,6 @@
           return this.callbacks[request_id] = requestCb;
         }
       } else if (typeof symbol === 'string') {
-        console.log('string');
         symbolParam = symbol;
         symbolCount = 1;
         request_id = this.api.quoteStreamRequest(symbolParam, symbolCount, reqAction);
