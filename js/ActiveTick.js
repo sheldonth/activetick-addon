@@ -201,11 +201,11 @@
       } else if (msgType === 'ATQuoteStreamTradeUpdate') {
         msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
         this.emit('trade', msg);
-        this.emit('trade' + trade.tradeSymbol.symbol, msg);
+        this.emit('trade' + msg.tradeSymbol.symbol, msg);
       } else if (msgType === 'ATQuoteStreamQuoteUpdate') {
         msg = this.ATQuoteStreamQuoteUpdate.decode(msgData);
         this.emit('quote', msg);
-        this.emit('quote' + quote.quoteSymbol.symbol, msg);
+        this.emit('quote' + msg.quoteSymbol.symbol, msg);
       } else if (msgType === 'ATQuoteDbResponse') {
         msg = this.ATQuoteDbResponse.decode(msgData);
       }

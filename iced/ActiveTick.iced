@@ -131,11 +131,11 @@ class ActiveTick extends EventEmitter
     else if msgType is 'ATQuoteStreamTradeUpdate'
       msg = @ATQuoteStreamTradeUpdate.decode msgData
       @emit 'trade', msg
-      @emit 'trade' + trade.tradeSymbol.symbol, msg
+      @emit 'trade' + msg.tradeSymbol.symbol, msg
     else if msgType is 'ATQuoteStreamQuoteUpdate'
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
       @emit 'quote', msg
-      @emit 'quote' + quote.quoteSymbol.symbol, msg
+      @emit 'quote' + msg.quoteSymbol.symbol, msg
     else if msgType is 'ATQuoteDbResponse'
       msg = @ATQuoteDbResponse.decode msgData
     if (c = @callbacks[msgID])?
