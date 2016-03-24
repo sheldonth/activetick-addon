@@ -36,6 +36,10 @@ class ActiveTick extends EventEmitter
       @ATQuoteDbResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse'
       @ATSymbol = @messages_builder.build 'NodeActiveTickProto.ATSymbol'
       
+      @timer = setInterval () =>
+        console.log @stream_symbols
+      , 2000
+      
       # enums
       @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'
       @ATFieldStatus = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus'
@@ -78,9 +82,7 @@ class ActiveTick extends EventEmitter
     if @stream_symbols[streamKey] is 0 or not @stream_symbols[streamKey]?
       return console.error "Unsubscribe sent for symbol we aren't subscribed to #{streamKey}"
     else
-      console.log 'Decrementing ' + @stream_symbols[streamKey]
       @stream_symbols[streamKey] = @stream_symbols[streamKey] - 1
-      console.log 'now ' + @stream_symbols[streamKey]
       if @stream_symbols[streamKey] <= 0
         @quoteStreamRequest symbol, 'StreamRequestUnsubscribe', (msg) =>
           cb yes
@@ -128,12 +130,12 @@ class ActiveTick extends EventEmitter
       msg = @ATBarHistoryDbResponse.decode msgData
     else if msgType is 'ATQuoteStreamTradeUpdate'
       msg = @ATQuoteStreamTradeUpdate.decode msgData
-      console.log 'trade'
       @emit 'trade', msg
+      @emit 'trade' + trade.tradeSymbol.symbol, msg
     else if msgType is 'ATQuoteStreamQuoteUpdate'
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
-      console.log 'quote'
       @emit 'quote', msg
+      @emit 'quote' + quote.quoteSymbol.symbol, msg
     else if msgType is 'ATQuoteDbResponse'
       msg = @ATQuoteDbResponse.decode msgData
     if (c = @callbacks[msgID])?

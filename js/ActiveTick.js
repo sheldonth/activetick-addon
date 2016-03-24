@@ -62,6 +62,9 @@
           _this.ATBarHistoryDbResponse = _this.messages_builder.build('NodeActiveTickProto.ATBarHistoryDbResponse');
           _this.ATQuoteDbResponse = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse');
           _this.ATSymbol = _this.messages_builder.build('NodeActiveTickProto.ATSymbol');
+          _this.timer = setInterval(function() {
+            return console.log(_this.stream_symbols);
+          }, 2000);
           _this.ATQuoteFieldTypes = _this.messages_builder.build('NodeActiveTickProto.ATQuoteFieldType');
           _this.ATFieldStatus = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATFieldStatus');
           _this.ATDataType = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponseSymbolFieldData.ATDataType');
@@ -132,9 +135,7 @@
       if (this.stream_symbols[streamKey] === 0 || (this.stream_symbols[streamKey] == null)) {
         return console.error("Unsubscribe sent for symbol we aren't subscribed to " + streamKey);
       } else {
-        console.log('Decrementing ' + this.stream_symbols[streamKey]);
         this.stream_symbols[streamKey] = this.stream_symbols[streamKey] - 1;
-        console.log('now ' + this.stream_symbols[streamKey]);
         if (this.stream_symbols[streamKey] <= 0) {
           return this.quoteStreamRequest(symbol, 'StreamRequestUnsubscribe', (function(_this) {
             return function(msg) {
@@ -199,12 +200,12 @@
         msg = this.ATBarHistoryDbResponse.decode(msgData);
       } else if (msgType === 'ATQuoteStreamTradeUpdate') {
         msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
-        console.log('trade');
         this.emit('trade', msg);
+        this.emit('trade' + trade.tradeSymbol.symbol, msg);
       } else if (msgType === 'ATQuoteStreamQuoteUpdate') {
         msg = this.ATQuoteStreamQuoteUpdate.decode(msgData);
-        console.log('quote');
         this.emit('quote', msg);
+        this.emit('quote' + quote.quoteSymbol.symbol, msg);
       } else if (msgType === 'ATQuoteDbResponse') {
         msg = this.ATQuoteDbResponse.decode(msgData);
       }
