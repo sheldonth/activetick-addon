@@ -9,7 +9,7 @@
   - `brew install protobuf pkg-config`
 
 ##### Usage Ubuntu
-- sudo apt-get install libprotobuf-dev protobuf-compiler pkg-config
+- `sudo apt-get install libprotobuf-dev protobuf-compiler pkg-config`
 
 ##### Example
 - Create `/example/config.js` with your username, password, and apikey
