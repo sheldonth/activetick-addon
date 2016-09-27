@@ -15,6 +15,6 @@
 - Create `/example/config.js` with your username, password, and apikey
 - Run either `iced example.iced` or `node example.js` to see a stream of trades and quote ticks in real time.
 
-### To-Do
+##### To-Do
   - Support every API method (a few are missing)
   - Memory Management *Not Production Ready*
