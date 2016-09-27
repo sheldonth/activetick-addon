@@ -70,28 +70,30 @@ public:
   }
   
   static NodeActiveTickProto::ATMarketMoversStreamUpdate* atmarketmoversstreamupdate(ATMARKET_MOVERS_STREAM_UPDATE u) {
-    NodeActiveTickProto::ATMarketMoversStreamUpdate *m = new NodeActiveTickProto::ATMarketMoversStreamUpdate();
-    NodeActiveTickProto::ATTime *lastUpdateTime = new NodeActiveTickProto::ATTime();
+    NodeActiveTickProto::ATMarketMoversStreamUpdate* m = new NodeActiveTickProto::ATMarketMoversStreamUpdate();
+    NodeActiveTickProto::ATTime* lastUpdateTime = new NodeActiveTickProto::ATTime();
     attime_insert(&u.lastUpdateTime, lastUpdateTime);
-    NodeActiveTickProto::ATMarketMoversRecord *marketMovers = new NodeActiveTickProto::ATMarketMoversRecord();
+    m->set_allocated_lastupdatedtime(lastUpdateTime);
+    NodeActiveTickProto::ATMarketMoversRecord* marketMovers = new NodeActiveTickProto::ATMarketMoversRecord();
     atmarketmoversrecord_insert(&u.marketMovers, marketMovers);
+    m->set_allocated_marketmovers(marketMovers);
     return m;
   }
   
   static NodeActiveTickProto::ATQuoteStreamRefreshUpdate* atquotestreamrefreshquote(ATQUOTESTREAM_REFRESH_UPDATE u) {
-    NodeActiveTickProto::ATQuoteStreamRefreshUpdate *r = new NodeActiveTickProto::ATQuoteStreamRefreshUpdate();
-    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    NodeActiveTickProto::ATQuoteStreamRefreshUpdate* r = new NodeActiveTickProto::ATQuoteStreamRefreshUpdate();
+    NodeActiveTickProto::ATSymbol* symbol = new NodeActiveTickProto::ATSymbol();
     atsymbol_insert(&u.symbol, symbol);
     r->set_allocated_symbol(symbol);
-    NodeActiveTickProto::ATPrice *lastPrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *openPrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *highPrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *lowPrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *closePrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *prevClosePrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *afterMarketClosePrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *bidPrice = new NodeActiveTickProto::ATPrice();
-    NodeActiveTickProto::ATPrice *askPrice =  new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* lastPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* openPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* highPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* lowPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* closePrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* prevClosePrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* afterMarketClosePrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* bidPrice = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* askPrice =  new NodeActiveTickProto::ATPrice();
     atprice_insert(&u.lastPrice, lastPrice);
     atprice_insert(&u.openPrice, openPrice);
     atprice_insert(&u.highPrice, highPrice);
@@ -119,42 +121,42 @@ public:
   
   // return NodeActiveTickProto::ATQuoteStreamTradeUpdate from ATQUOTESTREAM_TRADE_UPDATE
   static NodeActiveTickProto::ATQuoteStreamTradeUpdate* atquotestreamtradeupdate(ATQUOTESTREAM_TRADE_UPDATE u) {
-    NodeActiveTickProto::ATQuoteStreamTradeUpdate *q = new NodeActiveTickProto::ATQuoteStreamTradeUpdate();
-    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    NodeActiveTickProto::ATQuoteStreamTradeUpdate* q = new NodeActiveTickProto::ATQuoteStreamTradeUpdate();
+    NodeActiveTickProto::ATSymbol* symbol = new NodeActiveTickProto::ATSymbol();
     atsymbol_insert(&u.symbol, symbol);
     q->set_allocated_tradesymbol(symbol);
     q->set_trademessageflags(u.flags);
     for (int i = 0; i < ATTradeConditionsCount; i++) {
         q->add_tradeconditiontype(attradeconditiontype_string(u.condition[i]));
     }
-    NodeActiveTickProto::ATPrice *price = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* price = new NodeActiveTickProto::ATPrice();
     atprice_insert(&u.lastPrice, price);
     q->set_allocated_tradeprice(price);
     q->set_tradesize(u.lastSize);
-    NodeActiveTickProto::ATTime *timePtr = new NodeActiveTickProto::ATTime();
-    attime_insert(&u.lastDateTime, timePtr);
-    q->set_allocated_tradetime(timePtr);
+    NodeActiveTickProto::ATTime* event_time = new NodeActiveTickProto::ATTime();
+    attime_insert(&u.lastDateTime, event_time);
+    q->set_allocated_tradetime(event_time);
     // q->set_tradeexchange(a); TODO
     return q;
   }
   
   static NodeActiveTickProto::ATQuoteStreamQuoteUpdate* atquotestreamquoteupdate(ATQUOTESTREAM_QUOTE_UPDATE u) {
-    NodeActiveTickProto::ATQuoteStreamQuoteUpdate *quoteUpdate = new NodeActiveTickProto::ATQuoteStreamQuoteUpdate();
-    NodeActiveTickProto::ATSymbol *symbol = new NodeActiveTickProto::ATSymbol();
+    NodeActiveTickProto::ATQuoteStreamQuoteUpdate* quoteUpdate = new NodeActiveTickProto::ATQuoteStreamQuoteUpdate();
+    NodeActiveTickProto::ATSymbol* symbol = new NodeActiveTickProto::ATSymbol();
     atsymbol_insert(&u.symbol, symbol);
     quoteUpdate->set_allocated_quotesymbol(symbol);
     quoteUpdate->set_quotecondition(atquoteconditiontype_string(u.condition));
-    NodeActiveTickProto::ATPrice *bid_price = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* bid_price = new NodeActiveTickProto::ATPrice();
     atprice_insert(&u.bidPrice, bid_price);
     quoteUpdate->set_allocated_quotebidprice(bid_price);
     quoteUpdate->set_quotebidsize(u.bidSize);
-    NodeActiveTickProto::ATPrice *ask_price = new NodeActiveTickProto::ATPrice();
+    NodeActiveTickProto::ATPrice* ask_price = new NodeActiveTickProto::ATPrice();
     atprice_insert(&u.askPrice, ask_price);
     quoteUpdate->set_allocated_quoteaskprice(ask_price);
     quoteUpdate->set_quoteasksize(u.askSize);
-    NodeActiveTickProto::ATTime *tim = new NodeActiveTickProto::ATTime();
-    attime_insert(&u.quoteDateTime, tim);
-    quoteUpdate->set_allocated_quotetime(tim);
+    NodeActiveTickProto::ATTime* event_time = new NodeActiveTickProto::ATTime();
+    attime_insert(&u.quoteDateTime, event_time);
+    quoteUpdate->set_allocated_quotetime(event_time);
     return quoteUpdate;
   }
   

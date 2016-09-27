@@ -23,13 +23,15 @@ NodeActiveTick::NodeActiveTick() {
   session_handle = ATCreateSession();
   requestor = new Requestor(session_handle);
   enumConverter = new AtEnumConverter();
-  ATSetStreamUpdateCallback(session_handle, &NodeActiveTick::ATStreamUpdateCallback);
+  ATSetStreamUpdateCallback(session_handle, ATStreamUpdateCallback);
   uv_async_init(uv_default_loop(), &handle, DumpData);
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 }
   
 NodeActiveTick::~NodeActiveTick() {
   ATDestroySession(session_handle);
+  delete requestor;
+  delete enumConverter;
 }
 
 NAN_MODULE_INIT(NodeActiveTick::Init) {
@@ -50,7 +52,6 @@ NAN_MODULE_INIT(NodeActiveTick::Init) {
     Nan::SetPrototypeMethod(tpl, "quoteDbRequest", QuoteDbRequest);
     Nan::SetPrototypeMethod(tpl, "quoteStreamRequestForSymbolData", QuoteStreamRequestForSymbolData);
     
-    // constructor.Reset(isolate, tpl->GetFunction());
     constructor().Reset(Nan::GetFunction(tpl).ToLocalChecked());
     // exports->Set(String::NewFromUtf8(isolate, "NodeActiveTick"), tpl->GetFunction());
     Nan::Set(target, Nan::New("NodeActiveTick").ToLocalChecked(), Nan::GetFunction(tpl).ToLocalChecked());
@@ -68,11 +69,7 @@ NAN_METHOD(NodeActiveTick::New) {
                   String::NewFromUtf8(isolate, "NodeActiveTick requires a callback parameter in first argument position")));
         }
         Local<Function> cb = Local<Function>::Cast(info[0]);
-        obj->p_dataCallback.Reset(isolate, cb);
-        
-        // Experimental Nan::Callback structure
-        obj->nan_cb = new Nan::Callback(cb);
-        
+        obj->p_dataCallback.Reset(isolate, cb);        
         obj->Wrap(info.This());
         info.GetReturnValue().Set(info.This());
   }
@@ -175,7 +172,6 @@ NAN_METHOD(NodeActiveTick::Connect) {
 
 NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
   NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
-  // Local<String> symbol_string = info[0]->ToString();
   Nan::Utf8String ticker_string(info[0]->ToString());
   std::string ticker = std::string(*ticker_string);
   std::vector<ATSYMBOL> symbols = Helper::StringToSymbols(ticker);
@@ -191,14 +187,18 @@ NAN_METHOD(NodeActiveTick::QuoteDbRequest) {
     prevpos = pos;
   }
   fields.push_back(obj->enumConverter->toAtQuoteField(field.substr(prevpos)));
-  s_pInstance->m_hLastRequest = obj->requestor->SendATQuoteDbRequest(symbols.data(), symbols.size(), fields.data(), fields.size(), DEFAULT_REQUEST_TIMEOUT);
-  info.GetReturnValue().Set(Nan::New<Number>(s_pInstance->m_hLastRequest));
+  obj->m_hLastRequest = obj->requestor->SendATQuoteDbRequest(
+                                              symbols.data(),
+                                              symbols.size(),
+                                              fields.data(),
+                                              fields.size(),
+                                              DEFAULT_REQUEST_TIMEOUT);
+  info.GetReturnValue().Set(Nan::New<Number>(obj->m_hLastRequest));
 }
 
 NAN_METHOD(NodeActiveTick::BarHistoryDbRequest) {
   Isolate* isolate = Isolate::GetCurrent();
   if (isolate) {
-    HandleScope scope(isolate);
     NodeActiveTick *obj = ObjectWrap::Unwrap<NodeActiveTick>(info.Holder());
     Local<String> symbol_string = info[0]->ToString();
     char cstr_symbol[symbol_string->Utf8Length()];
@@ -219,8 +219,14 @@ NAN_METHOD(NodeActiveTick::BarHistoryDbRequest) {
     end_time->WriteUtf8(cstr_end_time);
     ATTIME sTime = Helper::StringToATTime(std::string(cstr_start_time));
     ATTIME eTime = Helper::StringToATTime(std::string(cstr_end_time));    
-    s_pInstance->m_hLastRequest = obj->requestor->SendATBarHistoryDbRequest(s, barHistoryType, compression, sTime, eTime, DEFAULT_REQUEST_TIMEOUT);
-    info.GetReturnValue().Set(Number::New(isolate, s_pInstance->m_hLastRequest));
+    obj->m_hLastRequest = obj->requestor->SendATBarHistoryDbRequest(
+                                                          s,
+                                                          barHistoryType,
+                                                          compression,
+                                                          sTime,
+                                                          eTime,
+                                                          DEFAULT_REQUEST_TIMEOUT);
+    info.GetReturnValue().Set(Number::New(isolate, obj->m_hLastRequest));
   }
 }
 
@@ -233,8 +239,11 @@ NAN_METHOD(NodeActiveTick::ListRequest) {
   wchar16_t wchar_symbol[50];
   Helper::ConvertString(str_symbol.c_str(), wchar_symbol, sizeof(wchar_symbol));    
   ATConstituentListType type = obj->enumConverter->toAtConstituentList(str_list_type);
-  s_pInstance->m_hLastRequest = s_pInstance->requestor->SendATConstituentListRequest(type, wchar_symbol, DEFAULT_REQUEST_TIMEOUT);
-  info.GetReturnValue().Set(Nan::New<Number>(s_pInstance->m_hLastRequest));
+  obj->m_hLastRequest = obj->requestor->SendATConstituentListRequest(
+                                                          type,
+                                                          wchar_symbol,
+                                                          DEFAULT_REQUEST_TIMEOUT);
+  info.GetReturnValue().Set(Nan::New<Number>(obj->m_hLastRequest));
 }
 
 NAN_METHOD(NodeActiveTick::QuoteStreamRequestForSymbolData) {
@@ -283,10 +292,12 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::atquotestreamtradeupdate(trade);
       std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
       int size = msg->ByteSize();
-      void *buffer = new char[size];
-      msg->SerializeToArray(buffer, size);
+      char* buffer = new char[size];
+      msg->SerializeToArray(&buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
+      delete msg;
+      msg = NULL;
       break;
     }
     case StreamUpdateQuote:{
@@ -298,6 +309,8 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       msg->SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
+      delete msg;
+      msg = NULL;
       break;
     }
     case StreamUpdateRefresh: {
@@ -309,6 +322,8 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       msg->SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
+      delete msg;
+      msg = NULL;
       break;
     }
     case StreamUpdateTopMarketMovers: {
@@ -320,6 +335,8 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       msg->SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
+      delete msg;
+      msg = NULL;
       break;
     }
     default: break;
@@ -375,12 +392,12 @@ void NodeActiveTick::ATLoginResponseCallback(uint64_t hSession, uint64_t hReques
   if (debug) {
     std::printf("Login: %s\n", strLoginResponseType.c_str());
   }
-  NodeActiveTickProto::ATLoginResponse *msg = new NodeActiveTickProto::ATLoginResponse;
-  msg->set_loginresponsetype((int32_t)p);
-  msg->set_loginresponsestring(strLoginResponseType);
-  int size = msg->ByteSize(); 
+  NodeActiveTickProto::ATLoginResponse msg;
+  msg.set_loginresponsetype((int32_t)p);
+  msg.set_loginresponsestring(strLoginResponseType);
+  int size = msg.ByteSize(); 
   void *buffer = new char[size];
-  msg->SerializeToArray(buffer, size);
+  msg.SerializeToArray(buffer, size);
   MessageStruct* m = new MessageStruct();
   m->data_sz = size;
   m->c_str_data = buffer;

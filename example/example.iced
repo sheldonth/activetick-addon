@@ -46,7 +46,7 @@ main = () ->
     console.log quote
     # @last_quotes[quote.quoteSymbol.symbol] = quote
 
-  virgin_america = 'VA'
+  virgin_america = 'AAPL'
   a.subscribe virgin_america, (result) ->
     st = 'Logging Quote Stream: '
     console.log "Result " + result

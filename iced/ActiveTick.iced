@@ -26,6 +26,7 @@ class ActiveTick extends EventEmitter
       @callbacks = {}
       @stream_callbacks = {}
       @messages_builder = builder
+      # messages
       @ATLoginResponse = @messages_builder.build 'NodeActiveTickProto.ATLoginResponse'
       @ATConstituentResponse = @messages_builder.build 'NodeActiveTickProto.ATConstituentResponse'
       @ATQuote = @messages_builder.build 'NodeActiveTickProto.ATQuote'
@@ -35,10 +36,6 @@ class ActiveTick extends EventEmitter
       @ATBarHistoryDbResponse = @messages_builder.build 'NodeActiveTickProto.ATBarHistoryDbResponse'
       @ATQuoteDbResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse'
       @ATSymbol = @messages_builder.build 'NodeActiveTickProto.ATSymbol'
-      
-      @timer = setInterval () =>
-        noop = {}
-      , 2000
       
       # enums
       @ATQuoteFieldTypes = @messages_builder.build 'NodeActiveTickProto.ATQuoteFieldType'

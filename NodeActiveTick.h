@@ -34,8 +34,8 @@ public:
     wchar16_t   wchar_password[50];
     wchar16_t   wchar_api_token[100];
     
-    AtEnumConverter *enumConverter;
-    Nan::Callback *nan_cb;
+    AtEnumConverter* enumConverter;
+    
     uv_async_t handle;
     Requestor* requestor;
     static NodeActiveTick* s_pInstance;
