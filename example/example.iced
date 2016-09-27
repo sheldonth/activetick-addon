@@ -33,37 +33,26 @@ updateLogStatement = (tickers, lastTrades, lastQuotes) =>
 main = () ->
   await a = new ActiveTick(defer())
   await a.connect config.api_key, config.username, config.password, defer(result)
-  a.quoteDBRequest 'AAPL,NFLX,MSFT', 'QuoteFieldIncomeStatementBasicEPSFromContinuingOperations', (quote) ->
-    console.log quote
-    process.exit()
+  # a.quoteDBRequest 'AAPL,NFLX,MSFT', 'QuoteFieldIncomeStatementBasicEPSFromContinuingOperations', (quote) ->
+  #   console.log quote
+  #   process.exit()
     # 'QuoteFieldSymbol,QuoteFieldBalanceSheetsShareDataTotalCommonSharesOutstanding,QuoteFieldIncomeStatementBasicEPSFromContinuingOperations,QuoteFieldBidExchange,QuoteFieldLastPrice,QuoteFieldBidPrice'
   # @last_trades = {}
   # @last_quotes = {}
-  # a.on 'trade', (trade) =>
-  #   @last_trades[trade.tradeSymbol.symbol] = trade
-  # a.on 'quote', (quote) =>
-  #   @last_quotes[quote.quoteSymbol.symbol] = quote
+  a.on 'trade', (trade) =>
+    console.log trade
+    # @last_trades[trade.tradeSymbol.symbol] = trade
+  a.on 'quote', (quote) =>
+    console.log quote
+    # @last_quotes[quote.quoteSymbol.symbol] = quote
 
-  # setInterval () =>
-  #   updateLogStatement(tickers, @last_trades, @last_quotes);
-  # , 1
+  virgin_america = 'VA'
+  a.subscribe virgin_america, (result) ->
+    st = 'Logging Quote Stream: '
+    console.log "Result " + result
 
-
-  # virgin_america = 'VA'
-  # att = 'T'
-  facebook = 'FB'
-  # apple = 'AAPL'
-  # alibaba = 'BABA'
-  # shake_shack = 'SHAK'
-  # tickers = [virgin_america, att, facebook, apple, alibaba, shake_shack]
-  # 
-  # a.beginQuoteStream tickers, 'StreamRequestSubscribe', (result) ->
-  #   st = 'Logging Quote Stream: '
-  #   for i in result.quoteStreamItems
-  #     st += i.symbol.symbol + ' '
-  #   log st
   # a.beginQuoteStream [facebook, apple], 'StreamRequestSubscribe', (result) ->
-    # console.log 'getQuote2 result2', result.symbol
+  #   console.log 'getQuote2 result2', result.symbol
     
   # a.barHistoryDBRequest facebook, 'BarHistoryIntraday', 20, '20150908100000', '20150910100000', (result) ->
   #   console.log 'barhistory', result

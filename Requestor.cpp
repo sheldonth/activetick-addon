@@ -28,7 +28,7 @@ void Requestor::OnATQuoteDbResponse ( uint64_t origRequest,
                                       LPATQUOTEDB_RESPONSE pResponse,
                                       uint32_t responseCount ) {
   ATQuoteDbResponseParser parser(pResponse, responseCount);
-  NodeActiveTickProto::ATQuoteDbResponse quoteDbResponse; // = new NodeActiveTickProto::ATQuoteDbResponse();
+  NodeActiveTickProto::ATQuoteDbResponse quoteDbResponse;
   if (NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType_IsValid(static_cast<int>(responseType))) // Sample of using native protobuf enums
     quoteDbResponse.set_responsetype(NodeActiveTickProto::ATQuoteDbResponse::ATQuoteDbResponseType(static_cast<int>(responseType)));
   if (parser.MoveToFirstResponse()) {

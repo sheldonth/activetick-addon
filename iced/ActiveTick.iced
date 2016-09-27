@@ -37,7 +37,7 @@ class ActiveTick extends EventEmitter
       @ATSymbol = @messages_builder.build 'NodeActiveTickProto.ATSymbol'
       
       @timer = setInterval () =>
-        console.log @stream_symbols
+        noop = {}
       , 2000
       
       # enums

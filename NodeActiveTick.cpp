@@ -91,8 +91,8 @@ NAN_METHOD(NodeActiveTick::FireCallback) {
   // !!!!!!!!!!!!!!!!!!!!!!!!!  CALLING FUNCTION PASSING BUFFER IN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const char *data = "Hello World FOOBAR!";
   int data_length = strlen(data);
-  Local<Object> buffer = node::Buffer::New(data_length);
-  std::memcpy(node::Buffer::Data(buffer), data, data_length);
+  MaybeLocal<Object> buffer = Nan::CopyBuffer(data, data_length);
+  // std::memcpy(node::Buffer::Data(buffer), data, data_length);
   // get handle to the global object
   Local<Context> globalContext = isolate->GetCurrentContext();
   Local<Object> globalObject = globalContext->Global();
@@ -102,9 +102,7 @@ NAN_METHOD(NodeActiveTick::FireCallback) {
   //   (1) handle of buffer 
   //   (2) length of buffer 
   //   (3) offset in buffer (where to start)
-  Handle<Value> constructorArgs[3] = {buffer,
-                           Integer::New(isolate, data_length),
-                           Integer::New(isolate, 0)};
+  Handle<Value> constructorArgs[3] = {buffer.ToLocalChecked(), Integer::New(isolate, data_length), Integer::New(isolate, 0)};
   // call the buffer-constructor
   Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
   // Create Local Function with obj->Persistent<Function>
@@ -402,12 +400,12 @@ void NodeActiveTick::DumpData(uv_async_t *handle) {
   if (isolate) {
     HandleScope scope(isolate);
     MessageStruct* m = static_cast<MessageStruct*>(handle->data);
-    Local<Object> buffer = node::Buffer::New(m->data_sz);
-    std::memcpy(node::Buffer::Data(buffer), m->c_str_data, m->data_sz);
+    MaybeLocal<Object> buffer = Nan::CopyBuffer(static_cast<char*>(m->c_str_data), m->data_sz);
+    // std::memcpy(node::Buffer::Data(buffer), m->c_str_data, m->data_sz);
     Local<Context> globalContext = isolate->GetCurrentContext();
     Local<Object> globalObject = globalContext->Global();
     Local<Function> bufferConstructor = Local<Function>::Cast(globalObject->Get(String::NewFromUtf8(isolate, "Buffer")));
-    Handle<Value> constructorArgs[3] = {buffer,
+    Handle<Value> constructorArgs[3] = {buffer.ToLocalChecked(),
                              Integer::New(isolate, m->data_sz),
                              Integer::New(isolate, 0)};
     Local<Object> actualBuffer = bufferConstructor->NewInstance(3, constructorArgs);
