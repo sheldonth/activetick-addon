@@ -59,6 +59,8 @@
           _this.ATQuoteStreamResponse = _this.messages_builder.build('NodeActiveTickProto.ATQuoteStreamResponse');
           _this.ATQuoteStreamTradeUpdate = _this.messages_builder.build('NodeActiveTickProto.ATQuoteStreamTradeUpdate');
           _this.ATQuoteStreamQuoteUpdate = _this.messages_builder.build('NodeActiveTickProto.ATQuoteStreamQuoteUpdate');
+          _this.ATQuoteStreamRefreshUpdate = _this.messages_builder.build('NodeActiveTickProto.ATQuoteStreamRefreshUpdate');
+          _this.ATQuoteStreamMarketMoversUpdate = _this.messages_builder.build('NodeActiveTickProto.ATMarketMoversStreamUpdate');
           _this.ATBarHistoryDbResponse = _this.messages_builder.build('NodeActiveTickProto.ATBarHistoryDbResponse');
           _this.ATQuoteDbResponse = _this.messages_builder.build('NodeActiveTickProto.ATQuoteDbResponse');
           _this.ATSymbol = _this.messages_builder.build('NodeActiveTickProto.ATSymbol');
@@ -202,11 +204,15 @@
       } else if (msgType === 'ATQuoteStreamTradeUpdate') {
         msg = this.ATQuoteStreamTradeUpdate.decode(msgData);
         this.emit('trade', msg);
-        this.emit('trade' + msg.tradeSymbol.symbol, msg);
       } else if (msgType === 'ATQuoteStreamQuoteUpdate') {
         msg = this.ATQuoteStreamQuoteUpdate.decode(msgData);
         this.emit('quote', msg);
-        this.emit('quote' + msg.quoteSymbol.symbol, msg);
+      } else if (msgType === 'ATQuoteStreamRefreshUpdate') {
+        msg = this.ATQuoteStreamRefreshUpdate.decode(msg);
+        this.emit('refresh', msg);
+      } else if (msgType === 'ATQuoteStreamMarketMoversUpdate') {
+        msg = this.ATQuoteStreamMarketMoversUpdate.decode(msg);
+        this.emit('marketmovers', msg);
       } else if (msgType === 'ATQuoteDbResponse') {
         msg = this.ATQuoteDbResponse.decode(msgData);
       }

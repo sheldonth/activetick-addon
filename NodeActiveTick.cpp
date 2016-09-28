@@ -318,7 +318,7 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
       ATMARKET_MOVERS_STREAM_UPDATE moversStream = pUpdate->marketMovers;
       NodeActiveTickProto::ATMarketMoversStreamUpdate msg;
       ProtobufHelper::AtQuoteStream_InsertMarketMover(moversStream, &msg);
-      std::strcpy(m->messageType, "ATMarketMoversStreamUpdate");
+      std::strcpy(m->messageType, "ATQuoteStreamMarketMoversUpdate");
       int size = msg.ByteSize();
       void *buffer = new char[size];
       msg.SerializeToArray(buffer, size);

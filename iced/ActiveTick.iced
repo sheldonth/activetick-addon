@@ -32,6 +32,8 @@ class ActiveTick extends EventEmitter
       @ATQuoteStreamResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamResponse'
       @ATQuoteStreamTradeUpdate = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamTradeUpdate'
       @ATQuoteStreamQuoteUpdate = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamQuoteUpdate'
+      @ATQuoteStreamRefreshUpdate = @messages_builder.build 'NodeActiveTickProto.ATQuoteStreamRefreshUpdate'
+      @ATQuoteStreamMarketMoversUpdate = @messages_builder.build 'NodeActiveTickProto.ATMarketMoversStreamUpdate'
       @ATBarHistoryDbResponse = @messages_builder.build 'NodeActiveTickProto.ATBarHistoryDbResponse'
       @ATQuoteDbResponse = @messages_builder.build 'NodeActiveTickProto.ATQuoteDbResponse'
       @ATSymbol = @messages_builder.build 'NodeActiveTickProto.ATSymbol'
@@ -131,11 +133,18 @@ class ActiveTick extends EventEmitter
     else if msgType is 'ATQuoteStreamTradeUpdate'
       msg = @ATQuoteStreamTradeUpdate.decode msgData
       @emit 'trade', msg
-      @emit 'trade' + msg.tradeSymbol.symbol, msg
+      # @emit 'trade' + msg.tradeSymbol.symbol, msg
     else if msgType is 'ATQuoteStreamQuoteUpdate'
       msg = @ATQuoteStreamQuoteUpdate.decode msgData
       @emit 'quote', msg
-      @emit 'quote' + msg.quoteSymbol.symbol, msg
+      # @emit 'quote' + msg.quoteSymbol.symbol, msg
+    else if msgType is 'ATQuoteStreamRefreshUpdate'
+      msg = @ATQuoteStreamRefreshUpdate.decode msg
+      @emit 'refresh', msg
+      # @emit 'refresh' + msg.symbol.symbol, msg
+    else if msgType is 'ATQuoteStreamMarketMoversUpdate'
+      msg = @ATQuoteStreamMarketMoversUpdate.decode msg
+      @emit 'marketmovers', msg
     else if msgType is 'ATQuoteDbResponse'
       msg = @ATQuoteDbResponse.decode msgData
     if (c = @callbacks[msgID])?

@@ -38,7 +38,7 @@
   })(this);
 
   main = function() {
-    var a, result, virgin_america, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var a, apple, result, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     (function(_this) {
@@ -75,8 +75,8 @@
           a.on('quote', function(quote) {
             return console.log(quote);
           });
-          virgin_america = 'VA';
-          return a.subscribe(virgin_america, function(result) {
+          apple = 'AAPL';
+          return a.subscribe(apple, function(result) {
             var st;
             st = 'Logging Quote Stream: ';
             return console.log("Result " + result);

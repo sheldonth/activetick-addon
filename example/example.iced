@@ -50,6 +50,8 @@ main = () ->
   a.subscribe apple, (result) ->
     st = 'Logging Quote Stream: '
     console.log "Result " + result
+  
+  
 
   # a.beginQuoteStream [facebook, apple], 'StreamRequestSubscribe', (result) ->
   #   console.log 'getQuote2 result2', result.symbol
