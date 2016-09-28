@@ -30,7 +30,9 @@
   "homepage": "https://github.com/sheldonth/activetick-addon#readme",
   "dependencies": {
     "async": "^1.4.2",
+    "chai": "^3.5.0",
     "iced-runtime": "^1.0.3",
+    "mocha": "^3.1.0",
     "nan": "^2.0.9",
     "protobufjs": "^4.0.0",
     "single-line-log": "^1.0.0",

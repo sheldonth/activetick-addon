@@ -119,7 +119,8 @@ message ATMarketMoversItem {
   optional string name = 2;
   optional ATPrice lastPrice = 3;
   optional ATPrice closePrice = 4;
-  optional ATTime lastDateTime = 5;
+  optional int32 volume = 5;
+  optional ATTime lastDateTime = 6;
 }
 
 message ATSymbol {

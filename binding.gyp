@@ -7,10 +7,12 @@
                     "Requestor.cpp",
                     "import/atfeed-cppsdk/example/Helper.cpp",
                     "AtEnumConverter.cpp",
-                    "protobuf/messages.pb.cc"
+                    "protobuf/messages.pb.cc",
+                    "ProtobufHelper.cpp"
                  ],
       'include_dirs': [
         './import/atfeed-cppsdk/include/',
+        './import/atfeed-cppsdk/',
         "<!(node -e \"require('nan')\")"
       ],
       "cflags":  ['-c -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -fexceptions -std=c++11 -Wno-c++11-extensions'],

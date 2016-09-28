@@ -279,45 +279,49 @@ void NodeActiveTick::ATStreamUpdateCallback(LPATSTREAM_UPDATE pUpdate) {
   MessageStruct* m = new MessageStruct();
   switch (pUpdate->updateType) {
     case StreamUpdateTrade: {
-      ATQUOTESTREAM_TRADE_UPDATE trade = pUpdate->trade;
-      NodeActiveTickProto::ATQuoteStreamTradeUpdate* msg = ProtobufHelper::atquotestreamtradeupdate(trade);
+      ATQUOTESTREAM_TRADE_UPDATE tradeStream = pUpdate->trade;
+      NodeActiveTickProto::ATQuoteStreamTradeUpdate msg;
+      ProtobufHelper::ATQuoteStream_InsertTrade(tradeStream, &msg);
       std::strcpy(m->messageType, "ATQuoteStreamTradeUpdate");
-      int size = msg->ByteSize();
+      int size = msg.ByteSize();
       void *buffer = new char[size];
-      msg->SerializeToArray(buffer, size);
+      msg.SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
       break;
     }
     case StreamUpdateQuote:{
-      ATQUOTESTREAM_QUOTE_UPDATE quote = pUpdate->quote;
-      NodeActiveTickProto::ATQuoteStreamQuoteUpdate* msg = ProtobufHelper::atquotestreamquoteupdate(quote);
+      ATQUOTESTREAM_QUOTE_UPDATE quoteStream = pUpdate->quote;
+      NodeActiveTickProto::ATQuoteStreamQuoteUpdate msg;
+      ProtobufHelper::ATQuoteStream_InsertQuote(quoteStream, &msg);
       std::strcpy(m->messageType, "ATQuoteStreamQuoteUpdate");
-      int size = msg->ByteSize(); 
+      int size = msg.ByteSize(); 
       void *buffer = new char[size];
-      msg->SerializeToArray(buffer, size);
+      msg.SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
       break;
     }
     case StreamUpdateRefresh: {
-      ATQUOTESTREAM_REFRESH_UPDATE refresh = pUpdate->refresh;
-      NodeActiveTickProto::ATQuoteStreamRefreshUpdate* msg = ProtobufHelper::atquotestreamrefreshquote(refresh);
+      ATQUOTESTREAM_REFRESH_UPDATE refreshStream = pUpdate->refresh;
+      NodeActiveTickProto::ATQuoteStreamRefreshUpdate msg;
+      ProtobufHelper::ATQuoteStream_InsertRefresh(refreshStream, &msg);
       std::strcpy(m->messageType, "ATQuoteStreamRefreshUpdate");
-      int size = msg->ByteSize();
+      int size = msg.ByteSize();
       void *buffer = new char[size];
-      msg->SerializeToArray(buffer, size);
+      msg.SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
       break;
     }
     case StreamUpdateTopMarketMovers: {
-      ATMARKET_MOVERS_STREAM_UPDATE movers = pUpdate->marketMovers;
-      NodeActiveTickProto::ATMarketMoversStreamUpdate* msg = ProtobufHelper::atmarketmoversstreamupdate(movers);
+      ATMARKET_MOVERS_STREAM_UPDATE moversStream = pUpdate->marketMovers;
+      NodeActiveTickProto::ATMarketMoversStreamUpdate msg;
+      ProtobufHelper::AtQuoteStream_InsertMarketMover(moversStream, &msg);
       std::strcpy(m->messageType, "ATMarketMoversStreamUpdate");
-      int size = msg->ByteSize();
+      int size = msg.ByteSize();
       void *buffer = new char[size];
-      msg->SerializeToArray(buffer, size);
+      msg.SerializeToArray(buffer, size);
       m->data_sz = size;
       m->c_str_data = buffer;
       break;
