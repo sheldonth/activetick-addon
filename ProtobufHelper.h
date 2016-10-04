@@ -1,7 +1,5 @@
 // Copyright 2015-present Sheldon Thomas
 #pragma once
-#include <node.h>
-#include <type_traits>
 #include "protobuf/messages.pb.h"
 #include <ActiveTickServerAPI/ActiveTickServerAPI.h>
 #include <Shared/ATServerAPIDefines.h>

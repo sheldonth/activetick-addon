@@ -1,4 +1,4 @@
-#import "ProtobufHelper.h"
+#include "ProtobufHelper.h"
 #include "example/Helper.h"
 
 // parse ATSYMBOL into NodeActiveTickProto::ATSymbol
