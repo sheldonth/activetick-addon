@@ -159,6 +159,9 @@ void Requestor::OnATBarHistoryDbResponse (  uint64_t origRequest,
       ProtobufHelper::atsymbol_insert(s, symbol);
       ATSymbolStatus status = parser.GetSymbolStatus();
       value->set_status(NodeActiveTickProto::ATSymbolStatus(status));
+      NodeActiveTickProto::ATTime *time = value->mutable_time();//new NodeActiveTickProto::ATTime();
+      ATTIME t = parser.GetDateTime();
+      ProtobufHelper::attime_insert(&t, time);
       parser.MoveToNextRecord();
     }
     int bin_size = dbResponse.ByteSize();
