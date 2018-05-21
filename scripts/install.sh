@@ -1,8 +1,8 @@
 sysname=$(uname -s)
 arch=$(uname -m)
 
-cd protobuf
-./build.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 cd ..
 
 mkdir import

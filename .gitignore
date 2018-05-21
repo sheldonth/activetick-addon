@@ -7,4 +7,5 @@ node_modules
 example/config.js
 npm-debug.log
 libActiveTickServerAPI.so
+.DS_Store
 
